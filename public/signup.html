@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Signup</title>
+</head>
+<body>
+	<header>
+		<h1>Join the Table Topics Database</h1>
+		<a href="./index.html"><div id="toHome">Home</div></a>
+	</header>
+
+	<main>
+		<form id="newUserForm">
+			<label for="userNameInput">User Name:</label>
+			<input type="text" name="userName" id="userNameInput" placeholder="User name" required><br>
+
+			<label for="userEmailInput">Email:</label>
+			<input type="email" name="userEmail" id="userEmailInput" placeholder="email" required><br>
+
+			<label for="passwordInput">Password:</label>
+			<input type="text" name="password" id="passwordInput" placeholder="password" required><br>
+		
+			<label for="passwordConfInput">Password Confirmation:</label>
+			<input type="text" name="passwordConf" id="passwordConfInput" placeholder="password confirmation" required><br>
+
+			<fieldset id="clubInfo">
+			  <legend>Club Info</legend>
+
+			  <span for="clubCheck">Are you in a Toastmasters Club?</span>
+
+			  <label for="">Yes</label>
+				<input type="radio" name="clubCheck" id="yesClub" value="Yes">
+
+				<label>No</label>
+			  <input type="radio" name="club" id="noClub" value="No"><br>
+
+				<label for="clubNameInput">Club Name:</label>
+				<input type="text" name="clubName" id="clubNameInput" placeholder="Club Name" optional><br>
+
+				<label for="clubCountryInput">Club location:</label>
+				<input type="text" name="clubCountry" id="clubCountryInput" placeholder="Country" optional>
+				<input type="text" name="clubCity" id="clubCityInput" placeholder="City" optional>
+
+			</fieldset>
+
+			<br><button type="submit">Submit</button>
+		</form> <!-- newUserForm -->
+	</main>
+</body>
+</html>
