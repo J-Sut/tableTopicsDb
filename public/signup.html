@@ -12,34 +12,47 @@
 	<main>
 		<form id="newUserForm">
 			<label for="userNameInput">User Name:</label>
-			<input type="text" name="userName" id="userNameInput" placeholder="User name" required><br>
+			<input type="text" name="userName" id="userNameInput" placeholder="required" required> <br>
 
 			<label for="userEmailInput">Email:</label>
-			<input type="email" name="userEmail" id="userEmailInput" placeholder="email" required><br>
+			<input type="email" name="userEmail" id="userEmailInput" placeholder="required" required> <br>
 
 			<label for="passwordInput">Password:</label>
-			<input type="text" name="password" id="passwordInput" placeholder="password" required><br>
+			<input type="text" name="password" id="passwordInput" placeholder="required" required> <br>
 		
 			<label for="passwordConfInput">Password Confirmation:</label>
-			<input type="text" name="passwordConf" id="passwordConfInput" placeholder="password confirmation" required><br>
+			<input type="text" name="passwordConf" id="passwordConfInput" placeholder="required" required> <br>
 
 			<fieldset id="clubInfo">
 			  <legend>Club Info</legend>
 
 			  <span for="clubCheck">Are you in a Toastmasters Club?</span>
+				  <label for="">Yes</label>
+						<input type="radio" name="clubCheck" id="yesClub" value="Yes">
+					<label>No</label>
+				  	<input type="radio" name="club" id="noClub" value="No"><br>
 
-			  <label for="">Yes</label>
-				<input type="radio" name="clubCheck" id="yesClub" value="Yes">
-
-				<label>No</label>
-			  <input type="radio" name="club" id="noClub" value="No"><br>
+					<label for="tmTitle">Toastmaster Title:</label>
+						<select id="tmTitle">
+							<option value="tm">Toastmaster (Less than 10 speeches given)</option>
+							<option value="cc">Competent Communicator</option>
+							<option value="acb">Advanced Communicator Bronze</option>
+							<option value="acs">Advanced Communicator Silver</option>
+							<option value="acg">Advanced Communicator Gold</option>
+							<option value="alb">Advanced Leader Bronze</option>
+							<option value="als">Advanced Leader Silver</option>
+							<option value="dtm">Distinguished Toastmaster</option>
+						</select>	<br>			  	
 
 				<label for="clubNameInput">Club Name:</label>
-				<input type="text" name="clubName" id="clubNameInput" placeholder="Club Name" optional><br>
+					<input type="text" name="clubName" id="clubNameInput" placeholder="optional" optional><br>
 
 				<label for="clubCountryInput">Club location:</label>
-				<input type="text" name="clubCountry" id="clubCountryInput" placeholder="Country" optional>
-				<input type="text" name="clubCity" id="clubCityInput" placeholder="City" optional>
+					<input type="text" name="clubCountry" id="clubCountryInput" placeholder="optional" optional>
+					<input type="text" name="clubCity" id="clubCityInput" placeholder="optional" optional><br>
+
+				<label for="clubWebsiteInput">Club Website:</label>
+					<input type="text" name="clubWebsite" id="clubWebsiteInput" placeholder="http://www.toastofthetowntoastmasters.org/" optional>
 
 			</fieldset>
 
