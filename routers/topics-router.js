@@ -17,7 +17,7 @@ const {Topic} = require('../models/topic');
 // Gets all topics from db
 router.get('/', (req, res) => {
 	Topic
-	.find(Topic)
+	.findOne(Topic)
 	.exec()
 	.then(function(topic){
 		res.status(200).json(topic);
@@ -30,19 +30,19 @@ router.get('/', (req, res) => {
 });
 
 // Get a whole TT session for a club meeting
-router.get('/sessions', (req, res) => {
-	Topic
-	.findOne()
-	.exec()
-	.then(function(topic){
-		res.json(topic);
-	})
-	//then go into the response object and randomly grab one of the questions
-	.catch(err => {
-  		console.error(err);
-  		res.status(500).json({message: 'Internal server error'})
-  });
-});
+// router.get('/sessions', (req, res) => {
+// 	Topic
+// 	.findOne()
+// 	.exec()
+// 	.then(function(topic){
+// 		res.json(topic);
+// 	})
+// 	//then go into the response object and randomly grab one of the questions
+// 	.catch(err => {
+//   		console.error(err);
+//   		res.status(500).json({message: 'Internal server error'})
+//   });
+// });
 
 // router.get('/search'), (req, res) => {
 
@@ -76,6 +76,15 @@ router.post('/', (req, res) => {
 			console.error(err);
 			res.status(500).json({message: 'Internal server error'});
 		});
+});
+
+// DELETE an existing Table Topics Session
+router.delete('/:id', (req, res) => {
+	Topic
+		.findByIdAndRemove(req.params.id)
+		.exec()
+		.then(topic => res.status(204).end())
+		.catch(err => res.status(500).json({message: 'Internal server error'}))
 });
 
 module.exports = router
