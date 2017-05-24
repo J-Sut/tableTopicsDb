@@ -10,11 +10,9 @@ const {User} = require('../models/user');
 
 // ************* New User Endpoints *************
 
-
 // Create a New User
-router.post('/'), (req, res) => {
+router.post('/', (req, res) => {
 	const requiredFields = ['userName', 'email', 'password', 'passwordConf', 'inClub'];
-	const optionalFields = ['tmTitle', 'clubName', 'clublocation', 'clubWebsite'];
 	
 	for (let i=0; i<requiredFields.length; i++) {
 		const field = requiredFields[i];
@@ -24,21 +22,23 @@ router.post('/'), (req, res) => {
 		};
 	};
 
+
+// add validation that password and passwordConf are the same
+
+
 	User
 		.create({
-			userName: req.body.userName,
+			username: req.body.userName,
 			email: req.body.email,
 			password: req.body.password,
-			passwordConf: req.body.passwordConf,
-			inClub: req.body.inClub
 		})
 		.then(
-			post => res.status(201).json(post.apiRepr()))
+			user => res.status(201).json(user))
 		.catch(err => {
 			console.error(err);
 			res.status(500).json({message: 'Internal server error'});
 		});
-};
+});
 
 // Update user profile information
 
@@ -52,8 +52,8 @@ router.delete('/:id', (req, res) => {
 		.catch(err => res.status(500).json({message: 'Internal server error'}))
 });
 
-router.use('*', function(req, res) {
-  res.status(404).json({message: 'Page Not Found...keep looking'});
-});
+// router.use('*', function(req, res) {
+//   res.status(404).json({message: 'Page Not Found...keep looking'});
+// });
 
 module.exports = router
