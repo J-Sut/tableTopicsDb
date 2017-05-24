@@ -5,16 +5,16 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const jsonParser = bodyParser.json();
 
-const {User, Topic} = require('./models');
+const {User} = require('../models/user');
 
 
 // ************* New User Endpoints *************
 
 
 // Create a New User
-router.post('/user'), (req, res) => {
+router.post('/'), (req, res) => {
 	const requiredFields = ['userName', 'email', 'password', 'passwordConf', 'inClub'];
-	const optionalFields = ['tmTitle', 'clubName', {'clublocation': {'city', 'country'}}, 'clubWebsite'];
+	const optionalFields = ['tmTitle', 'clubName', 'clublocation', 'clubWebsite'];
 	
 	for (let i=0; i<requiredFields.length; i++) {
 		const field = requiredFields[i];
@@ -36,7 +36,7 @@ router.post('/user'), (req, res) => {
 			post => res.status(201).json(post.apiRepr()))
 		.catch(err => {
 			console.error(err);
-			res.status(500).json(message: 'Internal server error');
+			res.status(500).json({message: 'Internal server error'});
 		});
 };
 
@@ -44,7 +44,7 @@ router.post('/user'), (req, res) => {
 
 
 //Delete and existing user
-router.delete('/user/:id', (req, res) => {
+router.delete('/:id', (req, res) => {
 	User
 		.findByIdAndRemove(req.params.id)
 		.exec()
@@ -55,3 +55,5 @@ router.delete('/user/:id', (req, res) => {
 router.use('*', function(req, res) {
   res.status(404).json({message: 'Page Not Found...keep looking'});
 });
+
+module.exports = router
