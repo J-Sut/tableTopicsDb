@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const ObjectId = mongoose.Schema.Types.ObjectId;
 
 //schema for clubs
 
@@ -8,7 +9,7 @@ const clubSchema = mongoose.Schema({
 	location: {
 			city: {type: String, required: true},
 			country: {type: String, required: true}
-	}
+	},
 	website: {type: String, required: false}
 });
 
