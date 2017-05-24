@@ -38,6 +38,8 @@ router.post('/', (req, res) => {
 		};
 	};
 
+// CREATE a new Toastmasters Club
+
 	Club
 		.create({
 			name: req.body.clubName,
@@ -52,6 +54,16 @@ router.post('/', (req, res) => {
 			res.status(500).json({message: 'Internal server error'});
 		});
 });
+
+// DELETE an existing Toastmasters Club
+router.delete('/:id', (req, res) => {
+	Club
+		.findByIdAndRemove(req.params.id)
+		.exec()
+		.then(topic => res.status(204).end())
+		.catch(err => res.status(500).json({message: 'Internal server error'}))
+});
+
 
 module.exports = router
 
