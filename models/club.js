@@ -4,7 +4,7 @@ const ObjectId = mongoose.Schema.Types.ObjectId;
 //schema for clubs
 
 const clubSchema = mongoose.Schema({
-	name: {type: String, required: true},
+	name: {type: String, unique: true,required: true},
 	members: [{type: ObjectId, ref: 'User'}],
 	location: {
 			city: {type: String, required: true},
@@ -15,4 +15,4 @@ const clubSchema = mongoose.Schema({
 
 const Club = mongoose.model('Club', clubSchema);
 
-module.exports = Club;
+module.exports = {Club};

@@ -24,7 +24,7 @@ router.get('/:id', (req, res) => {
 
 // ************* Club POST Endpoints *************
 
-router.post('/'), (req, res) => {
+router.post('/', (req, res) => {
 	const requiredFields = ['clubName', 
 													'members', 
 													'location', 
@@ -40,19 +40,18 @@ router.post('/'), (req, res) => {
 
 	Club
 		.create({
-			clubName: req.body.clubName,
+			name: req.body.clubName,
 			members: req.body.members,
 			location: req.body.location,
-			questions: req.body.questions,
-			webUrl: req.body.webUrl
+			website: req.body.webUrl
 		})
 		.then(
-			post => res.status(201).json(post.apiRepr()))
+			post => res.status(201).json(post))
 		.catch(err => {
 			console.error(err);
 			res.status(500).json({message: 'Internal server error'});
 		});
-};
+});
 
 module.exports = router
 
