@@ -9,13 +9,24 @@ const MyModel = mongoose.connect
 
 const {Topic} = require('../models/topic');
 
+// ************* Topics GET Endpoints *************
 
-// ************* Topics Endpoints *************
-
-// Get a single question for practice
-
-// Gets all topics from db
+// return list of all users: 
 router.get('/', (req, res) => {
+	Topic
+	.find(Topic)	
+	.exec()
+	.then(topicList => res.status(200).json(topicList))
+	.catch(err => {
+  		console.error(err);
+  		res.status(500).json({message: 'Internal server error'})
+  });
+});
+
+// return a full table topics session
+
+// Gets 1 session from db
+router.get('/session', (req, res) => {
 	Topic
 	.findOne(Topic)
 	.exec()
@@ -29,7 +40,8 @@ router.get('/', (req, res) => {
   });
 });
 
-// Get a whole TT session for a club meeting
+// Get a single question for practice
+
 // router.get('/sessions', (req, res) => {
 // 	Topic
 // 	.findOne()
@@ -47,6 +59,8 @@ router.get('/', (req, res) => {
 // router.get('/search'), (req, res) => {
 
 // };
+
+// ************* Topics POST Endpoints *************
 
 // Submit a new Table Topics Session
 router.post('/', (req, res) => {
@@ -78,6 +92,36 @@ router.post('/', (req, res) => {
 		});
 });
 
+// ************* Topics PUT Endpoints *************
+
+router.put('/:id', (req, res) => {
+	if(!(req.params.id && req.body.id && req.body.id === req.params.id)){
+		const message = (
+			`Request path id (${req.params.id}) and request body id ` +
+      `(${req.body.id}) must match`);
+		console.error(message)
+		res.status(400).json({message: message});
+	};
+
+	const toUpdate = {};
+	const updateableFields = ['theme', 'introduction', 'keywords', 'questions'];
+
+	updateableFields.forEach(field => {
+		if(field in req.body) {
+			toUpdate[field] = req.body[field];
+		}
+	});
+
+	Topic
+		.findByIdAndUpdate(req.params.id, {$set: toUpdate}, {new: true})
+		.exec()
+		.then(session => res.json(session).status(204).end())
+	  .catch(err => res.status(500).json({message: 'Internal server error'}));	
+});
+
+
+// ************* Topics DELETE Endpoints *************
+
 // DELETE an existing Table Topics Session
 router.delete('/:id', (req, res) => {
 	Topic
@@ -85,6 +129,13 @@ router.delete('/:id', (req, res) => {
 		.exec()
 		.then(topic => res.status(204).end())
 		.catch(err => res.status(500).json({message: 'Internal server error'}))
+});
+
+
+// ************* Other functions *************
+
+router.use('*', function(req, res) {
+  res.status(404).json({message: 'Page Not Found...keep looking #2'});
 });
 
 module.exports = router
