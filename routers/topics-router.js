@@ -11,7 +11,7 @@ const {Topic} = require('../models/topic');
 
 // ************* Topics GET Endpoints *************
 
-// return list of all users: 
+// Return list of all Sessions: 
 router.get('/', (req, res) => {
 	Topic
 	.find(Topic)	
@@ -42,23 +42,43 @@ router.get('/session', (req, res) => {
 
 // Get a single question for practice
 
-// router.get('/sessions', (req, res) => {
-// 	Topic
-// 	.findOne()
-// 	.exec()
-// 	.then(function(topic){
-// 		res.json(topic);
-// 	})
-// 	//then go into the response object and randomly grab one of the questions
-// 	.catch(err => {
-//   		console.error(err);
-//   		res.status(500).json({message: 'Internal server error'})
-//   });
-// });
+router.get('/question', (req, res) => {
+	Topic
+	.findOne(Topic)
+	.exec()
+	.then(function(topic){
+		res.status(200).json(topic);
+	})
+	.then(function(topic){
+		res.status(200).json(topic);
+	})
+	//then go into the response object and randomly grab one of the questions
+	.catch(err => {
+  		console.error(err);
+  		res.status(500).json({message: 'Internal server error'})
+  });
+});
 
-// router.get('/search'), (req, res) => {
 
-// };
+// Get with Search filters 
+
+router.get('/query', (req, res) => {
+	const filters = {};
+  const queryableFields = ['theme', 'introduction', 'keywords', 'questions'];
+  queryableFields.forEach(field => {
+    if (req.query[field]) {
+      filters[field] = req.query[field];
+    }
+  });
+  Topic
+  .find(filters)
+  .exec()
+  .then(posts => {res.status(200).json()})
+  .catch(err => {
+  	console.error(err);
+  	res.status(500).json({message: 'Internal server error'})
+  });
+});
 
 // ************* Topics POST Endpoints *************
 

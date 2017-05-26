@@ -1,4 +1,5 @@
 const express = require('express');
+const session = require('express-session');
 const app = express();
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
@@ -12,6 +13,12 @@ const clubsRouter = require('./routers/clubs-router');
 const profilesRouter = require('./routers/profiles-router');
 
 app.use(bodyParser.json());
+app.use(session({
+  secret: 'toastmasters',
+  resave: false,
+  saveUninitialized: false,
+  cookie: {}
+}));
 
 app.use(express.static('public'));
 
