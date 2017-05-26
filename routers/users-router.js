@@ -6,6 +6,8 @@ const bodyParser = require('body-parser');
 const jsonParser = bodyParser.json();
 
 const {User} = require('../models/user');
+const {Profile} = require('../models/profile');
+
 
 
 // ************* User GET Endpoints *************
@@ -14,7 +16,7 @@ const {User} = require('../models/user');
 
 router.get('/', (req, res) => {
 	User
-	.find(User)	
+	.find()	
 	.exec()
 	.then(userList => res.status(200).json(userList))
 	.catch(err => {
@@ -22,6 +24,33 @@ router.get('/', (req, res) => {
   		res.status(500).json({message: 'Internal server error'})
   });
 });
+
+// Return list of profiles
+router.get('/profile', (req, res) => {
+	Profile
+	.find(Profile)	
+	.exec()
+	.then(profileList => res.status(200).json(profileList))
+	.catch(err => {
+  		console.error(err);
+  		res.status(500).json({message: 'Internal server error'})
+  });
+});
+
+// Get a user by Id
+
+router.get('/:id', (req, res) => {
+	User
+	.findOne()	
+	.exec()
+	.then(user => res.status(200).json(user))
+	.catch(err => {
+  		console.error(err);
+  		res.status(500).json({message: 'Internal server error'})
+  });
+});
+
+
 
 // ************* User POST Endpoints *************
 
@@ -53,6 +82,8 @@ router.post('/', (req, res) => {
 		});
 });
 
+
+
 // ************* User PUT Endpoints *************
 
 router.put('/:id', (req, res) => {
@@ -80,9 +111,16 @@ router.put('/:id', (req, res) => {
 	  .catch(err => res.status(500).json({message: 'Internal server error'}));	
 });
 
+
+
 // ************* User DELETE Endpoints *************
 
-//Delete and existing user
+router.delete('/login', (req, res) => {
+	console.log(':: DELETE Login ::', req.body);
+	res.status(200).send('DELETE login working');
+})
+
+//Delete an existing ser
 router.delete('/:id', (req, res) => {
 	User
 		.findByIdAndRemove(req.params.id)
@@ -91,10 +129,41 @@ router.delete('/:id', (req, res) => {
 		.catch(err => res.status(500).json({message: 'Internal server error'}))
 });
 
+
+
 // ******************************************************
 // ************* User/:id/Profile Endpoints *************
 
+router.post('/login', (req, res) => {
+	//Receive user input(email, password)
+	const {email, password} = req.body;
+	//Find the user
+	User
+		.findOne({email: email})
+		.exec()
+		.then(function(userInfo) {
+			if(password !== userInfo.password){
+				const message = `Password is incorrect`;
+				console.error(message)
+				res.status(400).json({message: message});
+			} 
+			//make token
+			req.session.userId = userInfo._id;
+			res.status(200).json("Successful login")
+		})
+		.catch(err => {
+			console.error("Email was not found");
+			res.status(404).json({message: "Email not found"})
+		})
+}); 
+
+router.post('/token', (req, res) => {
+	res.status(200).json(req.session.userId);
+})
+
+//Create user Profile
 router.post('/:id/profile', (req, res) => {
+
 	const requiredFields = ['displayName', 'bio', 'photo'];
 	
 	for (let i=0; i<requiredFields.length; i++) {
@@ -107,11 +176,12 @@ router.post('/:id/profile', (req, res) => {
 
 // add validation that password and passwordConf are the same
 
-	User
+	Profile
 		.create({
-			displayName: req.body.userName,
-			email: req.body.email,
-			photo: req.body.password,
+			displayName: req.body.displayName,
+			bio: req.body.bio,
+			photo: req.body.photo,
+			user_id: req.params.id
 		})
 		.then(
 			user => res.status(201).json(user))
@@ -119,6 +189,50 @@ router.post('/:id/profile', (req, res) => {
 			console.error(err);
 			res.status(500).json({message: 'Internal server error'});
 		});
+});
+
+router.put('/:id/profile', (req, res) => {
+	if(!(req.params.id && req.body.id && req.params.id === req.body.id)) {
+		const message = (
+			`Request path id (${req.params.id}) and request body id ` +
+      `(${req.body.id}) must match`);
+		console.error(message)
+		res.status(400).json({message: message});
+	}; 
+
+	const toUpdate = {};
+	const updateableFields = ['displayName', 'bio', 'photo'];
+
+	updateableFields.forEach(field => {
+		if (field in req.body) {
+			toUpdate[field] = req.body[field];
+		}
+	});
+
+	User
+	  .findByIdAndUpdate(req.params.id, {$set: toUpdate}, {new: true})
+	  .exec()
+	  .then(user => res.json(user).status(204).end())
+	  .catch(err => res.status(500).json({message: 'Internal server error'}));	
+});
+
+// Delete User profile
+router.delete('/:id/profile', (req, res) => {
+	User
+		.findByIdAndRemove(req.params.id)
+		.exec()
+		.then(user => res.status(204).end())
+		.catch(err => res.status(500).json({message: 'Internal server error'}))
+});
+
+// ******************************************************
+// ************* User/login Endpoints *******************
+
+
+
+
+router.delete('/login/:id', (req, res) => { 
+
 });
 
 // ************* Other functions *************
