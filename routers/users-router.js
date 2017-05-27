@@ -28,7 +28,7 @@ router.get('/', (req, res) => {
 // Return list of profiles
 router.get('/profile', (req, res) => {
 	Profile
-	.find(Profile)	
+	.find()	
 	.exec()
 	.then(profileList => res.status(200).json(profileList))
 	.catch(err => {
@@ -81,58 +81,6 @@ router.post('/', (req, res) => {
 			res.status(500).json({message: 'Internal server error'});
 		});
 });
-
-
-
-// ************* User PUT Endpoints *************
-
-router.put('/:id', (req, res) => {
-	if(!(req.params.id && req.body.id && req.params.id === req.body.id)) {
-		const message = (
-			`Request path id (${req.params.id}) and request body id ` +
-      `(${req.body.id}) must match`);
-		console.error(message)
-		res.status(400).json({message: message});
-	}; 
-
-	const toUpdate = {};
-	const updateableFields = ['username', 'email', 'password'];
-
-	updateableFields.forEach(field => {
-		if (field in req.body) {
-			toUpdate[field] = req.body[field];
-		}
-	});
-
-	User
-	  .findByIdAndUpdate(req.params.id, {$set: toUpdate}, {new: true})
-	  .exec()
-	  .then(user => res.json(user).status(204).end())
-	  .catch(err => res.status(500).json({message: 'Internal server error'}));	
-});
-
-
-
-// ************* User DELETE Endpoints *************
-
-router.delete('/login', (req, res) => {
-	console.log(':: DELETE Login ::', req.body);
-	res.status(200).send('DELETE login working');
-})
-
-//Delete an existing ser
-router.delete('/:id', (req, res) => {
-	User
-		.findByIdAndRemove(req.params.id)
-		.exec()
-		.then(user => res.status(204).end())
-		.catch(err => res.status(500).json({message: 'Internal server error'}))
-});
-
-
-
-// ******************************************************
-// ************* User/:id/Profile Endpoints *************
 
 router.post('/login', (req, res) => {
 	//Receive user input(email, password)
@@ -191,6 +139,10 @@ router.post('/:id/profile', (req, res) => {
 		});
 });
 
+// ************* User PUT Endpoints *************
+
+
+// Update profile information
 router.put('/:id/profile', (req, res) => {
 	if(!(req.params.id && req.body.id && req.params.id === req.body.id)) {
 		const message = (
@@ -209,6 +161,32 @@ router.put('/:id/profile', (req, res) => {
 		}
 	});
 
+	Profile
+	  .findByIdAndUpdate(req.params.id, {$set: toUpdate}, {new: true})
+	  .exec()
+	  .then(user => res.json(user).status(204).end())
+	  .catch(err => res.status(500).json({message: 'Internal server error'}));	
+});
+
+// Update User information
+router.put('/:id', (req, res) => {
+	if(!(req.params.id && req.body.id && req.params.id === req.body.id)) {
+		const message = (
+			`Request path id (${req.params.id}) and request body id ` +
+      `(${req.body.id}) must match`);
+		console.error(message)
+		res.status(400).json({message: message});
+	}; 
+
+	const toUpdate = {};
+	const updateableFields = ['username', 'email', 'password'];
+
+	updateableFields.forEach(field => {
+		if (field in req.body) {
+			toUpdate[field] = req.body[field];
+		}
+	});
+
 	User
 	  .findByIdAndUpdate(req.params.id, {$set: toUpdate}, {new: true})
 	  .exec()
@@ -216,8 +194,29 @@ router.put('/:id/profile', (req, res) => {
 	  .catch(err => res.status(500).json({message: 'Internal server error'}));	
 });
 
-// Delete User profile
+
+
+// ************* User DELETE Endpoints *************
+
+
+// Delete a User profile
 router.delete('/:id/profile', (req, res) => {
+	Profile
+		.findByIdAndRemove(req.params.id)
+		.exec()
+		.then(profile => 
+			res.status(204).end())
+		.catch(err => res.status(500).json({message: 'Internal server error'}))
+});
+
+// End a Login Session
+router.delete('/login', (req, res) => {
+	console.log(':: DELETE Login ::', req.body);
+	res.status(200).send('DELETE login working');
+})
+
+//Delete an existing User
+router.delete('/:id', (req, res) => {
 	User
 		.findByIdAndRemove(req.params.id)
 		.exec()
@@ -225,15 +224,11 @@ router.delete('/:id/profile', (req, res) => {
 		.catch(err => res.status(500).json({message: 'Internal server error'}))
 });
 
-// ******************************************************
-// ************* User/login Endpoints *******************
-
-
-
-
-router.delete('/login/:id', (req, res) => { 
-
+// End User Session
+router.delete('/logout/:id', (req, res) => { 
+	delete req.session.userId;
 });
+
 
 // ************* Other functions *************
 
