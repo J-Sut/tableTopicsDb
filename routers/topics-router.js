@@ -72,13 +72,13 @@ router.get('/query', (req, res) => {
     }
   });
   Topic
-  .find(filters)
-  .exec()
-  .then(posts => {res.status(200).json()})
-  .catch(err => {
-  	console.error(err);
-  	res.status(500).json({message: 'Internal server error'})
-  });
+	  .find(filters)
+	  .exec()
+	  .then(session => {res.status(200).json()})
+	  .catch(err => {
+	  	console.error(err);
+	  	res.status(500).json({message: 'Internal server error'})
+	  });
 });
 
 // ************* Topics POST Endpoints *************

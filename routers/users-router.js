@@ -82,6 +82,7 @@ router.post('/', (req, res) => {
 		});
 });
 
+// Begin User Login Session
 router.post('/login', (req, res) => {
 	//Receive user input(email, password)
 	const {email, password} = req.body;
@@ -105,7 +106,7 @@ router.post('/login', (req, res) => {
 		})
 }); 
 
-router.post('/token', (req, res) => {
+router.post('/token/', (req, res) => {
 	res.status(200).json(req.session.userId);
 })
 
@@ -227,6 +228,7 @@ router.delete('/:id', (req, res) => {
 // End User Session
 router.delete('/logout/:id', (req, res) => { 
 	delete req.session.userId;
+	res.send("stuff is gone").status(204)
 });
 
 
