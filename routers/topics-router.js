@@ -46,13 +46,14 @@ router.get('/question', (req, res) => {
 	Topic
 	.findOne(Topic)
 	.exec()
-	.then(function(topic){
-		res.status(200).json(topic);
+	.then(session => {
+		const questionArray = session.questions
+		return questionArray[Math.floor(Math.random() * questionArray.length)]
 	})
-	.then(function(topic){
-		res.status(200).json(topic);
+	.then(function(question){
+		res.status(200).json(question);
 	})
-	//then go into the response object and randomly grab one of the questions
+	
 	.catch(err => {
   		console.error(err);
   		res.status(500).json({message: 'Internal server error'})
