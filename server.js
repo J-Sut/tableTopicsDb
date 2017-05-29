@@ -3,6 +3,7 @@ const session = require('express-session');
 const app = express();
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
+
 const {DATABASE_URL, PORT} = require('./config');
 
 mongoose.Promise = global.Promise;

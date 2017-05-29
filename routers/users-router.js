@@ -210,12 +210,6 @@ router.delete('/:id/profile', (req, res) => {
 		.catch(err => res.status(500).json({message: 'Internal server error'}))
 });
 
-// End a Login Session
-router.delete('/login', (req, res) => {
-	console.log(':: DELETE Login ::', req.body);
-	res.status(200).send('DELETE login working');
-})
-
 //Delete an existing User
 router.delete('/:id', (req, res) => {
 	User
