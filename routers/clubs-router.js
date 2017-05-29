@@ -95,7 +95,6 @@ router.put('/:id', (req, res) => {
 });
 
 
-
 // ************* Club DELETE Endpoints *************
 
 // DELETE an existing Toastmasters Club

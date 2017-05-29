@@ -2,6 +2,9 @@
 <html>
 <head>
 	<title>Signup</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="./assets/css/main.css">
+
 </head>
 <body>
 	<header>
@@ -23,11 +26,16 @@
 			<label for="passwordConfInput">Password Confirmation:</label>
 			<input type="text" name="passwordConf" id="passwordConfInput" placeholder="required" required> <br>
 
-		  <span for="clubCheck">Are you in a Toastmasters Club?</span>
-			  <label for="">Yes</label>
-					<input type="radio" name="clubCheck" id="yesClub" value="Yes">
+<!-- 		  <label for="clubCheck">Are you in a Toastmasters Club?</label>
+			  <label>Yes</label>
+					<input type="radio" name="clubCheck" id="yesClub" checked="true">
 				<label>No</label>
-			  	<input type="radio" name="club" id="noClub" value="No"><br>
+			  	<input type="radio" name="clubCheck" id="noClub"><br> -->
+
+	  	<label for="clubCheck" id="clubCheck">Are you in a Toastmasters Club?</label>
+	  		<input type="radio" name="clubCheck" value="true">Yes
+	  		<input type="radio" name="clubCheck" value="false">No
+
 
 			<fieldset id="clubInfo">
 			  <legend>Club Info</legend>
@@ -48,8 +56,9 @@
 					<input type="text" name="clubName" id="clubNameInput" placeholder="optional" optional><br>
 
 				<label for="clubCountryInput">Club location:</label>
-					<input type="text" name="clubCountry" id="clubCountryInput" placeholder="optional" optional>
-					<input type="text" name="clubCity" id="clubCityInput" placeholder="optional" optional><br>
+					<input type="text" name="clubCity" id="clubCityInput" placeholder="City" optional>
+					<input type="text" name="clubCountry" id="clubCountryInput" placeholder="Country" optional>
+					<br>
 
 				<label for="clubWebsiteInput">Club Website:</label>
 					<input type="text" name="clubWebsite" id="clubWebsiteInput" placeholder="http://www.toastofthetowntoastmasters.org/" optional>

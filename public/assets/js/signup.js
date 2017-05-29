@@ -1,10 +1,22 @@
 function addNewUser(term, callback) {
+
+	let newUser = {
+		name: $('#userNameInput').val(),
+		email: $('#userEmailInput').val(),
+		password: $('#passwordInput').val(),
+		pwConf: $('#passwordConfInput').val(),
+		//inClub: $('#clubCheck').val()
+
+	}
+
+	console.log(newUser);
+
 	var ttdbURL = "http://localhost:8080/users";
 	var query = {
-		userName: "frontside test",
-		password: "ft",
-		passwordConf: "ft",	
-		email: "ft@frontside.com",
+		userName: newUser.name,
+		password: newUser.password,
+		passwordConf: newUser.pwConf,	
+		email: newUser.email,
 		inClub: true
 	}; 
 
@@ -15,7 +27,7 @@ function addNewUser(term, callback) {
 		url: ttdbURL,
 		data: JSON.stringify(query),
 		success: function(data){
-			console.log(data, term);
+			console.log(data);
 		},
 		contentType: 'application/json',
     dataType: 'json'
@@ -27,7 +39,7 @@ function addNewUser(term, callback) {
 
 
 function testing(){
-	$('#newUserForm').css("background-color", 'green');
+	$('#newUserForm').css("background-color", 'lightgreen');
 };
 
 testing();

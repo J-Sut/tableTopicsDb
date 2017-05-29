@@ -2,6 +2,8 @@
 <html>
 <head>
 	<title>Login</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="./assets/css/main.css">	
 </head>
 <body>
 	<header>
@@ -12,13 +14,13 @@
 
 	<main>
 		<form id="signInForm">
-			<label for="userNameInput">User Name:</label>
-				<input type="text" name="userName" id="userNameInput" placeholder="jake-the-snake" required><br>
+			<label for="userEmailInput">Email:</label>
+				<input type="text" name="userEmail" id="userEmailInput" placeholder="example@123.com" required><br>
 
-			<label for="userEmailInput">Passsword:</label>
-				<input type="text" name="userPassword" id="userPasswordInput" placeholder="superSecureString" required><br>
+			<label for="userPwInput">Passsword:</label>
+				<input type="text" name="userPassword" id="userPwInput" placeholder="superSecureString" required><br>
 
-				<br><button type="submit">Submit</button>
+				<br><button type="input" id="loginBtn">Submit</button>
 		</form> <!-- signInForm -->
 	</main>
 <script type="text/javascript" src="./assets/jquery.min.js"></script>
