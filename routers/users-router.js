@@ -74,8 +74,16 @@ router.post('/', (req, res) => {
 			email: req.body.email,
 			password: req.body.password,
 		})
-		.then(
-			user => res.status(201).json(user))
+		.then( newClub => {
+			if(!newClub) {
+						//Create Club(receive club properties, Club.create)
+					}
+		})
+					//user => res.status(201).json(user))
+		.then(club => {
+			//Assign user to the club.
+			//club.members.push(user);
+		})
 		.catch(err => {
 			console.error(err);
 			res.status(500).json({message: 'Internal server error'});
@@ -98,7 +106,7 @@ router.post('/login', (req, res) => {
 			} 
 			//make token
 			req.session.userId = userInfo._id;
-			res.status(200).json("Successful login")
+			res.status(200).json(req.session.userId)
 		})
 		.catch(err => {
 			console.error("Email was not found");
