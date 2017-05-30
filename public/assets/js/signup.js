@@ -1,13 +1,9 @@
-function addNewUser(term, callback) {
+// ************ Declare Functions **************
 
-	let newUser = {
-		name: $('#userNameInput').val(),
-		email: $('#userEmailInput').val(),
-		password: $('#passwordInput').val(),
-		pwConf: $('#passwordConfInput').val(),
-		//inClub: $('#clubCheck').val()
 
-	}
+function addNewUser(newUser, callback) {
+
+	
 
 	console.log(newUser);
 
@@ -27,14 +23,12 @@ function addNewUser(term, callback) {
 		url: ttdbURL,
 		data: JSON.stringify(query),
 		success: function(data){
-			console.log(data);
+			location.href = 'profile.html';
+			console.log("data");
 		},
 		contentType: 'application/json',
     dataType: 'json'
 	});
-
-	console.log(2);
-
 };
 
 
@@ -42,6 +36,23 @@ function testing(){
 	$('#newUserForm').css("background-color", 'lightgreen');
 };
 
+// ************ Event Listeners **************
+
 testing();
 
-$('#ajaxTester').on('click', addNewUser)
+$('#newUserForm').submit(function(e){
+  e.preventDefault();
+  console.log("form submitted");
+
+  let newUser = {
+		name: $('#userNameInput').val(),
+		email: $('#userEmailInput').val(),
+		password: $('#passwordInput').val(),
+		pwConf: $('#passwordConfInput').val(),
+		//inClub: $('#clubCheck').val()
+	}
+
+  addNewUser(newUser);
+
+});
+

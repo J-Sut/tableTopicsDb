@@ -7,6 +7,7 @@ const jsonParser = bodyParser.json();
 
 const {User} = require('../models/user');
 const {Profile} = require('../models/profile');
+const {Club} = require('../models/club');
 
 
 
