@@ -6,7 +6,9 @@ const ObjectId = mongoose.Schema.Types.ObjectId;
 const userSchema = mongoose.Schema({
 	username: {type: String, unique: true, required: true},
 	password: {type: String, required: true},
-	email: {type: String, unique: true, required: false}
+	email: {type: String, unique: true, required: false},
+	inClub: {type: Boolean, required: true},
+	memberClubList: {type: String, required: false}
 });
 
 const User = mongoose.model('User', userSchema);

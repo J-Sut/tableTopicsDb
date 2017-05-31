@@ -52,12 +52,12 @@ router.get('/:id', (req, res) => {
 });
 
 
-
 // ************* User POST Endpoints *************
 
 // Create a New User
 router.post('/', (req, res) => {
 	const requiredFields = ['userName', 'email', 'password', 'passwordConf', 'inClub'];
+	const optionalFields = ['clubName', 'location', 'clubWebsite'];
 	
 	for (let i=0; i<requiredFields.length; i++) {
 		const field = requiredFields[i];
@@ -67,27 +67,50 @@ router.post('/', (req, res) => {
 		};
 	};
 
-// add validation that password and passwordConf are the same
-
 	User
 		.create({
 			username: req.body.userName,
 			email: req.body.email,
 			password: req.body.password,
+			inClub: true,
+			memberClubList: req.body.clubName
 		})
-		.then( newClub => {
-			if(!newClub) {
-						//Create Club(receive club properties, Club.create)
+		.then(newUser => {
+			console.log("newUser from router: " + newUser)
+			Club
+				.findOne({name: req.body.clubName})
+				.exec()
+				.then(club => {
+					if (club){
+						console.log("club is already registered:" + club);
+					} else {
+						Club
+							.create({
+								name: req.body.clubName,
+								location: {
+									city: req.body.location.city,
+									country: req.body.location.country
+								},
+								website: req.body.clubWebsite
+							})
 					}
+
+				
+			// 	// if(clubinfo.name) {
+			// 	// 			//Create Club(receive club properties, Club.create)
+			// 	// 		}
+			// })
+				})
 		})
-					//user => res.status(201).json(user))
-		.then(club => {
-			//Assign user to the club.
-			//club.members.push(user);
-		})
+		// .exec()
+		// 			//user => res.status(201).json(user))
+		// .then(club => {
+		// 	//Assign user to the club.
+		// 	//club.members.push(user);
+		// })
 		.catch(err => {
 			console.error(err);
-			res.status(500).json({message: 'Internal server error'});
+			res.status(500).json({message: 'Internal server error from user-router'});
 		});
 });
 
