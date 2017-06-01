@@ -41,7 +41,7 @@ function addNewUser(newUser, clubInfo, callback) {
 
 
 function testing(){
-	$('#newUserForm').css("background-color", 'lightgreen');
+	$('#newUserForm').css("background-color", '#343540');
 };
 
 // ************ Event Listeners **************
@@ -57,7 +57,7 @@ $('#newUserForm').submit(function(e){
 		email: $('#userEmailInput').val(),
 		password: $('#passwordInput').val(),
 		pwConf: $('#passwordConfInput').val(),
-		inClub: true,
+		inClub: $('input[name="clubCheck"]:checked').val(),
 	};
 
 	let clubInfo = {
