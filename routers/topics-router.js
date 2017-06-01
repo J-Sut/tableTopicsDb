@@ -7,7 +7,7 @@ const jsonParser = bodyParser.json();
 
 const MyModel = mongoose.connect
 
-const {Topic} = require('../models/topic');
+const {Topic} = require('../models/topic-model');
 
 // ************* Topics GET Endpoints *************
 

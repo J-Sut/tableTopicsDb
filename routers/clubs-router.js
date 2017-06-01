@@ -5,7 +5,7 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const jsonParser = bodyParser.json();
 
-const {Club} = require('../models/club');
+const {Club} = require('../models/club-model');
 
 // ************* Club GET Endpoints *************
 

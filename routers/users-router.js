@@ -5,9 +5,9 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const jsonParser = bodyParser.json();
 
-const {User} = require('../models/user');
-const {Profile} = require('../models/profile');
-const {Club} = require('../models/club');
+const {User} = require('../models/user-model');
+const {Profile} = require('../models/profile-model');
+const {Club} = require('../models/club-model');
 
 
 
@@ -52,12 +52,12 @@ router.get('/:id', (req, res) => {
 });
 
 
-
 // ************* User POST Endpoints *************
 
 // Create a New User
 router.post('/', (req, res) => {
 	const requiredFields = ['userName', 'email', 'password', 'passwordConf', 'inClub'];
+	const optionalFields = ['clubName', 'location', 'clubWebsite'];
 	
 	for (let i=0; i<requiredFields.length; i++) {
 		const field = requiredFields[i];
@@ -67,27 +67,55 @@ router.post('/', (req, res) => {
 		};
 	};
 
-// add validation that password and passwordConf are the same
+	req.body.inClub = req.body.inClub == "true" ? true : false;
 
 	User
 		.create({
 			username: req.body.userName,
 			email: req.body.email,
 			password: req.body.password,
+			inClub: req.body.inClub,
+			memberClubList: req.body.clubName
 		})
-		.then( newClub => {
-			if(!newClub) {
-						//Create Club(receive club properties, Club.create)
-					}
-		})
-					//user => res.status(201).json(user))
-		.then(club => {
-			//Assign user to the club.
-			//club.members.push(user);
-		})
+		.then(newUser => {
+			console.log("newUser from router: " + newUser)
+			console.log(req.body.inClub, req.body.inClub == "false");
+			if (!req.body.inClub) {
+				return res.status(201).json(newUser);
+			}
+		}) //remove once uncommented below
+		Club
+			.findOne({name: req.body.clubName})
+			.exec()
+			.then(club => {
+				if (club){
+					console.log("club is already registered:" + club);
+					return res.status(200).json(club);
+				} else {
+					return Club
+						.create({
+							name: req.body.clubName,
+							location: {
+								city: req.body.location.city,
+								country: req.body.location.country
+							},
+							website: req.body.clubWebsite
+						})
+				}
+			})
+			.then(club => {
+				res.status(201).json(club)
+			})
+		//**************************************
+		// .exec()
+		// 			//user => res.status(201).json(user))
+		// .then(club => {
+		// 	//Assign user to the club.
+		// 	//club.members.push(user);
+		// })
 		.catch(err => {
 			console.error(err);
-			res.status(500).json({message: 'Internal server error'});
+			res.status(500).json({message: 'Internal server error from user-router'});
 		});
 });
 

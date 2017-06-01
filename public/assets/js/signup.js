@@ -1,7 +1,7 @@
 // ************ Declare Functions **************
 
 
-function addNewUser(newUser, callback) {
+function addNewUser(newUser, clubInfo, callback) {
 
 	
 
@@ -13,10 +13,18 @@ function addNewUser(newUser, callback) {
 		password: newUser.password,
 		passwordConf: newUser.pwConf,	
 		email: newUser.email,
-		inClub: true
+		inClub: newUser.inClub,
+		memberClubList: clubInfo.name,
+
+		clubName: clubInfo.name,
+		location: {
+			city: clubInfo.location.city,
+			country: clubInfo.location.country
+		},
+		website: clubInfo.website
 	}; 
 
-	console.log(1);
+	console.log(clubInfo);
 
 	$.ajax({
 		type: "POST",
@@ -24,7 +32,7 @@ function addNewUser(newUser, callback) {
 		data: JSON.stringify(query),
 		success: function(data){
 			location.href = 'profile.html';
-			console.log("data");
+			console.log(data);
 		},
 		contentType: 'application/json',
     dataType: 'json'
@@ -33,7 +41,7 @@ function addNewUser(newUser, callback) {
 
 
 function testing(){
-	$('#newUserForm').css("background-color", 'lightgreen');
+	$('#newUserForm').css("background-color", '#343540');
 };
 
 // ************ Event Listeners **************
@@ -49,10 +57,41 @@ $('#newUserForm').submit(function(e){
 		email: $('#userEmailInput').val(),
 		password: $('#passwordInput').val(),
 		pwConf: $('#passwordConfInput').val(),
-		//inClub: $('#clubCheck').val()
-	}
+		inClub: $('input[name="clubCheck"]:checked').val(),
+	};
 
-  addNewUser(newUser);
+	let clubInfo = {
+		name: $('#clubNameInput').val(),
+		location: {
+			city:$('#clubCityInput').val(),
+			country: $('#clubCountryInput').val()
+		},
+		website: $('#clubWebsiteInput').val()
+	};
+
+	if (newUser.password === newUser.pwConf) {
+  	addNewUser(newUser, clubInfo);
+	} else {
+		const message = `Passwords do not match`
+	  console.log(message);
+	  alert(message);
+	};
 
 });
+
+// Reveal Club questions if the member states they are in a Club
+$('#yesClub').on('change', function() {
+	$('#memberInfo').removeClass("hide");
+});
+
+$('#noClub').on('change', function() {
+	$('#memberInfo').addClass("hide");
+});
+
+
+
+
+
+
+
 
