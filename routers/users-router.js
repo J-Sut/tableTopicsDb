@@ -26,6 +26,19 @@ router.get('/', (req, res) => {
   });
 });
 
+// Get a user Profile by Id
+router.get('/profile/me', (req, res) => {
+	//if(! )
+	Profile
+	.findOne({user_id: req.session.userId})	
+	.exec()
+	.then(profile => res.status(200).json(profile))
+	.catch(err => {
+  		console.error(err);
+  		res.status(500).json({message: 'Internal server error'})
+  });
+});
+
 // Return list of profiles
 router.get('/profile', (req, res) => {
 	Profile
@@ -38,7 +51,13 @@ router.get('/profile', (req, res) => {
   });
 });
 
-// Get a user by Id
+
+
+// Get Session Login Token
+router.get('/token/', (req, res) => {
+	res.status(200).json(req.session.userId);
+})
+
 
 router.get('/:id', (req, res) => {
 	User
@@ -142,10 +161,6 @@ router.post('/login', (req, res) => {
 			res.status(404).json({message: "Email not found"})
 		})
 }); 
-
-router.post('/token/', (req, res) => {
-	res.status(200).json(req.session.userId);
-})
 
 //Create user Profile
 router.post('/:id/profile', (req, res) => {

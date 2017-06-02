@@ -22,8 +22,6 @@ function grabQuestions() {
 
 function addNewSession(sessionDetails, callback) {
 
-	console.log("sessionDetails");
-
 	var ttdbURL = "http://localhost:8080/topics";
 	var query = {
 		theme: sessionDetails.theme,
@@ -31,8 +29,6 @@ function addNewSession(sessionDetails, callback) {
 		keywords: sessionDetails.keywords,	
 		questions: sessionDetails.questions
 	}; 
-
-	console.log("info before ajax call");
 
 	$.ajax({
 		type: "POST",
@@ -54,13 +50,20 @@ function testing(){
 	$('#sessionSubmitForm').css("background-color", '#5E2323');
 };
 
+function addQuestion(){
+	const newQuestInput = $('<label>',{class: 'questionLabel', text: 'Question'});
+
+	newQuestInput.append($("<textarea>",{name: 'question[]'}),'<br>');
+
+	$('#sessionQuestions').append(newQuestInput);
+};
+
 // ************ Event Calls & Listeners **************
 
 testing();
 
 $('#sessionSubmitForm').submit(function(e){
   e.preventDefault();
-  	console.log("submit fired");
 
   let sessionDetails = {
 		theme: $('#themeInput').val().trim(),
@@ -70,6 +73,7 @@ $('#sessionSubmitForm').submit(function(e){
 	};
 
 	addNewSession(sessionDetails);
+	
 	// if (!req.body.session) {
  //  	console.log("You must be signed in to submit a session");
 	// } else {
@@ -77,6 +81,8 @@ $('#sessionSubmitForm').submit(function(e){
 	//   console.log(message);
 	// };
 });
+
+$('#addQuestion').on('click', addQuestion);
 
 
 

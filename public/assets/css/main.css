@@ -21,7 +21,7 @@ h3 {
 	font-size: 1.2em;
 }
 
-input, textarea	{
+input, button, textarea {
 	color: black;
 }
 
@@ -29,3 +29,10 @@ input, textarea	{
 	display: none;
 }
 
+#navBar {
+	background-color: #01093D;
+}
+
+a div{
+	display: inline;
+}
