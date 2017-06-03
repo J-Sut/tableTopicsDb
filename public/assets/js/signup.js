@@ -1,9 +1,6 @@
 // ************ Declare Functions **************
 
-
 function addNewUser(newUser, clubInfo, callback) {
-
-	
 
 	console.log(newUser);
 
@@ -31,7 +28,7 @@ function addNewUser(newUser, clubInfo, callback) {
 		url: ttdbURL,
 		data: JSON.stringify(query),
 		success: function(data){
-			location.href = 'profile.html';
+			location.href = 'login.html';
 			console.log(data);
 		},
 		contentType: 'application/json',
