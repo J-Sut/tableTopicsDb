@@ -36,3 +36,9 @@ input, button, textarea {
 a div{
 	display: inline;
 }
+
+.disabled {
+	border: none;
+	background: none;
+} 
+
