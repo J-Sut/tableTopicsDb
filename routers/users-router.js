@@ -9,8 +9,6 @@ const {User} = require('../models/user-model');
 const {Profile} = require('../models/profile-model');
 const {Club} = require('../models/club-model');
 
-
-
 // ************* User GET Endpoints *************
 
 // Get a list of all users
@@ -77,7 +75,8 @@ router.get('/:id', (req, res) => {
 router.post('/', (req, res) => {
 	const requiredFields = ['userName', 'email', 'password', 'passwordConf', 'inClub'];
 	const optionalFields = ['clubName', 'location', 'clubWebsite'];
-	
+	let _newUser;
+
 	for (let i=0; i<requiredFields.length; i++) {
 		const field = requiredFields[i];
 		if (!(field in req.body)) {
@@ -99,31 +98,32 @@ router.post('/', (req, res) => {
 		.then(newUser => {
 			console.log("newUser from router: " + newUser)
 			console.log(req.body.inClub, req.body.inClub == "false");
+			_newUser = newUser;
 			if (!req.body.inClub) {
-				return res.status(201).json(newUser);
+				return res.status(201).json(_newUser);
 			}
-		}) //remove once uncommented below
-		Club
+			return Club
 			.findOne({name: req.body.clubName})
 			.exec()
-			.then(club => {
+		}) //remove once uncommented below
+		.then(club => {
 				if (club){
 					console.log("club is already registered:" + club);
 					return res.status(200).json(club);
 				} else {
 					return Club
-						.create({
-							name: req.body.clubName,
-							location: {
-								city: req.body.location.city,
-								country: req.body.location.country
-							},
-							website: req.body.clubWebsite
-						})
+					.create({
+						name: req.body.clubName,
+						location: {
+							city: req.body.location.city,
+							country: req.body.location.country
+						},
+						website: req.body.clubWebsite
+					})
 				}
 			})
 			.then(club => {
-				res.status(201).json(club)
+				res.status(201).json(_newUser)
 			})
 		//**************************************
 		// .exec()
