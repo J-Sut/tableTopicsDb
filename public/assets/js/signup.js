@@ -30,12 +30,39 @@ function addNewUser(newUser, clubInfo, callback) {
 		success: function(data){
 			location.href = 'login.html';
 			console.log(data);
+			createUserProfile(data);
 		},
 		contentType: 'application/json',
     dataType: 'json'
 	});
 };
 
+function createUserProfile(userData){
+	console.log(userData);
+	let userId = userData._id;
+
+	var ttdbURL = "http://localhost:8080/users/" +userId+ "/profile";
+	var query = {
+		user_id: userId,
+		displayName: "Example_name3",
+		bio: "A speaker on the rise3",
+		photo: "photo3.com"
+	}; 
+
+	console.log("createUserProfile Fired");
+
+	$.ajax({
+		type: "POST",
+		url: ttdbURL,
+		data: JSON.stringify(query),
+		success: function(profileData){
+			//location.href = 'login.html';
+			console.log(profileData);
+		},
+		contentType: 'application/json',
+    dataType: 'json'
+	});
+};
 
 function testing(){
 	$('#newUserForm').css("background-color", '#343540');

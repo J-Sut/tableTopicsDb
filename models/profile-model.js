@@ -3,8 +3,8 @@ const ObjectId = mongoose.Schema.Types.ObjectId;
 
 
 const profileSchema = mongoose.Schema({
-	displayName: {type: String, required: true},
-	bio: {type: String, required: true},
+	displayName: {type: String},
+	bio: {type: String},
 	photo: {type: String},
 	user_id: {type: ObjectId, unique: true, ref:'User'}
 });

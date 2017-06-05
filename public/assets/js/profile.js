@@ -4,10 +4,11 @@
 			// $('body').css('background-color', 'green');
 
 // ************ f(Modify-state) **************
-
+var userData;
 
 function getProfileData(){
 	$.getJSON('users/profile/me', function(data){
+		userData = data;
 		displayProfileData(data);
 	});
 };
@@ -21,27 +22,23 @@ function updateProfile(){
 	// let profileId = //...
 	// let updatePath = "users" + profileId + "profile"
 	// $.put("users/59288af4af018937b04a0625/profile", function(){});
-	$.getJSON('users/profile/me', function(data){
-		console.log("updateProfile ID: " + data._id);
 		let query = {
-			id: data._id,
+			id: userData._id,
 			displayName: $('#userNameInput').val(),
 			bio: $('#userBioInput').val()}; 
 
 		$.ajax({
 			type: "PUT",
-			url: 'http://localhost:8080/users/59288af4af018937b04a0625/profile',
+			url: 'http://localhost:8080/users/'+userData._id+ '/profile',
 			data: JSON.stringify(query),
 			success: function(data){
 				//location.href = 'login.html';
 				console.log(data);
+				displayProfileData(data);
 			},
 			contentType: 'application/json',
 			dataType: 'json'
 		});
-		displayProfileData(data);
-		console.log(data)
-	});
 };
 
 //on form submit
@@ -92,7 +89,4 @@ $('#submitUpdate').on('click', function() {
 	$('#updateProfile, #userName, #userBio').removeClass('hide');
 
 	updateProfile();
-	getProfileData();
-
-
 });
