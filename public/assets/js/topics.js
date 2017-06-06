@@ -1,3 +1,4 @@
+// ************ f(MODIFY-state) **************
 
 // ************ f(MODIFY-state) **************
 
@@ -43,6 +44,35 @@ function addNewSession(sessionDetails, callback) {
 	});
 };
 
+// };
+
+function checkForToken(token) {
+	console.log('checkForToken fired');
+		if(token === undefined){
+		console.log("no token")
+	} else {
+		console.log("Great token you've got there")
+	};
+};
+
+function noTokenRedirect(){
+	localStorage.setItem('message', 'Please log in first to submit Questions. Thank you!');
+	location.href = `login.html?message`;
+	// console.log(`login.html?message`);
+	// console.log(localStorage.getItem('message'));
+
+
+	// if not => redirect to sign in
+				//And tell them you have to sign in first
+				
+				//location.href = http://localhost/login?message=You need to sign in first
+				
+				//localStorage.setItem('message', "You need to sign in first");
+				//Redirect
+				//localStorage.getItem('message');
+				//localStorage.clear();
+};
+
 // ************ f(RENDER-state) **************
 
 
@@ -61,6 +91,25 @@ function addQuestion(){
 // ************ Event Calls & Listeners **************
 
 testing();
+
+$(function(){
+	// //if token exists => go to submissions
+	// //	do an api Call to the Token endpoing
+	// checkToken();
+
+	$.ajax({
+		type: "GET",
+		url: 'http://localhost:8080/users/token',
+		success: function(data){
+			console.log("token: " + data);
+			checkForToken(data);
+		},
+		error: function(data){
+			console.log("we couldn't find your token")
+			noTokenRedirect();
+		}
+	});	
+});
 
 $('#sessionSubmitForm').submit(function(e){
   e.preventDefault();

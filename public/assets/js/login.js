@@ -43,7 +43,12 @@ $('#signInForm').submit(function(e){
 
   });
 
-
+$(function(){
+	if (localStorage.getItem('message')){
+		alert(localStorage.getItem('message'));
+		localStorage.clear();
+	}
+});
 
 
 

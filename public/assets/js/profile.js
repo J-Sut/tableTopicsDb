@@ -1,10 +1,10 @@
 // **************** State ******************
+var userData;
 
 
 			// $('body').css('background-color', 'green');
 
 // ************ f(Modify-state) **************
-var userData;
 
 function getProfileData(){
 	$.getJSON('users/profile/me', function(data){
