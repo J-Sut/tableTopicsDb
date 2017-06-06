@@ -122,13 +122,8 @@ $('#sessionSubmitForm').submit(function(e){
 	};
 
 	addNewSession(sessionDetails);
-	
-	// if (!req.body.session) {
- //  	console.log("You must be signed in to submit a session");
-	// } else {
-	// 	const message = `You're logged in. Your session will submit`;
-	//   console.log(message);
-	// };
+	location.href = `index.html`;
+
 });
 
 $('#addQuestion').on('click', addQuestion);

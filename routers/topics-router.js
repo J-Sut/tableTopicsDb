@@ -28,34 +28,48 @@ router.get('/', (req, res) => {
 // Gets 1 session from db
 router.get('/session', (req, res) => {
 	Topic
-	.findOne()
-	.exec()
-	.then(function(topic){
-		res.status(200).json(topic);
-	})
-	//then go into the response object and randomly grab one of the questions
-	.catch(err => {
-  		console.error(err);
-  		res.status(500).json({message: 'Internal server error'})
-  });
-});
+		.count()
+		.exec(function(err, count){
+		  var random = Math.floor(Math.random() * count);
 
-// Get a single question for practice
+		  Topic
+		  	.findOne()
+		  	.skip(random)
+		  	.exec(function (err, result) {
+		      console.log(result)})
+		  	.then(function(topic){
+					res.status(200).json(topic);
+				})
+				.catch(err => {
+		  		console.error(err);
+		  		res.status(500).json({message: 'Internal server error'})
+				});
+		});
+});		
+
 
 router.get('/question', (req, res) => {
 	Topic
-	.findOne()
-	.exec()
-	.then(session => {
-		const questionArray = session.questions
-		return questionArray[Math.floor(Math.random() * questionArray.length)]
-	})
-	.then(question => {
-		res.status(200).json(question);
-	})
-	.catch(err => {
-  		console.error(err);
-  		res.status(500).json({message: 'Internal server error'})
+		.count()
+		.exec(function(err, count){
+		  var random = Math.floor(Math.random() * count);
+
+		  Topic
+		  	.findOne()
+		  	.skip(random)
+		  	.exec(function (err, result) {
+		      console.log(result)})
+				.then(session => {
+					const questionArray = session.questions
+					return questionArray[Math.floor(Math.random() * questionArray.length)]
+				})
+				.then(question => {
+					res.status(200).json(question);
+				})
+				.catch(err => {
+			  		console.error(err);
+			  		res.status(500).json({message: 'Internal server error'})
+			  });
   });
 });
 
