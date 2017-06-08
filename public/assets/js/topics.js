@@ -90,7 +90,7 @@ function addQuestion(){
 
 // ************ Event Calls & Listeners **************
 
-testing();
+//testing();
 
 $(function(){
 	// //if token exists => go to submissions
