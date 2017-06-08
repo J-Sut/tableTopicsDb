@@ -25,40 +25,42 @@
 			<fieldset id="sessionInfo">
 			  <legend>Session Info</legend>
 
-				<label for="themeInput">Theme:</label>
-					<input type="text" name="sessionTheme" id="themeInput" required> <br>
+				<label for="themeInput" class="label">Theme:</label>
+					<input type="text" name="sessionTheme" id="themeInput" class="input class="label"" required> <br>
 
-				<label for="sessionIntro">Session Introduction:</label>
-					<textarea id="sessionIntro" ></textarea> <br>
+				<label for="sessionIntro" class="label">Session Introduction:</label>
+					<textarea id="sessionIntro" class="textarea" ></textarea> <br>
 
-				<label for="keywordsInput">Keywords:</label>
-					<input type="text" name="keywordsInput" id="keywordsInput" required> <br>					
+				<label for="keywordsInput" class="label">Keywords:</label>
+					<input type="text" name="keywordsInput" id="keywordsInput" class="input" required> <br>					
 
 			</fieldset> <!-- sessionInfo -->
 
 			<fieldset id="sessionQuestions">
 			  <legend>Table Topics Questions</legend>
 
-				<label for="question1">Question 1:</label>
-					<textarea name="question[]" required></textarea> <br>
+				<label for="question1" class="label">Question 1:</label>
+					<textarea name="question[]" class="textarea" required></textarea> <br>
 
-				<label for="question2">Question 2:</label>
-					<textarea name="question[]" required></textarea> <br>
+				<label for="question2" class="label">Question 2:</label>
+					<textarea name="question[]" class="textarea" required></textarea> <br>
 
-				<label for="question3">Question 3:</label>
-					<textarea name="question[]" required></textarea> <br>
+				<label for="question3" class="label">Question 3:</label>
+					<textarea name="question[]" class="textarea" required></textarea> <br>
 
-				<label for="question4">Question 4:</label>
-					<textarea name="question[]" required></textarea> <br>
+				<label for="question4" class="label">Question 4:</label>
+					<textarea name="question[]" class="textarea" required></textarea> <br>
 
-				<label for="question5">Question 5:</label>
-					<textarea name="question[]" required></textarea> <br>
+				<label for="question5" class="label">Question 5:</label>
+					<textarea name="question[]" class="textarea" required></textarea> <br>
 			</fieldset>	<!-- sessionQuestions -->
-	
-			<br><button id="addQuestion" type="button">Add a question</button>
-			<button type="submit" id="topicSubmit">Submit</button>
-			
+
+			<a href="#" id="addQuestion" class="button">Add a question</a>
+
+			<a href="#" id="topicSubmit" class="button">Submit</a>		
 		</form> <!-- sessionSubmitForm -->
+
+
 	</main>
 
 <script type="text/javascript" src="./assets/jquery.min.js"></script>

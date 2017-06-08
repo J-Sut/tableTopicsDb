@@ -28,7 +28,7 @@ function addNewUser(newUser, clubInfo, callback) {
 		url: ttdbURL,
 		data: JSON.stringify(query),
 		success: function(data){
-			location.href = 'login.html';
+			//location.href = 'login.html';
 			console.log(data);
 			createUserProfile(data);
 		},

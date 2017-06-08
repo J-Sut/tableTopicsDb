@@ -21,10 +21,13 @@ h3 {
 	font-size: 1.2em;
 }
 
-input, button, textarea {
-	color: black;
+button, textarea {
+	color: white;
 }
 
+input {
+	color: black;
+}
 .hide {
 	display: none;
 }
@@ -43,6 +46,10 @@ a div{
 	border: none;
 	background: none;
 } 
+
+label, .label, span{
+	color: #E0EEEE;
+}
 
 
 /********************** Media Queries **********************/
