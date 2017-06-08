@@ -1,40 +1,26 @@
 // ***************** State *******************
 
 // ************ f(MODIFY-state) **************
-function getOneQuestion(){
-	console.log('1 Q clicked');
-
-
-	return $.ajax({
+function getOneQuestion(callback){
+	$.ajax({
 		type: "GET",
 		url: 'http://localhost:8080/topics/question',
 		success: function(data){
-			console.log("Question Found: ");
-			console.log(data);
-			ajaxQuestion = data;
-		console.log(data);
-
+			callback(data);
 		},
 		error: function(data){
 			console.log("get request error")
 		}
 	});		
-	console.log("3" + ajaxQuestion);
-
 };
 
-function getWholeSession() {
-	console.log('1 Sess clicked');
-
-
+function getWholeSession(callback) {
 
 	$.ajax({
 		type: "GET",
 		url: 'http://localhost:8080/topics/session',
 		success: function(data){
-			console.log("Session Found: ");
-			console.log(data);
-
+			callback(data);
 		},
 		error: function(data){
 			console.log("Get Session not working")
@@ -43,14 +29,44 @@ function getWholeSession() {
 }
 // ************ f(RENDER-state) **************
 
-// ************ Event Listeners **************
+function displayQuestion(question){
+	console.log('question: ' + question);
 
-$('#getOneQuestion').on('click', function(){
-	let topic = getOneQuestion();
+	$('#displayTopics').empty();
+	$('#displayTopics').append(question);
+
+};
+
+function displaySession(session){
+	
+	let questionsArray = [];
+	$.map(session.questions, question => {
+		questionsArray.push(question);
+	});
+
+	$('#displayTopics').empty();
+
+	for (let i = 0; i < questionsArray.length; i++){
+		$('#displayTopics').append(questionsArray[i] + '<br>');
+	};
+
+
+	// $('#displayTopics').append(	questionsArray);
+
+};
+
+
+// ************ Event Listeners **************
+function gotQuestion(topic){
 	console.log("we got it => " );
 	console.log(topic)
+}
+
+
+$('#getOneQuestion').on('click', function(){
+	getOneQuestion(displayQuestion);
 });
 
 $('#getOneSession').on('click', function(){
-	getWholeSession();
+	getWholeSession(displaySession);
 });

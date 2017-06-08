@@ -35,8 +35,7 @@ router.get('/session', (req, res) => {
 		  Topic
 		  	.findOne()
 		  	.skip(random)
-		  	.exec(function (err, result) {
-		      console.log(result)})
+		  	.exec()
 		  	.then(function(topic){
 					res.status(200).json(topic);
 				})
@@ -57,8 +56,7 @@ router.get('/question', (req, res) => {
 		  Topic
 		  	.findOne()
 		  	.skip(random)
-		  	.exec(function (err, result) {
-		      console.log(result)})
+		  	.exec()
 				.then(session => {
 					const questionArray = session.questions
 					return questionArray[Math.floor(Math.random() * questionArray.length)]
