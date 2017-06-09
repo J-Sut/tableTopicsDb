@@ -11,15 +11,13 @@ function checkForToken(callback){
 		},
 		error: function(data){
 			console.log('Token not found')
-			
 		}
 	});	
 }
 
 function addNewUser(newUser, clubInfo, callback) {
 
-	console.log(newUser);
-
+	// New User & Club information
 	var ttdbURL = "http://localhost:8080/users";
 	var query = {
 		userName: newUser.name,
@@ -80,14 +78,20 @@ function createUserProfile(userData){
 	});
 };
 
-function testing(){
-	$('#newUserForm').css("background-color", '#343540');
+function displayContent(){
+	console.log('display Content Fired')
+	$('#logOut, #profileTab, #logIn, #signUp').toggleClass('is-hidden');
 };
 
 // ************ Event Listeners **************
 
-testing();
+// Display the appropriate Navbar based on Signed in or not
+$(function(){
+	checkForToken(displayContent);
+});
 
+
+// Submit new User Button Action
 $('#newUserForm').submit(function(e){
   e.preventDefault();
   console.log("form submitted");

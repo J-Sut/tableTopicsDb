@@ -7,8 +7,8 @@ const clubSchema = mongoose.Schema({
 	name: {type: String, unique: true,required: true},
 	members: [{type: ObjectId, ref: 'User'}],
 	location: {
-			city: {type: String, required: true},
-			country: {type: String, required: true}
+			city: {type: String, required: false},
+			country: {type: String, required: false}
 	},
 	website: {type: String, required: false}
 });
