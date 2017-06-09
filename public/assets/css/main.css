@@ -19,6 +19,7 @@ h2 {
 
 h3 {
 	font-size: 1.2em;
+	color: black;
 }
 
 button, textarea {
@@ -27,6 +28,10 @@ button, textarea {
 
 input {
 	color: black;
+}
+
+a div{
+	display: inline;
 }
 .hide {
 	display: none;
@@ -38,10 +43,6 @@ input {
 	list-style: square;
 }
 
-a div{
-	display: inline;
-}
-
 .disabled {
 	border: none;
 	background: none;
@@ -49,6 +50,10 @@ a div{
 
 label, .label, span{
 	color: #E0EEEE;
+}
+
+.box {
+	color: black;
 }
 
 

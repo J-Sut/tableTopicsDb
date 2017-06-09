@@ -18,8 +18,11 @@ function login(em, pw, callback) {
 		url: ttdbURL,
 		data: JSON.stringify(query),
 		success: function(data){
-			location.href = 'profile.html';
+			location.href = 'index.html';
 			console.log(data);
+
+		},
+		error: function(){
 
 		},
 		contentType: 'application/json',
