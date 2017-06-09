@@ -2,6 +2,23 @@
 
 // ************ f(MODIFY-state) **************
 
+function checkForToken(callback){
+	console.log('check for token fired')
+ 
+	$.ajax({
+		type: "GET",
+		url: 'http://localhost:8080/users/token',
+		success: function(data){
+			console.log("Great token you've got there")
+			callback(data)
+		},
+		error: function(data){
+			console.log('Token not found')
+			noTokenRedirect()
+		}
+	});	
+}
+
 function grabKeywords() {
   let trimmedKeywordsArray = []
 	let keywordsArray = $('#keywordsInput').val().split(",");
@@ -44,17 +61,6 @@ function addNewSession(sessionDetails, callback) {
 	});
 };
 
-// };
-
-function checkForToken(token) {
-	console.log('checkForToken fired');
-		if(token === undefined){
-		console.log("no token")
-	} else {
-		console.log("Great token you've got there")
-	};
-};
-
 function noTokenRedirect(){
 	localStorage.setItem('message', 'Please log in first to submit Questions. Thank you!');
 	location.href = `login.html?message`;
@@ -75,17 +81,16 @@ function noTokenRedirect(){
 
 // ************ f(RENDER-state) **************
 
-
-function testing(){
-	$('#sessionSubmitForm').css("background-color", '#5E2323');
-};
-
 function addQuestion(){
 	const newQuestInput = $('<label>',{class: 'questionLabel', text: 'Question'});
 
 	newQuestInput.append($("<textarea>",{name: 'question[]'}),'<br>');
 
 	$('#sessionQuestions').append(newQuestInput);
+};
+
+function displayContent(){
+		console.log('display Content Fired')
 };
 
 // ************ Event Calls & Listeners **************
@@ -96,19 +101,7 @@ $(function(){
 	// //if token exists => go to submissions
 	// //	do an api Call to the Token endpoing
 	// checkToken();
-
-	$.ajax({
-		type: "GET",
-		url: 'http://localhost:8080/users/token',
-		success: function(data){
-			console.log("token: " + data);
-			checkForToken(data);
-		},
-		error: function(data){
-			console.log("we couldn't find your token")
-			noTokenRedirect();
-		}
-	});	
+	checkForToken(displayContent);
 });
 
 $('#sessionSubmitForm').submit(function(e){

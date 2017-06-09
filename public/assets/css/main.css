@@ -37,10 +37,10 @@ a div{
 	display: none;
 }
 
-#navBar {
-	background-color: #01093D;
-	margin: auto;
+#mainNavBar {
+	margin: 0px;
 	list-style: square;
+	border-radius: 0;
 }
 
 .disabled {

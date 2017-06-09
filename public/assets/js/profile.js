@@ -6,6 +6,22 @@ var userData;
 
 // ************ f(Modify-state) **************
 
+function checkForToken(callback){
+	console.log('check for token fired')
+ 
+	$.ajax({
+		type: "GET",
+		url: 'http://localhost:8080/users/token',
+		success: function(data){
+			console.log("Great token you've got there")
+			callback(data)
+		},
+		error: function(data){
+			console.log('Token not found')
+		}
+	});	
+}
+
 function getProfileData(){
 	$.getJSON('users/profile/me', function(data){
 		userData = data;
@@ -49,8 +65,16 @@ function getProfileJsonObject(data){
 
 };
 
+function displayContent(){
+	console.log('display Content Fired')
+	$('#logOut, #profileTab, #logIn, #signUp').toggleClass('is-hidden');
+};
 
 // ************ f(Render-state) **************
+
+$(function(){
+	checkForToken(displayContent);
+});
 
 function displayProfileData(data){
 			//populate form
@@ -73,7 +97,7 @@ function displayProfileData(data){
 // ************ Event Listeners **************
 
 // Get and Display profile info of logged in User
-window.onload = (function(e){
+$(function(e){
   getProfileData();
 });
 
