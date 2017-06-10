@@ -2,7 +2,6 @@
 
 // ************ f(MODIFY-state) **************
 function checkForToken(callback){
-	console.log('check for token fired')
  
 	$.ajax({
 		type: "GET",
@@ -12,7 +11,7 @@ function checkForToken(callback){
 			console.log(data);
 		},
 		error: function(data){
-			console.log('Token not found')
+			console.log('User not signed in')
 			
 		}
 	});	
@@ -59,25 +58,39 @@ function logOutUser(userTokenId){
 		error: function(){}
 	});
 };
+
+function 	submitQuery(query){
+	console.log(query);
+	$.ajax({
+		type: 'GET',
+		url: 'http://localhost:8080/topics/query',
+		data: {
+			theme: query
+		},
+		success: function(data){
+			renderQueries(data)
+
+		},
+		error: function(){
+			console.log("query didn't work")
+		}
+	})
+};
+
 // ************ f(RENDER-state) **************
 
 function displayQuestion(question){
-	console.log('question: ' + question);
-
-	$('#displayTopics').empty();
 	$('#displayTopics').append(question);
 
 };
 
 function displaySession(session){
-	console.log(session);
-
 	let questionsArray = [];
 	$.map(session.questions, question => {
 		questionsArray.push(question);
 	});
 
-	$('#displayTopics').empty().append(
+	$('#displayTopics').append(
 		'<h3> Theme: </h3>' + '<br>' + session.theme + '<br>' +
 		'<h3> Session Introduction: </h3>' + '<br>' + session.introduction + '<br>' +
 		'<h3> Keywords: </h3>' + '<br>' + session.keywords + '<br>' +
@@ -98,27 +111,56 @@ function displayContent(){
 	$('#logOut, #profileTab, #logIn, #signUp').toggleClass('is-hidden');
 };
 
+function renderQueries(searchResults){
+	console.log("search results: ");
 
+	for(let i = 0; i < searchResults.length; i++){
+		console.log(searchResults[i]);
+		displaySession(searchResults[i]);
+	}
+
+
+};
 // ************ Event Listeners **************
 
 // Check if user is logged in 
 $(function(){
-	console.log('init token check fired')
 	checkForToken(displayContent)
 });
 
 // Get a random question from the Db
 $('#getOneQuestion').on('click', function(){
+	$('#displayTopics').empty();
 	getOneQuestion(displayQuestion);
 });
 
 
 // Get random session from the Db
 $('#getOneSession').on('click', function(){
+	$('#displayTopics').empty();
 	getWholeSession(displaySession);
 });
+
+// Search db for query
+
+$('#topicSearch').on('submit', function(e){
+	e.preventDefault();
+	$('#displayTopics').empty();
+	let query = $('#queryInput').val();
+	
+	submitQuery(query);
+
+});
+
 
 // logout the user
 $('#logOut').on('click', function(){
 	checkForToken(logOutUser);
 })
+
+
+
+
+
+
+

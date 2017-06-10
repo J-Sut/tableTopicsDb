@@ -1,19 +1,5 @@
 // ************ Declare Functions **************
-function checkForToken(callback){
-	console.log('check for token fired')
- 
-	$.ajax({
-		type: "GET",
-		url: 'http://localhost:8080/users/token',
-		success: function(data){
-			callback(data)
-			console.log(data);
-		},
-		error: function(data){
-			console.log('Token not found')
-		}
-	});	
-}
+
 
 function addNewUser(newUser, clubInfo, callback) {
 
@@ -40,7 +26,7 @@ function addNewUser(newUser, clubInfo, callback) {
 	$.ajax({
 		type: "POST",
 		url: ttdbURL,
-		data: JSON.stringify(query),
+		data: JSON.stringif(query),
 		success: function(data){
 			//location.href = 'login.html';
 			console.log(data);

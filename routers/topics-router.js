@@ -23,9 +23,8 @@ router.get('/', (req, res) => {
   });
 });
 
-// return a full table topics session
 
-// Gets 1 session from db
+// Get 1 session from db
 router.get('/session', (req, res) => {
 	Topic
 		.count()
@@ -76,17 +75,19 @@ router.get('/question', (req, res) => {
 
 router.get('/query', (req, res) => {
 	const filters = {};
-  const queryableFields = ['theme', 'introduction', 'keywords', 'questions'];
+  const queryableFields = ['introduction'];
+  let query = req.query.theme;
   queryableFields.forEach(field => {
     if (req.query[field]) {
       filters[field] = req.query[field];
     }
   });
-  console.log(filters);
+  // console.log('query:');
+  // console.log(query);
   Topic
-	  .find(filters)
+	  .find({$text: {$search: query}})
 	  .exec()
-	  .then(session => {res.status(200).json()})
+	  .then(session => {res.status(200).json(session)})
 	  .catch(err => {
 	  	console.error(err);
 	  	res.status(500).json({message: 'Internal server error'})
