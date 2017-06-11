@@ -1,5 +1,7 @@
 // ************ f(MODIFY-state) **************
 
+let logInToken
+
 // ************ f(MODIFY-state) **************
 
 function checkForToken(callback){
@@ -10,6 +12,7 @@ function checkForToken(callback){
 		url: 'http://localhost:8080/users/token',
 		success: function(data){
 			console.log("Great token you've got there")
+			logInToken = data;
 			callback(data)
 		},
 		error: function(data){
@@ -45,7 +48,8 @@ function addNewSession(sessionDetails, callback) {
 		theme: sessionDetails.theme,
 		sessionIntro: sessionDetails.sessionIntro,
 		keywords: sessionDetails.keywords,	
-		questions: sessionDetails.questions
+		questions: sessionDetails.questions,
+		user_id: logInToken
 	}; 
 
 	$.ajax({
@@ -86,10 +90,7 @@ function logOutUser(userTokenId){
 		type: 'DELETE',
 		url: `http://localhost:8080/users/logout/${userId}`,
 		success: function(){
-			checkForToken();
-			location.reload();
-			
-
+			location.href = 'index.html';
 		},
 		error: function(){}
 	});
@@ -98,9 +99,15 @@ function logOutUser(userTokenId){
 // ************ f(RENDER-state) **************
 
 function addQuestion(){
-	const newQuestInput = $('<label>',{class: 'questionLabel', text: 'Question'});
+	const newQuestInput = $(
+				'<div class="topicQuestion field is-grouped">' +
+					'<label class="label" >Question: </label>' +
+				  '<p class="control">' +
+				    '<textarea  class="topicQuestionInput textarea" placeholder="Normal textarea" required></textarea>' +
+				  '</p>' +
 
-	newQuestInput.append($("<textarea>",{name: 'question[]'}),'<br>');
+				'</div>');
+
 
 	$('#sessionQuestions').append(newQuestInput);
 };
@@ -129,6 +136,9 @@ $('#sessionSubmitForm').submit(function(e){
 		keywords: grabKeywords(),	
 		questions: grabQuestions()
 	};
+
+	console.log("form submitted");
+	console.log(sessionDetails);
 
 	addNewSession(sessionDetails);
 	location.href = `index.html`;

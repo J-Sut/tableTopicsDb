@@ -6,7 +6,8 @@ const topicSchema = mongoose.Schema({
 	theme: {type: String, required: true},
 	introduction: {type: String, required: true},
 	keywords: [{type: String}],
-	questions: [{type: String}]
+	questions: [{type: String}],
+	user_id: {type: ObjectId, unique: true, ref:'User'}
 });
 
 const Topic = mongoose.model('Topic', topicSchema);

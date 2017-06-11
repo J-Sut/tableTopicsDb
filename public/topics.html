@@ -31,48 +31,100 @@
 	</nav> <!-- mainNavBar -->
 
 	<header>
-		<h1>Submit Table Topics Sessions</h1>
-
-	</header>
+		<section class="hero">
+		  <div id="pageTitle" class="hero-body">
+		    <div class="container">
+		      <h1 class="title">
+		        Contribute Table Topics 
+		      </h1>
+		      <h2 class="subtitle">
+		        It's what makes this community thrive
+		      </h2>
+		    </div>
+		  </div>
+		</section>
+	</header>	
 
 	<main>
+
 		<form id="sessionSubmitForm">
+
 			<fieldset id="sessionInfo">
-			  <legend>Session Info</legend>
+				
+				<h2 class="title is-2">Topic Introduction</h2>
+				
+				<div class="field is-grouped">
+					<label for="themeInput" class="label">Theme: </label>
+				  <p class="control">
+				    <input id="themeInput" class="input" type="text" placeholder="Normal input" required>
+				  </p>
+				</div>
 
-				<label for="themeInput" class="label">Theme:</label>
-					<input type="text" name="sessionTheme" id="themeInput" class="input class="label"" required> <br>
+				<div class="field is-grouped">
+					<label class="label" for="sessionIntro">Session Introduction: </label>
+				  <p class="control">
+				    <textarea id="sessionIntro" name="sessionIntro" class="textarea" placeholder="Normal textarea" required></textarea>
+				  </p>
 
-				<label for="sessionIntro" class="label">Session Introduction:</label>
-					<textarea id="sessionIntro" class="textarea" ></textarea> <br>
+				</div>
 
-				<label for="keywordsInput" class="label">Keywords:</label>
-					<input type="text" name="keywordsInput" id="keywordsInput" class="input" required> <br>					
-
+				<div class="field is-grouped">
+					<label class="label" for="keywordsInput">Keywords: </label>
+				  <p class="control">
+				    <input id="keywordsInput" class="input" type="text" name="keywordsInput"  placeholder="Normal input" required>
+				  </p>
+				</div>								
 			</fieldset> <!-- sessionInfo -->
 
 			<fieldset id="sessionQuestions">
-			  <legend>Table Topics Questions</legend>
+				<h2 class="title is-2">Table Topics</h2>
+				
 
-				<label for="question1" class="label">Question 1:</label>
-					<textarea name="question[]" class="textarea" required></textarea> <br>
+				<div class="topicQuestion field is-grouped">
+					<label class="label" >Question: </label>
+				  <p class="control">
+				    <textarea  class="topicQuestionInput textarea" placeholder="Normal textarea" required></textarea>
+				  </p>
 
-				<label for="question2" class="label">Question 2:</label>
-					<textarea name="question[]" class="textarea" required></textarea> <br>
+				</div>
 
-				<label for="question3" class="label">Question 3:</label>
-					<textarea name="question[]" class="textarea" required></textarea> <br>
+				<div class="topicQuestion field is-grouped">
+					<label class="label" >Question: </label>
+				  <p class="control">
+				    <textarea  class="topicQuestionInput textarea" placeholder="Normal textarea" required></textarea>
+				  </p>
 
-				<label for="question4" class="label">Question 4:</label>
-					<textarea name="question[]" class="textarea" required></textarea> <br>
+				</div>
 
-				<label for="question5" class="label">Question 5:</label>
-					<textarea name="question[]" class="textarea" required></textarea> <br>
-			</fieldset>	<!-- sessionQuestions -->
+				<div class="topicQuestion field is-grouped">
+					<label class="label" >Question: </label>
+				  <p class="control">
+				    <textarea  class="topicQuestionInput textarea" placeholder="Normal textarea" required></textarea>
+				  </p>
 
-			<a href="#" id="addQuestion" class="button">Add a question</a>
+				</div>
 
-			<a href="#" id="topicSubmit" class="button">Submit</a>		
+				<div class="topicQuestion field is-grouped">
+					<label class="label" >Question: </label>
+				  <p class="control">
+				    <textarea  class="topicQuestionInput textarea" placeholder="Normal textarea" required></textarea>
+				  </p>
+
+				</div>
+
+				<div class="topicQuestion field is-grouped">
+					<label class="label" >Question: </label>
+				  <p class="control">
+				    <textarea  class="topicQuestionInput textarea" placeholder="Normal textarea" required></textarea>
+				  </p>
+
+				</div>
+			</fieldset> <!-- sessionQuestions -->
+
+			<button id="addQuestion" class="button">Add a question</button>
+
+			<button id="topicSubmit" type="submit" class="button is-primary">Submit</button>	
+			
 		</form> <!-- sessionSubmitForm -->
 
 
