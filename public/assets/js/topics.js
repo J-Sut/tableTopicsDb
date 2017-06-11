@@ -79,6 +79,22 @@ function noTokenRedirect(){
 				//localStorage.clear();
 };
 
+function logOutUser(userTokenId){
+	let userId = userTokenId;
+
+	$.ajax({
+		type: 'DELETE',
+		url: `http://localhost:8080/users/logout/${userId}`,
+		success: function(){
+			checkForToken();
+			location.reload();
+			
+
+		},
+		error: function(){}
+	});
+};
+
 // ************ f(RENDER-state) **************
 
 function addQuestion(){
@@ -121,6 +137,10 @@ $('#sessionSubmitForm').submit(function(e){
 
 $('#addQuestion').on('click', addQuestion);
 
+// logout the user
+$('#logOut').on('click', function(){
+	checkForToken(logOutUser);
+})
 
 
 

@@ -45,14 +45,17 @@ function getWholeSession(callback) {
 }
 
 function logOutUser(userTokenId){
+	
+	console.log('log out user called ')
 	let userId = userTokenId;
 
 	$.ajax({
 		type: 'DELETE',
 		url: `http://localhost:8080/users/logout/${userId}`,
 		success: function(){
+			location.reload();
+			console.log('reloaded? ')
 			checkForToken();
-			displayContent();
 
 		},
 		error: function(){}
@@ -80,7 +83,7 @@ function 	submitQuery(query){
 // ************ f(RENDER-state) **************
 
 function displayQuestion(question){
-	$('#displayTopics').append(question);
+	$('#displayTopics').append('<div class="box">'+ question +'</div>');
 
 };
 
@@ -90,12 +93,12 @@ function displaySession(session){
 		questionsArray.push(question);
 	});
 
-	$('#displayTopics').append(
-		'<h3> Theme: </h3>' + '<br>' + session.theme + '<br>' +
+	let sessionElement = 	'<div class="box"><h3> Theme: </h3>' + '<br>' + session.theme + '<br>' +
 		'<h3> Session Introduction: </h3>' + '<br>' + session.introduction + '<br>' +
 		'<h3> Keywords: </h3>' + '<br>' + session.keywords + '<br>' +
-		'<h3> Questions: </h3>' + '<br>' 
-		);
+		'<h3> Questions: </h3>' + '<br></div>';
+
+	$('#displayTopics').append(sessionElement);
 
 	for (let i = 0; i < questionsArray.length; i++){
 		$('#displayTopics').append(questionsArray[i] + '<br>');

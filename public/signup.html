@@ -36,7 +36,119 @@
 		<h1>Join the Table Topics Database</h1>
 	</header>
 
-	<main>
+
+
+
+
+
+<form id="newUserForm">
+
+
+	<section id="userInfo">
+
+		<div class="field is-grouped">
+		  <label class="label">User Name: </label>
+		  <p class="control">
+		    <input id="userNameInput" class="input" type="text" placeholder="Text input" required>
+		  </p>
+		</div>
+
+		<div class="field is-grouped ">
+		  <label class="label">Email:</label>
+		  <p class="control">
+		    <input id="userEmailInput" class="input" type="email" placeholder="Email input" required>
+		  </p>
+		</div>
+
+		<div class="field is-grouped ">
+		  <label class="label">Password: </label>
+		  <p class="control">
+		    <input id="passwordInput" class="input" type="password" placeholder="Text input" required>
+		  </p>
+		</div>
+
+		<div class="field is-grouped ">
+		  <label class="label" >Password Confirmation: </label>
+		  <p class="control">
+		    <input id="passwordConfInput" class="input" type="password" placeholder="Text input" required>
+		  </p>
+		</div>		
+
+		<div class="field is-grouped ">
+		  <p class="control">
+		  	<label id="clubCheck" for="clubCheck" class="label">Are you in a Toastmasters Club? </label>
+		    <label class="radio">
+		      <input id="yesClub" type="radio" name="clubCheck" value="true">
+		      Yes
+		    </label>
+		    <label class="radio">
+		      <input id="noClub" type="radio" name="clubCheck" value="false" checked="true">
+		      No
+		    </label>
+		  </p>
+		</div>
+		
+	</section>
+
+	<section id="memberInfo" class="is-hidden">
+		<legend>Member Info</legend>
+		<div class="field is-grouped ">
+		  <label class="label">Toastmasters Title</label>
+		  <p class="control">
+		    <span id="tmTitle" class="select">
+		      <select>
+		        <option>Select dropdown</option>
+						<option value="tm">Toastmaster (Fewer than 10 speeches given)</option>
+						<option value="cc">Competent Communicator</option>
+						<option value="acb">Advanced Communicator Bronze</option>
+						<option value="acs">Advanced Communicator Silver</option>
+						<option value="acg">Advanced Communicator Gold</option>
+						<option value="alb">Advanced Leader Bronze</option>
+						<option value="als">Advanced Leader Silver</option>
+						<option value="dtm">Distinguished Toastmaster</option>
+		      </select>
+		    </span>
+		  </p>
+		</div>
+
+		<div class="field is-grouped ">
+		  <label class="label">Club Name: </label>
+		  <p class="control">
+		    <input id="clubNameInput" class="input" type="text" placeholder="Text input">
+		  </p>
+		</div>
+
+		<div class="field is-grouped ">
+		  <label class="label">Club Location: </label>
+		  <p class="control field-body">
+		    <input id="clubCityInput" class="input" type="text" placeholder="City">
+		    <input id="clubCountryInput" class="input is-horizontal" type="text" placeholder="Country">
+		  </p>
+		</div>
+
+		<div class="field is-grouped ">
+		  <label class="label">Club Website: </label>
+		  <p class="control">
+		    <input id="clubWebsiteInput" class="input" type="text" placeholder="Optional">
+		  </p>
+		</div>	
+
+
+	</section>
+
+
+	<button id="userSubmitBtn" type="submit" class="button is-primary">Submit</button>
+		
+</form>
+
+
+
+
+
+
+
+
+<!-- 	<main>
 		<form id="newUserForm">
 			<label for="userNameInput">User Name:</label>
 			<input type="text" name="userName" id="userNameInput" placeholder="required" required> <br>
@@ -56,7 +168,7 @@
 				<label>No</label>
 			  	<input type="radio" name="clubCheck" id="noClub"><br> -->
 
-	  	<label for="clubCheck" id="clubCheck">Are you in a Toastmasters Club?</label>
+<!-- 	  	<label for="clubCheck" id="clubCheck">Are you in a Toastmasters Club?</label>
 	  		<input type="radio" name="clubCheck" value="true" id="yesClub">Yes
 	  		<input type="radio" name="clubCheck" value="false" id="noClub">No
 
@@ -91,7 +203,7 @@
 
 			<br><button type="submit" id="userSubmitBtn">Submit</button>
 		</form> <!-- newUserForm -->
-	</main>
+	</main> --> -->
 
 <script type="text/javascript" src="./assets/jquery.min.js"></script>
 <script type="text/javascript" src="./assets/js/signup.js"></script>

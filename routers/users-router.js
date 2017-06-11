@@ -96,8 +96,6 @@ router.post('/', (req, res) => {
 			memberClubList: req.body.clubName
 		})
 		.then(newUser => {
-			console.log("newUser from router: " + newUser)
-			console.log(req.body.inClub, req.body.inClub == "false");
 			_newUser = newUser;
 			if (!req.body.inClub) {
 				return res.status(201).json(_newUser);
