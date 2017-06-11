@@ -1,5 +1,19 @@
-// ************ Declare Functions **************
-
+// ************ f(Modify State) **************
+function checkForToken(callback){
+	console.log('check for token fired')
+ 
+	$.ajax({
+		type: "GET",
+		url: 'http://localhost:8080/users/token',
+		success: function(data){
+			console.log("Great token you've got there")
+			callback(data)
+		},
+		error: function(data){
+			console.log('Token not found')
+		}
+	});	
+}
 
 function addNewUser(newUser, clubInfo, callback) {
 
@@ -26,11 +40,13 @@ function addNewUser(newUser, clubInfo, callback) {
 	$.ajax({
 		type: "POST",
 		url: ttdbURL,
-		data: JSON.stringif(query),
+		data: JSON.stringify(query),
 		success: function(data){
 			//location.href = 'login.html';
 			console.log(data);
 			createUserProfile(data);
+			location.href = 'login.html';
+
 		},
 		contentType: 'application/json',
     dataType: 'json'
@@ -64,6 +80,9 @@ function createUserProfile(userData){
 	});
 };
 
+// ************ f(Render State) **************
+
+
 function displayContent(){
 	console.log('display Content Fired')
 	$('#logOut, #profileTab, #logIn, #signUp').toggleClass('is-hidden');
@@ -84,7 +103,7 @@ $('#newUserForm').submit(function(e){
 
   let newUser = {
 		name: $('#userNameInput').val(),
-		email: $('#userEmailInput').val(),
+		email: $('#userEmailInput').val().toLowerCase(),
 		password: $('#passwordInput').val(),
 		pwConf: $('#passwordConfInput').val(),
 		inClub: $('input[name="clubCheck"]:checked').val(),
@@ -111,11 +130,11 @@ $('#newUserForm').submit(function(e){
 
 // Reveal Club questions if the member states they are in a Club
 $('#yesClub').on('change', function() {
-	$('#memberInfo').removeClass("hide");
+	$('#memberInfo').removeClass("is-hidden");
 });
 
 $('#noClub').on('change', function() {
-	$('#memberInfo').addClass("hide");
+	$('#memberInfo').addClass("is-hidden");
 });
 
 

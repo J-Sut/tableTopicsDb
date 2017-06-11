@@ -39,20 +39,21 @@
 
 	<main id="dbSearchArea">
 		
-		<div id="tableTopicsPractice">
-			<section id="topNav">
+		<section id="tableTopicsPractice" class="control">
 				<form id="topicSearch">
-					<input type="text" name="searchbar" id="queryInput">
-					<button id="submitQuery" type="submit">Explore Topics</button> <br>
 
-					<button id="getOneQuestion" type="button">Give me a question</button> 	
-					<button id="getOneSession" type="button">Give me a whole Session</button> 	
+				<span id="queryContainer">
+				 	<input type="text" name="searchbar" id="queryInput" class="input is-small"><br>
+					<button id="submitQuery" type="submit" class="button is-primary">Explore Topics</button> 	
+				</span> <br>
+
+					<button id="getOneQuestion" type="button" class="button">Give me a question</button> 	
+					<button id="getOneSession" type="button" class="button">Give me a whole Session</button> 	
 
 				</form>	<!-- inputForm -->	
-			</section> <!-- topNav -->	
-		</div> <!-- ctrPanel -->
+		</section> <!-- tableTopicsPractice  -->
 
-		<div id="displayTopics" class="box"></div>
+		<div id="displayTopics" class=""></div>
 	</main>
 <script type="text/javascript" src="./assets/jquery.min.js"></script>
 <script type="text/javascript" src="./assets/js/index.js"></script>

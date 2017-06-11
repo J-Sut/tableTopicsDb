@@ -33,13 +33,11 @@ function login(em, pw, callback) {
 
 // ************ Event Listeners **************
 
-$('#signInForm').css("background-color", "#01093D");
-
 $('#signInForm').submit(function(e){
     e.preventDefault();
     console.log("submit fired");
 
-    let userEmail = $('#userEmailInput').val();
+    let userEmail = $('#userEmailInput').val().toLowerCase();
     let userPw = $('#userPwInput').val()
 
     login(userEmail, userPw);

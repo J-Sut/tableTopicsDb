@@ -39,15 +39,35 @@
 	</header>
 
 	<main>
-		<form id="signInForm">
-			<label for="userEmailInput">Email:</label>
-				<input type="text" name="userEmail" id="userEmailInput" placeholder="example@123.com" required><br>
 
-			<label for="userPwInput">Passsword:</label>
-				<input type="text" name="userPassword" id="userPwInput" placeholder="superSecureString" required><br>
+	<form id="signInForm">
+			<div class="field">
+			  <p class="control has-icons-left">
+			    <input id="userEmailInput" class="input" type="email" placeholder="Email" required>
+			    <span class="icon is-small is-left">
+			      <i class="fa fa-envelope"></i>
+			    </span>
+			  </p>
+			</div>
+			<div class="field">
+			  <p class="control has-icons-left">
+			    <input id="userPwInput" class="input" type="password" placeholder="Password" required>
+			    <span class="icon is-small is-left">
+			      <i class="fa fa-lock"></i>
+			    </span>
+			  </p>
+			</div>
+			<div class="field">
+			  <p class="control">
+			    <button id="loginBtn" class="button is-success">
+			      Login
+			    </button>
+			  </p>
+			</div>
+			<p>Not a member of the community yet? <a href="./signup.html">Join for free</a></p>
 
-				<br><button type="input" id="loginBtn">Submit</button>
-		</form> <!-- signInForm -->
+	</form> <!-- signInForm -->
+
 	</main>
 <script type="text/javascript" src="./assets/jquery.min.js"></script>
 <script type="text/javascript" src="./assets/js/login.js"></script>

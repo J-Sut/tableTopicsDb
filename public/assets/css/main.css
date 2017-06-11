@@ -1,9 +1,8 @@
-* {
-	margin: 5px;
-	padding: 1px;
-	border-radius: 3px;
-	color: #E0EEEE
-}
+/*assets {
+	light Blue:  #E0EEEE;
+	dark blue: #0E4C49;
+}*/
+
 
 body {
 	background-color: #0E4C49;
@@ -11,10 +10,13 @@ body {
 
 h1 {
 	font-size: 2em;
+	color: #E0EEEE;
+
 }
 
 h2 {
 	font-size: 1.5em;
+	color: #E0EEEE;;
 }
 
 h3 {
@@ -22,24 +24,33 @@ h3 {
 	color: black;
 }
 
+p, legend {
+	color: #E0EEEE;;
+}
+
 button, textarea {
 	color: white;
 }
 
-input {
+input, .input {
 	color: black;
+	max-width: 250px;
 }
 
-a div{
+a {
 	display: inline;
 }
+
+legend {
+
+}
+
 .hide {
 	display: none;
 }
 
 #mainNavBar {
 	margin: 0px;
-	list-style: square;
 	border-radius: 0;
 }
 

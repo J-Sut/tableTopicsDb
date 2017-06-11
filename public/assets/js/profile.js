@@ -70,6 +70,21 @@ function displayContent(){
 	$('#logOut, #profileTab, #logIn, #signUp').toggleClass('is-hidden');
 };
 
+function logOutUser(userTokenId){
+	let userId = userTokenId;
+
+	$.ajax({
+		type: 'DELETE',
+		url: `http://localhost:8080/users/logout/${userId}`,
+		success: function(){
+			checkForToken();
+			location.reload();
+
+		},
+		error: function(){}
+	});
+};
+
 // ************ f(Render-state) **************
 
 $(function(){
@@ -114,3 +129,8 @@ $('#submitUpdate').on('click', function() {
 
 	updateProfile();
 });
+
+// logout the user
+$('#logOut').on('click', function(){
+	checkForToken(logOutUser);
+})
