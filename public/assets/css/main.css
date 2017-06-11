@@ -3,33 +3,33 @@
 	dark blue: #0E4C49;
 }*/
 
+* {
+	color: #E0EEEE;
+}
 
-body {
+
+html, body {
 	background-color: #0E4C49;
+	height: 100%;
+	
+	margin: 0;
 }
 
 h1 {
 	font-size: 2em;
-	color: #E0EEEE;
 
 }
 
 h2 {
 	font-size: 1.5em;
-	color: #E0EEEE;;
 }
 
 h3 {
 	font-size: 1.2em;
-	color: black;
 }
 
-p, legend {
-	color: #E0EEEE;;
-}
-
-button, textarea {
-	color: white;
+textarea {
+	height: 10px;
 }
 
 input, .input {
@@ -45,115 +45,61 @@ legend {
 
 }
 
-.hide {
-	display: none;
+footer {
+	padding: 0;
 }
+
+
 
 #mainNavBar {
 	margin: 0px;
 	border-radius: 0;
 }
 
+#pageTitle {
+	background-image: linear-gradient(to bottom, rgba(0, 0, 0, .7), rgba(0,0,0,.4)),url("../images/woman_speaking.jpeg");
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+	height: 500px;
+	overflow: hidden;
+}
+
+#pageFooter {
+	background-image: linear-gradient(to bottom, rgba(0, 0, 0, .7), rgba(0,0,0,.4)),url("../images/Mic_at_conference.jpeg");
+	background-repeat: no-repeat;
+	background-size: contain;
+	background-position: center  right;
+}
+
+#footerCol2 {
+
+}
+
+
 .disabled {
 	border: none;
 	background: none;
 } 
 
-label, .label, span{
+label, .label, span, strong{
 	color: #E0EEEE;
 }
 
 .box {
-	color: black;
+	background-color:  #772432;
+	max-width: 800px;
+	max-height: 800px;
+	margin: auto;
+}
+
+.title, .subtitle {
+	color: #E0EEEE;
+}
+
+.hide {
+	display: none;
 }
 
 
-/********************** Media Queries **********************/
-/***********************************************************/
-
-@media screen and (min-width: 200px) {
-
-	header {
-		background-image: linear-gradient(to bottom, rgba(0, 0, 0, .7), rgba(0,0,0,.4)),url("../images/public_speaking.jpg");
-		background-repeat: no-repeat;
-		background-position: center;
-		height: 250px;
-		width: 100%;
-		margin: 0;
-		padding: 0;
-		border-radius: 0;
-		overflow-x: hidden;
-	}
-
-	h1 {
-		color: white;
-		text-align: center;
-		font-size: 2em;
-		margin-left: auto;
-		margin-right: auto;
-		width: 100%;
-		padding-top: 75px;
-		padding-bottom: 0px;
-	}
-
-	h2 {	
-		text-align: center;
-		font-size: 1.3em;
-		margin-left: auto;
-		margin-right: auto;
-		padding-top: 0px;
-	}
-
-	p {
-		padding-right: 0;
-		padding-left: 0;
-	}
-
-	form button {
-		display: inline-block;
-		margin-top: 10px;
-		margin-left: 10px;
-		border: 1px solid black;
-	}
-
-	label {
-		padding: 1px 3px 1px 3px;
-		margin: 3px 5px 3px 5px;
-		cursor: pointer; 
-		display: inline;
-	}
-
-	form input {
-		display: inline-block;
-		margin: auto;
-	}
-
-}
-
-@media screen and (min-width: 800px) {
-
-	#inputForm {
-		max-width: 100%;
-		font-size: 1em;
-	}
-
-	#ctrPanel {
-		width: 100%;
-	}
-
-	.col3 {
-		max-width: 100% ;
-		display: auto;
-		float: none;
-	}
-}
-
-@media screen and (min-width: 2200px) {
-
-	.col6 {
-		max-width: 15%;
-		display: auto;
-		float: left;
-	}
-}
 

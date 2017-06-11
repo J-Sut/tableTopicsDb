@@ -83,7 +83,7 @@ function 	submitQuery(query){
 // ************ f(RENDER-state) **************
 
 function displayQuestion(question){
-	$('#displayTopics').append('<div class="box">'+ question +'</div>');
+	$('#sessionMetaData').append('<div class="box">'+ question +'</div>');
 
 };
 
@@ -98,18 +98,18 @@ function displaySession(session){
 		'<h3> Keywords: </h3>' + '<br>' + session.keywords + '<br>' +
 		'<h3> Questions: </h3>' + '<br></div>';
 
-	$('#displayTopics').append(sessionElement);
+	$('#sessionMetaData').append(sessionElement);
 
 	for (let i = 0; i < questionsArray.length; i++){
-		$('#displayTopics').append(questionsArray[i] + '<br>');
+		$('#sessionQuestions').append(questionsArray[i] + '<br>');
 	};
 
 
-	// $('#displayTopics').append(	questionsArray);
+	// $('#sessionMetaData').append(	questionsArray);
 
 };
 
-function displayContent(){
+function displayNavTabs(){
 	console.log('display Content Fired')
 	$('#logOut, #profileTab, #logIn, #signUp').toggleClass('is-hidden');
 };
@@ -128,19 +128,19 @@ function renderQueries(searchResults){
 
 // Check if user is logged in 
 $(function(){
-	checkForToken(displayContent)
+	checkForToken(displayNavTabs)
 });
 
 // Get a random question from the Db
 $('#getOneQuestion').on('click', function(){
-	$('#displayTopics').empty();
+	$('#sessionMetaData').empty();
 	getOneQuestion(displayQuestion);
 });
 
 
 // Get random session from the Db
 $('#getOneSession').on('click', function(){
-	$('#displayTopics').empty();
+	$('#sessionMetaData').empty();
 	getWholeSession(displaySession);
 });
 
@@ -148,7 +148,7 @@ $('#getOneSession').on('click', function(){
 
 $('#topicSearch').on('submit', function(e){
 	e.preventDefault();
-	$('#displayTopics').empty();
+	// $('#sessionMetaData').empty();
 	let query = $('#queryInput').val();
 	
 	submitQuery(query);
