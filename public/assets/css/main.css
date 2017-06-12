@@ -8,24 +8,33 @@
 }
 
 
-html, body {
+html, body, .section{
 	background-color: #0E4C49;
 	height: 100%;
 	
 	margin: 0;
 }
 
-h1 {
-	font-size: 2em;
+h1.title{
+	font-size: 3em;
 
 }
 
-h2 {
+h2.subtitle {
 	font-size: 1.5em;
 }
 
+
 h3 {
 	font-size: 1.2em;
+}
+
+h3.title {
+	align-content: left
+}
+
+img	{
+	border-radius: 3px
 }
 
 textarea {
@@ -34,14 +43,14 @@ textarea {
 
 input, .input {
 	color: black;
-	max-width: 250px;
+	max-width: 350px;
 }
 
 a {
 	display: inline;
 }
 
-legend {
+label {
 
 }
 
@@ -49,15 +58,13 @@ footer {
 	padding: 0;
 }
 
-
-
 #mainNavBar {
 	margin: 0px;
 	border-radius: 0;
 }
 
 #pageTitle {
-	background-image: linear-gradient(to bottom, rgba(0, 0, 0, .7), rgba(0,0,0,.4)),url("../images/woman_speaking.jpeg");
+	background-image: linear-gradient(to bottom, rgba(0, 0, 0, .7), rgba(0,0,0,.4)),url("../images/woman_public_speaking.jpeg");
 	background-repeat: no-repeat;
 	background-size: cover;
 	background-position: center;
@@ -66,16 +73,28 @@ footer {
 }
 
 #pageFooter {
-	background-image: linear-gradient(to bottom, rgba(0, 0, 0, .7), rgba(0,0,0,.4)),url("../images/Mic_at_conference.jpeg");
+	background-image: linear-gradient(to bottom, rgba(0, 0, 0, .6), rgba(0,0,0,.4)),url("../images/Microphone_audience.jpeg");
 	background-repeat: no-repeat;
 	background-size: contain;
 	background-position: center  right;
 }
-
-#footerCol2 {
-
+#topicSearch{
+	text-align: center;
+	padding-top: 8px;
 }
 
+#tableTopicsPractice {
+		background-color: #772432;
+		text-align: center;
+}
+
+#displayTopics {
+	text-align: center;
+}
+
+#buttonHolder{
+	text-align: center;
+}
 
 .disabled {
 	border: none;
@@ -95,11 +114,63 @@ label, .label, span, strong{
 
 .title, .subtitle {
 	color: #E0EEEE;
+
+}
+
+.button.is-primary {
+	margin: 8px;
+
+}
+
+h4.title:not(:last-child), h4.subtitle:not(:last-child) {
+    margin-bottom: 0px;
+}
+
+h3.title:not(:last-child), h3.subtitle:not(:last-child) {
+    margin-bottom: 1rem;
+}
+.hero-body {
+    padding: 2em;
+    text-align: left;
 }
 
 .hide {
 	display: none;
 }
 
+.tableTopicSession {
+	border: 3px solid black ;
+	margin: 25px;
+}
 
+.tableTopic, .topicInfo {
+	background-color: #E0EEEE;
+	color: black;
+	margin: 5px;
+	border-radius: 3px;
+	text-align: center;
+	width: 90%;
+	max-height: 150px;
+	height: auto;
+	padding-left: 25px;
+	padding-right: 25px;
+
+}
+
+.container {
+	margin-left: 25px;
+}
+
+.textarea {
+    display: block;
+    max-height: 600px;
+    max-width: 100%;
+    min-height: 60px;
+    min-width: 450px;
+    padding: 0.625em;
+    resize: vertical;
+}
+
+.topicQuestion {
+}
 

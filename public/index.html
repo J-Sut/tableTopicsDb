@@ -15,12 +15,15 @@
 	        <img src="http://3.bp.blogspot.com/-BoI6EJrDY2k/Tk1BneIZauI/AAAAAAAAB9A/InrmUR893N0/s500/Toastmasters+International+globe+logo+2011.png" alt="Table Topics DB">
 	      </a>
 	      <a id="home" class="nav-item is-tab is-hidden-mobile is-active">Home</a>
-	      <a id="signUp" href="./signup.html" class="nav-item is-tab is-hidden-mobile">Sign up</a>
 	      <a id="submitTopics" href="./topics.html" class="nav-item is-tab is-hidden-mobile">Submit Topics</a>
+	      <a href="./thankyou.html" class="nav-item is-tab is-hidden-mobile">Thank You</a>
+	      
 	    </div> <!-- nav-left -->
 
 	    <div  class="nav-right nav-menu">
 	   		<a id="logIn" href="./login.html" class="nav-item is-tab is-hidden-mobile">Log in</a>
+	      <a id="signUp" href="./signup.html" class="nav-item is-tab is-hidden-mobile">Sign up</a>
+
 	      <a id="profileTab" href="./profile.html" class="nav-item is-tab is-hidden">
 	        <figure class="image is-16x16" style="margin-right: 8px;">
 	          <img src="http://bulma.io/images/jgthms.png">
@@ -37,7 +40,7 @@
 		  <div id="pageTitle" class="hero-body">
 		    <div class="container">
 		      <h1 class="title">
-		        Table Topics Db
+		        The Table Topics Database
 		      </h1>
 		      <h2 class="subtitle">
 		        A tool for Toastmasters
@@ -51,29 +54,15 @@
 		
 		<section id="tableTopicsPractice" class="control">
 				<form id="topicSearch">
-
-				<span id="queryContainer">
-				 	<input type="text" name="searchbar" id="queryInput" class="input is-small"><br>
-					<button id="submitQuery" type="submit" class="button is-primary">Explore Topics</button> 	
-				</span> <br>
-
-					<button id="getOneQuestion" type="button" class="button">Give me a question</button> 	
-					<button id="getOneSession" type="button" class="button">Give me a whole Session</button> 	
-
+				 	<input type="text" name="searchbar" id="queryInput" class="input" placeholder="Search Topics and Questions"><br>
+	
 				</form>	<!-- inputForm -->	
+					<button id="getOneQuestion" type="button getOneButtons" class="button is-primary">Get a random question</button> 	
+					<button id="getOneSession" type="button getOneButtons" class="button is-primary">Get a whole Session</button> 
 		</section> <!-- tableTopicsPractice  -->
 
-		<div id="displayTopics" class="">
-			<div class="columns">
-				  <div id="sessionMetaData" class="column">
-				    First column
-				  </div>
-				  <div id="sessionQuestions" class="column">
-				    Second column
-				  </div>
-				  
-			</div>			
-		</div>
+	  <section id="displayTopics" class="section ">
+	  </section> <!-- displayTopics -->
 
 		<footer id="pageFooter" class="footer">
 		  <div class="container">
@@ -83,14 +72,14 @@
 
 		      <section id="footerCol1" class="column is-three-quarters">		      
 			      <p>
-			        <strong>Table Topics Db</strong> by <a href="#">Jeremy Sutton</a>. <br>
+			        <strong>Table Topics Db</strong> by <a href="https://github.com/J-Sut" target="_blank">Jeremy Sutton</a>. <br>
 			         The source code is licensed
 			        <a href="#">MIT</a>. The website content
 			        is licensed <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC ANS 4.0</a>.
 			      </p>		      	
 		      </section>
 
-		      <section id="footerCol2" class="column">		   
+		      <section id="footerCol2" class="column auto">		   
 
 		      </section>
 
