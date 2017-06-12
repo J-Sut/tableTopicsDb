@@ -57,7 +57,7 @@ function addNewSession(sessionDetails, callback) {
 		url: ttdbURL,
 		data: JSON.stringify(query),
 		success: function(data){
-			//location.href = 'index.html';
+			location.href = 'thankyou.html';
 			console.log(data);
 		},
 		contentType: 'application/json',
@@ -96,6 +96,21 @@ function logOutUser(userTokenId){
 	});
 };
 
+function countSubmissions(){
+
+		$.ajax({
+		type: "GET",
+		url: 'http://localhost:8080/topics',
+		success: function(data){
+			console.log(data.length);
+			displaySubmissionscount(data.length)
+		},
+		error: function(data){
+			console.log('Did not count submissions')
+		}
+	});	
+};
+
 // ************ f(RENDER-state) **************
 
 function addQuestion(){
@@ -104,7 +119,7 @@ function addQuestion(){
 					'<label class="label" >Question: </label>' +
 				  '<p class="control">' +
 				    '<textarea  class="topicQuestionInput textarea" placeholder="Normal textarea" required></textarea>' +
-				  '</p>' +
+				  '</p>' + '<a class="delete"></a>'+
 
 				'</div>');
 
@@ -116,6 +131,11 @@ function displayContent(){
 		console.log('display Content Fired')
 };
 
+function displaySubmissionscount(count){
+	$('#currentTopicsCount').text(count);
+};
+
+
 // ************ Event Calls & Listeners **************
 
 //testing();
@@ -125,6 +145,7 @@ $(function(){
 	// //	do an api Call to the Token endpoing
 	// checkToken();
 	checkForToken(displayContent);
+	countSubmissions();
 });
 
 $('#sessionSubmitForm').submit(function(e){
@@ -141,7 +162,6 @@ $('#sessionSubmitForm').submit(function(e){
 	console.log(sessionDetails);
 
 	addNewSession(sessionDetails);
-	location.href = `index.html`;
 
 });
 
@@ -151,11 +171,6 @@ $('#addQuestion').on('click', addQuestion);
 $('#logOut').on('click', function(){
 	checkForToken(logOutUser);
 })
-
-
-
-
-
 
 
 

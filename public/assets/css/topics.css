@@ -1,0 +1,18 @@
+fieldset	{
+	text-align: center;
+}
+
+label {
+	width: 200px;
+
+}
+
+#sessionSubmitForm {
+	max-width: 60%;
+	margin: auto;
+}
+
+#keywordsInput {
+	width: 200px;
+}
+

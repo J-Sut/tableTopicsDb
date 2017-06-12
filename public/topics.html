@@ -5,6 +5,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.4.2/css/bulma.css">
 	<link rel="stylesheet" type="text/css" href="./assets/css/main.css">	
+	<link rel="stylesheet" type="text/css" href="./assets/css/topics.css">	
 </head>
 <body>
 	<nav id="mainNavBar" class="nav has-shadow">
@@ -38,9 +39,10 @@
 		        Contribute Table Topics 
 		      </h1>
 		      <h2 class="subtitle">
-		        It's what makes this community thrive
+		        Let's build an incredible resource
 		      </h2>
-		    </div>
+		    </div>	
+
 		  </div>
 		</section>
 	</header>	
@@ -53,7 +55,7 @@
 				
 				<h2 class="title is-2">Topic Introduction</h2>
 				
-				<div class="field is-grouped">
+				<div id="" class="field is-grouped inputSection">
 					<label for="themeInput" class="label">Theme: </label>
 				  <p class="control">
 				    <input id="themeInput" class="input" type="text" placeholder="Normal input" required>
@@ -117,18 +119,49 @@
 				  <p class="control">
 				    <textarea  class="topicQuestionInput textarea" placeholder="Normal textarea" required></textarea>
 				  </p>
-
 				</div>
 			</fieldset> <!-- sessionQuestions -->
+	
 
-			<button id="addQuestion" class="button">Add a question</button>
+			<section id="buttonHolder">
+				<button id="addQuestion" class="button is-primary" type="button">Add a question</button>
 
-			<button id="topicSubmit" type="submit" class="button is-primary">Submit</button>	
+				<button id="topicSubmit" type="submit" class="button is-primary">Submit</button>				
+			</section>
 			
 		</form> <!-- sessionSubmitForm -->
 
 
 	</main>
+
+	<footer id="pageFooter" class="footer">
+	  <div class="container">
+	    <div class="content has-text-centered columns">
+	     
+
+
+	      <section id="footerCol1" class="column is-three-quarters">		      
+		      <p>
+		        <strong>Table Topics Db</strong> by <a href="https://github.com/J-Sut" target="_blank">Jeremy Sutton</a>. <br>
+		         The source code is licensed
+		        <a href="#">MIT</a>. The website content
+		        is licensed <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC ANS 4.0</a>.
+		      </p>		      	
+	      </section>
+
+	      <section id="footerCol2" class="column">		   
+
+	      </section>
+
+
+	      <p>
+	        <a class="icon" href="https://github.com/jgthms/bulma">
+	          <i class="fa fa-github"></i>
+	        </a>
+	      </p>
+	    </div>
+	  </div> <!-- container -->
+	</footer>		
 
 <script type="text/javascript" src="./assets/jquery.min.js"></script>
 <script type="text/javascript" src="./assets/js/topics.js"></script>

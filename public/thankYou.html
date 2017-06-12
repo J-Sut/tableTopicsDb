@@ -4,7 +4,9 @@
 	<title>Thank You</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.4.2/css/bulma.css">
-	<link rel="stylesheet" type="text/css" href="./assets/css/main.css">	
+	<link rel="stylesheet" type="text/css" href="./assets/css/main.css">
+	<link rel="stylesheet" type="text/css" href="./assets/css/thankyou.css">	
+
 </head>
 <body>
 	<nav id="mainNavBar" class="nav has-shadow">
@@ -14,8 +16,8 @@
 	        <img src="http://3.bp.blogspot.com/-BoI6EJrDY2k/Tk1BneIZauI/AAAAAAAAB9A/InrmUR893N0/s500/Toastmasters+International+globe+logo+2011.png" alt="Table Topics DB">
 	      </a>
 	      <a href="./index.html"class="nav-item is-tab is-hidden-mobile">Home</a>
-	      <a href="./signup.html" class="nav-item is-tab is-hidden-mobile">Sign up</a>
 	      <a href="./topics.html" class="nav-item is-tab is-hidden-mobile">Submit Topics</a>
+
 	    </div>
 	    <div class="nav-right nav-menu">
 	      <a href="./profile.html" class="nav-item is-tab">
@@ -30,22 +32,55 @@
 	</nav> <!-- mainNavBar -->
 
 	<header>
-		<h1>Thank You sincerely for your submission</h1>
-		<h2>Your contributions are what makes this Database Thrive</h2>
-	</header>
+		<section class="hero">
+		  <div id="pageTitle" class="hero-body">
+		    <div class="container">
+		      <h1 class="title">
+		        Thank you sincerely for your submission
+		      </h1>
+		      <h2 class="subtitle">
+		        Your contributions are how this database grows
+		      </h2>
+		    </div>
+		  </div>
+		</section>
+	</header>	
 
 	<main>
-	<h3>What's next?</h3>
-		<ul>
-			<a href="./index.html"><li>Explore  Topics</li></a>
-			<a href="./topics.html"><li>Submit more Table Topics</li></a>
-			<a href="#"><li>Share with friends</li></a>
-		</ul>
-
-		<button id="challengeButton" class="button">one(plus(two()))</button>
-		<button id="testButton" class="button">Test Button</button>
-
+	  <section id="countSection" class="columns level">
+	  	<h2 id="countSetUp" class="title is-2 column is-7">Total Sessions submitted:</h2>
+	  	<div id="currentTopicsCount" class="column is-5"></div>
+	  </section>
+		
 	</main>
+	<footer id="pageFooter" class="footer">
+	  <div class="container">
+	    <div class="content has-text-centered columns">
+	     
+
+
+	      <section id="footerCol1" class="column is-three-quarters">		      
+		      <p>
+		        <strong>Table Topics Db</strong> by <a href="https://github.com/J-Sut" target="_blank">Jeremy Sutton</a>. <br>
+		         The source code is licensed
+		        <a href="#">MIT</a>. The website content
+		        is licensed <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC ANS 4.0</a>.
+		      </p>		      	
+	      </section>
+
+	      <section id="footerCol2" class="column">		   
+
+	      </section>
+
+
+	      <p>
+	        <a class="icon" href="https://github.com/jgthms/bulma">
+	          <i class="fa fa-github"></i>
+	        </a>
+	      </p>
+	    </div>
+	  </div> <!-- container -->
+	</footer>			
 
 	<script type="text/javascript" src="./assets/jquery.min.js"></script>
 <script type="text/javascript" src="./assets/js/thankYou.js"></script>

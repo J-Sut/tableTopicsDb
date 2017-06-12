@@ -1,0 +1,44 @@
+form {
+	display: inline-block;
+}
+
+img	{
+	border-radius: 3px
+}
+
+p.control {
+	text-align: right;
+}
+
+#col2 {
+	background-color: blue;
+}
+
+#tableTopicsPractice {
+	height: 100px;	
+}
+
+#bodyPhoto{
+	max-height: 250px;
+}
+
+#loginBody {
+	text-align: center;
+	padding: 7px;
+	vertical-align: middle;
+}
+
+#signInForm {
+	/*background-color: brown;*/
+	padding: 25px;
+	text-align: center;
+
+}
+
+.level-item {
+	height: 100px;
+}
+
+
+
+

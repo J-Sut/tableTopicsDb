@@ -83,9 +83,10 @@ function 	submitQuery(query){
 // ************ f(RENDER-state) **************
 
 function displayQuestion(question){
-	$('#sessionMetaData').append('<div class="box">'+ question +'</div>');
-
-};
+	$('#displayTopics')
+		.empty()
+		.append('<h3 class="title is-3">'+ question +'</h3>')
+	};
 
 function displaySession(session){
 	let questionsArray = [];
@@ -93,16 +94,53 @@ function displaySession(session){
 		questionsArray.push(question);
 	});
 
-	let sessionElement = 	'<div class="box"><h3> Theme: </h3>' + '<br>' + session.theme + '<br>' +
-		'<h3> Session Introduction: </h3>' + '<br>' + session.introduction + '<br>' +
-		'<h3> Keywords: </h3>' + '<br>' + session.keywords + '<br>' +
-		'<h3> Questions: </h3>' + '<br></div>';
+let questionListElement = []
 
-	$('#sessionMetaData').append(sessionElement);
+
+//got the questions in an array... 
+	console.log(questionListElement)
+
+	// $('#sessionMetaData').append(sessionElement);
 
 	for (let i = 0; i < questionsArray.length; i++){
-		$('#sessionQuestions').append(questionsArray[i] + '<br>');
+		questionListElement.push('<li class="tableTopic">'+ questionsArray[i] +'</li>');
+
 	};
+
+	console.log('questionListElement:');
+	console.log(questionListElement);
+
+let questionCard =
+
+  '<section class="section tableTopicSession displayTopics">' +
+    '<div class="container columns">' +
+
+    	'<section id="sessionMetaData" class="column auto">' +
+	      '<h3 class="title">Theme</h3>' +
+	      	'<h5 class="topicTheme topicInfo">'+ session.theme +'</h5>' +
+	      '<h3 class="title">Introduction</h3>' +
+	      	'<h5 class="topicIntroduction topicInfo">'+ session.introduction +'</h5>' +
+	      '<h3 class="title" >Keywords</h3>  	' +
+	      	'<h5 class="topicKeywords topicInfo">'+ session.keywords +'</h5>	' +
+    	'</section>' +
+    	'<section id="sessionQuestions" class="column auto">' +
+	      '<h3 class="title">Questions</h3>' +
+	      	'<ul class="topicsQuestionsList">' +
+	      		questionListElement +
+	      	'</ul>' +
+    	'</section>' +
+    '</div>' +
+  
+  '</section> <!-- displayTopics -->';
+
+
+
+
+	$('#displayTopics').append(questionCard);
+
+
+
+
 
 
 	// $('#sessionMetaData').append(	questionsArray);
@@ -128,7 +166,7 @@ function renderQueries(searchResults){
 
 // Check if user is logged in 
 $(function(){
-	checkForToken(displayNavTabs)
+	checkForToken(displayNavTabs);
 });
 
 // Get a random question from the Db
@@ -140,7 +178,7 @@ $('#getOneQuestion').on('click', function(){
 
 // Get random session from the Db
 $('#getOneSession').on('click', function(){
-	$('#sessionMetaData').empty();
+	$('#displayTopics').empty();
 	getWholeSession(displaySession);
 });
 
@@ -148,13 +186,12 @@ $('#getOneSession').on('click', function(){
 
 $('#topicSearch').on('submit', function(e){
 	e.preventDefault();
-	// $('#sessionMetaData').empty();
+	$('#displayTopics').empty();
 	let query = $('#queryInput').val();
 	
 	submitQuery(query);
 
 });
-
 
 // logout the user
 $('#logOut').on('click', function(){

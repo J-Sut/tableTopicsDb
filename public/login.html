@@ -5,6 +5,8 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.4.2/css/bulma.css">
 	<link rel="stylesheet" type="text/css" href="./assets/css/main.css">	
+	<link rel="stylesheet" type="text/css" href="./assets/css/login.css">	
+
 </head>
 <body>
 
@@ -15,12 +17,12 @@
 	        <img src="http://3.bp.blogspot.com/-BoI6EJrDY2k/Tk1BneIZauI/AAAAAAAAB9A/InrmUR893N0/s500/Toastmasters+International+globe+logo+2011.png" alt="Table Topics DB">
 	      </a>
 	      <a id="home" href="./index.html"class="nav-item is-tab is-hidden-mobile">Home</a>
-	      <a id="signUp" href="./signup.html" class="nav-item is-tab is-hidden-mobile">Sign up</a>
 	      <a id="submitTopics" href="./topics.html" class="nav-item is-tab is-hidden-mobile">Submit Topics</a>
 	    </div> <!-- nav-left -->
 
 	    <div  class="nav-right nav-menu">
 	   		<a id="logIn" class="nav-item is-tab is-hidden-mobile is-active">Log in</a>
+	      <a id="signUp" href="./signup.html" class="nav-item is-tab is-hidden-mobile">Sign up</a>
 	      <a id="profileTab" href="./profile.html" class="nav-item is-tab is-hidden">
 	        <figure class="image is-16x16" style="margin-right: 8px;">
 	          <img src="http://bulma.io/images/jgthms.png">
@@ -40,49 +42,86 @@
 		        Table Topics Db - Log-in
 		      </h1>
 		      <h2 class="subtitle">
-		        Fun and interesting topics from clubs around the world
+		        Topics and speakers from around the world
 		      </h2>
 		    </div>
 		  </div>
 		</section>
 	</header>	
 
+			<section id="tableTopicsPractice" class="control">
 
-
-
+		</section> <!-- tableTopicsPractice  -->
 
 
 	<main>
 
-	<form id="signInForm">
-			<div class="field">
-			  <p class="control has-icons-left">
-			    <input id="userEmailInput" class="input" type="email" placeholder="Email" required>
-			    <span class="icon is-small is-left">
-			      <i class="fa fa-envelope"></i>
-			    </span>
-			  </p>
-			</div>
-			<div class="field">
-			  <p class="control has-icons-left">
-			    <input id="userPwInput" class="input" type="password" placeholder="Password" required>
-			    <span class="icon is-small is-left">
-			      <i class="fa fa-lock"></i>
-			    </span>
-			  </p>
-			</div>
-			<div class="field">
-			  <p class="control">
-			    <button id="loginBtn" class="button is-success">
-			      Login
-			    </button>
-			  </p>
-			</div>
-			<p>Not a member of the community yet? <a href="./signup.html">Join for free</a></p>
+<section id="loginBody" class="">
+	<img id="bodyPhoto" src="./assets/images/testShots/speaker.jpeg">
+
+
+	<form id="signInForm" class="">
+		<div class="field">
+		  <p class="control has-icons-left">
+		    <input id="userEmailInput" class="input" type="email" placeholder="Email" required>
+		    <span class="icon is-small is-left">
+		      <i class="fa fa-envelope"></i>
+		    </span>
+		  </p>
+		</div>
+		<div class="field">
+		  <p class="control has-icons-left">
+		    <input id="userPwInput" class="input" type="password" placeholder="Password" required>
+		    <span class="icon is-small is-left">
+		      <i class="fa fa-lock"></i>
+		    </span>
+		  </p>
+		</div>
+		<div class="field">
+		  <p class="control">
+		    <button id="loginBtn" class="button is-success">
+		      Login
+		    </button>
+		  </p>
+		</div>
+		<p>Not a member of the community yet? <br>
+		<a href="./signup.html">Join for free</a></p>
 
 	</form> <!-- signInForm -->
+</section> <!-- loginBody -->
+
+
 
 	</main>
+
+	<footer id="pageFooter" class="footer">
+	  <div class="container">
+	    <div class="content has-text-centered columns">
+	     
+
+
+	      <section id="footerCol1" class="column is-three-quarters">		      
+		      <p>
+		        <strong>Table Topics Db</strong> by <a href="https://github.com/J-Sut" target="_blank">Jeremy Sutton</a>.<br>
+		         The source code is licensed
+		        <a href="#">MIT</a>. The website content
+		        is licensed <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC ANS 4.0</a>.
+		      </p>		      	
+	      </section>
+
+	      <section id="footerCol2" class="column">		   
+
+	      </section>
+
+
+	      <p>
+	        <a class="icon" href="https://github.com/jgthms/bulma">
+	          <i class="fa fa-github"></i>
+	        </a>
+	      </p>
+	    </div>
+	  </div> <!-- container -->
+	</footer>		
 <script type="text/javascript" src="./assets/jquery.min.js"></script>
 <script type="text/javascript" src="./assets/js/login.js"></script>
 </body>
