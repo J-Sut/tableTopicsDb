@@ -85,37 +85,38 @@ function 	submitQuery(query){
 function displayQuestion(question){
 	$('#displayTopics')
 		.empty()
-		.append('<h3 class="title is-3">'+ question +'</h3>')
+		.append('<h3 class="title is-3Z	randomQuestion">'+ question +'</h3>')
 	};
 
 function displaySession(session){
-	let questionsArray = [];
-	$.map(session.questions, question => {
-		questionsArray.push(question);
+	//let questionsArray = [];
+	let questionListElement = [];
+	console.log('session.questions',session.questions);
+	$.map(session.questions, (question, index) => {
+		console.log('question',index, question);
+		//questionsArray.push(question);
+		questionListElement.push('<li class="tableTopic">'+ question +'</li>');
 	});
-
-let questionListElement = []
 
 
 //got the questions in an array... 
-	console.log(questionListElement)
+	//console.log(questionListElement)
 
 	// $('#sessionMetaData').append(sessionElement);
 
-	for (let i = 0; i < questionsArray.length; i++){
-		questionListElement.push('<li class="tableTopic">'+ questionsArray[i] +'</li>');
+	//for (let i = 0; i < questionsArray.length; i++){
+	//	questionListElement.push('<li class="tableTopic">'+ questionsArray[i] +'</li>');
+	//
+	//};
 
-	};
-
-	console.log('questionListElement:');
-	console.log(questionListElement);
+	console.log('questionListElement:', questionListElement);
 
 let questionCard =
 
   '<section class="section tableTopicSession displayTopics">' +
     '<div class="container columns">' +
 
-    	'<section id="sessionMetaData" class="column auto">' +
+    	'<section id="sessionMetaData" class="column ">' +
 	      '<h3 class="title">Theme</h3>' +
 	      	'<h5 class="topicTheme topicInfo">'+ session.theme +'</h5>' +
 	      '<h3 class="title">Introduction</h3>' +
@@ -123,7 +124,7 @@ let questionCard =
 	      '<h3 class="title" >Keywords</h3>  	' +
 	      	'<h5 class="topicKeywords topicInfo">'+ session.keywords +'</h5>	' +
     	'</section>' +
-    	'<section id="sessionQuestions" class="column auto">' +
+    	'<section id="sessionQuestions" class="column ">' +
 	      '<h3 class="title">Questions</h3>' +
 	      	'<ul class="topicsQuestionsList">' +
 	      		questionListElement +

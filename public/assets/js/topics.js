@@ -121,7 +121,7 @@ function addQuestion(){
 				    '<textarea  class="topicQuestionInput textarea" placeholder="Normal textarea" required></textarea>' +
 				  '</p>' + '<a class="delete"></a>'+
 
-				'</div>');
+				'</div>' + '<br>');
 
 
 	$('#sessionQuestions').append(newQuestInput);

@@ -10,7 +10,6 @@
 
 html, body, .section{
 	background-color: #0E4C49;
-	height: 100%;
 	
 	margin: 0;
 }
@@ -24,17 +23,21 @@ h2.subtitle {
 	font-size: 1.5em;
 }
 
-
 h3 {
 	font-size: 1.2em;
 }
 
 h3.title {
-	align-content: left
+	align-content: left;
+	margin: auto;
 }
 
 img	{
-	border-radius: 3px
+	border-radius: 3px;
+	max-height: 500px;
+	overflow: hidden;
+	height: auto;
+	width: auto;
 }
 
 textarea {
@@ -68,7 +71,7 @@ footer {
 	background-repeat: no-repeat;
 	background-size: cover;
 	background-position: center;
-	height: 500px;
+	height: 450px;
 	overflow: hidden;
 }
 
@@ -80,16 +83,18 @@ footer {
 }
 #topicSearch{
 	text-align: center;
-	padding-top: 8px;
+	padding-top: 12px;
 }
 
-#tableTopicsPractice {
+#tableTopicsPractice, .tableTopicsBuffer {
 		background-color: #772432;
 		text-align: center;
+		min-height: 25px;
 }
 
 #displayTopics {
 	text-align: center;
+	padding: 0px;
 }
 
 #buttonHolder{
@@ -114,12 +119,14 @@ label, .label, span, strong{
 
 .title, .subtitle {
 	color: #E0EEEE;
-
 }
 
 .button.is-primary {
-	margin: 8px;
+	margin: 9px;
+}
 
+.randomQuestion {
+	padding: 100px;
 }
 
 h4.title:not(:last-child), h4.subtitle:not(:last-child) {
@@ -140,7 +147,7 @@ h3.title:not(:last-child), h3.subtitle:not(:last-child) {
 
 .tableTopicSession {
 	border: 3px solid black ;
-	margin: 25px;
+	margin: 5px;
 }
 
 .tableTopic, .topicInfo {
@@ -171,6 +178,6 @@ h3.title:not(:last-child), h3.subtitle:not(:last-child) {
     resize: vertical;
 }
 
-.topicQuestion {
+.level:not(:last-child) {
+    margin-bottom: 0rem;
 }
-

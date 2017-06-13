@@ -30,6 +30,10 @@ function login(em, pw, callback) {
 	});
 };
 
+function logInPlease(message){
+	$('#tableTopicsPractice').append('<p class="level-item">'+ message +'</p>');
+};
+
 
 // ************ Event Listeners **************
 
@@ -46,7 +50,7 @@ $('#signInForm').submit(function(e){
 
 $(function(){
 	if (localStorage.getItem('message')){
-		alert(localStorage.getItem('message'));
+		logInPlease(localStorage.getItem('message'));
 		localStorage.clear();
 	}
 });

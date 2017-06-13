@@ -2,10 +2,6 @@ form {
 	display: inline-block;
 }
 
-img	{
-	border-radius: 3px
-}
-
 p.control {
 	text-align: right;
 }
@@ -15,7 +11,8 @@ p.control {
 }
 
 #tableTopicsPractice {
-	height: 100px;	
+	height: 25px;	
+	vertical-align: middle;
 }
 
 #bodyPhoto{
@@ -24,7 +21,7 @@ p.control {
 
 #loginBody {
 	text-align: center;
-	padding: 7px;
+	padding: 40px;
 	vertical-align: middle;
 }
 
@@ -32,11 +29,16 @@ p.control {
 	/*background-color: brown;*/
 	padding: 25px;
 	text-align: center;
+	vertical-align: top;
 
 }
 
 .level-item {
 	height: 100px;
+}
+
+.level:not(:last-child) {
+    margin-bottom: 0rem;
 }
 
 
