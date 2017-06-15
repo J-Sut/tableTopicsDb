@@ -92,11 +92,6 @@ function displaySession(session){
 	//let questionsArray = [];
 	let questionListElement = [];
 	console.log('session.questions',session.questions);
-	$.map(session.questions, (question, index) => {
-		console.log('question',index, question);
-		//questionsArray.push(question);
-		questionListElement.push('<li class="tableTopic">'+ question +'</li>');
-	});
 
 
 //got the questions in an array... 
@@ -110,34 +105,74 @@ function displaySession(session){
 	//};
 
 	console.log('questionListElement:', questionListElement);
+	let $sectionCard = $('<section />', {class: 'section tableTopicSession'});
+	let $container = $('<div />', {class: 'container columns'});
 
-let questionCard =
+	let $sessionMetaData = $('<section />', {class: 'sessionMetaData column '});
+	let $themeLabel = $('<h3 />', {class: 'themeLabel title', text: "Theme"});
+	let $themeData = $('<h5 />', {class: 'themeData topicInfo', text: session.theme});
+	let $introductionlabel = $('<h3 />', {class: 'introductionlabel title', text: "Introduction"});
+	let $introductionData = $('<h5 />', {class: 'introductionData topicInfo', text: session.introduction});
+	let $keywordsLabel = $('<h3 />', {class: 'keywordsLabel title', text: "Keywords"});
+	let $keywordsData = $('<h5 />', {class: 'keywordsData topicInfo', text: session.keywords});
 
-  '<section class="section tableTopicSession displayTopics">' +
-    '<div class="container columns">' +
+	let $sessionQuestions = $('<section />', {class: 'sessionQuestions column '});
+	let $questionsLabel = $('<h3 />', {class: 'questionsLabel title', text: "Questions"});
+	let $questionsData = $('<ul />', {class: 'questionsData topicsQuestionsList', text: questionListElement});
 
-    	'<section id="sessionMetaData" class="column ">' +
-	      '<h3 class="title">Theme</h3>' +
-	      	'<h5 class="topicTheme topicInfo">'+ session.theme +'</h5>' +
-	      '<h3 class="title">Introduction</h3>' +
-	      	'<h5 class="topicIntroduction topicInfo">'+ session.introduction +'</h5>' +
-	      '<h3 class="title" >Keywords</h3>  	' +
-	      	'<h5 class="topicKeywords topicInfo">'+ session.keywords +'</h5>	' +
-    	'</section>' +
-    	'<section id="sessionQuestions" class="column ">' +
-	      '<h3 class="title">Questions</h3>' +
-	      	'<ul class="topicsQuestionsList">' +
-	      		questionListElement +
-	      	'</ul>' +
-    	'</section>' +
-    '</div>' +
+
+	$sectionCard.append($container);
+	$container.append($sessionMetaData);
+	$sessionMetaData.append($themeLabel, $themeData, $introductionlabel, $introductionData, $keywordsLabel, $keywordsData);
+
+	$sectionCard.append($sessionQuestions);
+	$sessionQuestions.append($questionsLabel, $questionsData);
+
+
+	$.map(session.questions, (question, index) => {
+		console.log('question',index, question);
+		//questionsArray.push(question);
+		//questionListElement.push('<li class="tableTopic">'+ question +'</li>');
+		let $li = $('<li />', {class: 'tableTopic', text: question});
+		$questionsData.append($li);
+		//questionListElement.push('<li class="tableTopic">'+ question +'</li>');
+	});
+
+
+// let questionCard =
+
+//   '<section class="section tableTopicSession displayTopics;">' +
+//     '<div class="container columns">' +
+
+//     	'<section class="sessionMetaData column ">' +
+// 	      '<h3 class="themeLabel title">Theme</h3>' +
+// 	      	'<h5 class="themeData topicInfo">'+ session.theme +'</h5>' +
+// 	      '<h3 class="introductionlabel title">Introduction</h3>' +
+// 	      	'<h5 class="introductionData topicInfo">'+ session.introduction +'</h5>' +
+	      
+
+
+// 	      '<h3 class="keywordsLabel title" >Keywords</h3>  	' +
+// 	      	'<h5 class="keywordsData topicInfo">'+ session.keywords +'</h5>	' +
+//     	'</section>' +
+
+
+
+//     	'<section id="sessionQuestions" class="sessionQuestions column ">' +
+// 	      '<h3 class="questionsLabel title">Questions</h3>' +
+// 	      	'<ul class="questionsData topicsQuestionsList">' +
+// 	      		questionListElement +
+// 	      	'</ul>' +
+//     	'</section>' +
+//     '</div>' +
   
-  '</section> <!-- displayTopics -->';
+//   '</section> <!-- displayTopics -->';
+
+  // let $questionCard = $(questionCard);
+  // $questionCard.find('.topicTheme').text(session.theme);
 
 
-
-
-	$('#displayTopics').append(questionCard);
+	$('#displayTopics').append($sectionCard);
 
 
 

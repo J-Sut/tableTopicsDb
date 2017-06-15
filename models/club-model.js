@@ -13,6 +13,10 @@ const clubSchema = mongoose.Schema({
 	website: {type: String, required: false}
 });
 
+clubSchema.methods.getObjectId = function(){
+	return new ObjectId(this._id);
+}
+
 const Club = mongoose.model('Club', clubSchema);
 
 module.exports = {Club};

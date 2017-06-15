@@ -5,6 +5,8 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.4.2/css/bulma.css">
 	<link rel="stylesheet" type="text/css" href="./assets/css/main.css">	
+	<script src="https://use.typekit.net/rzr3owu.js"></script>
+	<script>try{Typekit.load({ async: true });}catch(e){}</script>
 </head>
 <body>
 
@@ -53,19 +55,22 @@
 	<main id="dbSearchArea">
 		
 		<section id="tableTopicsPractice" class="control">
-				<form id="topicSearch">
-				 	<input type="text" name="searchbar" id="queryInput" class="input" placeholder="Search Topics and Questions"><br>
+				<form id="topicSearch" class="level">
+				 	<input type="text" name="searchbar" id="queryInput" class="input level-item" placeholder="Search Topics and Questions"> 
+				 	<button id="queryButton" class="button is-primary level-item" type="submit">Search Topics</button>
+				 	<br>
 	
 				</form>	<!-- inputForm -->	
-					<button id="getOneQuestion" type="button getOneButtons" class="button is-primary">Get a random question</button> 	
-					<button id="getOneSession" type="button getOneButtons" class="button is-primary">Get a whole Session</button> 
+					<button id="getOneQuestion" type="button getOneButtons" class="button is-dark">Try a random question</button> 	
+					<button id="getOneSession" type="button getOneButtons" class="button is-dark">Get a random Table Topics Session</button> 
 		</section> <!-- tableTopicsPractice  -->
 
-	  <section id="displayTopics" class="section level">
+	  <section id="displayTopics" class="section">
 
-	  	<h4 class="title is-4 level-item">When life calls you to the stage... <br>will you be ready?</h4>
-	  	<img class="level-item" src="./assets/images/testShots/pre_talk.jpeg">
-
+		  <content class="level">
+		  	<h4 class="title is-4 level-item">When life calls you to the stage... <br>will you be ready?</h4>
+		  	<div id="spaceHolder" class="level-item"> </div>
+			</content>
 
 	  </section> <!-- displayTopics -->
 
