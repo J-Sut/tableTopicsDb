@@ -5,6 +5,8 @@
 
 * {
 	color: #E0EEEE;
+/*	margin: 0;
+	padding: 0;*/
 }
 
 
@@ -18,6 +20,10 @@ h1.title{
 	font-size: 3em;
 
 }
+
+h1, h3{
+  font-family: "droid-serif",serif;
+  }
 
 h2.subtitle {
 	font-size: 1.5em;
@@ -53,10 +59,6 @@ a {
 	display: inline;
 }
 
-label {
-
-}
-
 footer {
 	padding: 0;
 }
@@ -83,7 +85,6 @@ footer {
 }
 #topicSearch{
 	text-align: center;
-	padding-top: 12px;
 }
 
 #tableTopicsPractice, .tableTopicsBuffer {
@@ -95,10 +96,22 @@ footer {
 #displayTopics {
 	text-align: center;
 	padding: 0px;
+	margin: auto; 
 }
 
 #buttonHolder{
 	text-align: center;
+}
+
+#spaceHolder {
+	background-image: url("../images/testShots/pre_Talk.jpeg");
+	background-size: cover;
+	background-position: center;
+	min-height: 200px;
+}
+
+#queryButton {
+	max-width: 150px;
 }
 
 .disabled {
@@ -106,7 +119,7 @@ footer {
 	background: none;
 } 
 
-label, .label, span, strong{
+label, .label, span, strong, .title, .subtitle{
 	color: #E0EEEE;
 }
 
@@ -117,11 +130,7 @@ label, .label, span, strong{
 	margin: auto;
 }
 
-.title, .subtitle {
-	color: #E0EEEE;
-}
-
-.button.is-primary {
+button {
 	margin: 9px;
 }
 
@@ -146,8 +155,10 @@ h3.title:not(:last-child), h3.subtitle:not(:last-child) {
 }
 
 .tableTopicSession {
+	display: block;
 	border: 3px solid black ;
 	margin: 5px;
+	justify-content: center;
 }
 
 .tableTopic, .topicInfo {
@@ -161,7 +172,6 @@ h3.title:not(:last-child), h3.subtitle:not(:last-child) {
 	height: auto;
 	padding-left: 25px;
 	padding-right: 25px;
-
 }
 
 .container {
@@ -178,6 +188,11 @@ h3.title:not(:last-child), h3.subtitle:not(:last-child) {
     resize: vertical;
 }
 
+.level {
+	justify-content: center
+}
+
 .level:not(:last-child) {
     margin-bottom: 0rem;
 }
+

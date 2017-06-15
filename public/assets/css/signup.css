@@ -1,0 +1,21 @@
+#formArea {
+	background-color: #407874;
+	width: 900px;
+	margin: auto;
+	padding: 50px;
+	text-align: center;
+
+}
+
+#formContainer {
+	margin: auto;
+	background-color: #0E4C49;
+	text-align: center;
+	padding: 20px;
+	width: 700px;
+}
+
+label	{
+	width: 200px;
+}
+

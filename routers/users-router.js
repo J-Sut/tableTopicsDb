@@ -106,7 +106,10 @@ router.post('/', (req, res) => {
 		}) //remove once uncommented below
 		.then(club => {
 				if (club){
-					console.log("club is already registered:" + club);
+					console.log("club is already registered:" + club, club._id, club.getObjectId());
+					console.log(_newUser);
+					//Club.findByIdAndUpdate({"_id":club._id}, {$push:{members: _newUser._id}});
+					club.members.push(_newUser);
 					return res.status(200).json(club);
 				} else {
 					return Club
@@ -118,10 +121,10 @@ router.post('/', (req, res) => {
 						},
 						website: req.body.clubWebsite
 					})
-				}
+				} 
 			})
 			.then(club => {
-				res.status(201).json(_newUser)
+				if(club._id) res.status(201).json(_newUser)
 			})
 		//**************************************
 		// .exec()
