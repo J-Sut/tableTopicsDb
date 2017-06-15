@@ -106,8 +106,8 @@ router.post('/', (req, res) => {
 		}) //remove once uncommented below
 		.then(club => {
 				if (club){
+					return club;
 					console.log("club is already registered:" + club);
-					return res.status(200).json(club);
 				} else {
 					return Club
 					.create({
@@ -121,7 +121,10 @@ router.post('/', (req, res) => {
 				}
 			})
 			.then(club => {
-				res.status(201).json(_newUser)
+				Club
+					.findByIdAndUpdate(club._id, {$addToSet: {members: _newUser}})
+					.exec();
+				res.status(201).json(_newUser);
 			})
 		//**************************************
 		// .exec()
