@@ -1,6 +1,7 @@
 /*assets {
 	light Blue:  #E0EEEE;
 	dark blue: #0E4C49;
+	light beige: rgb(250, 255, 189);;
 }*/
 
 * {
@@ -88,9 +89,9 @@ footer {
 }
 
 #tableTopicsPractice, .tableTopicsBuffer {
-		background-color: #772432;
-		text-align: center;
-		min-height: 25px;
+	background-color: #772432;
+	text-align: center;
+	min-height: 25px;
 }
 
 #displayTopics {
@@ -101,13 +102,6 @@ footer {
 
 #buttonHolder{
 	text-align: center;
-}
-
-#spaceHolder {
-	background-image: url("../images/testShots/pre_Talk.jpeg");
-	background-size: cover;
-	background-position: center;
-	min-height: 200px;
 }
 
 #queryButton {
@@ -154,26 +148,6 @@ h3.title:not(:last-child), h3.subtitle:not(:last-child) {
 	display: none;
 }
 
-.tableTopicSession {
-	display: block;
-	border: 3px solid black ;
-	margin: 5px;
-	justify-content: center;
-}
-
-.tableTopic, .topicInfo {
-	background-color: #E0EEEE;
-	color: black;
-	margin: 5px;
-	border-radius: 3px;
-	text-align: center;
-	width: 90%;
-	max-height: 150px;
-	height: auto;
-	padding-left: 25px;
-	padding-right: 25px;
-}
-
 .container {
 	margin-left: 25px;
 }
@@ -194,5 +168,9 @@ h3.title:not(:last-child), h3.subtitle:not(:last-child) {
 
 .level:not(:last-child) {
     margin-bottom: 0rem;
+}
+
+.section {
+	padding: 0;
 }
 

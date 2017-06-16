@@ -1,0 +1,71 @@
+#displayTopicsFiller {
+	display: flex;
+	justify-content: center;
+	padding: 10px;
+}
+
+#spaceHolder1 {
+	background-image: url("../images/testShots/pre_Talk.jpeg");
+	background-size: cover;
+	background-position: center;
+	height: 300px;
+	width: 300px;
+	border-radius: 100%;
+	/*margin: auto;*/
+}
+
+#spaceHolder2 {
+	vertical-align: center
+}
+
+#line1 {
+	vertical-align: middle;
+}
+
+.tableTopicSession {
+	display: flex;
+	justify-content: center;
+	padding: 10px;
+}
+
+.tableTopic, .topicInfo {
+	background-color: #E0EEEE;
+	color: black;
+	border-radius: 3px;
+	margin: 5px;
+	height: auto;
+}
+
+.container {
+	margin: 0;
+}
+.columns, .columns:not(:last-child), .columns:last-child {
+     margin: 0; 
+     padding: 0;
+}
+
+.ttContainer {
+	border: 3px solid rgb(250, 255, 189);
+	margin: 10px;
+}
+
+
+.newTopicLead {
+	font-size: 1.3em; 
+}
+
+h3.title {
+	align-content: left;
+	margin: 0;
+}
+
+h3.title:not(:last-child), h3.subtitle:not(:last-child) {
+    margin-bottom: 0;
+}
+
+@media screen and (min-width: 769px), print level.sass:45
+.level > .level-item:not(.is-narrow) {
+
+     flex-grow: 0; 
+}
+

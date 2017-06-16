@@ -31,7 +31,8 @@ function login(em, pw, callback) {
 };
 
 function logInPlease(message){
-	$('#tableTopicsPractice').append('<p class="level-item">'+ message +'</p>');
+	console.log(message);
+	$('#tableTopicsPractice').append('<h3 class="title is-3">'+ message +'</p>');
 };
 
 
