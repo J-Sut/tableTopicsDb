@@ -2,6 +2,10 @@ form {
 	display: inline-block;
 }
 
+h3.title {
+	margin: 0;
+}
+
 p.control {
 	text-align: right;
 }
@@ -11,8 +15,9 @@ p.control {
 }
 
 #tableTopicsPractice {
-	height: 25px;	
-	vertical-align: middle;
+	min-height: 25px;	
+	height: auto;
+	vertical-align: top;
 }
 
 #bodyPhoto{

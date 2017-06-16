@@ -1,21 +1,65 @@
 #formArea {
-	background-color: #407874;
-	width: 900px;
+	display: flex;
+	width: auto;
 	margin: auto;
-	padding: 50px;
-	text-align: center;
-
+	padding: 20px;
+	vertical-align: middle;
+	justify-content: center;
 }
 
 #formContainer {
-	margin: auto;
-	background-color: #0E4C49;
-	text-align: center;
 	padding: 20px;
-	width: 700px;
+	border: 2px solid rgb(250, 255, 189);
+}
+
+#newUserForm {
+	width: min-content;
+}
+
+#tmTitle {
+	font-size: 1em;
 }
 
 label	{
-	width: 200px;
+	width: 250px;
 }
 
+label.radio	{
+	width: 70px;
+}
+
+.label {
+	display: flex;
+	align-items: center;
+	text-align: center;
+	justify-content: center;
+}
+
+.label:not(:last-child) {
+	margin-bottom: 0;
+}
+
+input, .input {
+	width: 500px;
+}
+
+.level-item {
+	justify-content: left;
+	text-align: center;
+}
+
+.locationInput {
+	width: 150px;
+}
+
+#clubCountryInput {
+	margin-left: 50px;
+}
+
+.inClubRadio {
+	width: 20px;
+}
+
+.title.is-three {
+	margin: 5px, 0, 5px, 0;
+}

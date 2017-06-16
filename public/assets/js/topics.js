@@ -66,7 +66,7 @@ function addNewSession(sessionDetails, callback) {
 };
 
 function noTokenRedirect(){
-	localStorage.setItem('message', 'Please log in first to submit Questions. Thank you!');
+	localStorage.setItem('message', 'Please log in first to submit Topics. Thank you!');
 	location.href = `login.html?message`;
 	// console.log(`login.html?message`);
 	// console.log(localStorage.getItem('message'));
@@ -118,7 +118,7 @@ function addQuestion(){
 				'<div class="topicQuestion field is-grouped">' +
 					'<label class="label" >Question: </label>' +
 				  '<p class="control">' +
-				    '<textarea  class="topicQuestionInput textarea" placeholder="Normal textarea" required></textarea>' +
+				    '<textarea  class="topicQuestionInput textarea" placeholder="Textarea" required></textarea>' +
 				  '</p>' + '<a class="delete"></a>'+
 
 				'</div>' + '<br>');

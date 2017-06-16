@@ -1,10 +1,23 @@
 fieldset	{
 	text-align: center;
+	border: none;
 }
 
-label {
+label, .label{
+	display: flex;
 	width: 200px;
+	align-items: center;
+	justify-content: center;
+}
 
+#topicsSubmitArea {
+	display: flex;
+	width: auto;
+	margin: auto;
+	padding: 20px;
+	text-align: center;
+	vertical-align: middle;
+	justify-content: center;
 }
 
 #sessionSubmitForm {
@@ -16,3 +29,29 @@ label {
 	width: 200px;
 }
 
+#fieldsetArea {
+	padding: 20px;
+	border: 2px solid rgb(250, 255, 189);
+}
+
+#topicIntroTitle {
+	margin-top: 0;
+}
+
+.label:not(:last-child) {
+	margin-bottom: 0;
+}
+
+.field {
+	display: flex;
+}
+
+h3.title:not(:last-child), h3.subtitle:not(:last-child) {
+    margin-bottom: .5rem;
+    margin-top: .5rem;
+}
+
+
+input, .input {
+	min-width: 450px;
+}

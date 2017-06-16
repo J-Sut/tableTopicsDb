@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Submit</title>
+	<title>Submit Topics</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.4.2/css/bulma.css">
 	<link rel="stylesheet" type="text/css" href="./assets/css/main.css">	
@@ -39,7 +39,7 @@
 		        Contribute Table Topics 
 		      </h1>
 		      <h2 class="subtitle">
-		        Let's build an incredible resource
+		        Let's build an incredible resource together
 		      </h2>
 		</section>
 	</header>	
@@ -50,83 +50,85 @@
 
 
 	<main>
-		<section id="tableTopicsPractice" class="control level">
 
-		</section> <!-- tableTopicsPractice  -->	
+<div id="topicsSubmitArea">
+	<form id="sessionSubmitForm">
 
-		<form id="sessionSubmitForm">
+	<section id="fieldsetArea">
+		<fieldset id="sessionInfo">
+			
+			<h3 id="topicIntroTitle" class="title is-3">Topic Introduction</h3>
+			
+			<div id="" class="field is-grouped inputSection">
+				<label for="themeInput" class="label">Theme: </label>
+			  <p class="control">
+			    <input id="themeInput" class="input" type="text" placeholder="Topic Theme" required>
+			  </p>
+			</div>
 
-			<fieldset id="sessionInfo">
-				
-				<h2 class="title is-2">Topic Introduction</h2>
-				
-				<div id="" class="field is-grouped inputSection">
-					<label for="themeInput" class="label">Theme: </label>
-				  <p class="control">
-				    <input id="themeInput" class="input" type="text" placeholder="Normal input" required>
-				  </p>
-				</div>
+			<div class="field is-grouped">
+				<label class="label" for="sessionIntro">Session Introduction: </label>
+			  <p class="control">
+			    <textarea id="sessionIntro" name="sessionIntro" class="textarea" placeholder="A brief introduction to your topic" required></textarea>
+			  </p>
 
-				<div class="field is-grouped">
-					<label class="label" for="sessionIntro">Session Introduction: </label>
-				  <p class="control">
-				    <textarea id="sessionIntro" name="sessionIntro" class="textarea" placeholder="Normal textarea" required></textarea>
-				  </p>
+			</div>
 
-				</div>
+			<div class="field is-grouped">
+				<label class="label" for="keywordsInput">Keywords: </label>
+			  <p class="control">
+			    <input id="keywordsInput" class="input" type="text" name="keywordsInput"  placeholder="Please separate each keyword with a ," required>
+			  </p>
+			</div>								
+		</fieldset> <!-- sessionInfo -->
 
-				<div class="field is-grouped">
-					<label class="label" for="keywordsInput">Keywords: </label>
-				  <p class="control">
-				    <input id="keywordsInput" class="input" type="text" name="keywordsInput"  placeholder="Normal input" required>
-				  </p>
-				</div>								
-			</fieldset> <!-- sessionInfo -->
+		<fieldset id="sessionQuestions">
+			<h3 class="title is-3">Table Topics</h3>
+			
 
-			<fieldset id="sessionQuestions">
-				<h2 class="title is-2">Table Topics</h2>
-				
+			<div class="topicQuestion field is-grouped">
+				<label class="label" >Question: </label>
+			  <p class="control">
+			    <textarea  class="topicQuestionInput textarea" placeholder="Textarea" required></textarea>
+			  </p>
 
-				<div class="topicQuestion field is-grouped">
-					<label class="label" >Question: </label>
-				  <p class="control">
-				    <textarea  class="topicQuestionInput textarea" placeholder="Normal textarea" required></textarea>
-				  </p>
+			</div>
 
-				</div>
+			<div class="topicQuestion field is-grouped">
+				<label class="label" >Question: </label>
+			  <p class="control">
+			    <textarea  class="topicQuestionInput textarea" placeholder="Textarea" required></textarea>
+			  </p>
 
-				<div class="topicQuestion field is-grouped">
-					<label class="label" >Question: </label>
-				  <p class="control">
-				    <textarea  class="topicQuestionInput textarea" placeholder="Normal textarea" required></textarea>
-				  </p>
+			</div>
 
-				</div>
+			<div class="topicQuestion field is-grouped">
+				<label class="label" >Question: </label>
+			  <p class="control">
+			    <textarea  class="topicQuestionInput textarea" placeholder="Textarea" required></textarea>
+			  </p>
 
-				<div class="topicQuestion field is-grouped">
-					<label class="label" >Question: </label>
-				  <p class="control">
-				    <textarea  class="topicQuestionInput textarea" placeholder="Normal textarea" required></textarea>
-				  </p>
+			</div>
 
-				</div>
+			<div class="topicQuestion field is-grouped">
+				<label class="label" >Question: </label>
+			  <p class="control">
+			    <textarea  class="topicQuestionInput textarea" placeholder="Textarea" required></textarea>
+			  </p>
 
-				<div class="topicQuestion field is-grouped">
-					<label class="label" >Question: </label>
-				  <p class="control">
-				    <textarea  class="topicQuestionInput textarea" placeholder="Normal textarea" required></textarea>
-				  </p>
+			</div>
 
-				</div>
+			<div class="topicQuestion field is-grouped">
+				<label class="label" >Question: </label>
+			  <p class="control">
+			    <textarea  class="topicQuestionInput textarea" placeholder="Textarea" required></textarea>
+			  </p>
+			</div>
+		</fieldset> <!-- sessionQuestions -->
+		
+	</section>
 
-				<div class="topicQuestion field is-grouped">
-					<label class="label" >Question: </label>
-				  <p class="control">
-				    <textarea  class="topicQuestionInput textarea" placeholder="Normal textarea" required></textarea>
-				  </p>
-				</div>
-			</fieldset> <!-- sessionQuestions -->
-	
+
 
 			<section id="buttonHolder">
 				<button id="addQuestion" class="button " type="button">Add a question</button>
@@ -134,7 +136,10 @@
 				<button id="topicSubmit" type="submit" class="button is-primary">Submit</button>				
 			</section>
 			
-		</form> <!-- sessionSubmitForm -->
+	</form> <!-- sessionSubmitForm -->	
+</div>	
+
+	
 
 
 	</main>
