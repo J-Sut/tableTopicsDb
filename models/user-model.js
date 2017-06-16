@@ -8,7 +8,7 @@ const userSchema = mongoose.Schema({
 	password: {type: String, required: true},
 	email: {type: String, unique: true, required: false},
 	inClub: {type: Boolean, required: true},
-	memberClubList: {type: String, required: false}
+	memberClubList: {type: Array, required: false}
 });
 
 const User = mongoose.model('User', userSchema);

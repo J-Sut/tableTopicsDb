@@ -25,13 +25,21 @@ label, .label{
 	margin: auto;
 }
 
-#keywordsInput {
-	width: 200px;
+.textarea {
+  display: block;
+  max-height: 600px;
+  max-width: 100%;
+  min-height: 60px;
+
+  padding: 0.625em;
+  resize: vertical;
 }
 
 #fieldsetArea {
 	padding: 20px;
 	border: 2px solid rgb(250, 255, 189);
+	width: auto;
+	max-width: 2000px;
 }
 
 #topicIntroTitle {
@@ -53,5 +61,6 @@ h3.title:not(:last-child), h3.subtitle:not(:last-child) {
 
 
 input, .input {
-	min-width: 450px;
+	min-width: 250px;
+	max-width: 450px;
 }

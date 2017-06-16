@@ -104,13 +104,16 @@ router.post('/', (req, res) => {
 			.findOne({name: req.body.clubName})
 			.exec()
 		}) //remove once uncommented below
+
+// *************** the super secret sauce for adding members to clubs
+// *************** use this to push topics to users
+
+
 		.then(club => {
 				if (club){
+					return club;
 					console.log("club is already registered:" + club, club._id, club.getObjectId());
 					console.log(_newUser);
-					//Club.findByIdAndUpdate({"_id":club._id}, {$push:{members: _newUser._id}});
-					club.members.push(_newUser);
-					return res.status(200).json(club);
 				} else {
 					return Club
 					.create({
@@ -124,19 +127,15 @@ router.post('/', (req, res) => {
 				} 
 			})
 			.then(club => {
-				if(club._id) res.status(201).json(_newUser)
+				Club
+					.findByIdAndUpdate(club._id, {$addToSet:{members: _newUser}})
+					.exec();
+				res.status(201).json(_newUser)
 			})
-		//**************************************
-		// .exec()
-		// 			//user => res.status(201).json(user))
-		// .then(club => {
-		// 	//Assign user to the club.
-		// 	//club.members.push(user);
-		// })
-		.catch(err => {
-			console.error(err);
-			res.status(500).json({message: 'Internal server error from user-router'});
-		});
+			.catch(err => {
+				console.error(err);
+				res.status(500).json({message: 'Internal server error from user-router'});
+			});
 });
 
 // Begin User Login Session
