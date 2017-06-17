@@ -95,7 +95,7 @@ function displaySession(session){
 	let $sectionCard = $('<section />', {class: 'section tableTopicSession'});
 	let $container = $('<div />', {class: 'container ttContainer columns'});
 
-	let $sessionMetaData = $('<section />', {class: 'sessionMetaData column is-one-third '});
+	let $sessionMetaData = $('<section />', {class: 'sessionMetaData column '});
 	let $themeLabel = $('<h3 />', {class: 'themeLabel title', text: "Theme"});
 	let $themeData = $('<h5 />', {class: 'themeData topicInfo', text: session.theme});
 	let $introductionlabel = $('<h3 />', {class: 'introductionlabel title', text: "Introduction"});
@@ -103,7 +103,7 @@ function displaySession(session){
 	let $keywordsLabel = $('<h3 />', {class: 'keywordsLabel title', text: "Keywords"});
 	let $keywordsData = $('<h5 />', {class: 'keywordsData topicInfo', text: session.keywords.join(', ')});
 
-	let $sessionQuestions = $('<section />', {class: 'sessionQuestions column is-two-thirds'});
+	let $sessionQuestions = $('<section />', {class: 'sessionQuestions column is-two-thirds is-hidden'});
 	let $questionsLabel = $('<h3 />', {class: 'questionsLabel title', text: "Questions"});
 	let $questionsData = $('<ul />', {class: 'questionsData topicsQuestionsList', text: questionListElement});
 
@@ -136,7 +136,7 @@ function renderQueries(searchResults){
 
 
 	let $apology = $('<h3 />', {class: 'title is-3', text: "Sorry, no topic matched your search."});
-	let $invitation = $('<h3 />', {class: 'title is-3', text: `But if you have an idea for a topic, please help out adding it. Thank you`});
+	let $invitation = $('<h3 />', {class: 'title is-3', text: `But if you have one in mind, please help by adding it. Thank you`});
 
 	if(searchResults.length === 0) {
 	$('#displayTopics')
@@ -186,5 +186,11 @@ $('#topicSearch').on('submit', function(e){
 // logout the user
 $('#logOut').on('click', function(){
 	checkForToken(logOutUser);
-})
+});
 
+
+
+$('#testee').on('click', function(){
+	$('.sessionQuestions').toggleClass('is-hidden');
+	$('.sessionMetaData').toggleClass('is-one-third');
+});

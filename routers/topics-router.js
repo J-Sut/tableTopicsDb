@@ -8,6 +8,8 @@ const jsonParser = bodyParser.json();
 const MyModel = mongoose.connect
 
 const {Topic} = require('../models/topic-model');
+const {User} = require('../models/user-model');
+
 
 // ************* Topics GET Endpoints *************
 
@@ -44,7 +46,6 @@ router.get('/session', (req, res) => {
 				});
 		});
 });		
-
 
 router.get('/question', (req, res) => {
 	Topic
@@ -117,12 +118,14 @@ router.post('/', (req, res) => {
 			introduction: req.body.sessionIntro,
 			keywords: req.body.keywords,
 			questions: req.body.questions,
+			user_id: req.session.userId
 		})
-		.then(
-			post => res.status(201).json(post))
+		.then(topic => {
+			res.status(201).json(topic)
+		})
 		.catch(err => {
 			console.error(err);
-			res.status(500).json({message: 'Internal server error'});
+			res.status(500).json({message: 'Internal server error'})
 		});
 });
 

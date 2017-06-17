@@ -1,6 +1,4 @@
 #displayTopicsFiller {
-	display: flex;
-	justify-content: center;
 	padding: 10px;
 }
 
@@ -11,7 +9,6 @@
 	height: 300px;
 	width: 300px;
 	border-radius: 100%;
-	/*margin: auto;*/
 }
 
 #spaceHolder2 {
@@ -20,6 +17,25 @@
 
 #line1 {
 	vertical-align: middle;
+}
+
+#queryButton {
+	max-width: 150px;
+	margin-left: 10px;
+}
+
+#queryInput {
+	margin-right: 8px;
+}
+
+.displayFiller {
+	  margin: auto;
+    width: 50%;
+    padding: 15px;
+}
+
+h3.displayFiller {
+	width: 80%;
 }
 
 .tableTopicSession {
@@ -47,16 +63,15 @@
 .ttContainer {
 	border: 3px solid rgb(250, 255, 189);
 	margin: 10px;
+	width: auto;
 }
 
+.ttContainer:nth-child(even) {
+	border: 3px solid #E0EEEE;
+}
 
 .newTopicLead {
 	font-size: 1.3em; 
-}
-
-h3.title {
-	align-content: left;
-	margin: 0;
 }
 
 h3.title:not(:last-child), h3.subtitle:not(:last-child) {
