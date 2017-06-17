@@ -6,6 +6,25 @@ var userData;
 
 // ************ f(Modify-state) **************
 
+function getTopics(callback){
+	let userId = userData.user_id;
+
+	console.log(userId)
+
+	$.ajax({
+		type: 'GET',
+		url: `http://localhost:8080/users/${userId}/topics`,
+		success: function(data){
+			console.log("Great token you've got there")
+			callback(data)
+		},
+		error: function(data){
+			console.log('Token not found')
+		},
+	});	
+};
+
+
 function checkForToken(callback){
 	console.log('check for token fired')
  
@@ -18,6 +37,7 @@ function checkForToken(callback){
 		},
 		error: function(data){
 			console.log('Token not found')
+			location.href = 'login.html';
 		}
 	});	
 }
@@ -25,6 +45,7 @@ function checkForToken(callback){
 function getProfileData(){
 	$.getJSON('users/profile/me', function(data){
 		userData = data;
+		console.log(data)
 		displayProfileData(data);
 	});
 };
@@ -109,6 +130,59 @@ function displayProfileData(data){
 	};
 };
 
+
+function displaySession(userSessions){
+
+	let session = userSessions
+
+	console.log('session2: ', session[0].theme, session[0].questions, session[0].keywords);
+
+
+
+
+	// let questionListElement = [];
+
+	// let $sectionCard = $('<section />', {class: 'section tableTopicSession'});
+	// let $container = $('<div />', {class: 'container ttContainer columns'});
+
+	// let $sessionMetaData = $('<section />', {class: 'sessionMetaData column '});
+	// let $themeLabel = $('<h3 />', {class: 'themeLabel title', text: "Theme"});
+	// let $themeData = $('<h5 />', {class: 'themeData topicInfo', text: session.theme});
+	// let $introductionlabel = $('<h3 />', {class: 'introductionlabel title', text: "Introduction"});
+	// let $introductionData = $('<h5 />', {class: 'introductionData topicInfo', text: session.introduction});
+	// let $keywordsLabel = $('<h3 />', {class: 'keywordsLabel title', text: "Keywords"});
+	// let $keywordsData = $('<h5 />', {class: 'keywordsData topicInfo', text: session.keywords.join(', ')});
+
+	// let $sessionQuestions = $('<section />', {class: 'sessionQuestions column is-two-thirds is-hidden'});
+	// let $questionsLabel = $('<h3 />', {class: 'questionsLabel title', text: "Questions"});
+	// let $questionsData = $('<ul />', {class: 'questionsData topicsQuestionsList', text: questionListElement});
+
+	// $sectionCard.append($container);
+	// $container.append($sessionMetaData, $sessionQuestions);
+	// $sessionMetaData.append($themeLabel, $themeData, $introductionlabel, $introductionData, $keywordsLabel, $keywordsData);
+
+	// $sessionQuestions.append($questionsLabel, $questionsData);
+
+
+	// $.map(session.questions, (question, index) => {
+	// 	console.log('question',index, question);
+	// 	//questionsArray.push(question);
+	// 	//questionListElement.push('<li class="tableTopic">'+ question +'</li>');
+	// 	let $li = $('<li />', {class: 'tableTopic', text: question});
+	// 	$questionsData.append($li);
+	// 	//questionListElement.push('<li class="tableTopic">'+ question +'</li>');
+	// });
+
+	// $('#displayMyTopics').append($sectionCard);
+};
+
+
+
+
+
+
+
+
 // ************ Event Listeners **************
 
 // Get and Display profile info of logged in User
@@ -134,3 +208,9 @@ $('#submitUpdate').on('click', function() {
 $('#logOut').on('click', function(){
 	checkForToken(logOutUser);
 })
+
+// Get Users submited topics
+$('#myTopics').on('click', function(){
+	console.log('getting topics')
+	getTopics(displaySession);
+});
