@@ -8,6 +8,7 @@ const jsonParser = bodyParser.json();
 const {User} = require('../models/user-model');
 const {Profile} = require('../models/profile-model');
 const {Club} = require('../models/club-model');
+const {Topic} = require('../models/topic-model');
 
 // ************* User GET Endpoints *************
 
@@ -26,7 +27,6 @@ router.get('/', (req, res) => {
 
 // Get a user Profile by Id
 router.get('/profile/me', (req, res) => {
-	//if(! )
 	Profile
 	.findOne({user_id: req.session.userId})	
 	.exec()
@@ -57,9 +57,22 @@ router.get('/token/', (req, res) => {
 })
 
 
+// Get Topics submitted by User
+router.get('/:id/topics', (req, res) => {
+
+	Topic
+		.find({user_id: req.params.id})	
+		.exec()
+		.then(userTopics => res.status(200).json(userTopics))
+		.catch(err => {
+	  		console.error(err);
+	  		res.status(500).json({message: 'Internal server error'})
+	  });
+	});
+
 router.get('/:id', (req, res) => {
 	User
-	.findOne()	
+	.findById(req.params.id)	
 	.exec()
 	.then(user => res.status(200).json(user))
 	.catch(err => {
@@ -276,6 +289,8 @@ router.delete('/logout/:id', (req, res) => {
 	delete req.session.userId;
 	res.send("stuff is gone").status(204)
 });
+
+
 
 
 // ************* Other functions *************
