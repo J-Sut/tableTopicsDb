@@ -20,19 +20,35 @@ router.get('/', (req, res) => {
   });
 });
 
+// Get club by member's id for profiles
+router.get('/:id/profile', (req, res) => {
+	Club
+		.find({members: req.params.id})
+		.exec()
+		.then(club => 
+			res.json(club)
+		)
+		.catch(err => {
+	  	console.error(err);
+		  res.status(500).json({message: 'Internal server error'})
+	  });
+});
+
 // Get club by id
 router.get('/:id', (req, res) => {
 	Club
-	.findById(req.params.id)
-	.exec()
-	.then(club => 
-		res.json(club)
-	)
-	.catch(err => {
-  	console.error(err);
-	  res.status(500).json({message: 'Internal server error'})
-  });
+		.findById(req.params.id)
+		.exec()
+		.then(club => 
+			res.json(club)
+		)
+		.catch(err => {
+	  	console.error(err);
+		  res.status(500).json({message: 'Internal server error'})
+	  });
 });
+
+
 
 // ************* Club POST Endpoints *************
 
