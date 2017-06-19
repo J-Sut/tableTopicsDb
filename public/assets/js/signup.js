@@ -25,6 +25,7 @@ function addNewUser(newUser, clubInfo, callback) {
 		passwordConf: newUser.pwConf,	
 		email: newUser.email,
 		inClub: newUser.inClub,
+		tm_title: newUser.tmTitle,
 		memberClubList: clubInfo.name,
 
 		clubName: clubInfo.name,
@@ -42,8 +43,6 @@ function addNewUser(newUser, clubInfo, callback) {
 		url: ttdbURL,
 		data: JSON.stringify(query),
 		success: function(data){
-			//location.href = 'login.html';
-			console.log(data);
 			createUserProfile(data);
 			location.href = 'login.html';
 
@@ -54,15 +53,16 @@ function addNewUser(newUser, clubInfo, callback) {
 };
 
 function createUserProfile(userData){
-	console.log(userData);
+	console.log("userData for Creating profile: ", userData);
 	let userId = userData._id;
 
 	var ttdbURL = "http://localhost:8080/users/" +userId+ "/profile";
 	var query = {
 		user_id: userId,
-		displayName: "Example_name3",
-		bio: "A speaker on the rise3",
-		photo: "photo3.com"
+		displayName: userData.username,
+		bio: "",
+		photo: "",
+		tm_title: userData.tm_title
 	}; 
 
 	console.log("createUserProfile Fired");
@@ -72,7 +72,6 @@ function createUserProfile(userData){
 		url: ttdbURL,
 		data: JSON.stringify(query),
 		success: function(profileData){
-			//location.href = 'login.html';
 			console.log(profileData);
 		},
 		contentType: 'application/json',
@@ -107,6 +106,9 @@ $('#newUserForm').submit(function(e){
 		password: $('#passwordInput').val(),
 		pwConf: $('#passwordConfInput').val(),
 		inClub: $('input[name="clubCheck"]:checked').val(),
+		
+
+		tmTitle: $('#tmTitle option:selected').val()
 	};
 
 	let clubInfo = {
@@ -125,6 +127,9 @@ $('#newUserForm').submit(function(e){
 	  console.log(message);
 	  alert(message);
 	};
+
+		console.log('tmTitle: ', tmTitle);
+
 
 });
 

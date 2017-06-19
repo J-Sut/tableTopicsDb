@@ -38,7 +38,7 @@ router.get('/profile/me', (req, res) => {
 });
 
 // Return list of profiles
-router.get('/profile', (req, res) => {
+router.get('/profiles', (req, res) => {
 	Profile
 	.find()	
 	.exec()
@@ -195,7 +195,8 @@ router.post('/:id/profile', (req, res) => {
 			displayName: req.body.displayName,
 			bio: req.body.bio,
 			photo: req.body.photo,
-			user_id: req.params.id
+			user_id: req.params.id,
+			tmTitle: "Toastmaster"
 		})
 		.then(
 			user => res.status(201).json(user))

@@ -1,7 +1,8 @@
 /*assets {
 	light Blue:  #E0EEEE;
 	dark blue: #0E4C49;
-	light beige: rgb(250, 255, 189);;
+	light beige: rgb(250, 255, 189);
+	dark red: #772432;
 }*/
 
 * {
@@ -149,7 +150,7 @@ h3.title:not(:last-child), h3.subtitle:not(:last-child) {
     max-height: 600px;
     max-width: 100%;
     min-height: 60px;
-    min-width: 250px;
+    min-width: 300px;
     padding: 0.625em;
     resize: both;
 }

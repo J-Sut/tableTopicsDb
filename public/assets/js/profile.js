@@ -9,13 +9,10 @@ var userData;
 function getTopics(callback){
 	let userId = userData.user_id;
 
-	console.log(userId)
-
 	$.ajax({
 		type: 'GET',
 		url: `http://localhost:8080/users/${userId}/topics`,
 		success: function(data){
-			console.log("Great token you've got there")
 			callback(data)
 		},
 		error: function(data){
@@ -24,15 +21,11 @@ function getTopics(callback){
 	});	
 };
 
-
 function checkForToken(callback){
-	console.log('check for token fired')
- 
 	$.ajax({
 		type: "GET",
 		url: 'http://localhost:8080/users/token',
 		success: function(data){
-			console.log("Great token you've got there")
 			callback(data)
 		},
 		error: function(data){
@@ -45,24 +38,36 @@ function checkForToken(callback){
 function getProfileData(){
 	$.getJSON('users/profile/me', function(data){
 		userData = data;
-		console.log(data)
 		displayProfileData(data);
+		getTopics(displaySession);
+		getClubInfo(data)
 	});
 };
 
-function getClubInfo(){
+function getClubInfo(userData){
+	let userId = userData.user_id
 
+	$.ajax({
+		type: 'GET',
+		url: `http://localhost:8080/clubs/${userId}/profile`,
+		success: function(clubs){
+			renderClubInfo(clubs)
+		},
+		error: function(data){
+			console.log('Token not found')
+		},
+	});	
 };
 
-function updateProfile(){
-	console.log('Update Profile fired')
-	// let profileId = //...
-	// let updatePath = "users" + profileId + "profile"
-	// $.put("users/59288af4af018937b04a0625/profile", function(){});
+function updateProfile(updateInfo){
+
+		console.log('update Profile fired: ', updateInfo);
+ 
 		let query = {
 			id: userData._id,
-			displayName: $('#userNameInput').val(),
-			bio: $('#userBioInput').val()}; 
+			displayName: updateInfo.name,
+			bio: updateInfo.bio
+			}
 
 		$.ajax({
 			type: "PUT",
@@ -78,16 +83,9 @@ function updateProfile(){
 		});
 };
 
-//on form submit
-//Call the update endpoint'
-
-
-function getProfileJsonObject(data){
-
-};
+// ************ f(Render-state) **************
 
 function displayContent(){
-	console.log('display Content Fired')
 	$('#logOut, #profileTab, #logIn, #signUp').toggleClass('is-hidden');
 };
 
@@ -106,81 +104,56 @@ function logOutUser(userTokenId){
 	});
 };
 
-// ************ f(Render-state) **************
-
 $(function(){
 	checkForToken(displayContent);
 });
 
 function displayProfileData(data){
-			//populate form
-	console.log(data)
-	if(data === null){
-		$('#updateProfile').text('Create Profile')
-			.css('background-color', 'green');
-	} else {
-		console.log(data.displayName);
-		console.log(data.bio)
-		console.log(data.user_id);
-
-		$('#userName').text(data.displayName).css('background-color', '#235434');
-		$('#userBio').text(data.bio);			
-
-		$('#updateProfile').css('background-color', 'yellow');
-	};
+	$('#userName').text(data.displayName);
+	$('#userBio').text(data.bio);			
 };
 
+function displaySession(session){
 
-function displaySession(userSessions){
+	for (let i = 0; i < session.length; i++) {
+		let questionListElement = [];
 
-	let session = userSessions
+		let $sectionCard = $('<section />', {class: 'section tableTopicSession'});
+		let $container = $('<div />', {class: 'container ttContainer columns'});
 
-	console.log('session2: ', session[0].theme, session[0].questions, session[0].keywords);
+		let $sessionMetaData = $('<section />', {class: 'sessionMetaData column '});
+		let $themeLabel = $('<h3 />', {class: 'themeLabel title', text: "Theme"});
+		let $themeData = $('<h5 />', {class: 'themeData topicInfo', text: session[i].theme});
+		let $introductionlabel = $('<h3 />', {class: 'introductionlabel title', text: "Introduction"});
+		let $introductionData = $('<h5 />', {class: 'introductionData topicInfo', text: session[i].introduction});
+		let $keywordsLabel = $('<h3 />', {class: 'keywordsLabel title', text: "Keywords"});
+		let $keywordsData = $('<h5 />', {class: 'keywordsData topicInfo', text: session[i].keywords.join(', ')});
 
+		let $sessionQuestions = $('<section />', {class: 'sessionQuestions column is-two-thirds'});
+		let $questionsLabel = $('<h3 />', {class: 'questionsLabel title', text: "Questions"});
+		let $questionsData = $('<ul />', {class: 'questionsData topicsQuestionsList', text: questionListElement});
 
+		$sectionCard.append($container);
+		$container.append($sessionMetaData, $sessionQuestions);
+		$sessionMetaData.append($themeLabel, $themeData, $introductionlabel, $introductionData, $keywordsLabel, $keywordsData);
 
+		$sessionQuestions.append($questionsLabel, $questionsData);
 
-	// let questionListElement = [];
+		$.map(session[i].questions, (question, index) => {
+			let $li = $('<li />', {class: 'tableTopic', text: question});
+			$questionsData.append($li);
+		});
 
-	// let $sectionCard = $('<section />', {class: 'section tableTopicSession'});
-	// let $container = $('<div />', {class: 'container ttContainer columns'});
-
-	// let $sessionMetaData = $('<section />', {class: 'sessionMetaData column '});
-	// let $themeLabel = $('<h3 />', {class: 'themeLabel title', text: "Theme"});
-	// let $themeData = $('<h5 />', {class: 'themeData topicInfo', text: session.theme});
-	// let $introductionlabel = $('<h3 />', {class: 'introductionlabel title', text: "Introduction"});
-	// let $introductionData = $('<h5 />', {class: 'introductionData topicInfo', text: session.introduction});
-	// let $keywordsLabel = $('<h3 />', {class: 'keywordsLabel title', text: "Keywords"});
-	// let $keywordsData = $('<h5 />', {class: 'keywordsData topicInfo', text: session.keywords.join(', ')});
-
-	// let $sessionQuestions = $('<section />', {class: 'sessionQuestions column is-two-thirds is-hidden'});
-	// let $questionsLabel = $('<h3 />', {class: 'questionsLabel title', text: "Questions"});
-	// let $questionsData = $('<ul />', {class: 'questionsData topicsQuestionsList', text: questionListElement});
-
-	// $sectionCard.append($container);
-	// $container.append($sessionMetaData, $sessionQuestions);
-	// $sessionMetaData.append($themeLabel, $themeData, $introductionlabel, $introductionData, $keywordsLabel, $keywordsData);
-
-	// $sessionQuestions.append($questionsLabel, $questionsData);
-
-
-	// $.map(session.questions, (question, index) => {
-	// 	console.log('question',index, question);
-	// 	//questionsArray.push(question);
-	// 	//questionListElement.push('<li class="tableTopic">'+ question +'</li>');
-	// 	let $li = $('<li />', {class: 'tableTopic', text: question});
-	// 	$questionsData.append($li);
-	// 	//questionListElement.push('<li class="tableTopic">'+ question +'</li>');
-	// });
-
-	// $('#displayMyTopics').append($sectionCard);
+		$('#displayMyTopics').append($sectionCard);
+	}
 };
 
+function renderClubInfo(clubs){
+	$('#clubName').text(clubs[0].name);
+	$('#clubLocation').text(clubs[0].location.city + ', ' + clubs[0].location.country );
+	$('#clubWebsite').text(clubs[0].website);
 
-
-
-
-
+};
 
 
 // ************ Event Listeners **************
@@ -191,26 +164,22 @@ $(function(e){
 });
 
 // Reveal inputs so that users can update their profile
-$('#updateProfile').on('click', function(){
-	$('#userNameInput, #userBioInput, #submitUpdate').removeClass('hide');
-	$('#updateProfile, #userName, #userBio').addClass('hide');
+$('#updateProfile, #cancel, .delete, .modal-background').on('click', function(){
+	$('.modal').toggleClass('is-active');
 });
 
-// Submit new profile information to update
-$('#submitUpdate').on('click', function() {
-	$('#submitUpdate, #userNameInput, #userBioInput').addClass('hide');
-	$('#updateProfile, #userName, #userBio').removeClass('hide');
+$('#submitButton').on('click', function(){
+	let userProfile = {
+		name: $('#userNameUpdate').val(),
+		bio: $('#userBioUpdate').val(),
+		tmTitle: $('#userTmTitleUpdate').val(),
+	}
 
-	updateProfile();
+	updateProfile(userProfile);
+	$('.modal').toggleClass('is-active');
 });
 
 // logout the user
 $('#logOut').on('click', function(){
 	checkForToken(logOutUser);
 })
-
-// Get Users submited topics
-$('#myTopics').on('click', function(){
-	console.log('getting topics')
-	getTopics(displaySession);
-});

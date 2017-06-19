@@ -4,7 +4,14 @@
 	<title>TTDb Profile</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.4.2/css/bulma.css">
-	<link rel="stylesheet" type="text/css" href="./assets/css/main.css">	
+	<link rel="stylesheet" type="text/css" href="./assets/css/main.css">
+	<link rel="stylesheet" type="text/css" href="./assets/css/index.css">	
+
+
+
+	<link rel="stylesheet" type="text/css" href="./assets/css/profile.css">	
+
+
 </head>
 <body>
 
@@ -46,62 +53,114 @@
 		  </div>
 		</section>
 	</header>	
-
-
-
-
-	<main id="profilePage">
-
-		<button id="myTopics" type="button " class="button is-dark">Show Topic Questions</button>
+	<section class="control level tableTopicsBuffer">
+	</section> <!-- tableTopicsPractice  -->
+	<main id="profilePage">	
 
 
 		<figure class="image is-128x128">
 		  <img src="http://bulma.io/images/placeholders/128x128.png">
 		</figure>		<br>
 
-		<button type="button" id="updateProfile">Update Profile</button>
-		<button type="button" id="submitUpdate" class="hide">Submit Update</button>
+		
 
 
-		<div id="userProfileInfo">
-			<h2>User Information</h2>
-			<label>User Name:</label>
-				<input type="text" id="userNameInput" name="userName" class="hide">
-				<span id="userName"></span>
-				<br>
-			<label>User Bio:</label>
-				<input type="text" id="userBioInput" name="userBio" class="hide">
-				<span id="userBio"></span>
+		<span class="columns" >
+				<div id="userProfileInfo" class="column">
+					<label>Name:</label>
+						<h3 id="userName" class="title is-3"></h3>
+						<br>
+					<label>Bio:</label>
+						<h3 id="userBio" class="title is-3"></h3>
+						<br>
+					<label>TM Title:</label>
+						<h3 id="tmTitle" class="title is-3"></h3> <br>
+					<button type="button" id="updateProfile" class="button is-small">Update Profile</button>	
+				</div>
 
+				<section id="userClubInfo" class="column">
+					<h3 class="title is-3">Club Membership</h3>
+		
+					<span id="clubName"></span><br>
+					<span id="clubLocation"></span><br>
+					<span id="clubWebsite"></span><br>
+
+				</section> 	
+		</span>				
+
+		
+
+		<div>
+			<h3 class="title is-3">My Topics Contributed:</h3> <hr>
+			<section id="displayMyTopics"></section>	
 		</div>
 
-		<section id="userClubInfo">
-			<h2>Club Membership</h2>
-			<span id="tmTitle">Advanced Communicator Bronze</span><br>
-			<span id="clubName">Toast of the Town</span><br>
-			<span id="clubLocation">Seattle, WA</span><br>
-			<span id="clubWebsite">www.toastofthetown.org</span><br>
-		</section>
-
-		<div id="questionsSubmitted">
-			<h2>Table Topics Questions Submitted</h2>
-			<section class="sessionSubmission">
-				<h3>Theme: Deep Questions</h3>
-				<ul class="sessionQuestionsSection">
-					<li class="question">1. What are we doing with the world?</li>
-					<li class="question">2. What are we doing with the world?</li>
-					<li class="question">3. What are we doing with the world?</li>
-					<li class="question">4. What are we doing with the world?</li>
-					<li class="question">5. What are we doing with the world?</li>					
-				</ul>
-
-			</section>
-		</div>		
-
-
-		<section id="displayMyTopics"> Here's where my topics will go... </section>
-
 	</main>
+	<footer id="pageFooter" class="footer">
+	  <div class="container">
+	    <div class="content has-text-centered columns"> 
+
+	      <section id="footerCol1" class="column is-three-quarters">		      
+		      <p>
+		        <strong>Table Topics Db</strong> by <a href="https://github.com/J-Sut" target="_blank">Jeremy Sutton</a>. <br>
+		         The source code is licensed
+		        <a href="#">MIT</a>. The website content
+		        is licensed <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC ANS 4.0</a>.
+		      </p>		      	
+	      </section>
+
+	      <section id="footerCol2" class="column">		   
+
+	      </section>
+
+	      <p>
+	        <a class="icon" href="https://github.com/jgthms/bulma">
+	          <i class="fa fa-github"></i>
+	        </a>
+	      </p>
+	    </div>
+	  </div> <!-- container -->
+	</footer>	
+
+	<div class="modal">
+	  <div class="modal-background"></div>
+	  <div class="modal-card">
+
+	    <section class="modal-card-body">
+
+				<form id="profileUpdateForm">
+					<h3 id="modalTitle" class="title is-3">Update public profile:</h3>
+					
+					<div id="displayNameUpdate" class="field is-grouped inputSection">
+						<label  class="label">Name displayed: </label>
+					  <p class="control">
+					    <input  id="userNameUpdate" class="input" type="text" placeholder="" required>
+					  </p>
+					</div>
+
+					<div class="field is-grouped">
+						<label class="label" for="sessionIntro">Bio: </label>
+					  <p class="control">
+					    <textarea id="userBioUpdate" name="sessionIntro" class="textarea" placeholder=""></textarea>
+					  </p>
+					</div>
+
+					<div class="field is-grouped">
+						<label class="label" for="keywordsInput">Toastmaster's title: </label>
+					  <p class="control">
+					    <input id="userTmTitleUpdate" class="input" type="text">
+					  </p>
+					</div>		
+				</form> <!-- sessionInfo -->
+	    </section>
+
+	    <footer class="modal-card-foot">
+	      <button id="submitButton" class="button is-success" type="button">Save changes</button>
+	      <a id="cancel" class="button">Cancel</a>
+	    </footer>
+	  </div>
+	</div>
+
 <script type="text/javascript" src="./assets/jquery.min.js"></script>
 <script type="text/javascript" src="./assets/js/profile.js"></script>
 </body>
