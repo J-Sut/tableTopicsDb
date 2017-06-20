@@ -6,12 +6,7 @@
 	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.4.2/css/bulma.css">
 	<link rel="stylesheet" type="text/css" href="./assets/css/main.css">
 	<link rel="stylesheet" type="text/css" href="./assets/css/index.css">	
-
-
-
 	<link rel="stylesheet" type="text/css" href="./assets/css/profile.css">	
-
-
 </head>
 <body>
 
@@ -53,49 +48,56 @@
 		  </div>
 		</section>
 	</header>	
+
 	<section class="control level tableTopicsBuffer">
 	</section> <!-- tableTopicsPractice  -->
+
 	<main id="profilePage">	
+		<div id="row1">
+			<figure class="image is-128x128">
+				  <img src="http://bulma.io/images/placeholders/128x128.png">
+				</figure>		<br>
 
+				<span class="columns" >
+						<div id="userProfileInfo" class="column">
+							<label>Name:</label>
+								<h3 id="userName" class="title is-3"></h3>
+								<br>
+							<label>Bio:</label>
+								<h3 id="userBio" class="title is-3"></h3>
+								<br>
+							<label>TM Title:</label>
+								<h3 id="tmTitle" class="title is-3"></h3> <br>
+							<button type="button" id="updateProfile" class="button is-small is-dark">Update Profile</button>	
+						</div>
 
-		<figure class="image is-128x128">
-		  <img src="http://bulma.io/images/placeholders/128x128.png">
-		</figure>		<br>
+						<section id="userClubInfo" class="column">
+							<h3 class="title is-3">Club Membership</h3>
+				
+							<span id="clubName"></span><br>
+							<span id="clubLocation"></span><br>
+							<span id="clubWebsite"></span><br>
+						</section> 	
+				</span>				
+		</div> 
 
-		
+		<section class="control level tableTopicsBuffer">
+		</section> <!-- tableTopicsPractice  -->
 
-
-		<span class="columns" >
-				<div id="userProfileInfo" class="column">
-					<label>Name:</label>
-						<h3 id="userName" class="title is-3"></h3>
-						<br>
-					<label>Bio:</label>
-						<h3 id="userBio" class="title is-3"></h3>
-						<br>
-					<label>TM Title:</label>
-						<h3 id="tmTitle" class="title is-3"></h3> <br>
-					<button type="button" id="updateProfile" class="button is-small">Update Profile</button>	
-				</div>
-
-				<section id="userClubInfo" class="column">
-					<h3 class="title is-3">Club Membership</h3>
-		
-					<span id="clubName"></span><br>
-					<span id="clubLocation"></span><br>
-					<span id="clubWebsite"></span><br>
-
-				</section> 	
-		</span>				
-
-		
-
-		<div>
-			<h3 class="title is-3">My Topics Contributed:</h3> <hr>
-			<section id="displayMyTopics"></section>	
+		<div id="row2">
+				<div id="myTableTopics">
+					<h3 id="myTopicsTitle" class="title is-3 is-hidden">My Topics Contributed</h3>
+					<section id="displayMyTopics"></section>	
+				</div>			
 		</div>
+	
 
 	</main>
+
+
+	<section class="control level tableTopicsBuffer">
+	</section> <!-- tableTopicsPractice  -->
+
 	<footer id="pageFooter" class="footer">
 	  <div class="container">
 	    <div class="content has-text-centered columns"> 
@@ -145,12 +147,23 @@
 					  </p>
 					</div>
 
-					<div class="field is-grouped">
-						<label class="label" for="keywordsInput">Toastmaster's title: </label>
+					<div class="field is-grouped ">
+					  <label class="label">Toastmasters Title:</label>
 					  <p class="control">
-					    <input id="userTmTitleUpdate" class="input" type="text">
+				      <select id="tmTitleDropdown">
+				        <option value="unchanged">Select dropdown</option>
+								<option value="Not a member">Not a member of Toastmasters</option>
+								<option value="Toastmaster">Toastmaster (Fewer than 10 speeches given)</option>
+								<option value="Competent Communicator">Competent Communicator</option>
+								<option value="Advanced Communicator Bronze">Advanced Communicator Bronze</option>
+								<option value="Advanced Communicator Silver">Advanced Communicator Silver</option>
+								<option value="Advanced Communicator Gold">Advanced Communicator Gold</option>
+								<option value="Advanced Leader Bronze">Advanced Leader Bronze</option>
+								<option value="Advanced Leader Silver">Advanced Leader Silver</option>
+								<option value="Distinguished Toastmaster">Distinguished Toastmaster</option>
+				      </select>
 					  </p>
-					</div>		
+					</div>	
 				</form> <!-- sessionInfo -->
 	    </section>
 

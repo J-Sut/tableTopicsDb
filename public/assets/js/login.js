@@ -18,7 +18,7 @@ function login(em, pw, callback) {
 		url: ttdbURL,
 		data: JSON.stringify(query),
 		success: function(data){
-			location.href = 'index.html';
+			location.href = 'profile.html';
 			console.log(data);
 
 		},

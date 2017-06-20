@@ -66,7 +66,8 @@ function updateProfile(updateInfo){
 		let query = {
 			id: userData._id,
 			displayName: updateInfo.name,
-			bio: updateInfo.bio
+			bio: updateInfo.bio,
+			tmTitle: updateInfo.tmTitle
 			}
 
 		$.ajax({
@@ -110,10 +111,13 @@ $(function(){
 
 function displayProfileData(data){
 	$('#userName').text(data.displayName);
-	$('#userBio').text(data.bio);			
+	$('#userBio').text(data.bio);		
+	$('#tmTitle').text(data.tmTitle);		
 };
 
 function displaySession(session){
+
+	$('#myTopicsTitle').removeClass('is-hidden');
 
 	for (let i = 0; i < session.length; i++) {
 		let questionListElement = [];
@@ -170,10 +174,25 @@ $('#updateProfile, #cancel, .delete, .modal-background').on('click', function(){
 
 $('#submitButton').on('click', function(){
 	let userProfile = {
-		name: $('#userNameUpdate').val(),
-		bio: $('#userBioUpdate').val(),
-		tmTitle: $('#userTmTitleUpdate').val(),
+		// name: $('#userNameUpdate').val(),
+		// bio: $('#userBioUpdate').val(),
+		// tmTitle: $('#tmTitleDropdown').val(),
 	}
+
+	if (!($('#userNameUpdate').val() === '' || undefined)) {
+		userProfile.name = $('#userNameUpdate').val();
+	}
+
+	if (!($('#userBioUpdate').val() === '' || undefined)) {
+		userProfile.bio = $('#userBioUpdate').val();
+	}
+
+	if (!($('#tmTitleDropdown').val() === 'unchanged')) {
+		userProfile.tmTitle = $('#tmTitleDropdown').val();
+		console.log("yay it fired: ", $('#tmTitleDropdown').val())
+	}
+
+	console.log('userProfile.name: ', userProfile)
 
 	updateProfile(userProfile);
 	$('.modal').toggleClass('is-active');

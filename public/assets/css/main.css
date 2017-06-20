@@ -67,7 +67,7 @@ footer {
 }
 
 #pageTitle {
-	background-image: linear-gradient(to bottom, rgba(0, 0, 0, .7), rgba(0,0,0,.4)),url("../images/woman_public_speaking.jpeg");
+	background-image: linear-gradient(to bottom, rgba(0, 0, 0, .7), rgba(0,0,0,.4)),url("../images/woman_public_speaking2.png");
 	background-repeat: no-repeat;
 	background-size: cover;
 	background-position: center;
@@ -76,10 +76,11 @@ footer {
 }
 
 #pageFooter {
-	background-image: linear-gradient(to bottom, rgba(0, 0, 0, .6), rgba(0,0,0,.4)),url("../images/Microphone_audience.jpeg");
+	background-image: linear-gradient(to bottom, rgba(0, 0, 0, .6), rgba(0,0,0,.4)),url("../images/Microphone_audience3.png");
 	background-repeat: no-repeat;
-	background-size: contain;
-	background-position: center  right;
+	background-size: cover;
+	background-position: center;
+	height: 300px;
 }
 #topicSearch{
 	text-align: center;
@@ -87,6 +88,12 @@ footer {
 
 #tableTopicsPractice, .tableTopicsBuffer {
 	background-color: #772432;
+	text-align: center;
+	min-height: 25px;
+}
+
+.tableTopicsBuffer2 {
+	background-color: #E0EEEE;
 	text-align: center;
 	min-height: 25px;
 }

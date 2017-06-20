@@ -49,13 +49,10 @@ router.get('/profiles', (req, res) => {
   });
 });
 
-
-
 // Get Session Login Token
 router.get('/token/', (req, res) => {
 	res.status(200).json(req.session.userId);
 })
-
 
 // Get Topics submitted by User
 router.get('/:id/topics', (req, res) => {
@@ -121,7 +118,6 @@ router.post('/', (req, res) => {
 // *************** the super secret sauce for adding members to clubs
 // *************** use this to push topics to users
 
-
 		.then(club => {
 				if (club){
 					return club;
@@ -135,7 +131,7 @@ router.post('/', (req, res) => {
 							city: req.body.location.city,
 							country: req.body.location.country
 						},
-						website: req.body.clubWebsite
+						website: req.body.website
 					})
 				} 
 			})
@@ -178,7 +174,7 @@ router.post('/login', (req, res) => {
 //Create user Profile
 router.post('/:id/profile', (req, res) => {
 
-	const requiredFields = ['displayName', 'bio', 'photo'];
+	const requiredFields = ['displayName', 'bio', 'tmTitle', 'photo'];
 	
 	for (let i=0; i<requiredFields.length; i++) {
 		const field = requiredFields[i];
@@ -196,7 +192,7 @@ router.post('/:id/profile', (req, res) => {
 			bio: req.body.bio,
 			photo: req.body.photo,
 			user_id: req.params.id,
-			tmTitle: "Toastmaster"
+			tmTitle: req.body.tmTitle
 		})
 		.then(
 			user => res.status(201).json(user))
@@ -220,7 +216,7 @@ router.put('/:id/profile', (req, res) => {
 	}; 
 
 	const toUpdate = {};
-	const updateableFields = ['displayName', 'bio', 'photo'];
+	const updateableFields = ['displayName', 'bio', 'photo', 'tmTitle'];
 
 	updateableFields.forEach(field => {
 		if (field in req.body) {
@@ -262,9 +258,7 @@ router.put('/:id', (req, res) => {
 });
 
 
-
 // ************* User DELETE Endpoints *************
-
 
 // Delete a User profile
 router.delete('/:id/profile', (req, res) => {
@@ -290,9 +284,6 @@ router.delete('/logout/:id', (req, res) => {
 	delete req.session.userId;
 	res.send("stuff is gone").status(204)
 });
-
-
-
 
 // ************* Other functions *************
 

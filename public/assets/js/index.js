@@ -163,6 +163,7 @@ $(function(){
 $('#getOneQuestion').on('click', function(){
 	$('#sessionMetaData').empty();
 	getOneQuestion(displayQuestion);
+	$('#showQuestionsTick').addClass('is-hidden');
 });
 
 
@@ -170,6 +171,7 @@ $('#getOneQuestion').on('click', function(){
 $('#getOneSession').on('click', function(){
 	$('#displayTopics').empty();
 	getWholeSession(displaySession);
+	$('#showQuestionsTick').removeClass('is-hidden');
 });
 
 // Search db for query
@@ -180,6 +182,7 @@ $('#topicSearch').on('submit', function(e){
 	let query = $('#queryInput').val();
 	
 	submitQuery(query);
+	$('#showQuestionsTick').removeClass('is-hidden');
 
 });
 
@@ -188,9 +191,8 @@ $('#logOut').on('click', function(){
 	checkForToken(logOutUser);
 });
 
-
-
 $('#testee').on('click', function(){
 	$('.sessionQuestions').toggleClass('is-hidden');
 	$('.sessionMetaData').toggleClass('is-one-third');
 });
+

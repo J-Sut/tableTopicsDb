@@ -6,9 +6,21 @@
 }*/
 
 /*Main Profile display styling*/
-#profilePage {
+#row1 {
 	padding: 40px;
 }
+
+#myTableTopics {
+	text-align: center;
+	background-color: #E0EEEE;
+	color: #0E4C49;
+}
+
+#myTopicsTitle {
+	color: #0E4C49;
+}
+
+h3
 
 /* Update Profile Modal Sytyling*/
 input, .input {
