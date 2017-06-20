@@ -1,6 +1,52 @@
 // ***************** State *******************
 
 // ************ f(MODIFY-state) **************
+
+function countSubmissions(){
+
+		$.ajax({
+		type: "GET",
+		url: 'http://localhost:8080/topics',
+		success: function(data){
+			console.log(data.length);
+			displaySubmissionsCount(data.length)
+		},
+		error: function(data){
+			console.log('Did not count submissions')
+		}
+	});	
+};
+
+function countUsers(){
+
+		$.ajax({
+		type: "GET",
+		url: 'http://localhost:8080/users',
+		success: function(data){
+			console.log(data.length);
+			displayUsersCount(data.length)
+		},
+		error: function(data){
+			console.log('Did not count users')
+		}
+	});	
+};
+
+function countClubs(){
+
+		$.ajax({
+		type: "GET",
+		url: 'http://localhost:8080/clubs',
+		success: function(data){
+			console.log(data.length);
+			displayClubsCount(data.length)
+		},
+		error: function(data){
+			console.log('Did not count clubs')
+		}
+	});	
+};
+
 function checkForToken(callback){
  
 	$.ajax({
@@ -82,6 +128,18 @@ function 	submitQuery(query){
 
 // ************ f(RENDER-state) **************
 
+function displaySubmissionsCount(count){
+	$('#dbSubmissions').text(count);
+};
+
+function displayUsersCount(count){
+	$('#dbMembers').text(count);
+};
+
+function displayClubsCount(count){
+	$('#dbClubs').text(count);
+};
+
 function displayQuestion(question){
 	$('#displayTopics')
 		.empty()
@@ -107,12 +165,21 @@ function displaySession(session){
 	let $questionsLabel = $('<h3 />', {class: 'questionsLabel title', text: "Questions"});
 	let $questionsData = $('<ul />', {class: 'questionsData topicsQuestionsList', text: questionListElement});
 
+	let $hideQuestionButton = $('<input />', {type: 'checkbox', class: 'showQuestionButton'});
+	let $hideQuestionButtonLabel = $('<label />', {text: 'Show Topic Questions: '});
+
+
+			// <p class="showQuestionsTick is-hidden">		
+			// 	<label>Show Questions: </label>
+			// 		<input type="checkbox" class="testee">
+			// </p>
+	$hideQuestionButtonLabel.append($hideQuestionButton);
+
 	$sectionCard.append($container);
 	$container.append($sessionMetaData, $sessionQuestions);
-	$sessionMetaData.append($themeLabel, $themeData, $introductionlabel, $introductionData, $keywordsLabel, $keywordsData);
+	$sessionMetaData.append($themeLabel, $themeData, $introductionlabel, $introductionData, $keywordsLabel, $keywordsData, $hideQuestionButtonLabel);
 
 	$sessionQuestions.append($questionsLabel, $questionsData);
-
 
 	$.map(session.questions, (question, index) => {
 		console.log('question',index, question);
@@ -157,13 +224,16 @@ function renderQueries(searchResults){
 // Check if user is logged in 
 $(function(){
 	checkForToken(displayNavTabs);
+	countSubmissions();
+	countUsers();
+	countClubs();
 });
 
 // Get a random question from the Db
 $('#getOneQuestion').on('click', function(){
 	$('#sessionMetaData').empty();
 	getOneQuestion(displayQuestion);
-	$('#showQuestionsTick').addClass('is-hidden');
+	$('.showQuestionsTick').addClass('is-hidden');
 });
 
 
@@ -171,7 +241,7 @@ $('#getOneQuestion').on('click', function(){
 $('#getOneSession').on('click', function(){
 	$('#displayTopics').empty();
 	getWholeSession(displaySession);
-	$('#showQuestionsTick').removeClass('is-hidden');
+	$('.showQuestionsTick').removeClass('is-hidden');
 });
 
 // Search db for query
@@ -182,8 +252,7 @@ $('#topicSearch').on('submit', function(e){
 	let query = $('#queryInput').val();
 	
 	submitQuery(query);
-	$('#showQuestionsTick').removeClass('is-hidden');
-
+	$('.showQuestionsTick').removeClass('is-hidden');
 });
 
 // logout the user
@@ -191,8 +260,9 @@ $('#logOut').on('click', function(){
 	checkForToken(logOutUser);
 });
 
-$('#testee').on('click', function(){
-	$('.sessionQuestions').toggleClass('is-hidden');
-	$('.sessionMetaData').toggleClass('is-one-third');
+$('#displayTopics').on('click', '.showQuestionButton', function(){
+	$(this).parent().parent().parent().find('section.sessionQuestions').toggleClass('is-hidden');
+	$(this).parent().parent().parent().find('section.sessionMetaData').toggleClass('is-one-third');
+	$(this).text('Questions');
 });
 

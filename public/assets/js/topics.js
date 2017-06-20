@@ -11,7 +11,6 @@ function checkForToken(callback){
 		success: function(data){
 			logInToken = data;
 			callback(data)
-				console.log('data: ', data)
 
 		},
 		error: function(data){

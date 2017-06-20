@@ -157,7 +157,7 @@ h3.title:not(:last-child), h3.subtitle:not(:last-child) {
     max-height: 600px;
     max-width: 100%;
     min-height: 60px;
-    min-width: 300px;
+    min-width: 350px;
     padding: 0.625em;
     resize: both;
 }

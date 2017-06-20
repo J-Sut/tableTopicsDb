@@ -32,7 +32,7 @@ section.modal-card-body {
 	margin-right: 8px;
 }
 
-#showQuestionsTick {
+.showQuestionsTick {
 	padding: 10px;
 }
 
@@ -42,6 +42,10 @@ section.modal-card-body {
     padding: 15px;
 }
 
+.showQuestionButton {
+	margin: auto;
+}
+
 h3.displayFiller {
 	width: 80%;
 }
@@ -49,7 +53,11 @@ h3.displayFiller {
 .tableTopicSession {
 	display: flex;
 	justify-content: center;
-	padding: 10px;
+	padding-bottom: 25px;
+}
+
+.tableTopicSession:first-child {
+	padding-top: 25px;
 }
 
 .tableTopic, .topicInfo {
@@ -85,6 +93,49 @@ h3.displayFiller {
 h3.title:not(:last-child), h3.subtitle:not(:last-child) {
     margin-bottom: 0;
 }
+
+/*Stat row for Index page*/
+
+
+
+#dbProgressRow label{
+	color: #0E4C49;
+	padding: 25px;
+}
+
+#dbProgressRow h1{
+	padding: 5px 0px 0px 25px;
+}
+
+.dbStats {
+	display: block;
+	color: #0E4C49;
+	margin-left: 5px;
+	margin-right: 5px;
+}
+
+content.dbStats {
+	border: 3px solid #0E4C49;
+	margin: 10px;
+}
+
+.tableTopicsBuffer2 {
+	text-align: left;
+	min-height: 250px;
+}
+
+.dbStatsContainer{
+	min-height: 175px;
+}
+
+.dbStatsContainer div{
+	font-size: 75px;
+}
+
+#statRow {
+	text-align: center;
+}
+
 
 @media screen and (min-width: 769px), print level.sass:45
 .level > .level-item:not(.is-narrow) {
