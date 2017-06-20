@@ -2,8 +2,12 @@
 	padding: 10px;
 }
 
+section.modal-card-body {
+	border-radius: 5px 5px 0px 0px;
+}
+
 #spaceHolder1 {
-	background-image: url("../images/testShots/pre_Talk.jpeg");
+	background-image: url("../images/man_before_speech2.png");
 	background-size: cover;
 	background-position: center;
 	height: 300px;
@@ -26,6 +30,10 @@
 
 #queryInput {
 	margin-right: 8px;
+}
+
+#showQuestionsTick {
+	padding: 10px;
 }
 
 .displayFiller {

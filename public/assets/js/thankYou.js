@@ -1,5 +1,6 @@
 /***************** State *****************/
 
+let userData
 
 
 /***************** f(Modify-state) *****************/
@@ -11,7 +12,7 @@ function checkForToken(callback){
 		url: 'http://localhost:8080/users/token',
 		success: function(data){
 			callback(data)
-			console.log(data);
+			;
 		},
 		error: function(data){
 			console.log('User not signed in')
@@ -45,8 +46,7 @@ function logOutUser(userTokenId){
 		type: 'DELETE',
 		url: `http://localhost:8080/users/logout/${userId}`,
 		success: function(){
-			checkForToken();
-			location.reload();
+			displayNav();
 		},
 		error: function(){}
 	});
@@ -58,11 +58,15 @@ function displaySubmissionscount(count){
 	$('#currentTopicsCount').text(count);
 };
 
-
+function displayNav(){
+	console.log('display Content Fired')
+	$('#logOut, #profileTab, #logIn, #signUp').toggleClass('is-hidden');
+};
 /***************** Event Listeners *****************/
 
 $(function(){
 	countSubmissions();
+	checkForToken(displayNav);
 });
 
 $('#logOut').on('click', function(){

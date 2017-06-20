@@ -25,7 +25,7 @@ function addNewUser(newUser, clubInfo, callback) {
 		passwordConf: newUser.pwConf,	
 		email: newUser.email,
 		inClub: newUser.inClub,
-		tm_title: newUser.tmTitle,
+		tmTitle: newUser.tmTitle,
 		memberClubList: clubInfo.name,
 
 		clubName: clubInfo.name,
@@ -43,9 +43,13 @@ function addNewUser(newUser, clubInfo, callback) {
 		url: ttdbURL,
 		data: JSON.stringify(query),
 		success: function(data){
+			data.tmTitle = newUser.tmTitle;
+			console.log(data)
 			createUserProfile(data);
 			location.href = 'login.html';
-
+		},
+		error: function(){
+			console.log('user not created')
 		},
 		contentType: 'application/json',
     dataType: 'json'
@@ -62,7 +66,7 @@ function createUserProfile(userData){
 		displayName: userData.username,
 		bio: "",
 		photo: "",
-		tm_title: userData.tm_title
+		tmTitle: userData.tmTitle
 	}; 
 
 	console.log("createUserProfile Fired");
@@ -106,9 +110,9 @@ $('#newUserForm').submit(function(e){
 		password: $('#passwordInput').val(),
 		pwConf: $('#passwordConfInput').val(),
 		inClub: $('input[name="clubCheck"]:checked').val(),
-		
 
-		tmTitle: $('#tmTitle option:selected').val()
+		// pass TM title while creating user
+		tmTitle: $('#tmTitle').val()
 	};
 
 	let clubInfo = {
@@ -128,9 +132,7 @@ $('#newUserForm').submit(function(e){
 	  alert(message);
 	};
 
-		console.log('tmTitle: ', tmTitle);
-
-
+		console.log('tmTitle: ', newUser.tmTitle);
 });
 
 // Reveal Club questions if the member states they are in a Club

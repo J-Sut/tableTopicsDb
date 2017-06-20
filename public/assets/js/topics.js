@@ -4,16 +4,15 @@ let logInToken
 
 // ************ f(MODIFY-state) **************
 
-function checkForToken(callback){
-	console.log('check for token fired')
- 
+function checkForToken(callback){ 
 	$.ajax({
 		type: "GET",
 		url: 'http://localhost:8080/users/token',
 		success: function(data){
-			console.log("Great token you've got there")
 			logInToken = data;
 			callback(data)
+				console.log('data: ', data)
+
 		},
 		error: function(data){
 			console.log('Token not found')
@@ -58,7 +57,6 @@ function addNewSession(sessionDetails, callback) {
 		data: JSON.stringify(query),
 		success: function(data){
 			location.href = 'thankyou.html';
-			console.log(data);
 		},
 		contentType: 'application/json',
     dataType: 'json'
@@ -68,19 +66,6 @@ function addNewSession(sessionDetails, callback) {
 function noTokenRedirect(){
 	localStorage.setItem('message', 'Please log in first to submit Topics. Thank you!');
 	location.href = `login.html?message`;
-	// console.log(`login.html?message`);
-	// console.log(localStorage.getItem('message'));
-
-
-	// if not => redirect to sign in
-				//And tell them you have to sign in first
-				
-				//location.href = http://localhost/login?message=You need to sign in first
-				
-				//localStorage.setItem('message', "You need to sign in first");
-				//Redirect
-				//localStorage.getItem('message');
-				//localStorage.clear();
 };
 
 function logOutUser(userTokenId){
@@ -97,12 +82,11 @@ function logOutUser(userTokenId){
 };
 
 function countSubmissions(){
-
 		$.ajax({
 		type: "GET",
 		url: 'http://localhost:8080/topics',
 		success: function(data){
-			console.log(data.length);
+			console.log(data.length, " Sessions submitted");
 			displaySubmissionscount(data.length)
 		},
 		error: function(data){
@@ -110,6 +94,7 @@ function countSubmissions(){
 		}
 	});	
 };
+
 
 // ************ f(RENDER-state) **************
 
@@ -121,8 +106,8 @@ function addQuestion(){
 				    '<textarea  class="topicQuestionInput textarea" placeholder="Textarea" required></textarea>' +
 				  '</p>' + '<a class="delete"></a>'+
 
-				'</div>' + '<br>');
-
+				'<br>' +
+				'</div>' );
 
 	$('#sessionQuestions').append(newQuestInput);
 };
@@ -135,15 +120,9 @@ function displaySubmissionscount(count){
 	$('#currentTopicsCount').text(count);
 };
 
-
 // ************ Event Calls & Listeners **************
 
-//testing();
-
 $(function(){
-	// //if token exists => go to submissions
-	// //	do an api Call to the Token endpoing
-	// checkToken();
 	checkForToken(displayContent);
 	countSubmissions();
 });
@@ -162,7 +141,6 @@ $('#sessionSubmitForm').submit(function(e){
 	console.log(sessionDetails);
 
 	addNewSession(sessionDetails);
-
 });
 
 $('#addQuestion').on('click', addQuestion);
@@ -171,6 +149,10 @@ $('#addQuestion').on('click', addQuestion);
 $('#logOut').on('click', function(){
 	checkForToken(logOutUser);
 })
+
+$('#sessionQuestions').on('click', '.delete', function(){
+	$(this).parent().remove();
+});
 
 
 
