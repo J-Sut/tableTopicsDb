@@ -25,7 +25,6 @@ router.get('/', (req, res) => {
   });
 });
 
-
 // Get 1 session from db
 router.get('/session', (req, res) => {
 	Topic
@@ -71,7 +70,6 @@ router.get('/question', (req, res) => {
 		});
 });
 
-
 // Get with Search query 
 
 router.get('/query', (req, res) => {
@@ -83,8 +81,7 @@ router.get('/query', (req, res) => {
       filters[field] = req.query[field];
     }
   });
-  // console.log('query:');
-  // console.log(query);
+
   Topic
 	  .find({$text: {$search: query}})
 	  .exec()
@@ -94,6 +91,7 @@ router.get('/query', (req, res) => {
 	  	res.status(500).json({message: 'Internal server error'})
 	  });
 });
+
 
 // ************* Topics POST Endpoints *************
 
@@ -176,10 +174,6 @@ router.use('*', function(req, res) {
 });
 
 module.exports = router
-
-
-
-
 
 
 

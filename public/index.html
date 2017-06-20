@@ -64,11 +64,6 @@
 					<button id="getOneSession" type="button getOneButtons" class="button is-dark">Get a random Table Topics Session</button> 
 		</section> <!-- tableTopicsPractice  -->
 
-			<p id="showQuestionsTick" class="is-hidden">		
-				<label>Show Questions: </label>
-					<input id="testee" type="checkbox" name="">
-			</p>
-
 	  <section id="displayTopics" class="section">
 		  <content id="displayTopicsFiller" class="">
 				<h3 class="title is-3 displayFiller">When life calls you to the stage...</h3> 
@@ -79,6 +74,31 @@
 			</content>
 
 	  </section> <!-- displayTopics -->
+
+	<section class="control level tableTopicsBuffer"></section> 
+
+	<section id="dbProgressRow" class="control tableTopicsBuffer2 ">
+		<h1 class="title is-1 dbStats">Current Table Topics Db Stats:</h1>
+
+		<div id="statRow" class="level">
+			<content class="dbStatsContainer dbStats level-item">
+				<div id="dbSubmissions" class="dbStats"></div>	<br>
+				<label >Table Topic Sessions Submitted</label> 
+
+			</content>	
+
+			<content class="dbStatsContainer dbStats level-item">
+				<div id="dbMembers" class="dbStats"></div>	<br>
+				<label>Community Members</label> 
+			</content>
+
+			<content class="dbStatsContainer dbStats level-item">
+				<div id="dbClubs" class="dbStats"></div> <br>
+				<label>Toastmaster Clubs Represented</label>
+			</content>
+		</div>
+
+	</section> 
 
 	<section class="control level tableTopicsBuffer"></section> 
 

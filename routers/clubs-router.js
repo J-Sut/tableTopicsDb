@@ -49,7 +49,6 @@ router.get('/:id', (req, res) => {
 });
 
 
-
 // ************* Club POST Endpoints *************
 
 //Create new Club
@@ -130,28 +129,6 @@ router.use('*', function(req, res) {
 });
 
 module.exports = router
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
