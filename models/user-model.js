@@ -11,6 +11,14 @@ const userSchema = mongoose.Schema({
 	memberClubList: {type: Array, required: false}
 });
 
+userSchema.methods.apiRepr = function(){
+	return {
+		id: this._id,
+		username: this.username,
+		email: this.email
+	}
+}
+
 const User = mongoose.model('User', userSchema);
 
 module.exports = {User};

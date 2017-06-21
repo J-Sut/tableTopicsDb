@@ -173,11 +173,7 @@ $('#updateProfile, #cancel, .delete, .modal-background').on('click', function(){
 });
 
 $('#submitButton').on('click', function(){
-	let userProfile = {
-		// name: $('#userNameUpdate').val(),
-		// bio: $('#userBioUpdate').val(),
-		// tmTitle: $('#tmTitleDropdown').val(),
-	}
+	let userProfile = {}
 
 	if (!($('#userNameUpdate').val() === '' || undefined)) {
 		userProfile.name = $('#userNameUpdate').val();
@@ -187,12 +183,9 @@ $('#submitButton').on('click', function(){
 		userProfile.bio = $('#userBioUpdate').val();
 	}
 
-	if (!($('#tmTitleDropdown').val() === 'unchanged')) {
+	if (!($('#tmTitleDropdown').val() === '-1')) {
 		userProfile.tmTitle = $('#tmTitleDropdown').val();
-		console.log("yay it fired: ", $('#tmTitleDropdown').val())
 	}
-
-	console.log('userProfile.name: ', userProfile)
 
 	updateProfile(userProfile);
 	$('.modal').toggleClass('is-active');

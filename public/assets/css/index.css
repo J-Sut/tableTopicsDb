@@ -100,7 +100,7 @@ h3.title:not(:last-child), h3.subtitle:not(:last-child) {
 
 #dbProgressRow label{
 	color: #0E4C49;
-	padding: 25px;
+	padding: 5px 25px 5px 25px;
 }
 
 #dbProgressRow h1{
@@ -125,7 +125,7 @@ content.dbStats {
 }
 
 .dbStatsContainer{
-	min-height: 175px;
+	min-height: 150px;
 }
 
 .dbStatsContainer div{
