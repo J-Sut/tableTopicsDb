@@ -8,7 +8,6 @@ function countSubmissions(){
 		type: "GET",
 		url: 'http://localhost:8080/topics',
 		success: function(data){
-			console.log(data.length);
 			displaySubmissionsCount(data.length)
 		},
 		error: function(data){
@@ -23,7 +22,6 @@ function countUsers(){
 		type: "GET",
 		url: 'http://localhost:8080/users',
 		success: function(data){
-			console.log(data.length);
 			displayUsersCount(data.length)
 		},
 		error: function(data){
@@ -38,7 +36,6 @@ function countClubs(){
 		type: "GET",
 		url: 'http://localhost:8080/clubs',
 		success: function(data){
-			console.log(data.length);
 			displayClubsCount(data.length)
 		},
 		error: function(data){
@@ -54,11 +51,9 @@ function checkForToken(callback){
 		url: 'http://localhost:8080/users/token',
 		success: function(data){
 			callback(data)
-			console.log(data);
 		},
 		error: function(data){
 			console.log('User not signed in')
-			
 		}
 	});	
 }
@@ -91,8 +86,6 @@ function getWholeSession(callback) {
 }
 
 function logOutUser(userTokenId){
-	
-	console.log('log out user called ')
 	let userId = userTokenId;
 
 	$.ajax({
@@ -100,7 +93,6 @@ function logOutUser(userTokenId){
 		url: `http://localhost:8080/users/logout/${userId}`,
 		success: function(){
 			location.reload();
-			console.log('reloaded? ')
 			checkForToken();
 
 		},
@@ -109,7 +101,6 @@ function logOutUser(userTokenId){
 };
 
 function 	submitQuery(query){
-	console.log(query);
 	$.ajax({
 		type: 'GET',
 		url: 'http://localhost:8080/topics/query',
@@ -182,19 +173,15 @@ function displaySession(session){
 	$sessionQuestions.append($questionsLabel, $questionsData);
 
 	$.map(session.questions, (question, index) => {
-		console.log('question',index, question);
-		//questionsArray.push(question);
-		//questionListElement.push('<li class="tableTopic">'+ question +'</li>');
+
 		let $li = $('<li />', {class: 'tableTopic', text: question});
 		$questionsData.append($li);
-		//questionListElement.push('<li class="tableTopic">'+ question +'</li>');
 	});
 
 	$('#displayTopics').append($sectionCard);
 };
 
 function displayNavTabs(){
-	console.log('display Content Fired')
 	$('#logOut, #profileTab, #logIn, #signUp').toggleClass('is-hidden');
 };
 
@@ -213,7 +200,6 @@ function renderQueries(searchResults){
 	}	
 
 	for(let i = 0; i < searchResults.length; i++){
-		console.log(searchResults[i]);
 		displaySession(searchResults[i]);
 	}
 

@@ -18,7 +18,11 @@ router.get('/', (req, res) => {
 	User
 	.find()	
 	.exec()
-	.then(userList => res.status(200).json(userList))
+	.then(userList => {
+		res.status(200).json(userList.map(user => {
+			return user.apiRepr();
+		}))
+	})
 	.catch(err => {
   		console.error(err);
   		res.status(500).json({message: 'Internal server error'})
