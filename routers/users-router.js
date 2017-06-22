@@ -11,6 +11,8 @@ const {Club} = require('../models/club-model');
 const {Topic} = require('../models/topic-model');
 
 // ************* User GET Endpoints *************
+// **********************************************
+
 
 // Get a list of all users
 
@@ -58,7 +60,7 @@ router.get('/token/', (req, res) => {
 	res.status(200).json(req.session.userId);
 })
 
-// Get Topics submitted by User
+// Get Topics submitted by User Id
 router.get('/:id/topics', (req, res) => {
 
 	Topic
@@ -84,10 +86,11 @@ router.get('/:id', (req, res) => {
 
 
 // ************* User POST Endpoints *************
+// ***********************************************
 
 // Create a New User
 router.post('/', (req, res) => {
-	const requiredFields = ['userName', 'email', 'password', 'passwordConf', 'inClub'];
+	const requiredFields = ['userName', 'email', 'password', 'passwordConf', 'inClub', 'tmTitle'];
 	const optionalFields = ['clubName', 'location', 'clubWebsite'];
 	let _newUser;
 
@@ -207,7 +210,7 @@ router.post('/:id/profile', (req, res) => {
 });
 
 // ************* User PUT Endpoints *************
-
+// **********************************************
 
 // Update profile information
 router.put('/:id/profile', (req, res) => {
@@ -263,6 +266,8 @@ router.put('/:id', (req, res) => {
 
 
 // ************* User DELETE Endpoints *************
+// *************************************************
+
 
 // Delete a User profile
 router.delete('/:id/profile', (req, res) => {
@@ -286,7 +291,7 @@ router.delete('/:id', (req, res) => {
 // End User Session
 router.delete('/logout/:id', (req, res) => { 
 	delete req.session.userId;
-	res.send("stuff is gone").status(204)
+	res.send("User deleted").status(204)
 });
 
 // ************* Other functions *************

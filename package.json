@@ -24,12 +24,12 @@
     "jquery": "^3.2.1",
     "mongoose": "^4.10.2",
     "body-parser": "^1.17.2"
-
   },
   "devDependencies": {
     "chai": "^3.5.0",
     "chai-http": "^3.0.0",
-    "mocha": "^3.4.1",
-    "jsdom": "^11.0.0"
+    "faker": "^4.1.0",
+    "jsdom": "^11.0.0",
+    "mocha": "^3.4.1"
   }
 }

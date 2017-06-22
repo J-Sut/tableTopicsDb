@@ -31,10 +31,49 @@ mongoose.connect(DATABASE_URL, err => {
   		console.error('Missed mongoose connected');
     }
     app.listen(PORT, () => {
-        console.log(`Your app is listening on port ${PORT}`);
+        console.log(`Your app is really listening on port ${PORT}`);
     }).on('error', err => {
         console.error(err);
     });
 });
 
-module.exports = {app};
+// ************* Integration Testing Server ****************
+
+let server;
+
+function runServer(databaseUrl=TEST_DATABASE_URL, port=PORT) {
+  console.log('***runServer fired***');
+  return new Promise((resolve, reject) => {
+      mongoose.connect(databaseUrl, err => {
+        if (err) {
+          return reject(err);
+        }
+        server = app.listen(port, () => {
+          console.log(`Your app is listening on port ${port}`);
+          resolve(server);
+        }).on('error', err => {
+          reject(err)
+      });   
+    });
+  });
+};
+
+
+function closeServer() {
+  return mongoose.disconnect().then(() =>{
+    return new Promise((resolve, reject) => {
+      console.log('Closing server');
+      server.close(err => {
+        if (err) {
+          reject(err);
+          // so we don't also call `resolve()`
+          return;
+        }
+        resolve();
+      });
+    });
+  });
+};
+
+
+module.exports = {app, runServer, closeServer};
