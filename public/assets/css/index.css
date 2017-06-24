@@ -23,6 +23,10 @@ section.modal-card-body {
 	vertical-align: middle;
 }
 
+section.sessionMetaData {
+	max-width: 30%;
+}
+
 #queryButton {
 	max-width: 150px;
 	margin-left: 10px;
@@ -77,13 +81,10 @@ h3.displayFiller {
 }
 
 .ttContainer {
-	border: 3px solid rgb(250, 255, 189);
 	margin: 10px;
-	width: auto;
-}
+	display: flex;
+	justify-content: center;
 
-.ttContainer:nth-child(even) {
-	border: 3px solid #E0EEEE;
 }
 
 .newTopicLead {

@@ -12,8 +12,9 @@ const {User} = require('../models/user-model');
 
 
 // ************* Topics GET Endpoints *************
+// *************************************************
 
-// Return list of all Sessions: 
+// Return list of all Topics: 
 router.get('/', (req, res) => {
 	Topic
 	.find()	
@@ -45,6 +46,9 @@ router.get('/session', (req, res) => {
 				});
 		});
 });		
+
+
+// Get 1 session from db
 
 router.get('/question', (req, res) => {
 	Topic
@@ -94,6 +98,7 @@ router.get('/query', (req, res) => {
 
 
 // ************* Topics POST Endpoints *************
+// *************************************************
 
 // Submit a new Table Topics Session
 router.post('/', (req, res) => {
@@ -128,6 +133,9 @@ router.post('/', (req, res) => {
 });
 
 // ************* Topics PUT Endpoints *************
+// *************************************************
+
+
 
 router.put('/:id', (req, res) => {
 	if(!(req.params.id && req.body.id && req.body.id === req.params.id)){
@@ -156,6 +164,7 @@ router.put('/:id', (req, res) => {
 
 
 // ************* Topics DELETE Endpoints *************
+// *************************************************
 
 // DELETE an existing Table Topics Session
 router.delete('/:id', (req, res) => {

@@ -11,19 +11,16 @@ function login(em, pw, callback) {
 		password: pw
 	}; 
 
-	console.log('login token: ');
-
 	$.ajax({
 		type: "POST",
 		url: ttdbURL,
 		data: JSON.stringify(query),
 		success: function(data){
 			location.href = 'profile.html';
-			console.log(data);
 
 		},
 		error: function(){
-
+			alert("incorrect password");
 		},
 		contentType: 'application/json',
     dataType: 'json'
