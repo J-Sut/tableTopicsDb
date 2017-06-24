@@ -20,11 +20,10 @@
 	color: #0E4C49;
 }
 
-h3
 
 /* Update Profile Modal Sytyling*/
 input, .input {
-	width: 300px;
+	width: 100%;
 }
 
 label	{
@@ -74,6 +73,12 @@ textarea {
     margin-right: 30px;
 }
 
+
+/*Styling for Display My Topics Row*/
+
+h4.title {
+	color: #0E4C49;
+}
 
 
 

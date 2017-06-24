@@ -13,6 +13,9 @@ function getTopics(callback){
 		type: 'GET',
 		url: `http://localhost:8080/users/${userId}/topics`,
 		success: function(data){
+			if(data.length === 0) {
+				encourageSubmit();
+			};
 			callback(data)
 		},
 		error: function(data){
@@ -85,6 +88,21 @@ function updateProfile(updateInfo){
 };
 
 // ************ f(Render-state) **************
+
+function encourageSubmit(){
+	let $submitLink = $('<a >', {href: './topics.html', class: 'newTopicLead', text: "Contribute a New Topic Here"});
+
+	// let $invitationRow = $('<div />', {class: 'invitationRow'});
+
+	let $apology = $('<h4 />', {class: 'title is-4', text: "It looks like you haven't submitted any topics yet"});
+	let $invitation = $('<h4 />', {class: 'title is-4', text: `Our community would love to explore your contributions`});
+
+	$('#displayMyTopics')
+		.empty()
+		.append($apology, $invitation, $submitLink)
+
+};
+
 
 function displayContent(){
 	$('#logOut, #profileTab, #logIn, #signUp').toggleClass('is-hidden');

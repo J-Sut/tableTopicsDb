@@ -7,6 +7,7 @@ const should = chai.should();
 
 const {app, runServer, closeServer} = require('../server');
 const {Topic} = require('../models/topic-model');
+const {User} = require('../models/user-model');
 const {TEST_DATABASE_URL} = require('../config');
 
 chai.use(chaiHttp);
@@ -16,19 +17,37 @@ chai.use(chaiHttp);
 
 function seedTopicData(){
 	console.info('seeding topic data');
-	const seedData = [];
+	let seedData = [];
 
-	for (let i=1; i<+10; i++){
-		seedData.push(generateTopicData());
+	for (let i=0; i<10; i++){
+		seedData.push(generateUserData());
 	}
-	return Topic.insertMany(seedData);
+
+	return User.insertMany(seedData)
+		.then(users => {
+			seedData = [];
+			for (let i=0; i<10; i++){
+				seedData.push(generateTopicData(users[i]));
+			}
+			return Topic.insertMany(seedData);
+		})
+		.catch(err => console.log(err));
 }; 
 
-function generateTopicData() {
+function generateUserData() {
 	return {
-		_id: faker.random.uuid(),
+		username: faker.internet.userName(),
+		password: faker.internet.password(),
+		email: faker.internet.email(),
+		inClub: faker.random.boolean()
+	}
+};
+
+function generateTopicData(user) {
+	return {
 		theme: faker.lorem.words(),
 		introduction: faker.lorem.paragraph(),
+		user_id: user._id,
 		keywords: [
 			faker.lorem.word(),
 			faker.lorem.word(),
@@ -58,7 +77,7 @@ describe('Blog Api', function() {
 	});
 
 	beforeEach(function() {
-		return seedBlogData();
+		return seedTopicData();
 	});
 
 	afterEach(function() {
@@ -68,14 +87,6 @@ describe('Blog Api', function() {
 	after(function(){
 		return closeServer();
 	});
-
-
-
-
-
-
-
-
 
 
 
@@ -108,6 +119,7 @@ describe('Blog Api', function() {
 
 	describe('Get a random topic session (GET /topics/session)', function() {
 		it('should return an object of 1 topic session', function(){
+			Topic.find().exec().then(topics => console.log(topics));
 			return chai.request(app)
 				.get('/topics/session')
 				.then(function(res) {

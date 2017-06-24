@@ -26,22 +26,12 @@ app.use('/topics', topicsRouter);
 app.use('/users', usersRouter);
 app.use('/clubs', clubsRouter);
 
-mongoose.connect(DATABASE_URL, err => {
-    if (err) {
-  		console.error('Missed mongoose connected');
-    }
-    app.listen(PORT, () => {
-        console.log(`Your app is really listening on port ${PORT}`);
-    }).on('error', err => {
-        console.error(err);
-    });
-});
 
 // ************* Integration Testing Server ****************
 
 let server;
 
-function runServer(databaseUrl=TEST_DATABASE_URL, port=PORT) {
+function runServer(databaseUrl=DATABASE_URL, port=PORT) {
   console.log('***runServer fired***');
   return new Promise((resolve, reject) => {
       mongoose.connect(databaseUrl, err => {
@@ -52,12 +42,12 @@ function runServer(databaseUrl=TEST_DATABASE_URL, port=PORT) {
           console.log(`Your app is listening on port ${port}`);
           resolve(server);
         }).on('error', err => {
+          mongoose.disconnect();
           reject(err)
       });   
     });
   });
 };
-
 
 function closeServer() {
   return mongoose.disconnect().then(() =>{
@@ -75,5 +65,10 @@ function closeServer() {
   });
 };
 
+// this is to create a distinction for running servers between
+// running servers for testing or for production
+if (require.main === module) {
+  runServer().catch(err => console.error(err));
+};
 
 module.exports = {app, runServer, closeServer};
