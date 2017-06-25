@@ -64,7 +64,6 @@ function generateTopicData(user) {
 	}	
 };
 
-
 function tearDownDb() {
 	console.warn('Deleting database');
 	return mongoose.connection.dropDatabase();
@@ -119,7 +118,7 @@ describe('Blog Api', function() {
 
 	describe('Get a random topic session (GET /topics/session)', function() {
 		it('should return an object of 1 topic session', function(){
-			Topic.find().exec().then(topics => console.log(topics));
+			// Topic.find().exec().then(topics => console.log(topics));
 			return chai.request(app)
 				.get('/topics/session')
 				.then(function(res) {
@@ -135,16 +134,80 @@ describe('Blog Api', function() {
 		});	
 	});
 
-	// Get 1 session from db
+	// Get 1 question from db
 
+	describe('Get a random topic question from a random session (GET /topics/question)', function() {
+		it('should return 1 question as a string', function(){
+			// Topic.find().exec().then(topics => console.log(topics));
+			return chai.request(app)
+				.get('/topics/question')
+				.then(function(res) {
+					res.should.have.status(200);
+					res.should.be.json;
+					res.body.should.be.a('string')
+				})
+		});	
+	});
 
-
-	// Get with Search query 
+	// Get session with a Search query 
 
 	// ************* Topics POST Endpoints *************
 	// *************************************************
 
 	// Submit a new Table Topics Session
+
+		describe('Submit a table topics session to the database (POST /topics', function() {
+	
+		it('should submit a session', function() {
+			
+			let testUserId = {_id: faker.random.uuid()}
+			const newPost = generateTopicData( testUserId);
+			console.log('testUserId: ', testUserId);
+			console.log('new post: ',newPost);
+
+			return chai.request(app)
+				.post('/topics/')
+				.send(newPost)
+				.then(function(res){
+					res.should.have.status(201);
+					res.should.be.json;
+					res.body.should.include.keys('theme', 'introduction', 'keywords', 'questions');
+					res.body.id.should.not.be.null;
+				});
+		});		
+	});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
