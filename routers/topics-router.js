@@ -48,7 +48,7 @@ router.get('/session', (req, res) => {
 });		
 
 
-// Get 1 session from db
+// Get 1 question from db
 
 router.get('/question', (req, res) => {
 	Topic
@@ -74,18 +74,11 @@ router.get('/question', (req, res) => {
 		});
 });
 
-// Get with Search query 
+// Get a session with Search query 
 
 router.get('/query', (req, res) => {
 	const filters = {};
-  const queryableFields = ['introduction'];
   let query = req.query.theme;
-  queryableFields.forEach(field => {
-    if (req.query[field]) {
-      filters[field] = req.query[field];
-    }
-  });
-
   Topic
 	  .find({$text: {$search: query}})
 	  .exec()

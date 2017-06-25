@@ -32,7 +32,7 @@ app.use('/clubs', clubsRouter);
 let server;
 
 function runServer(databaseUrl=DATABASE_URL, port=PORT) {
-  console.log('***runServer fired***');
+  console.log(databaseUrl);
   return new Promise((resolve, reject) => {
       mongoose.connect(databaseUrl, err => {
         if (err) {
@@ -66,7 +66,7 @@ function closeServer() {
 };
 
 // this is to create a distinction for running servers between
-// running servers for testing or for production
+// testing or for production
 if (require.main === module) {
   runServer().catch(err => console.error(err));
 };

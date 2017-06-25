@@ -101,6 +101,7 @@ function logOutUser(userTokenId){
 };
 
 function 	submitQuery(query){
+
 	$.ajax({
 		type: 'GET',
 		url: 'http://localhost:8080/topics/query',
@@ -109,7 +110,6 @@ function 	submitQuery(query){
 		},
 		success: function(data){
 			renderQueries(data)
-
 		},
 		error: function(){
 			console.log("query didn't work")
@@ -236,7 +236,7 @@ $('#topicSearch').on('submit', function(e){
 	e.preventDefault();
 	$('#displayTopics').empty();
 	let query = $('#queryInput').val();
-	
+
 	submitQuery(query);
 	$('.showQuestionsTick').removeClass('is-hidden');
 });
