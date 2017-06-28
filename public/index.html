@@ -32,32 +32,99 @@
 </head>
 <body>
 
-	<nav id="mainNavBar" class="nav has-shadow">
-	  <div class="container">
-	    <div class="nav-left">
-	      <a href="./index.html" class="nav-item">
-	        <img src= "./assets/images/TTdb_podium.png" alt="Table Topics DB">
-	      </a>
-	      <a id="home" class="nav-item is-tab is-hidden-mobile is-active">Home</a>
-	      <a id="submitTopics" href="./topics.html" class="nav-item is-tab is-hidden-mobile">Submit Topics</a>
-	      <a href="./thankyou.html" class="nav-item is-tab is-hidden-mobile">Thank You</a>
-	      
-	    </div> <!-- nav-left -->
+	<nav id="mainNavBar" class="nav has-shadow is-hidden-mobile">
 
-	    <div  class="nav-right nav-menu">
-	   		<a id="logIn" href="./login.html" class="nav-item is-tab is-hidden-mobile">Log in</a>
-	      <a id="signUp" href="./signup.html" class="nav-item is-tab is-hidden-mobile">Sign up</a>
+	    <a href="./index.html" class="nav-item">
+	      <img src= "./assets/images/TTdb_podium.png" alt="Table Topics DB">
+	    </a>
+		  <div class="container ">
+		    <div class="nav-left ">
 
-	      <a id="profileTab" href="./profile.html" class="nav-item is-tab is-hidden">
-	        <figure class="image is-16x16" style="margin-right: 8px;">
-	          <img src="http://bulma.io/images/jgthms.png">
-	        </figure>
-	        Profile
-	      </a>
-	      <a id="logOut" class="nav-item is-tab is-hidden">Log out</a>
-	    </div> <!-- nav-right -->
+		      <a id="home" class="nav-item is-tab is-active">Home</a>
+		      <a id="submitTopics" href="./topics.html" class="nav-item is-tab">Submit Topics</a>
+		      <a href="./thankyou.html" class="nav-item is-tab">Thank You</a>
+		      
+		    </div> <!-- nav-left -->
+
+		    <div  class="nav-right">
+		   		<a id="logIn" href="./login.html" class="nav-item is-tab">Log in</a>
+		      <a id="signUp" href="./signup.html" class="nav-item is-tab">Sign up</a>
+
+		      <a id="profileTab" href="./profile.html" class="nav-item is-tab is-hidden">
+		        <figure class="image is-16x16" style="margin-right: 8px;">
+		          <img src="http://bulma.io/images/jgthms.png">
+		        </figure>
+		        Profile
+		      </a>
+		      <a id="logOut" class="nav-item is-tab is-hidden">Log out</a>
+		    </div> <!-- nav-right -->
+		  </div>
+
+	</nav> <!-- Desktop mainNavBar -->
+
+	<nav id="mobileNavBar" class="nav is-active">
+	  <div class="nav-left">
+	    <a class="nav-item">
+	      <img src="http://bulma.io/images/bulma-logo.png" alt="Bulma logo">
+	    </a>
 	  </div>
-	</nav> <!-- mainNavBar -->
+
+	  <div class="nav-center">
+	    <a class="nav-item">
+	      <span class="icon">
+	        <i class="fa fa-github"></i>
+	      </span>
+	    </a>
+	    <a class="nav-item">
+	      <span class="icon">
+	        <i class="fa fa-twitter"></i>
+	      </span>
+	    </a>
+	  </div>
+
+	  <!-- This "nav-toggle" hamburger menu is only visible on mobile -->
+	  <!-- You need JavaScript to toggle the "is-active" class on "nav-menu" -->
+	  <span id="navHam" class="nav-toggle">
+	    <span></span>
+	    <span></span>
+	    <span></span>
+	  </span>
+
+	  <!-- This "nav-menu" is hidden on mobile -->
+	  <!-- Add the modifier "is-active" to display it on mobile -->
+	  <div id="navHamDropdown" class="nav-right nav-menu">
+	    <a class="nav-item">
+	      Home
+	    </a>
+	    <a class="nav-item">
+	      Documentation
+	    </a>
+	    <a class="nav-item">
+	      Blog
+	    </a>
+
+	    <div class="nav-item">
+	      <div class="field is-grouped">
+	        <p class="control">
+	          <a class="button" >
+	            <span class="icon">
+	              <i class="fa fa-twitter"></i>
+	            </span>
+	            <span>Tweet</span>
+	          </a>
+	        </p>
+	        <p class="control">
+	          <a class="button is-primary">
+	            <span class="icon">
+	              <i class="fa fa-download"></i>
+	            </span>
+	            <span>Download</span>
+	          </a>
+	        </p>
+	      </div>
+	    </div>
+	  </div>
+	</nav> <!-- mobileNavBar -->
 
 	<header>
 		<section class="hero">
@@ -78,12 +145,12 @@
 		
 		<section id="tableTopicsPractice" class="control">
 				<form id="topicSearch" class="level">
-				 	<input type="text" name="searchbar" id="queryInput" class="input level-item" placeholder="Search Topics and Questions"> 
-				 	<button id="queryButton" class="button is-primary level-item" type="submit">Search Topics</button>
-				 	<br>
+				 	<input type="text" name="searchbar" id="queryInput" class="input level-item" placeholder="Search for Topics and Questions"> 
+				 	<button id="queryButton" class="button is-primary level-item" type="submit">Search Topics</button>			 	
 				</form>	<!-- inputForm -->	
 					<button id="getOneQuestion" type="button getOneButtons" class="button is-dark">Try a random question</button> 	
-					<button id="getOneSession" type="button getOneButtons" class="button is-dark">Get a random Table Topics Session</button> 
+					<button id="getOneSession" type="button getOneButtons" class="button is-dark">Get a random Table Topics Session</button> 	
+
 		</section> <!-- tableTopicsPractice  -->
 
 	  <section id="displayTopics" class="section">

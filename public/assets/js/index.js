@@ -252,3 +252,6 @@ $('#displayTopics').on('click', '.showQuestionButton', function(){
 	$(this).text('Questions');
 });
 
+$('#navHam').on('click', function(){
+	$('#navHamDropdown').toggleClass('is-active');
+})
