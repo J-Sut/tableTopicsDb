@@ -137,10 +137,32 @@ content.dbStats {
 	text-align: center;
 }
 
+/****************** MEDIA QUERIES ******************/
 
-@media screen and (min-width: 769px), print level.sass:45
-.level > .level-item:not(.is-narrow) {
+@media screen and (max-width: 768px) {
 
-     flex-grow: 0; 
+	/* Red search bar styling for mobile*/
+	#topicSearch {
+		padding-top: 1em;
+	}
+
+	form #queryInput {
+		margin: auto;
+	}
+
+	#queryButton {
+		margin: auto;
+		margin-top: 1em;
+	}
+
+	#getOneQuestion, #getOneSession {
+		margin-top: 0;
+
+	}
+
+	#tableTopicsPractice button {
+		margin-bottom: 1em;
+	}
+
 }
 

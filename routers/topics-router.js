@@ -42,7 +42,7 @@ router.get('/session', (req, res) => {
 				})
 				.catch(err => {
 		  		console.error(err);
-		  		res.status(500).json({message: 'Internal server error'})
+		  		res.status(500).json({message: 'Internal server error while getting 1 session'})
 				});
 		});
 });		
@@ -69,7 +69,7 @@ router.get('/question', (req, res) => {
 				})
 				.catch(err => {
 			  		console.error(err);
-			  		res.status(500).json({message: 'Internal server error'})
+			  		res.status(500).json({message: 'Internal server error while getting 1 question'})
 			  });
 		});
 });
@@ -85,7 +85,7 @@ router.get('/query', (req, res) => {
 	  .then(session => {res.status(200).json(session)})
 	  .catch(err => {
 	  	console.error(err);
-	  	res.status(500).json({message: 'Internal server error'})
+	  	res.status(500).json({message: 'Internal server error while searching your query'})
 	  });
 });
 
@@ -96,7 +96,7 @@ router.get('/query', (req, res) => {
 // Submit a new Table Topics Session
 router.post('/', (req, res) => {
 	const requiredFields = ['theme', 
-													'sessionIntro', 
+													'introduction', 
 													'keywords', 
 													'questions'];
 	
@@ -111,7 +111,7 @@ router.post('/', (req, res) => {
 	Topic
 		.create({
 			theme: req.body.theme,
-			introduction: req.body.sessionIntro,
+			introduction: req.body.introduction,
 			keywords: req.body.keywords,
 			questions: req.body.questions,
 			user_id: req.session.userId
@@ -121,7 +121,7 @@ router.post('/', (req, res) => {
 		})
 		.catch(err => {
 			console.error(err);
-			res.status(500).json({message: 'Internal server error'})
+			res.status(500).json({message: 'Internal server error while posting your topic session'})
 		});
 });
 
@@ -129,7 +129,7 @@ router.post('/', (req, res) => {
 // *************************************************
 
 
-
+// Update a submitted table topic by its id
 router.put('/:id', (req, res) => {
 	if(!(req.params.id && req.body.id && req.body.id === req.params.id)){
 		const message = (
@@ -165,7 +165,7 @@ router.delete('/:id', (req, res) => {
 		.findByIdAndRemove(req.params.id)
 		.exec()
 		.then(topic => res.status(204).end())
-		.catch(err => res.status(500).json({message: 'Internal server error'}))
+		.catch(err => res.status(500).json({message: 'Internal server error while deleting your session'}))
 });
 
 

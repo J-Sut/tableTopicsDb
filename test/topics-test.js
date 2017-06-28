@@ -44,7 +44,7 @@ function generateUserData() {
 };
 
 function generateTopicData(user) {
-	return {
+	let newTopic = {
 		theme: faker.lorem.words(),
 		introduction: faker.lorem.paragraph(),
 		user_id: user._id,
@@ -62,6 +62,7 @@ function generateTopicData(user) {
 			faker.lorem.sentence()
 		]		
 	}	
+	return newTopic
 };
 
 function tearDownDb() {
@@ -69,7 +70,7 @@ function tearDownDb() {
 	return mongoose.connection.dropDatabase();
 };
 
-describe('Blog Api', function() {
+describe('Topic Api', function() {
 
 	before(function() {
 		return runServer(TEST_DATABASE_URL);
@@ -122,11 +123,12 @@ describe('Blog Api', function() {
 			return chai.request(app)
 				.get('/topics/session')
 				.then(function(res) {
+					// console.log('res topic: ', res)
 					const expectedKeys = ['_id','theme', 'introduction', 'keywords', 'questions'];
 
 					res.should.have.status(200);
 					res.should.be.json;
-					res.body.should.be.an('object');
+					res.should.be.an('object');
 					res.body.should.include.keys(expectedKeys);
 					res.body.questions.should.be.an('array');
 					res.body.keywords.should.be.an('array');
@@ -154,30 +156,36 @@ describe('Blog Api', function() {
 	// ************* Topics POST Endpoints *************
 	// *************************************************
 
-	// Submit a new Table Topics Session
+	// Submit a new Table Topics Session - Test
 
-		describe('Submit a table topics session to the database (POST /topics', function() {
-	
+	describe('Submit a table topics session to the database (POST /topics', function() {
+
 		it('should submit a session', function() {
 			
 			let testUserId = {_id: faker.random.uuid()}
-			const newPost = generateTopicData( testUserId);
-			console.log('testUserId: ', testUserId);
-			console.log('new post: ',newPost);
+			const newPost = generateTopicData(testUserId);
+			// console.log('testUserId: ', testUserId);
+			// console.log('new post: ',newPost);
 
 			return chai.request(app)
 				.post('/topics/')
 				.send(newPost)
 				.then(function(res){
+					// console.log('submit session res.body: ', res.body)
+
 					res.should.have.status(201);
 					res.should.be.json;
 					res.body.should.include.keys('theme', 'introduction', 'keywords', 'questions');
-					res.body.id.should.not.be.null;
+					// res.body.user_id.should.not.be.null();
 				});
 		});		
 	});
 
 
+	// ************* Topics PUT Endpoints *************
+	// *************************************************
+
+	// Update a submitted table topic by its id - Test
 
 
 
@@ -185,33 +193,29 @@ describe('Blog Api', function() {
 
 
 
+	// ************* Topics DELETE Endpoints *************
+	// *************************************************
 
+	// DELETE an existing Table Topics Session - Test
 
+	describe('Delete a table topics session by id (Delete /:id', function() {
+		let topicId;
+		it('delete a topics session', function() {
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+			Topic
+				.findOne()
+				.exec()
+				.then(topic => {
+					topicId = topic._id;
+					console.log(`****this is the topic._id1: ${topicId}`)
+					return chai.request(app)
+						.delete(`/topics/${topicId}`)
+						.then(function(res){
+							res.should.have.status(204);
+						});
+				});
+		});
+	});
 
 });
 	
