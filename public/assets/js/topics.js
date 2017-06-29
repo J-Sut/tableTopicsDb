@@ -11,7 +11,6 @@ function checkForToken(callback){
 		success: function(data){
 			logInToken = data;
 			callback(data)
-
 		},
 		error: function(data){
 			console.log('Token not found')
@@ -111,18 +110,18 @@ function addQuestion(){
 	$('#sessionQuestions').append(newQuestInput);
 };
 
-function displayContent(){
-		console.log('display Content Fired')
-};
-
 function displaySubmissionscount(count){
 	$('#currentTopicsCount').text(count);
+};
+
+function displayNavTabs(){
+	$('#logOut, #profileTab, #logIn, #signUp').toggleClass('is-hidden');
 };
 
 // ************ Event Calls & Listeners **************
 
 $(function(){
-	checkForToken(displayContent);
+	checkForToken(displayNavTabs);
 	countSubmissions();
 });
 
