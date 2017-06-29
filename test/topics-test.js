@@ -161,23 +161,25 @@ describe('Topic Api', function() {
 	describe('Submit a table topics session to the database (POST /topics', function() {
 
 		it('should submit a session', function() {
-			
-			let testUserId = {_id: faker.random.uuid()}
-			const newPost = generateTopicData(testUserId);
-			// console.log('testUserId: ', testUserId);
-			// console.log('new post: ',newPost);
+			User
+				.findOne()
+				.exec()
+				.then(user => {
+					const newPost = generateTopicData(user._id);
+					// console.log('testUserId: ', testUserId);
+					console.log('new post: ',newPost);
+					return chai.request(app)
+						.post('/topics/')
+						.send(newPost)
+						.then(function(res){
+							// console.log('submit session res.body: ', res.body)
 
-			return chai.request(app)
-				.post('/topics/')
-				.send(newPost)
-				.then(function(res){
-					// console.log('submit session res.body: ', res.body)
-
-					res.should.have.status(201);
-					res.should.be.json;
-					res.body.should.include.keys('theme', 'introduction', 'keywords', 'questions');
-					// res.body.user_id.should.not.be.null();
-				});
+							res.should.have.status(201);
+							res.should.be.json;
+							res.body.should.include.keys('theme', 'introduction', 'keywords', 'questions');
+							// res.body.user_id.should.not.be.null();
+						});
+				});			
 		});		
 	});
 
@@ -216,6 +218,5 @@ describe('Topic Api', function() {
 				});
 		});
 	});
-
 });
 	

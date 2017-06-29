@@ -1,4 +1,4 @@
-#displayTopicsFiller {
+	#displayTopicsFiller {
 	padding: 10px;
 }
 
@@ -57,11 +57,6 @@ h3.displayFiller {
 .tableTopicSession {
 	display: flex;
 	justify-content: center;
-	padding-bottom: 25px;
-}
-
-.tableTopicSession:first-child {
-	padding-top: 25px;
 }
 
 .tableTopic, .topicInfo {
@@ -104,9 +99,6 @@ h3.title:not(:last-child), h3.subtitle:not(:last-child) {
 	padding: 5px 25px 5px 25px;
 }
 
-#dbProgressRow h1{
-	padding: 5px 0px 0px 25px;
-}
 
 .dbStats {
 	display: block;
@@ -117,7 +109,7 @@ h3.title:not(:last-child), h3.subtitle:not(:last-child) {
 
 content.dbStats {
 	border: 3px solid #0E4C49;
-	margin: 10px;
+	margin: 10px 10px 0px 10px;
 }
 
 .tableTopicsBuffer2 {
@@ -135,7 +127,18 @@ content.dbStats {
 
 #statRow {
 	text-align: center;
+	padding: 10px;
 }
+
+	.tableTopicSession:nth-child(odd) {
+		border: 2px solid rgb(250, 255, 189);;
+		margin: 1em;
+	}
+
+	.tableTopicSession:nth-child(even) {
+		border: 2px solid #E0EEEE;
+		margin: 1em;
+	}
 
 /****************** MEDIA QUERIES ******************/
 
@@ -163,6 +166,18 @@ content.dbStats {
 	#tableTopicsPractice button {
 		margin-bottom: 1em;
 	}
+
+	section.sessionMetaData {
+	max-width: 100%;
+	}
+
+	.ttContainer {
+		display: block;
+	}
+
+
+	
+
 
 }
 

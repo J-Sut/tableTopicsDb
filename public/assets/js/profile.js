@@ -213,3 +213,8 @@ $('#submitButton').on('click', function(){
 $('#logOut').on('click', function(){
 	checkForToken(logOutUser);
 })
+
+$('#navHam').on('click', function(){
+	$('#navHamDropdown').toggleClass('is-active');
+	$('#navHam').toggleClass('is-active');
+})

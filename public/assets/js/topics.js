@@ -153,5 +153,9 @@ $('#sessionQuestions').on('click', '.delete', function(){
 	$(this).parent().remove();
 });
 
+$('#navHam').on('click', function(){
+	$('#navHamDropdown').toggleClass('is-active');
+	$('#navHam').toggleClass('is-active');
+})
 
 
