@@ -32,30 +32,51 @@
 </head>
 <body>
 
-	<nav id="mainNavBar" class="nav has-shadow">
-	  <div class="container">
-	    <div class="nav-left">
-	      <a href="./index.html" class="nav-item">
-	        <img src="./assets/images/TTdb_podium.png" href="./index.html" alt="Table Topics DB">
-	      </a>
-	      <a id="home" href="./index.html"class="nav-item is-tab is-hidden-mobile">Home</a>
-	      <a id="submitTopics" href="./topics.html" class="nav-item is-tab is-hidden-mobile">Submit Topics</a>
-	    </div> <!-- nav-left -->
-
-	    <div  class="nav-right nav-menu">
-	      <a id="signUp" href="./signup.html" class="nav-item is-tab is-hidden-mobile">Sign up</a>
-	   		<a id="logIn" href="./login.html" class="nav-item is-tab is-hidden-mobile">Log in</a>
-	      <a id="profileTab" class="nav-item is-tab is-hidden is-active">
-	        <figure class="image is-16x16" style="margin-right: 8px;">
-	          <img src="http://bulma.io/images/jgthms.png">
-	        </figure>
-	        Profile
-	      </a>
-	      <a id="logOut" class="nav-item is-tab is-hidden">Log out</a>
-	    </div> <!-- nav-right -->
+	<nav id="mobileNavBar" class="nav is-active">
+	  <a href="./index.html" class="nav-item is-hidden-mobile">
+      <img src= "./assets/images/TTdb_podium.png" alt="Table Topics DB">
+    </a>
+	  <div class="nav-left is-hidden-mobile">
+      <a href="./index.html" class="nav-item is-tab">Home</a>
+      <a href="./topics.html" class="nav-item is-tab">Submit Topics</a>
+      <a href="./thankyou.html" class="nav-item is-tab">Thank You</a>
 	  </div>
-	</nav> <!-- mainNavBar -->
 
+	  <div class="nav-center is-hidden-tablet">
+		   <a href="./index.html" class="nav-item">
+	      <img id="ttdbLogo" src= "./assets/images/TTdb_podium.png" alt="Table Topics DB">
+	    </a>
+	  </div>
+
+	  <!-- This "nav-toggle" hamburger menu is only visible on mobile -->
+	  <!-- You need JavaScript to toggle the "is-active" class on "nav-menu" -->
+	  <span id="navHam" class="nav-toggle">
+	    <span></span>
+	    <span></span>
+	    <span></span>
+	  </span>
+
+	  <!-- This "nav-menu" is hidden on mobile -->
+	  <!-- Add the modifier "is-active" to display it on mobile -->
+	 		<div id="navHamDropdown" class="nav-right nav-menu">
+				<p class="is-hidden-tablet">
+		      <a id="home" href="./index.html" class="nav-item is-tab">Home</a>
+		      <a id="submitTopics" href="./topics.html" class="nav-item is-tab">Submit Topics</a>
+		      <a href="./thankyou.html" class="nav-item is-tab">Thank You</a>
+	      </p>
+			  <a id="logIn" href="./login.html" class="nav-item is-tab">Log in</a>
+		    <a id="signUp" href="./signup.html" class="nav-item is-tab">Sign up</a>
+
+		    <a id="profileTab" href="./profile.html" class="nav-item is-tab is-hidden is-active">
+		      <figure class="image is-16x16" style="margin-right: 8px;">
+		        <img src="http://bulma.io/images/jgthms.png">
+		      </figure>
+		      Profile
+		    </a>
+		    <a id="logOut" class="nav-item is-tab is-hidden">Log out</a>
+	    </div>
+	  </div>
+	</nav> <!-- mobileNavBar -->
 	<header>
 		<section class="hero">
 		  <div id="pageTitle" class="hero-body">

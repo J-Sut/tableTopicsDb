@@ -144,7 +144,10 @@ $('#noClub').on('change', function() {
 	$('#memberInfo').addClass("is-hidden");
 });
 
-
+$('#navHam').on('click', function(){
+	$('#navHamDropdown').toggleClass('is-active');
+	$('#navHam').toggleClass('is-active');
+})
 
 
 

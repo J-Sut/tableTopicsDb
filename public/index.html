@@ -32,53 +32,19 @@
 </head>
 <body>
 
-	<nav id="mainNavBar" class="nav has-shadow is-hidden-mobile">
-
-	    <a href="./index.html" class="nav-item">
-	      <img src= "./assets/images/TTdb_podium.png" alt="Table Topics DB">
-	    </a>
-		  <div class="container ">
-		    <div class="nav-left ">
-
-		      <a id="home" class="nav-item is-tab is-active">Home</a>
-		      <a id="submitTopics" href="./topics.html" class="nav-item is-tab">Submit Topics</a>
-		      <a href="./thankyou.html" class="nav-item is-tab">Thank You</a>
-		      
-		    </div> <!-- nav-left -->
-
-		    <div  class="nav-right">
-		   		<a id="logIn" href="./login.html" class="nav-item is-tab">Log in</a>
-		      <a id="signUp" href="./signup.html" class="nav-item is-tab">Sign up</a>
-
-		      <a id="profileTab" href="./profile.html" class="nav-item is-tab is-hidden">
-		        <figure class="image is-16x16" style="margin-right: 8px;">
-		          <img src="http://bulma.io/images/jgthms.png">
-		        </figure>
-		        Profile
-		      </a>
-		      <a id="logOut" class="nav-item is-tab is-hidden">Log out</a>
-		    </div> <!-- nav-right -->
-		  </div>
-
-	</nav> <!-- Desktop mainNavBar -->
-
 	<nav id="mobileNavBar" class="nav is-active">
-	  <div class="nav-left">
-	    <a class="nav-item">
-	      <img src="http://bulma.io/images/bulma-logo.png" alt="Bulma logo">
-	    </a>
+	   <a href="./index.html" class="nav-item is-hidden-mobile">
+      <img src= "./assets/images/TTdb_podium.png" alt="Table Topics DB">
+    </a>
+	  <div class="nav-left is-hidden-mobile">
+      <a class="nav-item is-tab is-active">Home</a>
+      <a href="./topics.html" class="nav-item is-tab">Submit Topics</a>
+      <a href="./thankyou.html" class="nav-item is-tab">Thank You</a>
 	  </div>
 
-	  <div class="nav-center">
-	    <a class="nav-item">
-	      <span class="icon">
-	        <i class="fa fa-github"></i>
-	      </span>
-	    </a>
-	    <a class="nav-item">
-	      <span class="icon">
-	        <i class="fa fa-twitter"></i>
-	      </span>
+	  <div class="nav-center is-hidden-tablet">
+		   <a href="./index.html" class="nav-item">
+	      <img id="ttdbLogo" src= "./assets/images/TTdb_podium.png" alt="Table Topics DB">
 	    </a>
 	  </div>
 
@@ -92,36 +58,22 @@
 
 	  <!-- This "nav-menu" is hidden on mobile -->
 	  <!-- Add the modifier "is-active" to display it on mobile -->
-	  <div id="navHamDropdown" class="nav-right nav-menu">
-	    <a class="nav-item">
-	      Home
-	    </a>
-	    <a class="nav-item">
-	      Documentation
-	    </a>
-	    <a class="nav-item">
-	      Blog
-	    </a>
+	 		<div id="navHamDropdown" class="nav-right nav-menu">
+				<p class="is-hidden-tablet">
+		      <a id="home" class="nav-item is-tab is-active">Home</a>
+		      <a id="submitTopics" href="./topics.html" class="nav-item is-tab">Submit Topics</a>
+		      <a href="./thankyou.html" class="nav-item is-tab">Thank You</a>
+	      </p>
+			  <a id="logIn" href="./login.html" class="nav-item is-tab">Log in</a>
+		    <a id="signUp" href="./signup.html" class="nav-item is-tab">Sign up</a>
 
-	    <div class="nav-item">
-	      <div class="field is-grouped">
-	        <p class="control">
-	          <a class="button" >
-	            <span class="icon">
-	              <i class="fa fa-twitter"></i>
-	            </span>
-	            <span>Tweet</span>
-	          </a>
-	        </p>
-	        <p class="control">
-	          <a class="button is-primary">
-	            <span class="icon">
-	              <i class="fa fa-download"></i>
-	            </span>
-	            <span>Download</span>
-	          </a>
-	        </p>
-	      </div>
+		    <a id="profileTab" href="./profile.html" class="nav-item is-tab is-hidden">
+		      <figure class="image is-16x16" style="margin-right: 8px;">
+		        <img src="http://bulma.io/images/jgthms.png">
+		      </figure>
+		      Profile
+		    </a>
+		    <a id="logOut" class="nav-item is-tab is-hidden">Log out</a>
 	    </div>
 	  </div>
 	</nav> <!-- mobileNavBar -->

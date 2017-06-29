@@ -144,7 +144,7 @@ function displaySession(session){
 	let $sectionCard = $('<section />', {class: 'section tableTopicSession'});
 	let $container = $('<div />', {class: 'container ttContainer columns'});
 
-	let $sessionMetaData = $('<section />', {class: 'sessionMetaData column '});
+	let $sessionMetaData = $('<section />', {class: 'sessionMetaData column is-9 '});
 	let $themeLabel = $('<h3 />', {class: 'themeLabel title', text: "Theme"});
 	let $themeData = $('<h5 />', {class: 'themeData topicInfo', text: session.theme});
 	let $introductionlabel = $('<h3 />', {class: 'introductionlabel title', text: "Introduction"});
@@ -152,7 +152,7 @@ function displaySession(session){
 	let $keywordsLabel = $('<h3 />', {class: 'keywordsLabel title', text: "Keywords"});
 	let $keywordsData = $('<h5 />', {class: 'keywordsData topicInfo', text: session.keywords.join(', ')});
 
-	let $sessionQuestions = $('<section />', {class: 'sessionQuestions column is-two-thirds is-hidden'});
+	let $sessionQuestions = $('<section />', {class: 'sessionQuestions column is-9 is-hidden'});
 	let $questionsLabel = $('<h3 />', {class: 'questionsLabel title', text: "Questions"});
 	let $questionsData = $('<ul />', {class: 'questionsData topicsQuestionsList', text: questionListElement});
 
@@ -248,10 +248,11 @@ $('#logOut').on('click', function(){
 
 $('#displayTopics').on('click', '.showQuestionButton', function(){
 	$(this).parent().parent().parent().find('section.sessionQuestions').toggleClass('is-hidden');
-	$(this).parent().parent().parent().find('section.sessionMetaData').toggleClass('is-one-third');
+	// $(this).parent().parent().parent().find('section.sessionMetaData').toggleClass('is-one-third');
 	$(this).text('Questions');
 });
 
 $('#navHam').on('click', function(){
 	$('#navHamDropdown').toggleClass('is-active');
+	$('#navHam').toggleClass('is-active');
 })
