@@ -90,29 +90,6 @@ describe('User Api', function() {
 		return closeServer();
 	});
 
-
-	// Get a list of all users - Test
-	describe('Get a list of all users (GET /users)', function() {
-		it('should return an array of all the Db Users', function(){
-			return chai.request(app)
-				.get('/users')
-				.then(function(res) {
-					const expectedKeys = ['username', 'email'];
-					const	unexpectedKeys = ['password', 'inClub', 'memberClubList'];
-
-					res.should.have.status(200);
-					res.should.be.json;
-					res.body.should.be.an('array');
-								
-					res.body.forEach(function(item){
-						item.should.be.an('object');
-						item.should.include.keys(expectedKeys);
-						item.should.not.include.keys(unexpectedKeys);
-					});
-				})
-		});	
-	});
-
 	// Get a user Profile by Id - Test
 
 	// describe('Get the profile of the logged in User (GET /users/:id/topics)', function() {
@@ -134,29 +111,6 @@ describe('User Api', function() {
 	// 			})
 	// 	});	
 	// });
-
-
-	// Return a list of all profiles - Test 
-
-	describe('Get the profile of the logged in user (GET /users/profiles)', function() {
-		it('should return an array of objects', function(){
-			return chai.request(app)
-				.get('/users/profiles')
-				.then(function(res) {
-					const expectedKeys = ['_id','displayName', 'bio', 'photo', 'user_id'];
-
-					res.should.have.status(200);
-					res.should.be.json;
-					res.body.should.be.an('array');
-					
-					res.body.forEach(function(item){
-						item.should.be.an('object');
-						item.should.include.keys(expectedKeys);
-					});
-				})
-		});
-	});
-
 
 	// Get Session Login Token - Test
 
@@ -196,8 +150,6 @@ describe('User Api', function() {
 				})
 		});	
 	});
-
-
 
 	// ************* User POST Endpoints - Tests *************
 
