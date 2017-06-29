@@ -14,22 +14,22 @@ const {Topic} = require('../models/topic-model');
 // **********************************************
 
 
-// Get a list of all users
+// // Get a list of all users
 
-router.get('/', (req, res) => {
-	User
-	.find()	
-	.exec()
-	.then(userList => {
-		res.status(200).json(userList.map(user => {
-			return user.apiRepr();
-		}))
-	})
-	.catch(err => {
-  		console.error(err);
-  		res.status(500).json({message: 'Internal server error'})
-  });
-});
+// router.get('/', (req, res) => {
+// 	User
+// 	.find()	
+// 	.exec()
+// 	.then(userList => {
+// 		res.status(200).json(userList.map(user => {
+// 			return user.apiRepr();
+// 		}))
+// 	})
+// 	.catch(err => {
+//   		console.error(err);
+//   		res.status(500).json({message: 'Internal server error'})
+//   });
+// });
 
 // Get a user Profile by Id
 router.get('/profile/me', (req, res) => {
@@ -43,17 +43,17 @@ router.get('/profile/me', (req, res) => {
   });
 });
 
-// Return list of profiles
-router.get('/profiles', (req, res) => {
-	Profile
-	.find()	
-	.exec()
-	.then(profileList => res.status(200).json(profileList))
-	.catch(err => {
-  		console.error(err);
-  		res.status(500).json({message: 'Internal server error'})
-  });
-});
+// // Return list of profiles
+// router.get('/profiles', (req, res) => {
+// 	Profile
+// 	.find()	
+// 	.exec()
+// 	.then(profileList => res.status(200).json(profileList))
+// 	.catch(err => {
+//   		console.error(err);
+//   		res.status(500).json({message: 'Internal server error'})
+//   });
+// });
 
 // Get Session Login Token
 router.get('/token/', (req, res) => {

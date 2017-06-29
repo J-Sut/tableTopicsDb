@@ -9,17 +9,6 @@ const {Club} = require('../models/club-model');
 
 // ************* Club GET Endpoints *************
 
-router.get('/', (req, res) => {
-	Club
-	.find(Club)	
-	.exec()
-	.then(clubList => res.status(200).json(clubList))
-	.catch(err => {
-  		console.error(err);
-  		res.status(500).json({message: 'Internal server error'})
-  });
-});
-
 // Get club by member's id for profiles
 router.get('/:id/profile', (req, res) => {
 	Club
