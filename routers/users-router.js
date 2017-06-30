@@ -14,7 +14,6 @@ const {Topic} = require('../models/topic-model');
 // ************* User GET Endpoints *************
 // **********************************************
 
-
 // Get a list of all users
 
 router.get('/', (req, res) => {
@@ -48,17 +47,17 @@ router.get('/profile/me', (req, res) => {
   });
 });
 
-// Return list of profiles
-router.get('/profiles', (req, res) => {
-	Profile
-	.find()	
-	.exec()
-	.then(profileList => res.status(200).json(profileList))
-	.catch(err => {
-  		console.error(err);
-  		res.status(500).json({message: 'Internal server error'})
-  });
-});
+// // Return list of profiles
+// router.get('/profiles', (req, res) => {
+// 	Profile
+// 	.find()	
+// 	.exec()
+// 	.then(profileList => res.status(200).json(profileList))
+// 	.catch(err => {
+//   		console.error(err);
+//   		res.status(500).json({message: 'Internal server error'})
+//   });
+// });
 
 // Get Session Login Token
 router.get('/token/', (req, res) => {
