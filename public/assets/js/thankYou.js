@@ -3,7 +3,6 @@
 let userData
 const baseUrl = 'http://www.tabletopicsdb.com';
 
-
 /***************** f(Modify-state) *****************/
 
 function checkForToken(callback){
@@ -29,7 +28,6 @@ function countSubmissions(){
 		type: "GET",
 		url: baseUrl + '/topics',
 		success: function(data){
-			console.log(data.length);
 			displaySubmissionscount(data.length)
 		},
 		error: function(data){
@@ -39,8 +37,6 @@ function countSubmissions(){
 };
 
 function logOutUser(userTokenId){
-	
-	console.log('log out user called ')
 	let userId = userTokenId;
 
 	$.ajax({
@@ -60,7 +56,6 @@ function displaySubmissionscount(count){
 };
 
 function displayNav(){
-	console.log('display Content Fired')
 	$('#logOut, #profileTab, #logIn, #signUp').toggleClass('is-hidden');
 };
 /***************** Event Listeners *****************/

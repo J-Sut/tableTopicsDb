@@ -4,13 +4,11 @@ const baseUrl = 'http://www.tabletopicsdb.com';
 
 // ************ f(Modify State) **************
 function checkForToken(callback){
-	console.log('check for token fired')
  
 	$.ajax({
 		type: "GET",
 		url: baseUrl + '/users/token',
 		success: function(data){
-			console.log("Great token you've got there")
 			callback(data)
 		},
 		error: function(data){
@@ -40,15 +38,12 @@ function addNewUser(newUser, clubInfo, callback) {
 		website: clubInfo.website
 	}; 
 
-	console.log(clubInfo);
-
 	$.ajax({
 		type: "POST",
 		url: ttdbURL,
 		data: JSON.stringify(query),
 		success: function(data){
 			data.tmTitle = newUser.tmTitle;
-			console.log(data)
 			createUserProfile(data);
 			location.href = 'login.html';
 		},
@@ -61,10 +56,9 @@ function addNewUser(newUser, clubInfo, callback) {
 };
 
 function createUserProfile(userData){
-	console.log("userData for Creating profile: ", userData);
 	let userId = userData._id;
 
-	var ttdbURL = `${baseUrl}/users/${userId}/profile;
+	var ttdbURL = `${baseUrl}/users/${userId}/profile`;
 	var query = {
 		user_id: userId,
 		displayName: userData.username,
@@ -73,14 +67,11 @@ function createUserProfile(userData){
 		tmTitle: userData.tmTitle
 	}; 
 
-	console.log("createUserProfile Fired");
-
 	$.ajax({
 		type: "POST",
 		url: ttdbURL,
 		data: JSON.stringify(query),
 		success: function(profileData){
-			console.log(profileData);
 		},
 		contentType: 'application/json',
     dataType: 'json'
@@ -91,7 +82,6 @@ function createUserProfile(userData){
 
 
 function displayContent(){
-	console.log('display Content Fired')
 	$('#logOut, #profileTab, #logIn, #signUp').toggleClass('is-hidden');
 };
 
@@ -106,7 +96,6 @@ $(function(){
 // Submit new User Button Action
 $('#newUserForm').submit(function(e){
   e.preventDefault();
-  console.log("form submitted");
 
   let newUser = {
 		name: $('#userNameInput').val(),
@@ -131,12 +120,10 @@ $('#newUserForm').submit(function(e){
 	if (newUser.password === newUser.pwConf) {
   	addNewUser(newUser, clubInfo);
 	} else {
-		const message = `Passwords do not match`
+		const message = `Password is incorrect`
 	  console.log(message);
 	  alert(message);
 	};
-
-		console.log('tmTitle: ', newUser.tmTitle);
 });
 
 // Reveal Club questions if the member states they are in a Club

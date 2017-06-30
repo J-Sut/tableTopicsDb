@@ -38,7 +38,6 @@ function logInPlease(message){
 
 $('#signInForm').submit(function(e){
     e.preventDefault();
-    console.log("submit fired");
 
     let userEmail = $('#userEmailInput').val().toLowerCase();
     let userPw = $('#userPwInput').val()
