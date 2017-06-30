@@ -1,6 +1,6 @@
 // ************ State **************
 
-const baseUrl = 'https://afternoon-cliffs-40325.herokuapp.com';
+const baseUrl = 'http://www.tabletopicsdb.com';
 
 // ************ f(Modify State) **************
 function checkForToken(callback){
