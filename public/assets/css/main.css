@@ -112,6 +112,7 @@ footer {
 
 #buttonHolder{
 	text-align: center;
+	padding-top: 10px;
 }
 
 .disabled {
@@ -145,6 +146,7 @@ h4.title:not(:last-child), h4.subtitle:not(:last-child) {
 h3.title:not(:last-child), h3.subtitle:not(:last-child) {
     margin-bottom: 1rem;
 }
+
 .hero-body {
     padding: 2em;
     text-align: left;
@@ -182,6 +184,11 @@ h3.title:not(:last-child), h3.subtitle:not(:last-child) {
 
 
 @media screen and (max-width: 768px) {
+
+	
+	.hero-body {
+	    padding: 1em;
+	}
 
 	#pageFooter {
 	     background-size: auto 120%; 

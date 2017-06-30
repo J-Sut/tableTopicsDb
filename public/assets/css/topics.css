@@ -14,15 +14,15 @@ label, .label{
 	display: flex;
 	width: auto;
 	margin: auto;
-	padding: 20px;
+	padding: 10px 5px 10px 5px;
 	text-align: center;
 	vertical-align: middle;
 	justify-content: center;
 }
 
 #sessionSubmitForm {
-	max-width: 60%;
-	margin: auto;
+	border: 2px solid rgb(250, 255, 189);
+	padding: 10px;
 }
 
 .textarea {
@@ -37,9 +37,7 @@ label, .label{
 
 #fieldsetArea {
 	padding: 20px;
-	border: 2px solid rgb(250, 255, 189);
 	width: auto;
-	max-width: 2000px;
 }
 
 #topicIntroTitle {
@@ -63,4 +61,52 @@ h3.title:not(:last-child), h3.subtitle:not(:last-child) {
 input, .input {
 	min-width: 250px;
 	max-width: 450px;
+}
+
+
+@media screen and (max-width: 768px) {
+	
+	input, .input {
+		min-width: auto;
+	}
+
+	#formContainer {
+		padding: 5px;
+	}	
+
+	#formArea {
+		padding: 10px 1px 10px 1px;
+	}
+	label.label	{
+		width: 100px;
+		font-size: .9rem;
+		padding: 2px;
+	}
+
+	#tmTitle {
+		font-size: 10px;
+	}
+
+	#clubCountryInput {
+		margin-left: 5px;
+	}
+
+	.locationInput {
+		width: 110px;
+	}
+
+	.select {
+		margin-left: 5px;
+	}
+
+	.textarea {
+    display: block;
+    max-height: 600px;
+    max-width: 100%;
+    min-height: 80px;
+    min-width: 100%;
+    padding: 0.625em;
+    resize: both;
+	}
+
 }

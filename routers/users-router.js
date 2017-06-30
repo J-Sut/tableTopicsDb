@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const mongoose = require('mongoose');
+const	md5 = require('md5');
 
 const bodyParser = require('body-parser');
 const jsonParser = bodyParser.json();
@@ -35,8 +36,12 @@ const {Topic} = require('../models/topic-model');
 router.get('/profile/me', (req, res) => {
 	Profile
 	.findOne({user_id: req.session.userId})	
+	.populate('user_id', 'email')
 	.exec()
-	.then(profile => res.status(200).json(profile))
+	.then(profile => {
+		profile.photo = md5(profile.user_id.email);
+		res.status(200).json(profile)
+	})
 	.catch(err => {
   		console.error(err);
   		res.status(500).json({message: 'Internal server error'})

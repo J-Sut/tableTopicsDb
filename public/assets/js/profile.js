@@ -7,7 +7,7 @@ var userData;
 // ************ f(Modify-state) **************
 
 function getTopics(callback){
-	let userId = userData.user_id;
+	let userId = userData.user_id._id;
 
 	$.ajax({
 		type: 'GET',
@@ -42,13 +42,14 @@ function getProfileData(){
 	$.getJSON('users/profile/me', function(data){
 		userData = data;
 		displayProfileData(data);
+		displayProfilePic(data.photo)
 		getTopics(displaySession);
 		getClubInfo(data)
 	});
 };
 
 function getClubInfo(userData){
-	let userId = userData.user_id
+	let userId = userData.user_id._id
 
 	$.ajax({
 		type: 'GET',
@@ -130,7 +131,7 @@ $(function(){
 function displayProfileData(data){
 	$('#userName').text(data.displayName);
 	$('#userBio').text(data.bio);		
-	$('#tmTitle').text(data.tmTitle);		
+	$('#tmTitle').text(data.tmTitle === '-1' ? 'No TM Title' : data.tmTitle);		
 };
 
 function displaySession(session){
@@ -177,7 +178,9 @@ function renderClubInfo(clubs){
 
 };
 
-
+function displayProfilePic(userHash){
+	$('#profilePage img').attr("src", `https://www.gravatar.com/avatar/${userHash}`)
+}
 // ************ Event Listeners **************
 
 // Get and Display profile info of logged in User

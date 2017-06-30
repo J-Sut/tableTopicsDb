@@ -11,7 +11,6 @@ function checkForToken(callback){
 		success: function(data){
 			logInToken = data;
 			callback(data)
-
 		},
 		error: function(data){
 			console.log('Token not found')
@@ -41,10 +40,12 @@ function grabQuestions() {
 
 function addNewSession(sessionDetails, callback) {
 
+	console.log('addnewsession fired')
+
 	var ttdbURL = "http://localhost:8080/topics";
 	var query = {
 		theme: sessionDetails.theme,
-		sessionIntro: sessionDetails.sessionIntro,
+		introduction: sessionDetails.sessionIntro,
 		keywords: sessionDetails.keywords,	
 		questions: sessionDetails.questions,
 		user_id: logInToken
@@ -55,8 +56,13 @@ function addNewSession(sessionDetails, callback) {
 		url: ttdbURL,
 		data: JSON.stringify(query),
 		success: function(data){
+			console.log("Ajax Post worked... Yay")
 			location.href = 'thankyou.html';
 		},
+		error: function(){
+			console.log("Ajax Post Error")
+		},
+
 		contentType: 'application/json',
     dataType: 'json'
 	});
@@ -100,7 +106,7 @@ function countSubmissions(){
 function addQuestion(){
 	const newQuestInput = $(
 				'<div class="topicQuestion field is-grouped">' +
-					'<label class="label" >Question: </label>' +
+					'<label class="label" >Question </label>' +
 				  '<p class="control">' +
 				    '<textarea  class="topicQuestionInput textarea" placeholder="Textarea" required></textarea>' +
 				  '</p>' + '<a class="delete"></a>'+
@@ -111,23 +117,25 @@ function addQuestion(){
 	$('#sessionQuestions').append(newQuestInput);
 };
 
-function displayContent(){
-		console.log('display Content Fired')
-};
-
 function displaySubmissionscount(count){
 	$('#currentTopicsCount').text(count);
+};
+
+function displayNavTabs(){
+	$('#logOut, #profileTab, #logIn, #signUp').toggleClass('is-hidden');
 };
 
 // ************ Event Calls & Listeners **************
 
 $(function(){
-	checkForToken(displayContent);
+	checkForToken(displayNavTabs);
 	countSubmissions();
 });
 
 $('#sessionSubmitForm').submit(function(e){
   e.preventDefault();
+
+  console.log('submit fired')
 
   let sessionDetails = {
 		theme: $('#themeInput').val().trim(),
