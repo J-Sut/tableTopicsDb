@@ -1,6 +1,7 @@
 // ***************** State *******************
 
-const baseUrl = 'https://afternoon-cliffs-40325.herokuapp.com';
+//const baseUrl = 'https://afternoon-cliffs-40325.herokuapp.com';
+const baseUrl = 'http://localhost:8080';
 
 // ************ f(MODIFY-state) **************
 
@@ -22,7 +23,7 @@ function countUsers(){
 
 		$.ajax({
 		type: "GET",
-		url: baseUrl+'/users',
+		url: baseUrl+'/users/all',
 		success: function(data){
 			displayUsersCount(data.length)
 		},
@@ -36,7 +37,7 @@ function countClubs(){
 
 		$.ajax({
 		type: "GET",
-		url: `${baseUrl}/clubs`,
+		url: `${baseUrl}/clubs/all`,
 		success: function(data){
 			displayClubsCount(data.length)
 		},

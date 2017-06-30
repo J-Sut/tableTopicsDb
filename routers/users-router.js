@@ -14,23 +14,21 @@ const {Topic} = require('../models/topic-model');
 // ************* User GET Endpoints *************
 // **********************************************
 
-
-// // Get a list of all users
-
-// router.get('/', (req, res) => {
-// 	User
-// 	.find()	
-// 	.exec()
-// 	.then(userList => {
-// 		res.status(200).json(userList.map(user => {
-// 			return user.apiRepr();
-// 		}))
-// 	})
-// 	.catch(err => {
-//   		console.error(err);
-//   		res.status(500).json({message: 'Internal server error'})
-//   });
-// });
+// Get a list of all users
+router.get('/', (req, res) => {
+	User
+	.find()	
+	.exec()
+	.then(userList => {
+		res.status(200).json(userList.map(user => {
+			return user.apiRepr();
+		}))
+	})
+	.catch(err => {
+  		console.error(err);
+  		res.status(500).json({message: 'Internal server error'})
+  });
+});
 
 // Get a user Profile by Id
 router.get('/profile/me', (req, res) => {
