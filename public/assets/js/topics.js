@@ -1,13 +1,14 @@
 // ************ f(MODIFY-state) **************
 
-let logInToken
+let logInToken;
+const baseUrl = 'https://afternoon-cliffs-40325.herokuapp.com';
 
 // ************ f(MODIFY-state) **************
 
 function checkForToken(callback){ 
 	$.ajax({
 		type: "GET",
-		url: 'http://localhost:8080/users/token',
+		url: baseUrl + '/users/token',
 		success: function(data){
 			logInToken = data;
 			callback(data)
@@ -42,7 +43,7 @@ function addNewSession(sessionDetails, callback) {
 
 	console.log('addnewsession fired')
 
-	var ttdbURL = "http://localhost:8080/topics";
+	var ttdbURL = baseUrl + "/topics";
 	var query = {
 		theme: sessionDetails.theme,
 		introduction: sessionDetails.sessionIntro,
@@ -78,7 +79,7 @@ function logOutUser(userTokenId){
 
 	$.ajax({
 		type: 'DELETE',
-		url: `http://localhost:8080/users/logout/${userId}`,
+		url: baseUrl + `/users/logout/${userId}`,
 		success: function(){
 			location.href = 'index.html';
 		},
@@ -89,7 +90,7 @@ function logOutUser(userTokenId){
 function countSubmissions(){
 		$.ajax({
 		type: "GET",
-		url: 'http://localhost:8080/topics',
+		url: baseUrl + '/topics',
 		success: function(data){
 			console.log(data.length, " Sessions submitted");
 			displaySubmissionscount(data.length)

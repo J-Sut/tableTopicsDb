@@ -1,5 +1,6 @@
 // **************** State ******************
 var userData;
+const baseUrl = 'https://afternoon-cliffs-40325.herokuapp.com';
 
 
 			// $('body').css('background-color', 'green');
@@ -11,7 +12,7 @@ function getTopics(callback){
 
 	$.ajax({
 		type: 'GET',
-		url: `http://localhost:8080/users/${userId}/topics`,
+		url: `${baseUrl}/users/${userId}/topics`,
 		success: function(data){
 			if(data.length === 0) {
 				encourageSubmit();
@@ -27,7 +28,7 @@ function getTopics(callback){
 function checkForToken(callback){
 	$.ajax({
 		type: "GET",
-		url: 'http://localhost:8080/users/token',
+		url: `${baseUrl}/users/token`,
 		success: function(data){
 			callback(data)
 		},
@@ -53,7 +54,7 @@ function getClubInfo(userData){
 
 	$.ajax({
 		type: 'GET',
-		url: `http://localhost:8080/clubs/${userId}/profile`,
+		url: `${baseUrl}/clubs/${userId}/profile`,
 		success: function(clubs){
 			renderClubInfo(clubs)
 		},
@@ -76,7 +77,7 @@ function updateProfile(updateInfo){
 
 		$.ajax({
 			type: "PUT",
-			url: 'http://localhost:8080/users/'+userData._id+ '/profile',
+			url: `${baseUrl}/users/${userData._id}/profile`,
 			data: JSON.stringify(query),
 			success: function(data){
 				//location.href = 'login.html';
@@ -114,7 +115,7 @@ function logOutUser(userTokenId){
 
 	$.ajax({
 		type: 'DELETE',
-		url: `http://localhost:8080/users/logout/${userId}`,
+		url: `${baseUrl}/users/logout/${userId}`,
 		success: function(){
 			checkForToken();
 			location.reload();

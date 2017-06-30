@@ -1,12 +1,14 @@
 // ***************** State *******************
 
+const baseUrl = 'https://afternoon-cliffs-40325.herokuapp.com';
+
 // ************ f(MODIFY-state) **************
 
 function countSubmissions(){
 
 		$.ajax({
 		type: "GET",
-		url: 'http://localhost:8080/topics',
+		url: `${baseUrl}/topics`,
 		success: function(data){
 			displaySubmissionsCount(data.length)
 		},
@@ -20,7 +22,7 @@ function countUsers(){
 
 		$.ajax({
 		type: "GET",
-		url: 'http://localhost:8080/users',
+		url: `${baseUrl}/users`,
 		success: function(data){
 			displayUsersCount(data.length)
 		},
@@ -34,7 +36,7 @@ function countClubs(){
 
 		$.ajax({
 		type: "GET",
-		url: 'http://localhost:8080/clubs',
+		url: `${baseUrl}/clubs`,
 		success: function(data){
 			displayClubsCount(data.length)
 		},
@@ -48,7 +50,7 @@ function checkForToken(callback){
  
 	$.ajax({
 		type: "GET",
-		url: 'http://localhost:8080/users/token',
+		url: `${baseUrl}/users/token`,
 		success: function(data){
 			callback(data)
 		},
@@ -61,7 +63,7 @@ function checkForToken(callback){
 function getOneQuestion(callback){
 	$.ajax({
 		type: "GET",
-		url: 'http://localhost:8080/topics/question',
+		url: `${baseUrl}/topics/question`,
 		success: function(data){
 			callback(data);
 		},
@@ -75,7 +77,7 @@ function getWholeSession(callback) {
 
 	$.ajax({
 		type: "GET",
-		url: 'http://localhost:8080/topics/session',
+		url: `${baseUrl}/topics/session`,
 		success: function(data){
 			callback(data);
 		},
@@ -90,7 +92,7 @@ function logOutUser(userTokenId){
 
 	$.ajax({
 		type: 'DELETE',
-		url: `http://localhost:8080/users/logout/${userId}`,
+		url: `${baseUrl}/users/logout/${userId}`,
 		success: function(){
 			location.reload();
 			checkForToken();
@@ -104,7 +106,7 @@ function 	submitQuery(query){
 
 	$.ajax({
 		type: 'GET',
-		url: 'http://localhost:8080/topics/query',
+		url: `${baseUrl}/topics/query`,
 		data: {
 			theme: query
 		},
@@ -187,7 +189,6 @@ function displayNavTabs(){
 
 function renderQueries(searchResults){
 	let $submitLink = $('<a >', {href: './topics.html', class: 'newTopicLead', text: "Contribute a New Topic Here"});
-
 
 	let $apology = $('<h3 />', {class: 'title is-3', text: "Sorry, no topic matched your search."});
 	let $invitation = $('<h3 />', {class: 'title is-3', text: `But if you have one in mind, please help by adding it. Thank you`});
