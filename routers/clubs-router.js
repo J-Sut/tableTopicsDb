@@ -9,7 +9,7 @@ const {Club} = require('../models/club-model');
 
 // ************* Club GET Endpoints *************
 
-router.get('/', (req, res) => {
+router.get('/all', (req, res) => {
 	Club
 	.find(Club)	
 	.exec()

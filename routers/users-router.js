@@ -17,7 +17,7 @@ const {Topic} = require('../models/topic-model');
 
 // Get a list of all users
 
-router.get('/', (req, res) => {
+router.get('/all', (req, res) => {
 	User
 	.find()	
 	.exec()
