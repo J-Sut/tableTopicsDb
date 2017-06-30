@@ -1,6 +1,6 @@
 // ***************** State *******************
 
-const baseUrl = 'https://afternoon-cliffs-40325.herokuapp.com';
+const baseUrl = 'https://www.tabletopicsdb.com';
 // const baseUrl = 'http://localhost:8080';
 
 // ************ f(MODIFY-state) **************
