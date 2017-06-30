@@ -7,7 +7,7 @@ h3.title {
 }
 
 p.control {
-	text-align: right;
+	text-align: center;
 }
 
 #col2 {
@@ -36,6 +36,10 @@ p.control {
 	text-align: center;
 	vertical-align: top;
 
+}
+
+#mobileSubtitle {
+	margin-top: -1.5rem;
 }
 
 .level-item {

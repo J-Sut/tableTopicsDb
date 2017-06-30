@@ -23,10 +23,6 @@ section.modal-card-body {
 	vertical-align: middle;
 }
 
-section.sessionMetaData {
-	max-width: 30%;
-}
-
 #queryButton {
 	max-width: 150px;
 	margin-left: 10px;
@@ -34,6 +30,28 @@ section.sessionMetaData {
 
 #queryInput {
 	margin-right: 8px;
+}
+
+
+
+#topicSearch {
+	padding: 10px 0px 0px 0px;
+	text-align: center;
+}
+
+#searchButtonRow {
+	padding: 0px 0px 10px 0px;
+	display: flex;
+	justify-content: center;
+}
+
+#getOneQuestion, #getOneSession {
+	height: 130px;
+	max-width: 130px;
+	white-space: normal;
+	margin-left: 20px;
+	margin-right: 20px
+
 }
 
 .showQuestionsTick {
@@ -130,15 +148,15 @@ content.dbStats {
 	padding: 10px;
 }
 
-	.tableTopicSession:nth-child(odd) {
-		border: 2px solid rgb(250, 255, 189);;
-		margin: 1em;
-	}
+.tableTopicSession:nth-child(odd) {
+	border: 2px solid rgb(250, 255, 189);;
+	margin: 1em;
+}
 
-	.tableTopicSession:nth-child(even) {
-		border: 2px solid #E0EEEE;
-		margin: 1em;
-	}
+.tableTopicSession:nth-child(even) {
+	border: 2px solid #E0EEEE;
+	margin: 1em;
+}
 
 /****************** MEDIA QUERIES ******************/
 
@@ -146,7 +164,18 @@ content.dbStats {
 
 	/* Red search bar styling for mobile*/
 	#topicSearch {
-		padding-top: 1em;
+		padding: 1em;
+	}
+
+	#topicSearch {
+		padding: 15px 0px 0px 0px;
+		text-align: center;
+	}
+
+	#searchButtonRow {
+		padding: 0px 0px 0px 0px;
+		display: flex;
+		justify-content: center;
 	}
 
 	form #queryInput {
@@ -154,13 +183,11 @@ content.dbStats {
 	}
 
 	#queryButton {
-		margin: auto;
-		margin-top: 1em;
+		margin: 1em auto 1em auto;
 	}
 
 	#getOneQuestion, #getOneSession {
 		margin-top: 0;
-
 	}
 
 	#tableTopicsPractice button {
@@ -176,7 +203,9 @@ content.dbStats {
 	}
 
 
-	
+	.randomQuestion {
+	    padding: 25px 15px 25px 15px;
+	}
 
 
 }

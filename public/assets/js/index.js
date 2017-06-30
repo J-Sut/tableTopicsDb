@@ -248,7 +248,9 @@ $('#logOut').on('click', function(){
 
 $('#displayTopics').on('click', '.showQuestionButton', function(){
 	$(this).parent().parent().parent().find('section.sessionQuestions').toggleClass('is-hidden');
-	// $(this).parent().parent().parent().find('section.sessionMetaData').toggleClass('is-one-third');
+	$(this).parent().parent().parent().find('section.sessionMetaData').toggleClass('is-3');
+	$(this).parent().parent().parent().find('section.sessionMetaData').toggleClass('is-9');
+
 	$(this).text('Questions');
 });
 

@@ -19,11 +19,12 @@
   "author": "Jeremy Sutton",
   "license": "ISC",
   "dependencies": {
+    "body-parser": "^1.17.2",
     "express": "^4.15.2",
     "express-session": "^1.15.3",
     "jquery": "^3.2.1",
-    "mongoose": "^4.10.2",
-    "body-parser": "^1.17.2"
+    "md5": "^2.2.1",
+    "mongoose": "^4.10.2"
   },
   "devDependencies": {
     "chai": "^3.5.0",

@@ -16,9 +16,13 @@
 	width: min-content;
 }
 
-#tmTitle {
+/*#tmTitle {
 	font-size: 1em;
 	color: black;
+}*/
+
+#buttonArea {
+	text-align: center;
 }
 
 label	{
@@ -50,11 +54,11 @@ input, .input {
 }
 
 .locationInput {
-	width: 150px;
+	width: 120px;
 }
 
 #clubCountryInput {
-	margin-left: 50px;
+	margin-left: 10px;
 }
 
 .inClubRadio {
@@ -63,4 +67,45 @@ input, .input {
 
 .title.is-three {
 	margin: 5px, 0, 5px, 0;
+}
+
+
+
+@media screen and (max-width: 768px) {
+	
+	input, .input {
+		width: 230px;
+	}
+
+	#formContainer {
+		padding: 5px;
+	}	
+
+	#formArea {
+		padding: 10px 1px 10px 1px;
+	}
+	label.label	{
+		width: 100px;
+		font-size: .9rem;
+		padding: 2px;
+	}
+
+	#tmTitle {
+		font-size: 10px;
+	}
+
+	#clubCountryInput {
+		margin-left: 5px;
+	}
+
+	.locationInput {
+		width: 110px;
+	}
+
+	.select {
+		margin-left: 5px;
+	}
+
+
+
 }
