@@ -23,7 +23,7 @@ function countUsers(){
 
 		$.ajax({
 		type: "GET",
-		url: baseUrl+'/users/all',
+		url: baseUrl+'/users/',
 		success: function(data){
 			displayUsersCount(data.length)
 		},
@@ -37,7 +37,7 @@ function countClubs(){
 
 		$.ajax({
 		type: "GET",
-		url: `${baseUrl}/clubs/all`,
+		url: `${baseUrl}/clubs/`,
 		success: function(data){
 			displayClubsCount(data.length)
 		},
