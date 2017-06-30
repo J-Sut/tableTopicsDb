@@ -8,7 +8,7 @@ function countSubmissions(){
 
 		$.ajax({
 		type: "GET",
-		url: `${baseUrl}/topics`,
+		url: baseUrl+'/topics',
 		success: function(data){
 			displaySubmissionsCount(data.length)
 		},
@@ -22,7 +22,7 @@ function countUsers(){
 
 		$.ajax({
 		type: "GET",
-		url: `${baseUrl}/users`,
+		url: baseUrl+'/users',
 		success: function(data){
 			displayUsersCount(data.length)
 		},
