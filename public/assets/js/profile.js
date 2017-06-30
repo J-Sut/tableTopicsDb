@@ -1,6 +1,6 @@
 // **************** State ******************
 var userData;
-const baseUrl = 'https://afternoon-cliffs-40325.herokuapp.com';
+const baseUrl = 'http://www.tabletopicsdb.com';
 
 
 			// $('body').css('background-color', 'green');
