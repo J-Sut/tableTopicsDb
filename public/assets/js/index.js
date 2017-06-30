@@ -1,7 +1,7 @@
 // ***************** State *******************
 
-//const baseUrl = 'https://afternoon-cliffs-40325.herokuapp.com';
-const baseUrl = 'http://localhost:8080';
+const baseUrl = 'https://afternoon-cliffs-40325.herokuapp.com';
+// const baseUrl = 'http://localhost:8080';
 
 // ************ f(MODIFY-state) **************
 
