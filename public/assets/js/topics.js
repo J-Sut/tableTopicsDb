@@ -41,8 +41,6 @@ function grabQuestions() {
 
 function addNewSession(sessionDetails, callback) {
 
-	console.log('addnewsession fired')
-
 	var ttdbURL = baseUrl + "/topics";
 	var query = {
 		theme: sessionDetails.theme,
@@ -57,7 +55,6 @@ function addNewSession(sessionDetails, callback) {
 		url: ttdbURL,
 		data: JSON.stringify(query),
 		success: function(data){
-			console.log("Ajax Post worked... Yay")
 			location.href = 'thankyou.html';
 		},
 		error: function(){
@@ -92,7 +89,6 @@ function countSubmissions(){
 		type: "GET",
 		url: baseUrl + '/topics',
 		success: function(data){
-			console.log(data.length, " Sessions submitted");
 			displaySubmissionscount(data.length)
 		},
 		error: function(data){
@@ -136,17 +132,12 @@ $(function(){
 $('#sessionSubmitForm').submit(function(e){
   e.preventDefault();
 
-  console.log('submit fired')
-
   let sessionDetails = {
 		theme: $('#themeInput').val().trim(),
 		sessionIntro: $('#sessionIntro').val().trim(),
 		keywords: grabKeywords(),	
 		questions: grabQuestions()
 	};
-
-	console.log("form submitted");
-	console.log(sessionDetails);
 
 	addNewSession(sessionDetails);
 });

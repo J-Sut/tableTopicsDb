@@ -64,10 +64,7 @@ function getClubInfo(userData){
 	});	
 };
 
-function updateProfile(updateInfo){
-
-		console.log('update Profile fired: ', updateInfo);
- 
+function updateProfile(updateInfo){ 
 		let query = {
 			id: userData._id,
 			displayName: updateInfo.name,
@@ -80,8 +77,6 @@ function updateProfile(updateInfo){
 			url: `${baseUrl}/users/${userData._id}/profile`,
 			data: JSON.stringify(query),
 			success: function(data){
-				//location.href = 'login.html';
-				console.log(data);
 				displayProfileData(data);
 			},
 			contentType: 'application/json',
