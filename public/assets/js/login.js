@@ -1,11 +1,12 @@
 // ************ State **************
 
+const baseUrl = 'https://afternoon-cliffs-40325.herokuapp.com';
 
 // ************ Declare Functions **************
 
 function login(em, pw, callback) {
 
-	var ttdbURL = "http://localhost:8080/users/login";
+	var ttdbURL = `${baseUrl}/users/login`;
 	var query = {
 		email: em,
 		password: pw

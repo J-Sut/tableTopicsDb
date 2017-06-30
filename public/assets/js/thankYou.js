@@ -1,6 +1,7 @@
 /***************** State *****************/
 
 let userData
+const baseUrl = 'https://afternoon-cliffs-40325.herokuapp.com';
 
 
 /***************** f(Modify-state) *****************/
@@ -9,7 +10,7 @@ function checkForToken(callback){
  
 	$.ajax({
 		type: "GET",
-		url: 'http://localhost:8080/users/token',
+		url: baseUrl + '/users/token',
 		success: function(data){
 			callback(data)
 			;
@@ -26,7 +27,7 @@ function countSubmissions(){
 
 		$.ajax({
 		type: "GET",
-		url: 'http://localhost:8080/topics',
+		url: baseUrl + '/topics',
 		success: function(data){
 			console.log(data.length);
 			displaySubmissionscount(data.length)
@@ -44,7 +45,7 @@ function logOutUser(userTokenId){
 
 	$.ajax({
 		type: 'DELETE',
-		url: `http://localhost:8080/users/logout/${userId}`,
+		url: baseUrl + `/users/logout/${userId}`,
 		success: function(){
 			displayNav();
 		},

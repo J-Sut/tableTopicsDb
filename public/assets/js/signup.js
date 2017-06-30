@@ -1,10 +1,14 @@
+// ************ State **************
+
+const baseUrl = 'https://afternoon-cliffs-40325.herokuapp.com';
+
 // ************ f(Modify State) **************
 function checkForToken(callback){
 	console.log('check for token fired')
  
 	$.ajax({
 		type: "GET",
-		url: 'http://localhost:8080/users/token',
+		url: baseUrl + '/users/token',
 		success: function(data){
 			console.log("Great token you've got there")
 			callback(data)
@@ -18,7 +22,7 @@ function checkForToken(callback){
 function addNewUser(newUser, clubInfo, callback) {
 
 	// New User & Club information
-	var ttdbURL = "http://localhost:8080/users";
+	var ttdbURL = baseUrl + "/users";
 	var query = {
 		userName: newUser.name,
 		password: newUser.password,
@@ -60,7 +64,7 @@ function createUserProfile(userData){
 	console.log("userData for Creating profile: ", userData);
 	let userId = userData._id;
 
-	var ttdbURL = "http://localhost:8080/users/" +userId+ "/profile";
+	var ttdbURL = `${baseUrl}/users/${userId}/profile;
 	var query = {
 		user_id: userId,
 		displayName: userData.username,
