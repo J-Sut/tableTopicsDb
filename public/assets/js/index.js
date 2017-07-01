@@ -218,7 +218,7 @@ $(function(){
 	countSubmissions();
 	countUsers();
 	countClubs();
-	setTimeout(showSurvey, 4000);
+	setTimeout(showSurvey, 20000);
 });
 
 // Get a random question from the Db
@@ -265,7 +265,7 @@ $('#navHam').on('click', function(){
 	$('#navHam').toggleClass('is-active');
 })
 
-$('.delete').on('click', function(){
+$('#surveyDelete').on('click', function(){
 	$(this).parent().remove();
 })
 

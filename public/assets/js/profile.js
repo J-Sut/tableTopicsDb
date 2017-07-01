@@ -176,11 +176,17 @@ function renderClubInfo(clubs){
 function displayProfilePic(userHash){
 	$('#profilePage img').attr("src", `https://www.gravatar.com/avatar/${userHash}/=200`)
 }
+
+function showSurvey(){
+	$('#surveySpot').fadeIn('slow');
+};
 // ************ Event Listeners **************
 
 // Get and Display profile info of logged in User
 $(function(e){
   getProfileData();
+	setTimeout(showSurvey, 10000);
+
 });
 
 // Reveal inputs so that users can update their profile
@@ -215,4 +221,8 @@ $('#logOut').on('click', function(){
 $('#navHam').on('click', function(){
 	$('#navHamDropdown').toggleClass('is-active');
 	$('#navHam').toggleClass('is-active');
+})
+
+$('.delete').on('click', function(){
+	$(this).parent().remove();
 })
