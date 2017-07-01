@@ -190,7 +190,7 @@ $(function(e){
 });
 
 // Reveal inputs so that users can update their profile
-$('#updateProfile, #cancel, .delete, .modal-background').on('click', function(){
+$('#updateProfile, #cancel, #surveyDelete, .modal-background').on('click', function(){
 	$('.modal').toggleClass('is-active');
 });
 
