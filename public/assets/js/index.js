@@ -218,7 +218,7 @@ $(function(){
 	countSubmissions();
 	countUsers();
 	countClubs();
-	setTimeout(showSurvey, 20000);
+	setTimeout(showSurvey, 15000);
 });
 
 // Get a random question from the Db
