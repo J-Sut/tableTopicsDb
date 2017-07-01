@@ -9,7 +9,7 @@ function countSubmissions(){
 
 		$.ajax({
 		type: "GET",
-		url: baseUrl+'/topics',
+		url: `${baseUrl}/topics`,
 		success: function(data){
 			displaySubmissionsCount(data.length)
 		},
@@ -23,7 +23,7 @@ function countUsers(){
 
 		$.ajax({
 		type: "GET",
-		url: baseUrl+'/users/',
+		url: `${baseUrl}/users/`,
 		success: function(data){
 			displayUsersCount(data.length)
 		},
@@ -204,9 +204,12 @@ function renderQueries(searchResults){
 	for(let i = 0; i < searchResults.length; i++){
 		displaySession(searchResults[i]);
 	}
-
-
 };
+
+function showSurvey(){
+	$('#surveySpot').fadeIn('slow');
+};
+
 // ************ Event Listeners **************
 
 // Check if user is logged in 
@@ -215,6 +218,7 @@ $(function(){
 	countSubmissions();
 	countUsers();
 	countClubs();
+	setTimeout(showSurvey, 4000);
 });
 
 // Get a random question from the Db
@@ -260,3 +264,8 @@ $('#navHam').on('click', function(){
 	$('#navHamDropdown').toggleClass('is-active');
 	$('#navHam').toggleClass('is-active');
 })
+
+$('.delete').on('click', function(){
+	$(this).parent().remove();
+})
+

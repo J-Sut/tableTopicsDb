@@ -2,6 +2,7 @@
 
 let logInToken;
 const baseUrl = 'http://www.tabletopicsdb.com';
+// const baseUrl = 'http://localhost:8080';
 
 // ************ f(MODIFY-state) **************
 

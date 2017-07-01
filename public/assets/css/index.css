@@ -54,6 +54,14 @@ section.modal-card-body {
 
 }
 
+#surveySpot {
+	position: fixed;
+	bottom: 20px;
+	right: 20px;
+}
+
+
+
 .showQuestionsTick {
 	padding: 10px;
 }

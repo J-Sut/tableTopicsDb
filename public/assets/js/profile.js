@@ -1,9 +1,8 @@
 // **************** State ******************
 var userData;
+
 const baseUrl = 'http://www.tabletopicsdb.com';
-
-
-			// $('body').css('background-color', 'green');
+// const baseUrl = 'http://localhost:8080';
 
 // ************ f(Modify-state) **************
 
@@ -175,7 +174,7 @@ function renderClubInfo(clubs){
 };
 
 function displayProfilePic(userHash){
-	$('#profilePage img').attr("src", `https://www.gravatar.com/avatar/${userHash}`)
+	$('#profilePage img').attr("src", `https://www.gravatar.com/avatar/${userHash}/=200`)
 }
 // ************ Event Listeners **************
 
