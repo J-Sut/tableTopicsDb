@@ -190,7 +190,7 @@ $(function(e){
 });
 
 // Reveal inputs so that users can update their profile
-$('#updateProfile, #cancel, #surveyDelete, .modal-background').on('click', function(){
+$('#updateProfile, #cancel, .modal-background').on('click', function(){
 	$('.modal').toggleClass('is-active');
 });
 
@@ -223,6 +223,6 @@ $('#navHam').on('click', function(){
 	$('#navHam').toggleClass('is-active');
 })
 
-$('#surveyDelete').on('click', function(){
+$('.delete').on('click', function(){
 	$(this).parent().remove();
 })
