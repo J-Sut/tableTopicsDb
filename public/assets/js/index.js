@@ -265,7 +265,7 @@ $('#navHam').on('click', function(){
 	$('#navHam').toggleClass('is-active');
 })
 
-$('#surveyDelete').on('click', function(){
+$('.delete').on('click', function(){
 	$(this).parent().remove();
 })
 
