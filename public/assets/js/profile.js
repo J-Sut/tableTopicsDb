@@ -223,6 +223,6 @@ $('#navHam').on('click', function(){
 	$('#navHam').toggleClass('is-active');
 })
 
-$('.delete').on('click', function(){
+$('#surveyDelete').on('click', function(){
 	$(this).parent().remove();
 })
