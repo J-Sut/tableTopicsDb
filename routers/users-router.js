@@ -118,7 +118,7 @@ router.post('/', (req, res) => {
 		})
 		.then(newUser => {
 			_newUser = newUser;
-			if (!req.body.inClub) {
+			if (!req.body.inClub || req.body.inClub) {
 				return res.status(201).json(_newUser);
 			}
 			return Club

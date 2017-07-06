@@ -1,7 +1,7 @@
 // ************ State **************
 
-const baseUrl = 'http://www.tabletopicsdb.com';
-// const baseUrl = 'http://localhost:8080';
+// const baseUrl = 'http://www.tabletopicsdb.com';
+const baseUrl = 'http://localhost:8080';
 
 // ************ f(Modify State) **************
 function checkForToken(callback){
@@ -127,14 +127,14 @@ $('#newUserForm').submit(function(e){
 	};
 });
 
-// Reveal Club questions if the member states they are in a Club
-$('#yesClub').on('change', function() {
-	$('#memberInfo').removeClass("is-hidden");
-});
+// // Reveal Club questions if the member states they are in a Club
+// $('#yesClub').on('change', function() {
+// 	$('#memberInfo').removeClass("is-hidden");
+// });
 
-$('#noClub').on('change', function() {
-	$('#memberInfo').addClass("is-hidden");
-});
+// $('#noClub').on('change', function() {
+// 	$('#memberInfo').addClass("is-hidden");
+// });
 
 $('#navHam').on('click', function(){
 	$('#navHamDropdown').toggleClass('is-active');
