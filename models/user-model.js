@@ -4,10 +4,10 @@ const ObjectId = mongoose.Schema.Types.ObjectId;
 //schema for users
 
 const userSchema = mongoose.Schema({
-	username: {type: String, unique: true, required: true},
+	username: {type: String, unique: false, required: false},
 	password: {type: String, required: true},
-	email: {type: String, unique: true, required: false},
-	inClub: {type: Boolean, required: true},
+	email: {type: String, unique: true, required: true},
+	inClub: {type: Boolean, required: false},
 	memberClubList: {type: Array, required: false}
 });
 
