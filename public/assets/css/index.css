@@ -1,5 +1,6 @@
 	#displayTopicsFiller {
 	padding: 10px;
+	max-width: 500px;
 }
 
 section.modal-card-body {
@@ -23,16 +24,16 @@ section.modal-card-body {
 	vertical-align: middle;
 }
 
+/************ Search Form and Buttons ************/
+
 #queryButton {
-	max-width: 150px;
+	max-width: 100px;
 	margin-left: 10px;
 }
 
 #queryInput {
 	margin-right: 8px;
 }
-
-
 
 #topicSearch {
 	padding: 10px 0px 0px 0px;
@@ -46,12 +47,9 @@ section.modal-card-body {
 }
 
 #getOneQuestion, #getOneSession {
-	height: 130px;
-	max-width: 130px;
+	height: 40px;
+	max-width: 270px;
 	white-space: normal;
-	margin-left: 20px;
-	margin-right: 20px
-
 }
 
 #surveySpot {
@@ -60,7 +58,27 @@ section.modal-card-body {
 	right: 20px;
 }
 
+#tableTopicsPractice section {
+	padding-right: 10px;
+	padding-left: 10px
+}
 
+#searchInstructions {
+	font-size: 1em;
+}
+
+#searchTips {
+	font-size: .8em;
+	color: rgba(255,255,255, .6);
+	margin-bottom: 15px;
+}
+
+/************ Display Search/Button results ************/
+
+#displayArea {
+	max-width: 650px;
+	margin: auto;
+}
 
 .showQuestionsTick {
 	padding: 10px;
@@ -86,9 +104,9 @@ h3.displayFiller {
 }
 
 .tableTopic, .topicInfo {
-	background-color: #E0EEEE;
-	color: black;
-	border-radius: 3px;
+	/*background-color: #E0EEEE;*/
+	/*color: black;*/
+	border-radius: 2px;
 	margin: 5px;
 	height: auto;
 }
@@ -103,8 +121,7 @@ h3.displayFiller {
 
 .ttContainer {
 	margin: 10px;
-	display: flex;
-	justify-content: center;
+	display: block;
 
 }
 
@@ -116,8 +133,17 @@ h3.title:not(:last-child), h3.subtitle:not(:last-child) {
     margin-bottom: 0;
 }
 
-/*Stat row for Index page*/
+.tableTopicSession:nth-child(odd) {
+	/*border: 2px solid rgb(250, 255, 189);;*/
+	margin: 1em;
+}
 
+.tableTopicSession:nth-child(even) {
+	/*border: 2px solid #E0EEEE;*/
+	margin: 1em;
+}
+
+/********* Stat row for Index page *********/
 
 
 #dbProgressRow label{
@@ -156,15 +182,6 @@ content.dbStats {
 	padding: 10px;
 }
 
-.tableTopicSession:nth-child(odd) {
-	border: 2px solid rgb(250, 255, 189);;
-	margin: 1em;
-}
-
-.tableTopicSession:nth-child(even) {
-	border: 2px solid #E0EEEE;
-	margin: 1em;
-}
 
 /****************** MEDIA QUERIES ******************/
 
@@ -195,7 +212,9 @@ content.dbStats {
 	}
 
 	#getOneQuestion, #getOneSession {
-		margin-top: 0;
+		height: 50px;
+		max-width: 270px;
+		white-space: normal;
 	}
 
 	#tableTopicsPractice button {

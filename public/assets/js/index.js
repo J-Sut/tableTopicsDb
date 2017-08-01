@@ -1,7 +1,7 @@
 // ***************** State *******************
 
-const baseUrl = 'http://www.tabletopicsdb.com';
-// const baseUrl = 'http://localhost:8080';
+// const baseUrl = 'http://www.tabletopicsdb.com';
+const baseUrl = 'http://localhost:8080';
 
 // ************ f(MODIFY-state) **************
 
@@ -145,33 +145,29 @@ function displaySession(session){
 	let questionListElement = [];
 
 	let $sectionCard = $('<section />', {class: 'section tableTopicSession'});
-	let $container = $('<div />', {class: 'container ttContainer columns'});
+	let $container = $('<div />', {class: 'ttContainer'});
 
-	let $sessionMetaData = $('<section />', {class: 'sessionMetaData column is-9 '});
-	let $themeLabel = $('<h3 />', {class: 'themeLabel title', text: "Theme"});
+	let $sessionMetaData = $('<section />', {class: 'sessionMetaData'});
+	let $themeLabel = $('<h3 />', {class: 'themeLabel title', text: "THEME"});
 	let $themeData = $('<h5 />', {class: 'themeData topicInfo', text: session.theme});
-	let $introductionlabel = $('<h3 />', {class: 'introductionlabel title', text: "Introduction"});
-	let $introductionData = $('<h5 />', {class: 'introductionData topicInfo', text: session.introduction});
-	let $keywordsLabel = $('<h3 />', {class: 'keywordsLabel title', text: "Keywords"});
-	let $keywordsData = $('<h5 />', {class: 'keywordsData topicInfo', text: session.keywords.join(', ')});
+	let $introductionlabel = $('<h3 />', {class: 'introductionlabel title ', text: "INTRODUCTION"});
+	let $introductionData = $('<h5 />', {class: 'introductionData topicInfo ', text: session.introduction});
+	// let $keywordsLabel = $('<h3 />', {class: 'keywordsLabel title', text: "Keywords"});
+	// let $keywordsData = $('<h5 />', {class: 'keywordsData topicInfo', text: session.keywords.join(', ')});
 
-	let $sessionQuestions = $('<section />', {class: 'sessionQuestions column is-9 is-hidden'});
-	let $questionsLabel = $('<h3 />', {class: 'questionsLabel title', text: "Questions"});
+	let $sessionQuestions = $('<section />', {class: 'sessionQuestions'});
+	let $questionsLabel = $('<h3 />', {class: 'questionsLabel title', text: "QUESTIONS"});
 	let $questionsData = $('<ul />', {class: 'questionsData topicsQuestionsList', text: questionListElement});
 
-	let $hideQuestionButton = $('<input />', {type: 'checkbox', class: 'showQuestionButton'});
-	let $hideQuestionButtonLabel = $('<label />', {text: 'Show Topic Questions: '});
+	let $hideQuestionButton = $('<input />', {type: 'checkbox', class: 'showQuestionButton is-hidden'});
+	let $hideQuestionButtonLabel = $('<label />', {text: 'Show Topic Questions: ', class: 'is-hidden'});
 
-
-			// <p class="showQuestionsTick is-hidden">		
-			// 	<label>Show Questions: </label>
-			// 		<input type="checkbox" class="testee">
-			// </p>
 	$hideQuestionButtonLabel.append($hideQuestionButton);
 
 	$sectionCard.append($container);
 	$container.append($sessionMetaData, $sessionQuestions);
-	$sessionMetaData.append($themeLabel, $themeData, $introductionlabel, $introductionData, $keywordsLabel, $keywordsData, $hideQuestionButtonLabel);
+	$sessionMetaData.append($themeLabel, $themeData, $introductionlabel, $introductionData, $hideQuestionButtonLabel);
+	// $sessionMetaData.append($themeLabel, $themeData, $introductionlabel, $introductionData, $keywordsLabel, $keywordsData, $hideQuestionButtonLabel);
 
 	$sessionQuestions.append($questionsLabel, $questionsData);
 
@@ -181,7 +177,7 @@ function displaySession(session){
 		$questionsData.append($li);
 	});
 
-	$('#displayTopics').append($sectionCard);
+	$('#displayTopics').append($sectionCard, "<hr>");
 };
 
 function displayNavTabs(){
