@@ -153,7 +153,7 @@ button {
 }
 
 .randomQuestion {
-	padding: 100px;
+	padding: 75px;
 }
 
 h4.title:not(:last-child), h4.subtitle:not(:last-child) {

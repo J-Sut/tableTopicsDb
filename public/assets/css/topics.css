@@ -5,24 +5,39 @@ fieldset	{
 
 label, .label{
 	display: flex;
-	width: 200px;
+	width: auto;
 	align-items: center;
-	justify-content: center;
+	justify-content: left;
+	padding-bottom: 8px;
+}
+
+#addQuestion {
+	padding-bottom: 8px;
+	opacity: .9;
 }
 
 #topicsSubmitArea {
 	display: flex;
 	width: auto;
 	margin: auto;
-	padding: 10px 5px 10px 5px;
+	padding: 0px 5px 0px 5px;
 	text-align: center;
 	vertical-align: middle;
 	justify-content: center;
 }
 
 #sessionSubmitForm {
-	border: 2px solid rgb(250, 255, 189);
+	/*border: 2px solid rgb(250, 255, 189);*/
 	padding: 10px;
+	width: 80%;
+}
+
+#sessionQuestions {
+	padding-top: 20px;
+}
+
+#sessionQuestions textarea{
+	margin-bottom: 8px;
 }
 
 .textarea {
@@ -33,11 +48,22 @@ label, .label{
 
   padding: 0.625em;
   resize: vertical;
+  padding-bottom: 8px;
 }
 
 #fieldsetArea {
-	padding: 20px;
+	padding: 10px;
 	width: auto;
+}
+
+.delete {
+	float: right;
+
+}
+small {
+	padding-bottom: 16px;
+	opacity: .8;
+	display: block;
 }
 
 #topicIntroTitle {
@@ -60,8 +86,10 @@ h3.title:not(:last-child), h3.subtitle:not(:last-child) {
 
 input, .input {
 	min-width: 250px;
-	max-width: 450px;
+	max-width: 100%;
 }
+
+
 
 
 @media screen and (max-width: 768px) {

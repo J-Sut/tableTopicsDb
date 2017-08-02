@@ -135,29 +135,32 @@ function displayClubsCount(count){
 };
 
 function displayQuestion(question){
+	let $questionContainer = $('<div />', {class: 'questionContainer'});
+
 	$('#displayTopics')
 		.empty()
-		.append('<h3 class="title is-3Z	randomQuestion">'+ question +'</h3>')
+		.append($questionContainer);
+		$questionContainer.append('<h4 class="title is-3Z	randomQuestion">'+ question +'</h3>')
 	};
 
 function displaySession(session){
 
 	let questionListElement = [];
-
+	
 	let $sectionCard = $('<section />', {class: 'section tableTopicSession'});
 	let $container = $('<div />', {class: 'ttContainer'});
 
 	let $sessionMetaData = $('<section />', {class: 'sessionMetaData'});
 	let $themeLabel = $('<h3 />', {class: 'themeLabel title', text: "THEME"});
 	let $themeData = $('<h5 />', {class: 'themeData topicInfo', text: session.theme});
-	let $introductionlabel = $('<h3 />', {class: 'introductionlabel title ', text: "INTRODUCTION"});
-	let $introductionData = $('<h5 />', {class: 'introductionData topicInfo ', text: session.introduction});
+	let $introductionlabel = $('<h3 />', {class: 'introductionlabel title is-hidden ', text: "INTRODUCTION"});
+	let $introductionData = $('<h5 />', {class: 'introductionData topicInfo is-hidden ', text: session.introduction});
 	// let $keywordsLabel = $('<h3 />', {class: 'keywordsLabel title', text: "Keywords"});
 	// let $keywordsData = $('<h5 />', {class: 'keywordsData topicInfo', text: session.keywords.join(', ')});
 
 	let $sessionQuestions = $('<section />', {class: 'sessionQuestions'});
-	let $questionsLabel = $('<h3 />', {class: 'questionsLabel title', text: "QUESTIONS"});
-	let $questionsData = $('<ul />', {class: 'questionsData topicsQuestionsList', text: questionListElement});
+	let $questionsLabel = $('<h3 />', {class: 'questionsLabel title is-hidden', text: "QUESTIONS"});
+	let $questionsData = $('<ol />', {class: 'questionsData topicsQuestionsList is-hidden', text: questionListElement});
 
 	let $hideQuestionButton = $('<input />', {type: 'checkbox', class: 'showQuestionButton is-hidden'});
 	let $hideQuestionButtonLabel = $('<label />', {text: 'Show Topic Questions: ', class: 'is-hidden'});
@@ -187,13 +190,17 @@ function displayNavTabs(){
 function renderQueries(searchResults){
 	let $submitLink = $('<a >', {href: './topics.html', class: 'newTopicLead', text: "Contribute a New Topic Here"});
 
-	let $apology = $('<h3 />', {class: 'title is-3', text: "Sorry, no topic matched your search."});
-	let $invitation = $('<h3 />', {class: 'title is-3', text: `But if you have one in mind, please help by adding it. Thank you`});
+	let $apology = $('<h4 />', {class: 'title is-3', text: "Sorry, no topic matched your search."});
+	let $invitation = $('<h4 />', {class: 'title is-3', text: `But if you have one in mind, please help by adding it. Thank you`});
 
 	if(searchResults.length === 0) {
+	let $emptyQueryContainer = $('<div />', {class: 'emptyQueryContainer'});
+
 	$('#displayTopics')
 		.empty()
-		.append($apology, $invitation, $submitLink)
+		.append($emptyQueryContainer)
+
+	$emptyQueryContainer.append($apology, $invitation, $submitLink)
 
 	}	
 
@@ -246,14 +253,6 @@ $('#topicSearch').on('submit', function(e){
 // logout the user
 $('#logOut').on('click', function(){
 	checkForToken(logOutUser);
-});
-
-$('#displayTopics').on('click', '.showQuestionButton', function(){
-	$(this).parent().parent().parent().find('section.sessionQuestions').toggleClass('is-hidden');
-	$(this).parent().parent().parent().find('section.sessionMetaData').toggleClass('is-3');
-	$(this).parent().parent().parent().find('section.sessionMetaData').toggleClass('is-9');
-
-	$(this).text('Questions');
 });
 
 $('#navHam').on('click', function(){

@@ -104,11 +104,12 @@ function countSubmissions(){
 
 function addQuestion(){
 	const newQuestInput = $(
-				'<div class="topicQuestion field is-grouped">' +
+				'<div class="topicQuestion">' +
+					'<a class="delete"></a>'+
 					'<label class="label" >Question </label>' +
 				  '<p class="control">' +
 				    '<textarea  class="topicQuestionInput textarea" placeholder="Textarea" required></textarea>' +
-				  '</p>' + '<a class="delete"></a>'+
+				  '</p>' + 
 
 				'<br>' +
 				'</div>' );
