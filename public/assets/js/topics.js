@@ -106,15 +106,12 @@ function addQuestion(){
 	const newQuestInput = $(
 				'<div class="topicQuestion">' +
 					'<a class="delete"></a>'+
-					'<label class="label" >Question </label>' +
 				  '<p class="control">' +
 				    '<textarea  class="topicQuestionInput textarea" placeholder="Textarea" required></textarea>' +
 				  '</p>' + 
-
-				'<br>' +
 				'</div>' );
 
-	$('#sessionQuestions').append(newQuestInput);
+	$('#topicQuestions').append(newQuestInput);
 };
 
 function displaySubmissionscount(count){

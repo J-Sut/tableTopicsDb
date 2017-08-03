@@ -53,13 +53,22 @@ label, .label{
 
 #fieldsetArea {
 	padding: 10px;
-	width: auto;
+	max-width: 900px;
+	margin: auto;
 }
 
 .delete {
-	float: right;
+	position: absolute;
+	top: 5px;
+	right: 5px;
+	z-index: 1;
 
 }
+
+.topicQuestion {
+	position: relative;
+}
+
 small {
 	padding-bottom: 16px;
 	opacity: .8;
@@ -89,7 +98,9 @@ input, .input {
 	max-width: 100%;
 }
 
-
+.inputSection, .sessionIntro, .keywordsInput, .instructionSpace  {
+	text-align: left;
+}
 
 
 @media screen and (max-width: 768px) {
@@ -105,8 +116,12 @@ input, .input {
 	#formArea {
 		padding: 10px 1px 10px 1px;
 	}
+
+	#sessionSubmitForm {
+		width: auto;
+	}
+
 	label.label	{
-		width: 100px;
 		font-size: .9rem;
 		padding: 2px;
 	}
