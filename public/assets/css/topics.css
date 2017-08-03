@@ -14,6 +14,7 @@ label, .label{
 #addQuestion {
 	padding-bottom: 8px;
 	opacity: .9;
+	cursor: pointer;
 }
 
 #topicsSubmitArea {
@@ -30,10 +31,6 @@ label, .label{
 	/*border: 2px solid rgb(250, 255, 189);*/
 	padding: 10px;
 	width: 80%;
-}
-
-#sessionQuestions {
-	padding-top: 20px;
 }
 
 #sessionQuestions textarea{
@@ -53,7 +50,7 @@ label, .label{
 
 #fieldsetArea {
 	padding: 10px;
-	max-width: 900px;
+	max-width: 750px;
 	margin: auto;
 }
 
@@ -92,7 +89,6 @@ h3.title:not(:last-child), h3.subtitle:not(:last-child) {
     margin-top: .5rem;
 }
 
-
 input, .input {
 	min-width: 250px;
 	max-width: 100%;
@@ -101,7 +97,6 @@ input, .input {
 .inputSection, .sessionIntro, .keywordsInput, .instructionSpace  {
 	text-align: left;
 }
-
 
 @media screen and (max-width: 768px) {
 	

@@ -107,7 +107,7 @@ function addQuestion(){
 				'<div class="topicQuestion">' +
 					'<a class="delete"></a>'+
 				  '<p class="control">' +
-				    '<textarea  class="topicQuestionInput textarea" placeholder="Textarea" required></textarea>' +
+				    '<textarea  class="topicQuestionInput textarea" placeholder="Awesome job, keep the questions coming!" required></textarea>' +
 				  '</p>' + 
 				'</div>' );
 

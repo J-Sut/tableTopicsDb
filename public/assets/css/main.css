@@ -47,7 +47,7 @@ img	{
 	width: auto;
 }
 
-input, .input {
+input, .input, #queryInput {
 	color: black;
 	max-width: 350px;
 }
