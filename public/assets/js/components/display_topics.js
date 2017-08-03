@@ -16,4 +16,11 @@ $('#displayTopics').on('click', '.tableTopicSession', function(){
 	$(this).find('.introductionData').toggleClass('is-hidden');
 	$(this).find('.questionsLabel').toggleClass('is-hidden');
 	$(this).find('.questionsData').toggleClass('is-hidden');
+
+	// TweenLite.from($(this).find('.introductionlabel'), 2, {width:"auto", height:"0px"});
+	// TweenLite.from($(this).find('.introductionData'), 2, {width:"auto", height:"0px"});
+	// TweenLite.from($(this).find('.questionsLabel'), 2, {width:"auto", height:"0px"});
+	// TweenLite.from($(this).find('.questionsData'), 2, {width:"auto", height:"0px"});
+
+
 });
