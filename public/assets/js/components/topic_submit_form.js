@@ -59,7 +59,7 @@ function addQuestion(){
 				'<div class="topicQuestion">' +
 					'<a class="delete"></a>'+
 				  '<p class="control">' +
-				    '<textarea  class="topicQuestionInput textarea" placeholder="Awesome job, keep the questions coming!" required></textarea>' +
+				    '<textarea  class="topicQuestionInput textarea" placeholder="Awesome, the most popular sessions have 8 or more questions" required></textarea>' +
 				  '</p>' + 
 				'</div>' );
 
@@ -67,8 +67,7 @@ function addQuestion(){
 };
 
 let submitTopicForm = `
-
-<div id="topicsSubmitArea">
+	<div id="topicsSubmitArea">
 			<form id="sessionSubmitForm" class="">
 
 				<section id="fieldsetArea" class="">
@@ -98,7 +97,7 @@ let submitTopicForm = `
 						  <p class="control">
 						    <input id="keywordsInput" class="input" type="text" name="keywordsInput"  placeholder="Use , to separate keywords" required>
 						  </p>
-						  <small>Words related to your topic to help other members who are searching for related ideas</small>						  
+						  <small>Add related keywords to your topic to help your session be found by members looking for related ideas</small>						  
 						</div>								
 					</fieldset> <!-- sessionInfo -->
 
@@ -114,7 +113,7 @@ let submitTopicForm = `
 								</section>
 
 							  <p class="control">
-							    <textarea  class="topicQuestionInput textarea" placeholder="Question 1" required></textarea>	
+							    <textarea  class="topicQuestionInput textarea" placeholder="#1" required></textarea>	
 							  </p>
 
 							</div>
@@ -139,17 +138,19 @@ let submitTopicForm = `
 
 							<div class="topicQuestion ">
 							  <p class="control">
-							    <textarea  class="topicQuestionInput textarea" placeholder="#5 " required></textarea>
+							    <textarea  class="topicQuestionInput textarea" placeholder="#5" required></textarea>
 							  </p>
 							 					  
 							</div>
 						</section>
 						<span class="instructionSpace">			
-							<small>The best questions are open ended, allowing the speaker to take it in a direction they choose</small>	
+							<small>The best questions are often open ended, helping the speaker to respond creatively</small>	
 						</span>
 					</fieldset> <!-- sessionQuestions -->
 					
-			</section>
+			</section> 
+
+
 
 			<section id="buttonHolder">
 
@@ -157,7 +158,8 @@ let submitTopicForm = `
 			</section>
 					
 			</form> <!-- sessionSubmitForm -->	
-		</div>	<!-- topicsSubmitArea -->`
+		</div>	<!-- topicsSubmitArea -->
+`
 ;		
 
 function showTopicSubmitForm() {
@@ -166,11 +168,8 @@ function showTopicSubmitForm() {
 
 // ************ Event Listeners **************
 
-$('header').on('click', () => {
-	showTopicSubmitForm()
-});
-
 $('#sessionSubmitForm').submit(function(e){
+	// console.log('session submit fired')
   e.preventDefault();
 
   let sessionDetails = {

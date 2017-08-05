@@ -194,6 +194,7 @@ function renderQueries(searchResults){
 	let $invitation = $('<h4 />', {class: 'title is-3', text: `But if you have one in mind, please help by adding it. Thank you`});
 
 	if(searchResults.length === 0) {
+		// showTopicSubmitForm();
 	let $emptyQueryContainer = $('<div />', {class: 'emptyQueryContainer'});
 
 	$('#displayTopics')
@@ -228,7 +229,6 @@ $(function(){
 $('#getOneQuestion').on('click', function(){
 	$('#sessionMetaData').empty();
 	getOneQuestion(displayQuestion);
-	$('.showQuestionsTick').addClass('is-hidden');
 });
 
 

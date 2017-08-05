@@ -1,3 +1,17 @@
+/* GENERAL */
+/*html, body, p, a... */
+
+/*GENERAL CLASSES */
+/*.col, .row, .table, .title... */
+
+/*COMPONENTS[BLOCKS, ELEMENTS] */
+/*
+#tableTopicsContainer
+#tableTopicsContainer p 
+#tableTopicsContainer .tableTopicSession
+*/
+
+
 #displayTopicsFiller {
 	padding: 10px;
 	max-width: 500px;
@@ -106,6 +120,8 @@ h3.displayFiller {
 .tableTopicSession {
 	display: flex;
 	justify-content: left;
+	overflow-y: hidden;
+	cursor: pointer;
 }
 
 .tableTopic, .topicInfo {
@@ -156,6 +172,10 @@ h3.title:not(:last-child), h3.subtitle:not(:last-child) {
 .tableTopicSession:nth-child(even) {
 	/*border: 2px solid #E0EEEE;*/
 	margin: 1em;
+}
+
+ol {
+	margin-left: 43px;
 }
 
 /********* Stat row for Index page *********/
