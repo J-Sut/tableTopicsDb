@@ -1,7 +1,7 @@
 // ***************** State *******************
 
-// const baseUrl = 'http://www.tabletopicsdb.com';
-const baseUrl = 'http://localhost:8080';
+const baseUrl = 'http://www.tabletopicsdb.com';
+// const baseUrl = 'http://localhost:8080';
 
 // ************ f(MODIFY-state) **************
 
@@ -236,7 +236,7 @@ $('#getOneQuestion').on('click', function(){
 $('#getOneSession').on('click', function(){
 	$('#displayTopics').empty();
 	getWholeSession(displaySession);
-	$('.showQuestionsTick').removeClass('is-hidden');
+	// $('.showQuestionsTick').removeClass('is-hidden');
 });
 
 // Search db for query
@@ -247,7 +247,7 @@ $('#topicSearch').on('submit', function(e){
 	let query = $('#queryInput').val();
 
 	submitQuery(query);
-	$('.showQuestionsTick').removeClass('is-hidden');
+	// $('.showQuestionsTick').removeClass('is-hidden');
 });
 
 // logout the user
