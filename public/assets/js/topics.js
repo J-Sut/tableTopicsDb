@@ -104,16 +104,14 @@ function countSubmissions(){
 
 function addQuestion(){
 	const newQuestInput = $(
-				'<div class="topicQuestion field is-grouped">' +
-					'<label class="label" >Question </label>' +
+				'<div class="topicQuestion">' +
+					'<a class="delete"></a>'+
 				  '<p class="control">' +
-				    '<textarea  class="topicQuestionInput textarea" placeholder="Textarea" required></textarea>' +
-				  '</p>' + '<a class="delete"></a>'+
-
-				'<br>' +
+				    '<textarea  class="topicQuestionInput textarea" placeholder="The most popular sessions have 8 Topics or more" required></textarea>' +
+				  '</p>' + 
 				'</div>' );
 
-	$('#sessionQuestions').append(newQuestInput);
+	$('#topicQuestions').append(newQuestInput);
 };
 
 function displaySubmissionscount(count){

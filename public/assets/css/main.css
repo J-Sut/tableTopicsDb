@@ -14,7 +14,6 @@
 
 html, body, .section{
 	background-color: #0E4C49;
-	
 	margin: 0;
 }
 
@@ -48,7 +47,7 @@ img	{
 	width: auto;
 }
 
-input, .input {
+input, .input, #queryInput {
 	color: black;
 	max-width: 350px;
 }
@@ -64,6 +63,11 @@ footer {
 #mainNavBar {
 	margin: 0px;
 	border-radius: 0;
+}
+
+#mobileNavBar {
+	padding-left: 100px;
+	padding-right: 100px;
 }
 
 #ttdbLogo {
@@ -105,9 +109,22 @@ footer {
 }
 
 #displayTopics {
-	text-align: center;
+	text-align: left;
 	padding: 0px;
 	margin: auto; 
+}
+
+#displayTopics h3 {
+	text-align: left;
+	font-size: 1.2em;
+}
+
+#displayTopics h5, li {
+	text-align: left;
+	padding-left: 25px;
+	padding-bottom: 5px;
+	color: white; 
+	font-size: 1.6em;
 }
 
 #buttonHolder{
@@ -136,7 +153,7 @@ button {
 }
 
 .randomQuestion {
-	padding: 100px;
+	padding: 75px;
 }
 
 h4.title:not(:last-child), h4.subtitle:not(:last-child) {

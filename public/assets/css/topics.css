@@ -5,24 +5,36 @@ fieldset	{
 
 label, .label{
 	display: flex;
-	width: 200px;
+	width: auto;
 	align-items: center;
-	justify-content: center;
+	justify-content: left;
+	padding-bottom: 8px;
+}
+
+#addQuestion {
+	padding-bottom: 8px;
+	opacity: .9;
+	cursor: pointer;
 }
 
 #topicsSubmitArea {
 	display: flex;
 	width: auto;
 	margin: auto;
-	padding: 10px 5px 10px 5px;
+	padding: 0px 5px 0px 5px;
 	text-align: center;
 	vertical-align: middle;
 	justify-content: center;
 }
 
 #sessionSubmitForm {
-	border: 2px solid rgb(250, 255, 189);
+	/*border: 2px solid rgb(250, 255, 189);*/
 	padding: 10px;
+	width: 80%;
+}
+
+#sessionQuestions textarea{
+	margin-bottom: 8px;
 }
 
 .textarea {
@@ -33,11 +45,31 @@ label, .label{
 
   padding: 0.625em;
   resize: vertical;
+  padding-bottom: 8px;
 }
 
 #fieldsetArea {
-	padding: 20px;
-	width: auto;
+	padding: 10px;
+	max-width: 750px;
+	margin: auto;
+}
+
+.delete {
+	position: absolute;
+	top: 5px;
+	right: 5px;
+	z-index: 1;
+
+}
+
+.topicQuestion {
+	position: relative;
+}
+
+small {
+	padding-bottom: 16px;
+	opacity: .8;
+	display: block;
 }
 
 #topicIntroTitle {
@@ -57,12 +89,14 @@ h3.title:not(:last-child), h3.subtitle:not(:last-child) {
     margin-top: .5rem;
 }
 
-
 input, .input {
 	min-width: 250px;
-	max-width: 450px;
+	max-width: 100%;
 }
 
+.inputSection, .sessionIntro, .keywordsInput, .instructionSpace  {
+	text-align: left;
+}
 
 @media screen and (max-width: 768px) {
 	
@@ -77,8 +111,12 @@ input, .input {
 	#formArea {
 		padding: 10px 1px 10px 1px;
 	}
+
+	#sessionSubmitForm {
+		width: auto;
+	}
+
 	label.label	{
-		width: 100px;
 		font-size: .9rem;
 		padding: 2px;
 	}

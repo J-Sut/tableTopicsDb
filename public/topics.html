@@ -99,85 +99,92 @@
 				<section id="fieldsetArea" class="">
 					<fieldset id="sessionInfo">
 						
-						<h3 id="topicIntroTitle" class="label title is-3">Topic Introduction</h3>
+						<h3 id="topicIntroTitle" class="title is-3">Topic Introduction</h3>
 						
-						<div id="" class="field is-grouped inputSection">
-							<label for="themeInput" class="label">Theme </label>
+						<div id="" class="inputSection">
+							<label for="themeInput" class="label">THEME </label> 
 						  <p class="control">
-						    <input id="themeInput" class="input" type="text" placeholder="Topic Theme" required>
+						    <input id="themeInput" class="input" type="text" placeholder="" required>
 						  </p>
-						</div>
-
-						<div class="field is-grouped">
-							<label class="label" for="sessionIntro">Session Introduction </label>
-						  <p class="control">
-						    <textarea id="sessionIntro" name="sessionIntro" class="textarea" placeholder="A brief introduction to your topic" required></textarea>
-						  </p>
+						  <small>The main topic connecting all the session questions</small>
 
 						</div>
 
-						<div class="field is-grouped">
-							<label class="label" for="keywordsInput">Keywords </label>
+						<div class="sessionIntro">
+							<label class="label" for="sessionIntro">SESSION INTRODUCTION </label>
+						  <p class="control">
+						    <textarea id="sessionIntro" name="sessionIntro" class="textarea" placeholder="" required></textarea>
+						  </p>
+						  <small>A brief explanation of the topic that frames the session</small>
+						</div>
+
+						<div class="keywordsInput">
+							<label class="label" for="keywordsInput">KEYWORDS </label>
 						  <p class="control">
 						    <input id="keywordsInput" class="input" type="text" name="keywordsInput"  placeholder="Use , to separate keywords" required>
 						  </p>
+						  <small>Add related keywords to your topic to help your session be found by members looking for related ideas</small>						  
 						</div>								
 					</fieldset> <!-- sessionInfo -->
 
 					<fieldset id="sessionQuestions" class="">
 						<h3 class="title is-3">Table Topics</h3>
 						
+						<section id="topicQuestions">
+							<div class="topicQuestion ">
+								
+								<section class="level">
+									<label class="label level-item level-left" >QUESTIONS</label>
+									<span id="addQuestion" class="level-item level-right" type="button">+Add a question</span>			
+								</section>
 
-						<div class="topicQuestion field is-grouped">
-							<label class="label" >Question </label>
-						  <p class="control">
-						    <textarea  class="topicQuestionInput textarea" placeholder="Textarea" required></textarea>
-						  </p>
+							  <p class="control">
+							    <textarea  class="topicQuestionInput textarea" placeholder="#1" required></textarea>	
+							  </p>
 
-						</div>
+							</div>
 
-						<div class="topicQuestion field is-grouped">
-							<label class="label" >Question </label>
-						  <p class="control">
-						    <textarea  class="topicQuestionInput textarea" placeholder="Textarea" required></textarea>
-						  </p>
+							<div class="topicQuestion ">
+							  <p class="control">
+							    <textarea  class="topicQuestionInput textarea" placeholder="#2" required></textarea>
+							  </p>
+							</div>
 
-						</div>
+							<div class="topicQuestion ">
+							  <p class="control">
+							    <textarea  class="topicQuestionInput textarea" placeholder="#3" required></textarea>
+							  </p>
+							</div>
 
-						<div class="topicQuestion field is-grouped">
-							<label class="label" >Question </label>
-						  <p class="control">
-						    <textarea  class="topicQuestionInput textarea" placeholder="Textarea" required></textarea>
-						  </p>
+							<div class="topicQuestion ">
+							  <p class="control">
+							    <textarea  class="topicQuestionInput textarea" placeholder="#4" required></textarea>
+							  </p>
+							</div>
 
-						</div>
-
-						<div class="topicQuestion field is-grouped">
-							<label class="label" >Question </label>
-						  <p class="control">
-						    <textarea  class="topicQuestionInput textarea" placeholder="Textarea" required></textarea>
-						  </p>
-
-						</div>
-
-						<div class="topicQuestion field is-grouped">
-							<label class="label" >Question </label>
-						  <p class="control">
-						    <textarea  class="topicQuestionInput textarea" placeholder="Textarea" required></textarea>
-						  </p>
-						</div>
+							<div class="topicQuestion ">
+							  <p class="control">
+							    <textarea  class="topicQuestionInput textarea" placeholder="#5" required></textarea>
+							  </p>
+							 					  
+							</div>
+						</section>
+						<span class="instructionSpace">			
+							<small>The best questions are often open ended, helping the speaker to respond creatively</small>	
+						</span>
 					</fieldset> <!-- sessionQuestions -->
 					
+			</section> 
+
+
+
+			<section id="buttonHolder">
+
+				<button id="topicSubmit" type="submit" class="button is-primary">Submit</button>				
 			</section>
-
-					<section id="buttonHolder">
-						<button id="addQuestion" class="button " type="button">Add a question</button>
-
-						<button id="topicSubmit" type="submit" class="button is-primary">Submit</button>				
-					</section>
 					
 			</form> <!-- sessionSubmitForm -->	
-		</div>	
+		</div>	<!-- topicsSubmitArea -->
 	</main>
 
 	<section id="tableTopicsPractice" class="control level tableTopicsBuffer">
@@ -208,5 +215,7 @@
 
 <script type="text/javascript" src="./assets/jquery.min.js"></script>
 <script type="text/javascript" src="./assets/js/topics.js"></script>
+<script type="text/javascript" src="./assets/js/components/display_topics.js"></script>
+
 </body>
 </html>
