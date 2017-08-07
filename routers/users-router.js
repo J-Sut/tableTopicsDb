@@ -5,6 +5,7 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const jsonParser = bodyParser.json();
 
+const {send} = require('../utils/mailer');
 const {User} = require('../models/user-model');
 const {Profile} = require('../models/profile-model');
 const {Club} = require('../models/club-model');
@@ -49,7 +50,20 @@ router.get('/profile', (req, res) => {
   });
 });
 
-
+router.get('/password/:email', (req,res) => {
+	User
+	.findOne({email: req.params.email})	
+	.exec()
+	.then(user => {
+		user.password = Math.random().toString(15).substr(2);
+		user.save();
+		res.status(200).json(user.password);
+	})
+	.catch(err => {
+  		console.error(err);
+  		res.status(500).json({message: 'Internal server error'})
+  	});
+})
 
 // Get Session Login Token
 router.get('/token/', (req, res) => {
