@@ -1,7 +1,9 @@
 // ***************** State *******************
 
-const baseUrl = 'http://www.tabletopicsdb.com';
-// const baseUrl = 'http://localhost:8080';
+let logInToken;
+
+// const baseUrl = 'http://www.tabletopicsdb.com';
+const baseUrl = 'http://localhost:8080';
 
 // ************ f(MODIFY-state) **************
 
@@ -53,6 +55,7 @@ function checkForToken(callback){
 		type: "GET",
 		url: `${baseUrl}/users/token`,
 		success: function(data){
+			logInToken = data;
 			callback(data)
 		},
 		error: function(data){
@@ -194,15 +197,24 @@ function renderQueries(searchResults){
 	let $invitation = $('<h4 />', {class: 'title is-3', text: `But if you have one in mind, please help by adding it. Thank you`});
 
 	if(searchResults.length === 0) {
-		// showTopicSubmitForm();
-	let $emptyQueryContainer = $('<div />', {class: 'emptyQueryContainer'});
+		let noResultsMessage = `
+			<h3 id='noResultsMessage' class='title is-4'>Sorry, we don't have any topics based on that theme yet. Please be the first by adding your idea below.</h1>
+		`
 
-	$('#displayTopics')
-		.empty()
-		.append($emptyQueryContainer)
+		$('#messageArea').empty().append(noResultsMessage);
+			showTopicSubmitForm();
+			if (logInToken === undefined){
+				//$('#sessionSubmitForm').submit(function(e) {
+					console.log('no dice partner, please sign in');
+					revealSignUp();
+		// let $emptyQueryContainer = $('<div />', {class: 'emptyQueryContainer'});
 
-	$emptyQueryContainer.append($apology, $invitation, $submitLink)
+		// $('#displayTopics')
+		// 	.empty()
+		// 	.append($emptyQueryContainer)
 
+		// $emptyQueryContainer.append($apology, $invitation, $submitLink)
+			}
 	}	
 
 	for(let i = 0; i < searchResults.length; i++){
@@ -228,6 +240,7 @@ $(function(){
 // Get a random question from the Db
 $('#getOneQuestion').on('click', function(){
 	$('#sessionMetaData').empty();
+	$('#messageArea').empty();
 	getOneQuestion(displayQuestion);
 });
 
@@ -235,6 +248,8 @@ $('#getOneQuestion').on('click', function(){
 // Get random session from the Db
 $('#getOneSession').on('click', function(){
 	$('#displayTopics').empty();
+	$('#messageArea').empty();
+
 	getWholeSession(displaySession);
 	// $('.showQuestionsTick').removeClass('is-hidden');
 });

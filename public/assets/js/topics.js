@@ -2,8 +2,8 @@
 
 let logInToken;
 
-const baseUrl = 'http://www.tabletopicsdb.com';
-// const baseUrl = 'http://localhost:8080';
+// const baseUrl = 'http://www.tabletopicsdb.com';
+const baseUrl = 'http://localhost:8080';
 
 // ************ f(MODIFY-state) **************
 
@@ -44,13 +44,8 @@ function grabQuestions() {
 function addNewSession(sessionDetails, callback) {
 
 	var ttdbURL = baseUrl + "/topics";
-	var query = {
-		theme: sessionDetails.theme,
-		introduction: sessionDetails.sessionIntro,
-		keywords: sessionDetails.keywords,	
-		questions: sessionDetails.questions,
-		user_id: logInToken
-	}; 
+	var query = sessionDetails;
+	query.user_id = logInToken; 
 
 	$.ajax({
 		type: "POST",
@@ -70,7 +65,7 @@ function addNewSession(sessionDetails, callback) {
 
 function noTokenRedirect(){
 	localStorage.setItem('message', 'Please log in first to submit Topics. Thank you!');
-	location.href = `login.html?message`;
+	// location.href = `login.html?message`;
 };
 
 function logOutUser(userTokenId){
@@ -134,7 +129,7 @@ $('#sessionSubmitForm').submit(function(e){
 
   let sessionDetails = {
 		theme: $('#themeInput').val().trim(),
-		sessionIntro: $('#sessionIntro').val().trim(),
+		introduction: $('#sessionIntro').val().trim(),
 		keywords: grabKeywords(),	
 		questions: grabQuestions()
 	};

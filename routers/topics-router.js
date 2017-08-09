@@ -108,7 +108,40 @@ router.post('/', (req, res) => {
 		};
 	};
 
-	Topic
+	if(!req.session.userId) {
+		User
+		.findOne({email: req.body.email})
+		.exec()
+		.then(function(userInfo) {
+			if(req.body.password !== userInfo.password){
+				const message = `Password is incorrect`;
+				console.error(message);
+				res.status(400).json({message: message});
+				return Promise.reject();
+			} 
+			//make token
+			req.session.userId = userInfo._id;
+			return userInfo;
+		})
+		.then(function(userInfo) {
+			return Topic
+				.create({
+					theme: req.body.theme,
+					introduction: req.body.introduction,
+					keywords: req.body.keywords,
+					questions: req.body.questions,
+					user_id: req.session.userId
+				})
+		})
+		.then(topic => {
+			res.status(201).json(topic)
+		})
+		.catch(err => {
+					console.error(err);
+					res.status(500).json({message: 'Internal server error while posting your topic session'})
+		})
+	}else{
+		Topic
 		.create({
 			theme: req.body.theme,
 			introduction: req.body.introduction,
@@ -120,9 +153,10 @@ router.post('/', (req, res) => {
 			res.status(201).json(topic)
 		})
 		.catch(err => {
-			console.error(err);
-			res.status(500).json({message: 'Internal server error while posting your topic session'})
-		});
+					console.error(err);
+					res.status(500).json({message: 'Internal server error while posting your topic session'})
+		})
+	}
 });
 
 // ************* Topics PUT Endpoints *************

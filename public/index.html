@@ -89,7 +89,10 @@
 		        Search Table Topic questions for Toastmasters meetings
 		      </h2>
 		    </div>
+				<span id="messageArea"></span>
+
 		  </div>
+
 		</section>
 	</header>
 
@@ -100,15 +103,14 @@
 				 	<input type="text" name="searchbar" id="queryInput" class="input level-item" placeholder=""> 
 				 	<button id="queryButton" class="button is-primary level-item" type="submit">Search</button>	
 				</form>	<!-- inputForm -->	
-				<section>
-				 	<p id="searchInstructions">Search our database for fun and engaging Table Topics for your next Toastmasters meeting</p>
+				<section id="searchHelpArea">
+				 	<p id="searchInstructions">Search our database for fun and engaging Table Topics for practice or your next Toastmasters meeting</p>
 				 	<p id="searchTips">Popular keyword searches: life, love, friends, experience... </p>
 				</section>
 				<div id="searchButtonRow" class="columns">
 					<button id="getOneQuestion" type="button getOneButtons" class="button is-dark column is-4">Random Table Topics question</button> 
 					<button id="getOneSession" type="button getOneButtons" class="button is-dark column is-4">Random Table Topics Session</button>
 				</div> 	
-
 		</section> <!-- tableTopicsPractice  -->
 
 	<div id="displayArea">	  
@@ -125,30 +127,6 @@
 
 	<section class="control level tableTopicsBuffer"></section> 
 
-	<section id="dbProgressRow" class="control tableTopicsBuffer2 ">
-		<h1 class="title is-1 dbStats">Current Table Topics Db Stats:</h1>
-
-		<div id="statRow" class="level">
-			<content class="dbStatsContainer dbStats level-item">
-				<div id="dbSubmissions" class="dbStats"></div>	
-				<label >Table Topic Sessions Submitted</label> 
-
-			</content>	
-
-			<content class="dbStatsContainer dbStats level-item">
-				<div id="dbMembers" class="dbStats"></div>	
-				<label>Community Members</label> 
-			</content>
-
-			<content class="dbStatsContainer dbStats level-item">
-				<div id="dbClubs" class="dbStats"></div> 
-				<label>Toastmasters Clubs Represented</label>
-			</content>
-		</div>
-
-	</section> 
-
-	<section class="control level tableTopicsBuffer"></section> 
 	<div id="surveySpot" class="hide">
 		<link rel="stylesheet" type="text/css" href="https://s3.amazonaws.com/bucket-io-widget-assets/home/styleBucket.css" >
 		<button style="font-size: 12px;background-color:#276cda;color:#ffffff;border:none;padding:10px 20px;cursor:pointer" onclick="lunchModal('https://go.bucketsurveys.com/ds/1edb9f0b')" id="myBtnBucket" class="btn-outline-bucket button">
