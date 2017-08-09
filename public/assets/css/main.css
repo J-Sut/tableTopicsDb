@@ -66,8 +66,8 @@ footer {
 }
 
 #mobileNavBar {
-	padding-left: 100px;
-	padding-right: 100px;
+	padding-left: 50px;
+	padding-right: 50px;
 }
 
 #ttdbLogo {
@@ -83,6 +83,7 @@ footer {
 	background-position: center;
 	height: 450px;
 	overflow: hidden;
+	position: relative;
 }
 
 #pageFooter {
@@ -115,8 +116,7 @@ footer {
 }
 
 #displayTopics h3 {
-	text-align: left;
-	font-size: 1.2em;
+	font-size: 1.5em;
 }
 
 #displayTopics h5, li {
@@ -129,7 +129,6 @@ footer {
 
 #buttonHolder{
 	text-align: center;
-	padding-top: 10px;
 }
 
 .disabled {
@@ -153,7 +152,7 @@ button {
 }
 
 .randomQuestion {
-	padding: 75px;
+	padding: 50px;
 }
 
 h4.title:not(:last-child), h4.subtitle:not(:last-child) {
