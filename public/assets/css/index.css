@@ -102,8 +102,7 @@ section.modal-card-body {
 }
 
 #noResultsMessage {
-	max-width: 690px;
-	padding-bottom: 5px;
+	padding-bottom: 15px;
 	text-align: center;
 	max-width: 540px;
 }
@@ -286,11 +285,19 @@ content.dbStats {
 		display: block;
 	}
 
-
 	.randomQuestion {
 	    padding: 25px 15px 25px 15px;
 	}
 
+	#noResultsMessage {
+		padding-bottom: 15px;
+		text-align: center;
+		max-width: 90%;
+	}
+
+	#noResultsMessage {
+		margin: 0;
+	}
 
 }
 

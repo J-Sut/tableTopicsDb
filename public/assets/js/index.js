@@ -198,7 +198,7 @@ function renderQueries(searchResults){
 
 	if(searchResults.length === 0) {
 		let noResultsMessage = `
-			<h3 id='noResultsMessage' class='title is-4'>Sorry, we don't have any topics based on that theme yet. Please be the first by adding your idea below.</h1>
+			<h3 id='noResultsMessage' class='title is-4'>Sorry, we don't have any topics based on that theme yet. Be the first by adding your idea below.</h1>
 		`
 
 		$('#messageArea').empty().append(noResultsMessage);
@@ -231,9 +231,9 @@ function showSurvey(){
 // Check if user is logged in 
 $(function(){
 	checkForToken(displayNavTabs);
-	countSubmissions();
-	countUsers();
-	countClubs();
+	// countSubmissions();
+	// countUsers();
+	// countClubs();
 	setTimeout(showSurvey, 15000);
 });
 

@@ -59,6 +59,13 @@ $('#navHam').on('click', function(){
 	$('#navHam').toggleClass('is-active');
 })
 
+$('#showForgotPassword').on('click', function(){
+	$('.forgotPasswordModal').addClass('is-active');
+});
+
+$('#updateProfile, #cancel, .modal-background').on('click', function(){
+	$('.forgotPasswordModal').toggleClass('is-active');
+});
 
 
 
