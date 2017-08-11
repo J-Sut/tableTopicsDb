@@ -32,4 +32,4 @@ function sendMail(to, subject, content){
   });
 }
 
-export default { sendMail };
+module.exports = { sendMail };
