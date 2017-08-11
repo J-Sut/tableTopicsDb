@@ -1,4 +1,11 @@
 language: node_js
 node_js: node
-services: 
+services:
 - mongodb
+deploy:
+  provider: heroku
+  api_key:
+    secure: riSZJtctxOXuEO4prhy9HPVzs/6+cuCOoKPZegDQDucqnJADJ/bzvj3JdTvk/F0jC925AdSk3VU4tXH/Ntt3LAAt3EoY8sTPIf691xuJDtUJjxcuyW8L6VrkWo202dIE837q2gJaKVwlL2BXYhaHwqODTBBrTSyTABnqTCLvzoMXVMUsVLFi3+pe8CekDoh5hK6aCmBHMOdZRHsGlAT62s8LVoQPJvRPMIOpbaRdREpl9erXJcaxploCAFs3ZgZSDqtWbYIv4dq1Vxe4d1Ef8IIM9t8yvPaR6VO6Iau20UTdTIMIUVrI3+XSmw8iodaqZNQ9yhA/2zXyRsgEFcmfbTIbvwuQD1aVmyCXi8jhw0Z7ikIPhI7q9hBQ3Fdb7I4ZEvmHa7s1fJmuaCAVnwvSFlkjjq2XAc7H99aP/iOliybDNCd53rJXvMpk9upyG3fNxjfiYvUFH+VTuo2r6KyYXRvL2aqfoyhCVzi8HhzPGBjxC/OXWMZAxtPeoqyRw6OZif9/v46m8q0jB5MWpn2GLiRxNHF+s2rxIsAL9UvngS698/ORFBkFBJMdXVH47dybBwRn3bmVM1txrKD94t98GKW38Nivg26RFGuaR0YlWvZpfk/l8TlrnWc10jgQTK2RLpAOVIWbs3r7WxsSVlE/ZF5T7OgGHFLI6jmcIehaf80=
+  app: afternoon-cliffs-40325
+  on:
+    repo: J-Sut/tableTopicsDb

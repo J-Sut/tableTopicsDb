@@ -1,105 +1,237 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Table Topics DB </title>
+	<title>TTDb Profile</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.4.2/css/bulma.css">
-	<link rel="stylesheet" type="text/css" href="./assets/css/main.css">	
+	<link rel="stylesheet" type="text/css" href="./assets/css/main.css">
+	<link rel="stylesheet" type="text/css" href="./assets/css/index.css">	
+	<link rel="stylesheet" type="text/css" href="./assets/css/profile.css">	
+
+	<!-- Hotjar Tracking Code for http://www.tabletopicsdb.com -->
+	<script>
+	    (function(h,o,t,j,a,r){
+	        h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+	        h._hjSettings={hjid:541883,hjsv:5};
+	        a=o.getElementsByTagName('head')[0];
+	        r=o.createElement('script');r.async=1;
+	        r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+	        a.appendChild(r);
+	    })(window,document,'//static.hotjar.com/c/hotjar-','.js?sv=');
+	</script>
+	<!-- Google Analytics tracking -->
+	<script>
+	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+	  ga('create', 'UA-101453329-1', 'auto');
+	  ga('send', 'pageview');
+	</script>
 </head>
 <body>
 
-	<nav id="mainNavBar" class="nav has-shadow">
-	  <div class="container">
-	    <div class="nav-left">
-	      <a class="nav-item">
-	        <img src="http://3.bp.blogspot.com/-BoI6EJrDY2k/Tk1BneIZauI/AAAAAAAAB9A/InrmUR893N0/s500/Toastmasters+International+globe+logo+2011.png" alt="Table Topics DB">
-	      </a>
-	      <a id="home" href="./index.html"class="nav-item is-tab is-hidden-mobile">Home</a>
-	      <a id="submitTopics" href="./topics.html" class="nav-item is-tab is-hidden-mobile">Submit Topics</a>
-	    </div> <!-- nav-left -->
-
-	    <div  class="nav-right nav-menu">
-	      <a id="signUp" href="./signup.html" class="nav-item is-tab is-hidden-mobile">Sign up</a>
-	   		<a id="logIn" href="./login.html" class="nav-item is-tab is-hidden-mobile">Log in</a>
-	      <a id="profileTab" class="nav-item is-tab is-hidden is-active">
-	        <figure class="image is-16x16" style="margin-right: 8px;">
-	          <img src="http://bulma.io/images/jgthms.png">
-	        </figure>
-	        Profile
-	      </a>
-	      <a id="logOut" class="nav-item is-tab is-hidden">Log out</a>
-	    </div> <!-- nav-right -->
+	<nav id="mobileNavBar" class="nav is-active">
+	  <a href="./index.html" class="nav-item is-hidden-mobile">
+      <img src= "./assets/images/TTdb_podium.png" alt="Table Topics DB">
+    </a>
+	  <div class="nav-left is-hidden-mobile">
+      <a href="./index.html" class="nav-item is-tab">Home</a>
+      <a href="./topics.html" class="nav-item is-tab">Submit Topics</a>
+      <a href="./thankyou.html" class="nav-item is-tab">Thank You</a>
 	  </div>
-	</nav> <!-- mainNavBar -->
 
-	<header>
-		<h1></h1>
-	</header>
+	  <div class="nav-center is-hidden-tablet">
+		   <a href="./index.html" class="nav-item">
+	      <img id="ttdbLogo" src= "./assets/images/TTdb_podium.png" alt="Table Topics DB">
+	    </a>
+	  </div>
 
+	  <!-- This "nav-toggle" hamburger menu is only visible on mobile -->
+	  <!-- You need JavaScript to toggle the "is-active" class on "nav-menu" -->
+	  <span id="navHam" class="nav-toggle">
+	    <span></span>
+	    <span></span>
+	    <span></span>
+	  </span>
+
+	  <!-- This "nav-menu" is hidden on mobile -->
+	  <!-- Add the modifier "is-active" to display it on mobile -->
+	 		<div id="navHamDropdown" class="nav-right nav-menu">
+				<p class="is-hidden-tablet">
+		      <a id="home" href="./index.html" class="nav-item is-tab">Home</a>
+		      <a id="submitTopics" href="./topics.html" class="nav-item is-tab">Submit Topics</a>
+		      <a href="./thankyou.html" class="nav-item is-tab">Thank You</a>
+	      </p>
+			  <a id="logIn" href="./login.html" class="nav-item is-tab">Log in</a>
+		    <a id="signUp" href="./signup.html" class="nav-item is-tab">Sign up</a>
+
+		    <a id="profileTab" href="./profile.html" class="nav-item is-tab is-hidden is-active">
+		      <figure class="image is-16x16" style="margin-right: 8px;">
+		      </figure>
+		      Profile
+		    </a>
+		    <a id="logOut" class="nav-item is-tab is-hidden">Log out</a>
+	    </div>
+	  </div>
+	</nav> <!-- mobileNavBar -->
 	<header>
 		<section class="hero">
 		  <div id="pageTitle" class="hero-body">
 		    <div class="container">
 		      <h1 class="title">
-		        Profile Page
+		        Speaker Profile Page
 		      </h1>
 		      <h2 class="subtitle">
-		        Introduce youself
+		        Introduce your interests, your work, and yourself
 		      </h2>
 		    </div>
 		  </div>
 		</section>
 	</header>	
 
+	<section class="control level tableTopicsBuffer">
+	</section> <!-- tableTopicsPractice  -->
 
+	<main id="profilePage">	
+		<div id="row1">
+			<figure class="image is-128x128">
+				  <img src="http://bulma.io/images/placeholders/200x200.png">
+				</figure>		<br>
 
+				<span class="columns" >
+						<div id="userProfileInfo" class="column">
+							<label>Display Name:</label>
+								<h3 id="userName" class="title is-3"></h3>
+								<br>
+							<label>Bio:</label>
+								<h3 id="userBio" class="title is-3"></h3>
+								<br>
+							<label>TM Title:</label>
+								<h3 id="tmTitle" class="title is-3"></h3> <br>
+							<button type="button" id="updateProfile" class="button  is-dark">Update Profile</button>	
+						</div>
 
-	<main id="profilePage">
-		<figure class="image is-128x128">
-		  <img src="http://bulma.io/images/placeholders/128x128.png">
-		</figure>		<br>
+						<section id="userClubInfo" class="column">
+							<h3 class="title is-3">Club Membership</h3>
+				
+							<span id="clubName"></span><br>
+							<span id="clubLocation"></span><br>
+							<span id="clubWebsite"></span><br>
+						</section> 	
+				</span>				
+		</div> 
 
-		<button type="button" id="updateProfile">Update Profile</button>
-		<button type="button" id="submitUpdate" class="hide">Submit Update</button>
+		<section class="control level tableTopicsBuffer">
+		</section> <!-- tableTopicsPractice  -->
 
-
-		<div id="userProfileInfo">
-			<h2>User Information</h2>
-			<label>User Name:</label>
-				<input type="text" id="userNameInput" name="userName" class="hide">
-				<span id="userName"></span>
-				<br>
-			<label>User Bio:</label>
-				<input type="text" id="userBioInput" name="userBio" class="hide">
-				<span id="userBio"></span>
-
+		<div id="row2">
+				<div id="myTableTopics">
+					<h3 id="myTopicsTitle" class="title is-3 is-hidden">My Topics Contributed</h3>
+					<section id="displayMyTopics"></section>	
+				</div>			
 		</div>
-
-		<section id="userClubInfo">
-			<h2>Club Membership</h2>
-			<span id="tmTitle">Advanced Communicator Bronze</span><br>
-			<span id="clubName">Toast of the Town</span><br>
-			<span id="clubLocation">Seattle, WA</span><br>
-			<span id="clubWebsite">www.toastofthetown.org</span><br>
-		</section>
-
-		<div id="questionsSubmitted">
-			<h2>Table Topics Questions Submitted</h2>
-			<section class="sessionSubmission">
-				<h3>Theme: Deep Questions</h3>
-				<ul class="sessionQuestionsSection">
-					<li class="question">1. What are we doing with the world?</li>
-					<li class="question">2. What are we doing with the world?</li>
-					<li class="question">3. What are we doing with the world?</li>
-					<li class="question">4. What are we doing with the world?</li>
-					<li class="question">5. What are we doing with the world?</li>					
-				</ul>
-
-			</section>
-		</div>		
+	
 
 	</main>
+
+
+	<section class="control level tableTopicsBuffer">
+	</section> <!-- tableTopicsPractice  -->
+
+	<div id="surveySpot" class="hide">
+		<link rel="stylesheet" type="text/css" href="https://s3.amazonaws.com/bucket-io-widget-assets/home/styleBucket.css" >
+		<button style="font-size: 12px;background-color:#276cda;color:#ffffff;border:none;padding:10px 20px;cursor:pointer" onclick="lunchModal('https://go.bucketsurveys.com/ds/1edb9f0b')" id="myBtnBucket" class="btn-outline-bucket button">
+				Toastmasters love feedback
+		</button>
+		<div id="myModalButton" class="modalBucket">
+			<div class="modal-content-bucket"> 
+				<span class="close-bucket">X</span>
+			</div>
+		</div> 
+		<a class="delete"></a>
+	</div>	
+
+	<footer id="pageFooter" class="footer">
+	  <div class="container">
+	    <div class="content has-text-centered columns"> 
+
+	      <section id="footerCol1" class="column is-three-quarters">		      
+		      <p>
+		        <strong>Table Topics Db</strong> by <a href="https://github.com/J-Sut" target="_blank">Jeremy Sutton</a>. <br>
+		         The source code is licensed
+		        <a href="#">MIT</a>. The website content
+		        is licensed <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC ANS 4.0</a>.
+		      </p>		      	
+	      </section>
+
+	      <section id="footerCol2" class="column">		   
+
+	      </section>
+
+	      <p>
+	        <a class="icon" href="https://github.com/jgthms/bulma">
+	          <i class="fa fa-github"></i>
+	        </a>
+	      </p>
+	    </div>
+	  </div> <!-- container -->
+	</footer>	
+
+	<div class="modal">
+	  <div class="modal-background"></div>
+	  <div class="modal-card">
+
+	    <section class="modal-card-body">
+
+				<form id="profileUpdateForm">
+					<h3 id="modalTitle" class="title is-3">Update public profile:</h3>
+					
+					<div id="displayNameUpdate" class="field is-grouped inputSection">
+						<label  class="label">Name displayed: </label>
+					  <p class="control">
+					    <input  id="userNameUpdate" class="input" type="text" placeholder="" required>
+					  </p>
+					</div>
+
+					<div class="field is-grouped">
+						<label class="label" for="sessionIntro">Bio: </label>
+					  <p class="control">
+					    <textarea id="userBioUpdate" name="sessionIntro" class="textarea" placeholder=""></textarea>
+					  </p>
+					</div>
+
+					<div class="field is-grouped ">
+					  <label class="label">Toastmasters Title:</label>
+					  <p class="control">
+				      <select id="tmTitleDropdown">
+				        <option value="-1">Select dropdown</option>
+								<option value="Not a member">Not a member of Toastmasters</option>
+								<option value="Toastmaster">Toastmaster (Fewer than 10 speeches given)</option>
+								<option value="Competent Communicator">Competent Communicator</option>
+								<option value="Advanced Communicator Bronze">Advanced Communicator Bronze</option>
+								<option value="Advanced Communicator Silver">Advanced Communicator Silver</option>
+								<option value="Advanced Communicator Gold">Advanced Communicator Gold</option>
+								<option value="Advanced Leader Bronze">Advanced Leader Bronze</option>
+								<option value="Advanced Leader Silver">Advanced Leader Silver</option>
+								<option value="Distinguished Toastmaster">Distinguished Toastmaster</option>
+				      </select>
+					  </p>
+					</div>	
+				</form> <!-- sessionInfo -->
+	    </section>
+
+	    <footer class="modal-card-foot">
+	      <button id="submitButton" class="button is-success" type="button">Save changes</button>
+	      <a id="cancel" class="button">Cancel</a>
+	    </footer>
+	  </div>
+	</div>
+
 <script type="text/javascript" src="./assets/jquery.min.js"></script>
+<script type="text/javascript" src="./assets/js/config.js"></script>
 <script type="text/javascript" src="./assets/js/profile.js"></script>
+<script src="https://s3.amazonaws.com/bucket-io-widget-assets/home/scriptBucket.js" type="text/javascript"></script> <!-- Script for Survey Button -->
 </body>
 </html>

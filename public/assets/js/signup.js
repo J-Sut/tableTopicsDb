@@ -1,12 +1,12 @@
+// ************ State **************
+
 // ************ f(Modify State) **************
 function checkForToken(callback){
-	console.log('check for token fired')
  
 	$.ajax({
 		type: "GET",
-		url: 'http://localhost:8080/users/token',
+		url: baseUrl + '/users/token',
 		success: function(data){
-			console.log("Great token you've got there")
 			callback(data)
 		},
 		error: function(data){
@@ -18,13 +18,14 @@ function checkForToken(callback){
 function addNewUser(newUser, clubInfo, callback) {
 
 	// New User & Club information
-	var ttdbURL = "http://localhost:8080/users";
+	var ttdbURL = baseUrl + "/users";
 	var query = {
 		userName: newUser.name,
 		password: newUser.password,
 		passwordConf: newUser.pwConf,	
 		email: newUser.email,
 		inClub: newUser.inClub,
+		tmTitle: newUser.tmTitle,
 		memberClubList: clubInfo.name,
 
 		clubName: clubInfo.name,
@@ -35,18 +36,17 @@ function addNewUser(newUser, clubInfo, callback) {
 		website: clubInfo.website
 	}; 
 
-	console.log(clubInfo);
-
 	$.ajax({
 		type: "POST",
 		url: ttdbURL,
 		data: JSON.stringify(query),
 		success: function(data){
-			//location.href = 'login.html';
-			console.log(data);
+			data.tmTitle = newUser.tmTitle;
 			createUserProfile(data);
 			location.href = 'login.html';
-
+		},
+		error: function(){
+			console.log('user not created')
 		},
 		contentType: 'application/json',
     dataType: 'json'
@@ -54,26 +54,22 @@ function addNewUser(newUser, clubInfo, callback) {
 };
 
 function createUserProfile(userData){
-	console.log(userData);
 	let userId = userData._id;
 
-	var ttdbURL = "http://localhost:8080/users/" +userId+ "/profile";
+	var ttdbURL = `${baseUrl}/users/${userId}/profile`;
 	var query = {
 		user_id: userId,
-		displayName: "Example_name3",
-		bio: "A speaker on the rise3",
-		photo: "photo3.com"
+		displayName: userData.username,
+		bio: "",
+		photo: "",
+		tmTitle: userData.tmTitle
 	}; 
-
-	console.log("createUserProfile Fired");
 
 	$.ajax({
 		type: "POST",
 		url: ttdbURL,
 		data: JSON.stringify(query),
 		success: function(profileData){
-			//location.href = 'login.html';
-			console.log(profileData);
 		},
 		contentType: 'application/json',
     dataType: 'json'
@@ -84,7 +80,6 @@ function createUserProfile(userData){
 
 
 function displayContent(){
-	console.log('display Content Fired')
 	$('#logOut, #profileTab, #logIn, #signUp').toggleClass('is-hidden');
 };
 
@@ -99,7 +94,6 @@ $(function(){
 // Submit new User Button Action
 $('#newUserForm').submit(function(e){
   e.preventDefault();
-  console.log("form submitted");
 
   let newUser = {
 		name: $('#userNameInput').val(),
@@ -107,6 +101,9 @@ $('#newUserForm').submit(function(e){
 		password: $('#passwordInput').val(),
 		pwConf: $('#passwordConfInput').val(),
 		inClub: $('input[name="clubCheck"]:checked').val(),
+
+		// pass TM title while creating user
+		tmTitle: $('#tmTitle').val()
 	};
 
 	let clubInfo = {
@@ -121,23 +118,25 @@ $('#newUserForm').submit(function(e){
 	if (newUser.password === newUser.pwConf) {
   	addNewUser(newUser, clubInfo);
 	} else {
-		const message = `Passwords do not match`
+		const message = `Password is incorrect`
 	  console.log(message);
 	  alert(message);
 	};
-
 });
 
-// Reveal Club questions if the member states they are in a Club
-$('#yesClub').on('change', function() {
-	$('#memberInfo').removeClass("is-hidden");
-});
+// // Reveal Club questions if the member states they are in a Club
+// $('#yesClub').on('change', function() {
+// 	$('#memberInfo').removeClass("is-hidden");
+// });
 
-$('#noClub').on('change', function() {
-	$('#memberInfo').addClass("is-hidden");
-});
+// $('#noClub').on('change', function() {
+// 	$('#memberInfo').addClass("is-hidden");
+// });
 
-
+$('#navHam').on('click', function(){
+	$('#navHamDropdown').toggleClass('is-active');
+	$('#navHam').toggleClass('is-active');
+})
 
 
 

@@ -1,23 +1,36 @@
 // **************** State ******************
 var userData;
 
-
-			// $('body').css('background-color', 'green');
-
 // ************ f(Modify-state) **************
 
-function checkForToken(callback){
-	console.log('check for token fired')
- 
+function getTopics(callback){
+	let userId = userData.user_id._id;
+
 	$.ajax({
-		type: "GET",
-		url: 'http://localhost:8080/users/token',
+		type: 'GET',
+		url: `${baseUrl}/users/${userId}/topics`,
 		success: function(data){
-			console.log("Great token you've got there")
+			if(data.length === 0) {
+				encourageSubmit();
+			};
 			callback(data)
 		},
 		error: function(data){
 			console.log('Token not found')
+		},
+	});	
+};
+
+function checkForToken(callback){
+	$.ajax({
+		type: "GET",
+		url: `${baseUrl}/users/token`,
+		success: function(data){
+			callback(data)
+		},
+		error: function(data){
+			console.log('Token not found')
+			location.href = 'login.html';
 		}
 	});	
 }
@@ -26,30 +39,40 @@ function getProfileData(){
 	$.getJSON('users/profile/me', function(data){
 		userData = data;
 		displayProfileData(data);
+		displayProfilePic(data.photo)
+		getTopics(displaySession);
+		getClubInfo(data)
 	});
 };
 
-function getClubInfo(){
+function getClubInfo(userData){
+	let userId = userData.user_id._id
 
+	$.ajax({
+		type: 'GET',
+		url: `${baseUrl}/clubs/${userId}/profile`,
+		success: function(clubs){
+			renderClubInfo(clubs)
+		},
+		error: function(data){
+			console.log('Token not found')
+		},
+	});	
 };
 
-function updateProfile(){
-	console.log('Update Profile fired')
-	// let profileId = //...
-	// let updatePath = "users" + profileId + "profile"
-	// $.put("users/59288af4af018937b04a0625/profile", function(){});
+function updateProfile(updateInfo){ 
 		let query = {
 			id: userData._id,
-			displayName: $('#userNameInput').val(),
-			bio: $('#userBioInput').val()}; 
+			displayName: updateInfo.name,
+			bio: updateInfo.bio,
+			tmTitle: updateInfo.tmTitle
+			}
 
 		$.ajax({
 			type: "PUT",
-			url: 'http://localhost:8080/users/'+userData._id+ '/profile',
+			url: `${baseUrl}/users/${userData._id}/profile`,
 			data: JSON.stringify(query),
 			success: function(data){
-				//location.href = 'login.html';
-				console.log(data);
 				displayProfileData(data);
 			},
 			contentType: 'application/json',
@@ -57,16 +80,24 @@ function updateProfile(){
 		});
 };
 
-//on form submit
-//Call the update endpoint'
+// ************ f(Render-state) **************
 
+function encourageSubmit(){
+	let $submitLink = $('<a >', {href: './topics.html', class: 'newTopicLead', text: "Contribute a New Topic Here"});
 
-function getProfileJsonObject(data){
+	// let $invitationRow = $('<div />', {class: 'invitationRow'});
+
+	let $apology = $('<h4 />', {class: 'title is-4', text: "It looks like you haven't submitted any topics yet"});
+	let $invitation = $('<h4 />', {class: 'title is-4', text: `Our community would love to explore your contributions`});
+
+	$('#displayMyTopics')
+		.empty()
+		.append($apology, $invitation, $submitLink)
 
 };
 
+
 function displayContent(){
-	console.log('display Content Fired')
 	$('#logOut, #profileTab, #logIn, #signUp').toggleClass('is-hidden');
 };
 
@@ -75,7 +106,7 @@ function logOutUser(userTokenId){
 
 	$.ajax({
 		type: 'DELETE',
-		url: `http://localhost:8080/users/logout/${userId}`,
+		url: `${baseUrl}/users/logout/${userId}`,
 		success: function(){
 			checkForToken();
 			location.reload();
@@ -85,52 +116,110 @@ function logOutUser(userTokenId){
 	});
 };
 
-// ************ f(Render-state) **************
-
 $(function(){
 	checkForToken(displayContent);
 });
 
 function displayProfileData(data){
-			//populate form
-	console.log(data)
-	if(data === null){
-		$('#updateProfile').text('Create Profile')
-			.css('background-color', 'green');
-	} else {
-		console.log(data.displayName);
-		console.log(data.bio)
-		console.log(data.user_id);
-
-		$('#userName').text(data.displayName).css('background-color', '#235434');
-		$('#userBio').text(data.bio);			
-
-		$('#updateProfile').css('background-color', 'yellow');
-	};
+	$('#userName').text(data.displayName);
+	$('#userBio').text(data.bio);		
+	$('#tmTitle').text(data.tmTitle === '-1' ? 'No TM Title' : data.tmTitle);		
 };
 
+function displaySession(session){
+
+	$('#myTopicsTitle').removeClass('is-hidden');
+
+	for (let i = 0; i < session.length; i++) {
+		let questionListElement = [];
+
+		let $sectionCard = $('<section />', {class: 'section tableTopicSession'});
+		let $container = $('<div />', {class: 'container ttContainer columns'});
+
+		let $sessionMetaData = $('<section />', {class: 'sessionMetaData column '});
+		let $themeLabel = $('<h3 />', {class: 'themeLabel title', text: "Theme"});
+		let $themeData = $('<h5 />', {class: 'themeData topicInfo', text: session[i].theme});
+		let $introductionlabel = $('<h3 />', {class: 'introductionlabel title', text: "Introduction"});
+		let $introductionData = $('<h5 />', {class: 'introductionData topicInfo', text: session[i].introduction});
+		let $keywordsLabel = $('<h3 />', {class: 'keywordsLabel title', text: "Keywords"});
+		let $keywordsData = $('<h5 />', {class: 'keywordsData topicInfo', text: session[i].keywords.join(', ')});
+
+		let $sessionQuestions = $('<section />', {class: 'sessionQuestions column is-two-thirds'});
+		let $questionsLabel = $('<h3 />', {class: 'questionsLabel title', text: "Questions"});
+		let $questionsData = $('<ul />', {class: 'questionsData topicsQuestionsList', text: questionListElement});
+
+		$sectionCard.append($container);
+		$container.append($sessionMetaData, $sessionQuestions);
+		$sessionMetaData.append($themeLabel, $themeData, $introductionlabel, $introductionData, $keywordsLabel, $keywordsData);
+
+		$sessionQuestions.append($questionsLabel, $questionsData);
+
+		$.map(session[i].questions, (question, index) => {
+			let $li = $('<li />', {class: 'tableTopic', text: question});
+			$questionsData.append($li);
+		});
+
+		$('#displayMyTopics').append($sectionCard);
+	}
+};
+
+function renderClubInfo(clubs){
+	$('#clubName').text(clubs[0].name);
+	$('#clubLocation').text(clubs[0].location.city + ', ' + clubs[0].location.country );
+	$('#clubWebsite').text(clubs[0].website);
+
+};
+
+function displayProfilePic(userHash){
+	$('#profilePage img').attr("src", `https://www.gravatar.com/avatar/${userHash}/=200`)
+}
+
+function showSurvey(){
+	$('#surveySpot').fadeIn('slow');
+};
 // ************ Event Listeners **************
 
 // Get and Display profile info of logged in User
 $(function(e){
   getProfileData();
+	setTimeout(showSurvey, 10000);
+
 });
 
 // Reveal inputs so that users can update their profile
-$('#updateProfile').on('click', function(){
-	$('#userNameInput, #userBioInput, #submitUpdate').removeClass('hide');
-	$('#updateProfile, #userName, #userBio').addClass('hide');
+$('#updateProfile, #cancel, .modal-background').on('click', function(){
+	$('.modal').toggleClass('is-active');
 });
 
-// Submit new profile information to update
-$('#submitUpdate').on('click', function() {
-	$('#submitUpdate, #userNameInput, #userBioInput').addClass('hide');
-	$('#updateProfile, #userName, #userBio').removeClass('hide');
+$('#submitButton').on('click', function(){
+	let userProfile = {}
 
-	updateProfile();
+	if (!($('#userNameUpdate').val() === '' || undefined)) {
+		userProfile.name = $('#userNameUpdate').val();
+	}
+
+	if (!($('#userBioUpdate').val() === '' || undefined)) {
+		userProfile.bio = $('#userBioUpdate').val();
+	}
+
+	if (!($('#tmTitleDropdown').val() === '-1')) {
+		userProfile.tmTitle = $('#tmTitleDropdown').val();
+	}
+
+	updateProfile(userProfile);
+	$('.modal').toggleClass('is-active');
 });
 
 // logout the user
 $('#logOut').on('click', function(){
 	checkForToken(logOutUser);
+})
+
+$('#navHam').on('click', function(){
+	$('#navHamDropdown').toggleClass('is-active');
+	$('#navHam').toggleClass('is-active');
+})
+
+$('.delete').on('click', function(){
+	$(this).parent().remove();
 })

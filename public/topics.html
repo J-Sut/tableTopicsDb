@@ -1,36 +1,80 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Submit</title>
+	<title>Submit Topics</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.4.2/css/bulma.css">
 	<link rel="stylesheet" type="text/css" href="./assets/css/main.css">	
 	<link rel="stylesheet" type="text/css" href="./assets/css/topics.css">	
+		
+	<!-- Hotjar Tracking Code for http://www.tabletopicsdb.com -->
+	<script>
+	    (function(h,o,t,j,a,r){
+	        h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+	        h._hjSettings={hjid:541883,hjsv:5};
+	        a=o.getElementsByTagName('head')[0];
+	        r=o.createElement('script');r.async=1;
+	        r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+	        a.appendChild(r);
+	    })(window,document,'//static.hotjar.com/c/hotjar-','.js?sv=');
+	</script>
+	<!-- Google Analytics tracking -->
+	<script>
+	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+	  ga('create', 'UA-101453329-1', 'auto');
+	  ga('send', 'pageview');
+	</script>
 </head>
 <body>
-	<nav id="mainNavBar" class="nav has-shadow">
-	  <div class="container">
-	    <div class="nav-left">
-	      <a class="nav-item">
-	        <img src="http://3.bp.blogspot.com/-BoI6EJrDY2k/Tk1BneIZauI/AAAAAAAAB9A/InrmUR893N0/s500/Toastmasters+International+globe+logo+2011.png" alt="Table Topics DB">
-	      </a>
-	      <a id="home" href="./index.html"class="nav-item is-tab is-hidden-mobile">Home</a>
-	      <a id="submitTopics" class="nav-item is-tab is-hidden-mobile is-active">Submit Topics</a>
-
-	    </div> <!-- nav-left -->
-
-	    <div  class="nav-right nav-menu">
-	      <a id="profileTab" href="./profile.html" class="nav-item is-tab">
-	        <figure class="image is-16x16" style="margin-right: 8px;">
-	          <img src="http://bulma.io/images/jgthms.png">
-	        </figure>
-	        Profile
-	      </a>
-	      <a id="logOut" class="nav-item is-tab ">Log out</a>
-	    </div> <!-- nav-right -->
+	<nav id="mobileNavBar" class="nav is-active">
+	  <a href="./index.html" class="nav-item is-hidden-mobile">
+      <img src= "./assets/images/TTdb_podium.png" alt="Table Topics DB">
+    </a>
+	  <div class="nav-left is-hidden-mobile">
+      <a id="home" href="./index.html" class="nav-item is-tab">Home</a>
+      <a href="./topics.html" class="nav-item is-tab is-active">Submit Topics</a>
+      <a href="./thankyou.html" class="nav-item is-tab">Thank You</a>
 	  </div>
-	</nav> <!-- mainNavBar -->
 
+	  <div class="nav-center is-hidden-tablet">
+		   <a href="./index.html" class="nav-item">
+	      <img id="ttdbLogo" src= "./assets/images/TTdb_podium.png" alt="Table Topics DB">
+	    </a>
+	  </div>
+
+	  <!-- This "nav-toggle" hamburger menu is only visible on mobile -->
+	  <!-- You need JavaScript to toggle the "is-active" class on "nav-menu" -->
+	  <span id="navHam" class="nav-toggle">
+	    <span></span>
+	    <span></span>
+	    <span></span>
+	  </span>
+
+	  <!-- This "nav-menu" is hidden on mobile -->
+	  <!-- Add the modifier "is-active" to display it on mobile -->
+	 		<div id="navHamDropdown" class="nav-right nav-menu">
+				<p class="is-hidden-tablet">
+		      <a id="home" href="./index.html" class="nav-item is-tab">Home</a>
+		      <a id="submitTopics" href="./topics.html" class="nav-item is-tab is-active">Submit Topics</a>
+		      <a href="./thankyou.html" class="nav-item is-tab">Thank You</a>
+	      </p>
+			  <a id="logIn" href="./login.html" class="nav-item is-tab">Log in</a>
+		    <a id="signUp" href="./signup.html" class="nav-item is-tab">Sign up</a>
+
+		    <a id="profileTab" href="./profile.html" class="nav-item is-tab is-hidden">
+		      <figure class="image is-16x16" style="margin-right: 8px;">
+		        <img src="http://bulma.io/images/jgthms.png">
+		      </figure>
+		      Profile
+		    </a>
+		    <a id="logOut" class="nav-item is-tab is-hidden">Log out</a>
+	    </div>
+	  </div>
+	</nav> <!-- mobileNavBar -->
 	<header>
 		<section class="hero">
 		  <div id="pageTitle" class="hero-body">
@@ -39,113 +83,117 @@
 		        Contribute Table Topics 
 		      </h1>
 		      <h2 class="subtitle">
-		        Let's build an incredible resource
+		        Let's build an incredible resource together
 		      </h2>
 		</section>
 	</header>	
 
-		<section id="tableTopicsPractice" class="control level tableTopicsBuffer">
-
-		</section> <!-- tableTopicsPractice  -->
-
+	<section id="tableTopicsPractice" class="control level tableTopicsBuffer">
+	</section> <!-- tableTopicsPractice  -->
 
 	<main>
-		<section id="tableTopicsPractice" class="control level">
 
-		</section> <!-- tableTopicsPractice  -->	
+		<div id="topicsSubmitArea">
+			<form id="sessionSubmitForm" class="">
 
-		<form id="sessionSubmitForm">
+				<section id="fieldsetArea" class="">
+					<fieldset id="sessionInfo">
+						
+						<h3 id="topicIntroTitle" class="title is-3">Topic Introduction</h3>
+						
+						<div id="" class="inputSection">
+							<label for="themeInput" class="label">THEME </label> 
+						  <p class="control">
+						    <input id="themeInput" class="input" type="text" placeholder="" required>
+						  </p>
+						  <small>The main topic connecting all the session questions</small>
 
-			<fieldset id="sessionInfo">
-				
-				<h2 class="title is-2">Topic Introduction</h2>
-				
-				<div id="" class="field is-grouped inputSection">
-					<label for="themeInput" class="label">Theme: </label>
-				  <p class="control">
-				    <input id="themeInput" class="input" type="text" placeholder="Normal input" required>
-				  </p>
-				</div>
+						</div>
 
-				<div class="field is-grouped">
-					<label class="label" for="sessionIntro">Session Introduction: </label>
-				  <p class="control">
-				    <textarea id="sessionIntro" name="sessionIntro" class="textarea" placeholder="Normal textarea" required></textarea>
-				  </p>
+						<div class="sessionIntro">
+							<label class="label" for="sessionIntro">SESSION INTRODUCTION </label>
+						  <p class="control">
+						    <textarea id="sessionIntro" name="sessionIntro" class="textarea" placeholder="" required></textarea>
+						  </p>
+						  <small>A brief explanation of the topic that frames the session</small>
+						</div>
 
-				</div>
+						<div class="keywordsInput">
+							<label class="label" for="keywordsInput">KEYWORDS </label>
+						  <p class="control">
+						    <input id="keywordsInput" class="input" type="text" name="keywordsInput"  placeholder="Use , to separate keywords" required>
+						  </p>
+						  <small>Add related keywords to your topic to help your session be found by members looking for related ideas</small>						  
+						</div>								
+					</fieldset> <!-- sessionInfo -->
 
-				<div class="field is-grouped">
-					<label class="label" for="keywordsInput">Keywords: </label>
-				  <p class="control">
-				    <input id="keywordsInput" class="input" type="text" name="keywordsInput"  placeholder="Normal input" required>
-				  </p>
-				</div>								
-			</fieldset> <!-- sessionInfo -->
+					<fieldset id="sessionQuestions" class="">
+						<h3 class="title is-3">Table Topics</h3>
+						
+						<section id="topicQuestions">
+							<div class="topicQuestion ">
+								
+								<section class="level">
+									<label class="label level-item level-left" >QUESTIONS</label>
+									<span id="addQuestion" class="level-item level-right" type="button">+Add a question</span>			
+								</section>
 
-			<fieldset id="sessionQuestions">
-				<h2 class="title is-2">Table Topics</h2>
-				
+							  <p class="control">
+							    <textarea  class="topicQuestionInput textarea" placeholder="#1" required></textarea>	
+							  </p>
 
-				<div class="topicQuestion field is-grouped">
-					<label class="label" >Question: </label>
-				  <p class="control">
-				    <textarea  class="topicQuestionInput textarea" placeholder="Normal textarea" required></textarea>
-				  </p>
+							</div>
 
-				</div>
+							<div class="topicQuestion ">
+							  <p class="control">
+							    <textarea  class="topicQuestionInput textarea" placeholder="#2" required></textarea>
+							  </p>
+							</div>
 
-				<div class="topicQuestion field is-grouped">
-					<label class="label" >Question: </label>
-				  <p class="control">
-				    <textarea  class="topicQuestionInput textarea" placeholder="Normal textarea" required></textarea>
-				  </p>
+							<div class="topicQuestion ">
+							  <p class="control">
+							    <textarea  class="topicQuestionInput textarea" placeholder="#3" required></textarea>
+							  </p>
+							</div>
 
-				</div>
+							<div class="topicQuestion ">
+							  <p class="control">
+							    <textarea  class="topicQuestionInput textarea" placeholder="#4" required></textarea>
+							  </p>
+							</div>
 
-				<div class="topicQuestion field is-grouped">
-					<label class="label" >Question: </label>
-				  <p class="control">
-				    <textarea  class="topicQuestionInput textarea" placeholder="Normal textarea" required></textarea>
-				  </p>
+							<div class="topicQuestion ">
+							  <p class="control">
+							    <textarea  class="topicQuestionInput textarea" placeholder="#5" required></textarea>
+							  </p>
+							 					  
+							</div>
+						</section>
+						<span class="instructionSpace">			
+							<small>The best questions are often open ended, helping the speaker to respond creatively</small>	
+						</span>
+					</fieldset> <!-- sessionQuestions -->
+					
+			</section> 
 
-				</div>
 
-				<div class="topicQuestion field is-grouped">
-					<label class="label" >Question: </label>
-				  <p class="control">
-				    <textarea  class="topicQuestionInput textarea" placeholder="Normal textarea" required></textarea>
-				  </p>
-
-				</div>
-
-				<div class="topicQuestion field is-grouped">
-					<label class="label" >Question: </label>
-				  <p class="control">
-				    <textarea  class="topicQuestionInput textarea" placeholder="Normal textarea" required></textarea>
-				  </p>
-				</div>
-			</fieldset> <!-- sessionQuestions -->
-	
 
 			<section id="buttonHolder">
-				<button id="addQuestion" class="button " type="button">Add a question</button>
 
 				<button id="topicSubmit" type="submit" class="button is-primary">Submit</button>				
 			</section>
-			
-		</form> <!-- sessionSubmitForm -->
-
-
+					
+			</form> <!-- sessionSubmitForm -->	
+		</div>	<!-- topicsSubmitArea -->
 	</main>
+
+	<section id="tableTopicsPractice" class="control level tableTopicsBuffer">
+	</section> <!-- tableTopicsPractice  -->
 
 	<footer id="pageFooter" class="footer">
 	  <div class="container">
 	    <div class="content has-text-centered columns">
-	     
-
-
-	      <section id="footerCol1" class="column is-three-quarters">		      
+	      <section id="footerCol1" class="column is-three-quarters">		 
 		      <p>
 		        <strong>Table Topics Db</strong> by <a href="https://github.com/J-Sut" target="_blank">Jeremy Sutton</a>. <br>
 		         The source code is licensed
@@ -154,10 +202,7 @@
 		      </p>		      	
 	      </section>
 
-	      <section id="footerCol2" class="column">		   
-
-	      </section>
-
+	      <section id="footerCol2" class="column"></section>
 
 	      <p>
 	        <a class="icon" href="https://github.com/jgthms/bulma">
@@ -169,6 +214,10 @@
 	</footer>		
 
 <script type="text/javascript" src="./assets/jquery.min.js"></script>
+<script type="text/javascript" src="./assets/js/config.js"></script>
 <script type="text/javascript" src="./assets/js/topics.js"></script>
+<script type="text/javascript" src="./assets/js/components/display_topics.js"></script>
+<script type="text/javascript" src="./assets/js/components/topic_submit_form.js"></script>
+
 </body>
 </html>

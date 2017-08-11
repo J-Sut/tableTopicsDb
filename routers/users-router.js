@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const mongoose = require('mongoose');
+const	md5 = require('md5');
 
 const bodyParser = require('body-parser');
 const jsonParser = bodyParser.json();
@@ -9,8 +10,10 @@ const {send} = require('../utils/mailer');
 const {User} = require('../models/user-model');
 const {Profile} = require('../models/profile-model');
 const {Club} = require('../models/club-model');
+const {Topic} = require('../models/topic-model');
 
 // ************* User GET Endpoints *************
+// **********************************************
 
 // Get a list of all users
 
@@ -18,7 +21,11 @@ router.get('/', (req, res) => {
 	User
 	.find()	
 	.exec()
-	.then(userList => res.status(200).json(userList))
+	.then(userList => {
+		res.status(200).json(userList.map(user => {
+			return user.apiRepr();
+		}))
+	})
 	.catch(err => {
   		console.error(err);
   		res.status(500).json({message: 'Internal server error'})
@@ -27,28 +34,31 @@ router.get('/', (req, res) => {
 
 // Get a user Profile by Id
 router.get('/profile/me', (req, res) => {
-	//if(! )
 	Profile
 	.findOne({user_id: req.session.userId})	
+	.populate('user_id', 'email')
 	.exec()
-	.then(profile => res.status(200).json(profile))
+	.then(profile => {
+		profile.photo = md5(profile.user_id.email);
+		res.status(200).json(profile)
+	})
 	.catch(err => {
   		console.error(err);
   		res.status(500).json({message: 'Internal server error'})
   });
 });
 
-// Return list of profiles
-router.get('/profile', (req, res) => {
-	Profile
-	.find()	
-	.exec()
-	.then(profileList => res.status(200).json(profileList))
-	.catch(err => {
-  		console.error(err);
-  		res.status(500).json({message: 'Internal server error'})
-  });
-});
+// // Return list of profiles
+// router.get('/profiles', (req, res) => {
+// 	Profile
+// 	.find()	
+// 	.exec()
+// 	.then(profileList => res.status(200).json(profileList))
+// 	.catch(err => {
+//   		console.error(err);
+//   		res.status(500).json({message: 'Internal server error'})
+//   });
+// });
 
 router.get('/password/:email', (req,res) => {
 	User
@@ -70,10 +80,22 @@ router.get('/token/', (req, res) => {
 	res.status(200).json(req.session.userId);
 })
 
+// Get Topics submitted by User Id
+router.get('/:id/topics', (req, res) => {
+
+	Topic
+		.find({user_id: req.params.id})	
+		.exec()
+		.then(userTopics => res.status(200).json(userTopics))
+		.catch(err => {
+	  		console.error(err);
+	  		res.status(500).json({message: 'Internal server error'})
+	  });
+	});
 
 router.get('/:id', (req, res) => {
 	User
-	.findOne()	
+	.findById(req.params.id)	
 	.exec()
 	.then(user => res.status(200).json(user))
 	.catch(err => {
@@ -84,10 +106,11 @@ router.get('/:id', (req, res) => {
 
 
 // ************* User POST Endpoints *************
+// ***********************************************
 
 // Create a New User
 router.post('/', (req, res) => {
-	const requiredFields = ['userName', 'email', 'password', 'passwordConf', 'inClub'];
+	const requiredFields = ['userName', 'email', 'password', 'passwordConf', 'inClub', 'tmTitle'];
 	const optionalFields = ['clubName', 'location', 'clubWebsite'];
 	let _newUser;
 
@@ -111,17 +134,22 @@ router.post('/', (req, res) => {
 		})
 		.then(newUser => {
 			_newUser = newUser;
-			if (!req.body.inClub) {
+			if (!req.body.inClub || req.body.inClub) {
 				return res.status(201).json(_newUser);
 			}
 			return Club
 			.findOne({name: req.body.clubName})
 			.exec()
 		}) //remove once uncommented below
+
+// *************** the super secret sauce for adding members to clubs
+// *************** use this to push topics to users
+
 		.then(club => {
 				if (club){
-					console.log("club is already registered:" + club);
-					return res.status(200).json(club);
+					return club;
+					console.log("club is already registered:" + club, club._id, club.getObjectId());
+					console.log(_newUser);
 				} else {
 					return Club
 					.create({
@@ -130,24 +158,20 @@ router.post('/', (req, res) => {
 							city: req.body.location.city,
 							country: req.body.location.country
 						},
-						website: req.body.clubWebsite
+						website: req.body.website
 					})
-				}
+				} 
 			})
 			.then(club => {
+				Club
+					.findByIdAndUpdate(club._id, {$addToSet:{members: _newUser}})
+					.exec();
 				res.status(201).json(_newUser)
 			})
-		//**************************************
-		// .exec()
-		// 			//user => res.status(201).json(user))
-		// .then(club => {
-		// 	//Assign user to the club.
-		// 	//club.members.push(user);
-		// })
-		.catch(err => {
-			console.error(err);
-			res.status(500).json({message: 'Internal server error from user-router'});
-		});
+			.catch(err => {
+				console.error(err);
+				res.status(500).json({message: 'Internal server error from user-router'});
+			});
 });
 
 // Begin User Login Session
@@ -177,7 +201,7 @@ router.post('/login', (req, res) => {
 //Create user Profile
 router.post('/:id/profile', (req, res) => {
 
-	const requiredFields = ['displayName', 'bio', 'photo'];
+	const requiredFields = ['displayName', 'bio', 'tmTitle', 'photo'];
 	
 	for (let i=0; i<requiredFields.length; i++) {
 		const field = requiredFields[i];
@@ -194,7 +218,8 @@ router.post('/:id/profile', (req, res) => {
 			displayName: req.body.displayName,
 			bio: req.body.bio,
 			photo: req.body.photo,
-			user_id: req.params.id
+			user_id: req.params.id,
+			tmTitle: req.body.tmTitle
 		})
 		.then(
 			user => res.status(201).json(user))
@@ -205,7 +230,7 @@ router.post('/:id/profile', (req, res) => {
 });
 
 // ************* User PUT Endpoints *************
-
+// **********************************************
 
 // Update profile information
 router.put('/:id/profile', (req, res) => {
@@ -218,7 +243,7 @@ router.put('/:id/profile', (req, res) => {
 	}; 
 
 	const toUpdate = {};
-	const updateableFields = ['displayName', 'bio', 'photo'];
+	const updateableFields = ['displayName', 'bio', 'photo', 'tmTitle'];
 
 	updateableFields.forEach(field => {
 		if (field in req.body) {
@@ -260,8 +285,8 @@ router.put('/:id', (req, res) => {
 });
 
 
-
 // ************* User DELETE Endpoints *************
+// *************************************************
 
 
 // Delete a User profile
@@ -286,9 +311,8 @@ router.delete('/:id', (req, res) => {
 // End User Session
 router.delete('/logout/:id', (req, res) => { 
 	delete req.session.userId;
-	res.send("stuff is gone").status(204)
+	res.send("User deleted").status(204)
 });
-
 
 // ************* Other functions *************
 

@@ -1,16 +1,19 @@
 /*assets {
 	light Blue:  #E0EEEE;
 	dark blue: #0E4C49;
+	light beige: rgb(250, 255, 189);
+	dark red: #772432;
 }*/
 
 * {
 	color: #E0EEEE;
+/*	margin: 0;
+	padding: 0;*/
 }
 
 
 html, body, .section{
 	background-color: #0E4C49;
-	
 	margin: 0;
 }
 
@@ -19,8 +22,12 @@ h1.title{
 
 }
 
+h1, h3{
+  font-family: "droid-serif",serif;
+  }
+
 h2.subtitle {
-	font-size: 1.5em;
+	font-size: 1.5em;  
 }
 
 h3 {
@@ -40,21 +47,13 @@ img	{
 	width: auto;
 }
 
-textarea {
-	height: 10px;
-}
-
-input, .input {
+input, .input, #queryInput {
 	color: black;
 	max-width: 350px;
 }
 
 a {
 	display: inline;
-}
-
-label {
-
 }
 
 footer {
@@ -66,35 +65,66 @@ footer {
 	border-radius: 0;
 }
 
+#mobileNavBar {
+	padding-left: 50px;
+	padding-right: 50px;
+}
+
+#ttdbLogo {
+  float: left;
+  position: relative;
+  left: 50%;
+}
+
 #pageTitle {
-	background-image: linear-gradient(to bottom, rgba(0, 0, 0, .7), rgba(0,0,0,.4)),url("../images/woman_public_speaking.jpeg");
+	background-image: linear-gradient(to bottom, rgba(0, 0, 0, .7), rgba(0,0,0,.4)),url("../images/Woman_public_Speaking2.png");
 	background-repeat: no-repeat;
 	background-size: cover;
 	background-position: center;
 	height: 450px;
 	overflow: hidden;
+	position: relative;
 }
 
 #pageFooter {
-	background-image: linear-gradient(to bottom, rgba(0, 0, 0, .6), rgba(0,0,0,.4)),url("../images/Microphone_audience.jpeg");
+	background-image: linear-gradient(to bottom, rgba(0, 0, 0, .6), rgba(0,0,0,.4)),url("../images/Microphone_audience3.png");
 	background-repeat: no-repeat;
-	background-size: contain;
-	background-position: center  right;
+	background-size: cover;
+	background-position: center;
+	height: 300px;
 }
 #topicSearch{
 	text-align: center;
-	padding-top: 12px;
 }
 
 #tableTopicsPractice, .tableTopicsBuffer {
-		background-color: #772432;
-		text-align: center;
-		min-height: 25px;
+	background-color: #772432;
+	text-align: center;
+	min-height: 25px;
+}
+
+.tableTopicsBuffer2 {
+	background-color: #E0EEEE;
+	text-align: center;
+	min-height: 25px;
 }
 
 #displayTopics {
-	text-align: center;
+	text-align: left;
 	padding: 0px;
+	margin: auto; 
+}
+
+#displayTopics h3 {
+	font-size: 1.5em;
+}
+
+#displayTopics h5, li {
+	text-align: left;
+	padding-left: 25px;
+	padding-bottom: 5px;
+	color: white; 
+	font-size: 1.6em;
 }
 
 #buttonHolder{
@@ -106,7 +136,7 @@ footer {
 	background: none;
 } 
 
-label, .label, span, strong{
+label, .label, span, strong, .title, .subtitle{
 	color: #E0EEEE;
 }
 
@@ -117,16 +147,12 @@ label, .label, span, strong{
 	margin: auto;
 }
 
-.title, .subtitle {
-	color: #E0EEEE;
-}
-
-.button.is-primary {
+button {
 	margin: 9px;
 }
 
 .randomQuestion {
-	padding: 100px;
+	padding: 50px;
 }
 
 h4.title:not(:last-child), h4.subtitle:not(:last-child) {
@@ -136,6 +162,7 @@ h4.title:not(:last-child), h4.subtitle:not(:last-child) {
 h3.title:not(:last-child), h3.subtitle:not(:last-child) {
     margin-bottom: 1rem;
 }
+
 .hero-body {
     padding: 2em;
     text-align: left;
@@ -143,25 +170,6 @@ h3.title:not(:last-child), h3.subtitle:not(:last-child) {
 
 .hide {
 	display: none;
-}
-
-.tableTopicSession {
-	border: 3px solid black ;
-	margin: 5px;
-}
-
-.tableTopic, .topicInfo {
-	background-color: #E0EEEE;
-	color: black;
-	margin: 5px;
-	border-radius: 3px;
-	text-align: center;
-	width: 90%;
-	max-height: 150px;
-	height: auto;
-	padding-left: 25px;
-	padding-right: 25px;
-
 }
 
 .container {
@@ -173,11 +181,37 @@ h3.title:not(:last-child), h3.subtitle:not(:last-child) {
     max-height: 600px;
     max-width: 100%;
     min-height: 60px;
-    min-width: 450px;
+    min-width: 350px;
     padding: 0.625em;
-    resize: vertical;
+    resize: both;
+}
+
+.level {
+	justify-content: center
 }
 
 .level:not(:last-child) {
     margin-bottom: 0rem;
+}
+
+.section {
+	padding: 0;
+}
+
+
+@media screen and (max-width: 768px) {
+
+	
+	.hero-body {
+	    padding: 1em;
+	}
+
+	#pageFooter {
+	     background-size: auto 120%; 
+	}
+
+	#mobileNavBar {
+		padding-left: 5px;
+		padding-right: 5px;
+	}
 }

@@ -1,0 +1,304 @@
+/* GENERAL */
+/*html, body, p, a... */
+
+/*GENERAL CLASSES */
+/*.col, .row, .table, .title... */
+
+/*COMPONENTS[BLOCKS, ELEMENTS] */
+/*
+#tableTopicsContainer
+#tableTopicsContainer p 
+#tableTopicsContainer .tableTopicSession
+*/
+
+
+#displayTopicsFiller {
+	padding: 10px;
+	max-width: 500px;
+	text-align: center;
+}
+
+section.modal-card-body {
+	border-radius: 5px 5px 0px 0px;
+}
+
+#spaceHolder1 {
+	background-image: url("../images/man_before_speech2.png");
+	background-size: cover;
+	background-position: center;
+	height: 300px;
+	width: 300px;
+	border-radius: 100%;
+}
+
+#spaceHolder2 {
+	vertical-align: center
+}
+
+#line1 {
+	vertical-align: middle;
+}
+
+/************ Search Form and Buttons ************/
+
+#queryButton {
+	max-width: 100px;
+	margin-left: 10px;
+}
+
+#queryInput {
+	margin-right: 8px;
+}
+
+#topicSearch {
+	padding: 5px 0px 0px 0px;
+	text-align: center;
+}
+
+#searchButtonRow {
+	padding: 0px 0px 10px 0px;
+	display: flex;
+	justify-content: center;
+}
+
+#getOneQuestion, #getOneSession {
+	height: 40px;
+	max-width: 270px;
+	white-space: normal;
+	border: 1px solid #E0EEEE;
+}
+
+#surveySpot {
+	position: fixed;
+	bottom: 20px;
+	right: 20px;
+}
+
+#tableTopicsPractice section {
+	padding-right: 10px;
+	padding-left: 10px
+}
+
+#searchInstructions {
+	font-size: 1em;
+	padding-top: 10px;
+}
+
+#searchTips {
+	font-size: .8em;
+	color: rgba(255,255,255, .6);
+	margin-bottom: 5px;
+}
+
+#searchHelpArea {
+	max-width: 460px;
+	margin: auto;
+}
+
+
+#messageArea {
+	position: absolute;
+	bottom: 0px;
+	width: 100%;
+}
+
+#noResultsMessage {
+	padding-bottom: 15px;
+	text-align: center;
+	max-width: 540px;
+}
+
+/************ Display Search/Button results ************/
+
+#displayArea {
+	max-width: 750px;
+	margin: auto;
+}
+
+.showQuestionsTick {
+	padding: 10px;
+}
+
+.displayFiller {
+	  margin: auto;
+    width: 50%;
+    padding: 15px;
+}
+
+#contentFillerHolder {
+	text-align: center;
+}
+
+.showQuestionButton {
+	margin: auto;
+}
+
+h3.displayFiller {
+	width: 80%;
+}
+
+.tableTopicSession {
+	display: flex;
+	justify-content: left;
+	overflow-y: hidden;
+	cursor: pointer;
+}
+
+.tableTopic, .topicInfo {
+	/*background-color: #E0EEEE;*/
+	/*color: black;*/
+	border-radius: 2px;
+	margin: 5px;
+	height: auto;
+}
+
+.container {
+	margin: 0;
+}
+
+.questionContainer {
+	text-align: center;
+}
+
+.emptyQueryContainer {
+	text-align: center;
+	padding: 35px;
+}
+
+
+.columns, .columns:not(:last-child), .columns:last-child {
+     margin: 0; 
+     padding: 0;
+}
+
+.ttContainer {
+	margin: 10px;
+	display: block;
+}
+
+.newTopicLead {
+	font-size: 1.3em; 
+}
+
+h3.title:not(:last-child), h3.subtitle:not(:last-child) {
+    margin-bottom: 0;
+}
+
+.tableTopicSession:nth-child(odd) {
+	/*border: 2px solid rgb(250, 255, 189);;*/
+	margin: 1em;
+}
+
+.tableTopicSession:nth-child(even) {
+	/*border: 2px solid #E0EEEE;*/
+	margin: 1em;
+}
+
+ol {
+	margin-left: 43px;
+}
+
+/********* Stat row for Index page *********/
+
+#dbProgressRow label{
+	color: #0E4C49;
+	padding: 5px 25px 5px 25px;
+}
+
+
+.dbStats {
+	display: block;
+	color: #0E4C49;
+	margin-left: 5px;
+	margin-right: 5px;
+}
+
+content.dbStats {
+	border: 3px solid #0E4C49;
+	margin: 10px 10px 0px 10px;
+}
+
+.tableTopicsBuffer2 {
+	text-align: left;
+	min-height: 250px;
+}
+
+.dbStatsContainer{
+	min-height: 150px;
+}
+
+.dbStatsContainer div{
+	font-size: 75px;
+}
+
+#statRow {
+	text-align: center;
+	padding: 10px;
+}
+
+#ads {
+	display: none;
+}
+
+/****************** MEDIA QUERIES ******************/
+
+@media screen and (max-width: 768px) {
+
+	/* Red search bar styling for mobile*/
+	#topicSearch {
+		padding: 1em;
+	}
+
+	#topicSearch {
+		padding: 15px 0px 0px 0px;
+		text-align: center;
+	}
+
+	#searchButtonRow {
+		padding: 0px 0px 0px 0px;
+		display: flex;
+		justify-content: center;
+	}
+
+	form #queryInput {
+		margin: auto;
+	}
+
+	#queryButton {
+		margin: 1em auto 1em auto;
+	}
+
+	#getOneQuestion, #getOneSession {
+		height: 50px;
+		max-width: 270px;
+		white-space: normal;
+	}
+
+	#tableTopicsPractice button {
+		margin-bottom: 1em;
+	}
+
+	section.sessionMetaData {
+	max-width: 100%;
+	}
+
+	.ttContainer {
+		display: block;
+	}
+
+	.randomQuestion {
+	    padding: 25px 15px 25px 15px;
+	}
+
+	#noResultsMessage {
+		padding-bottom: 15px;
+		text-align: center;
+		max-width: 90%;
+	}
+
+	#noResultsMessage {
+		margin: 0;
+	}
+
+}
+

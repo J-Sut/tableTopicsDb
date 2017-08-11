@@ -1,17 +1,14 @@
 // ************ f(MODIFY-state) **************
 
-let logInToken
+let logInToken;
 
 // ************ f(MODIFY-state) **************
 
-function checkForToken(callback){
-	console.log('check for token fired')
- 
+function checkForToken(callback){ 
 	$.ajax({
 		type: "GET",
-		url: 'http://localhost:8080/users/token',
+		url: baseUrl + '/users/token',
 		success: function(data){
-			console.log("Great token you've got there")
 			logInToken = data;
 			callback(data)
 		},
@@ -43,14 +40,9 @@ function grabQuestions() {
 
 function addNewSession(sessionDetails, callback) {
 
-	var ttdbURL = "http://localhost:8080/topics";
-	var query = {
-		theme: sessionDetails.theme,
-		sessionIntro: sessionDetails.sessionIntro,
-		keywords: sessionDetails.keywords,	
-		questions: sessionDetails.questions,
-		user_id: logInToken
-	}; 
+	var ttdbURL = baseUrl + "/topics";
+	var query = sessionDetails;
+	query.user_id = logInToken; 
 
 	$.ajax({
 		type: "POST",
@@ -58,29 +50,19 @@ function addNewSession(sessionDetails, callback) {
 		data: JSON.stringify(query),
 		success: function(data){
 			location.href = 'thankyou.html';
-			console.log(data);
 		},
+		error: function(){
+			console.log("Ajax Post Error")
+		},
+
 		contentType: 'application/json',
     dataType: 'json'
 	});
 };
 
 function noTokenRedirect(){
-	localStorage.setItem('message', 'Please log in first to submit Questions. Thank you!');
-	location.href = `login.html?message`;
-	// console.log(`login.html?message`);
-	// console.log(localStorage.getItem('message'));
-
-
-	// if not => redirect to sign in
-				//And tell them you have to sign in first
-				
-				//location.href = http://localhost/login?message=You need to sign in first
-				
-				//localStorage.setItem('message', "You need to sign in first");
-				//Redirect
-				//localStorage.getItem('message');
-				//localStorage.clear();
+	localStorage.setItem('message', 'Please log in first to submit Topics. Thank you!');
+	// location.href = `login.html?message`;
 };
 
 function logOutUser(userTokenId){
@@ -88,7 +70,7 @@ function logOutUser(userTokenId){
 
 	$.ajax({
 		type: 'DELETE',
-		url: `http://localhost:8080/users/logout/${userId}`,
+		url: baseUrl + `/users/logout/${userId}`,
 		success: function(){
 			location.href = 'index.html';
 		},
@@ -97,12 +79,10 @@ function logOutUser(userTokenId){
 };
 
 function countSubmissions(){
-
 		$.ajax({
 		type: "GET",
-		url: 'http://localhost:8080/topics',
+		url: baseUrl + '/topics',
 		success: function(data){
-			console.log(data.length);
 			displaySubmissionscount(data.length)
 		},
 		error: function(data){
@@ -111,40 +91,33 @@ function countSubmissions(){
 	});	
 };
 
+
 // ************ f(RENDER-state) **************
 
 function addQuestion(){
 	const newQuestInput = $(
-				'<div class="topicQuestion field is-grouped">' +
-					'<label class="label" >Question: </label>' +
+				'<div class="topicQuestion">' +
+					'<a class="delete"></a>'+
 				  '<p class="control">' +
-				    '<textarea  class="topicQuestionInput textarea" placeholder="Normal textarea" required></textarea>' +
-				  '</p>' + '<a class="delete"></a>'+
+				    '<textarea  class="topicQuestionInput textarea" placeholder="The most popular sessions have 8 Topics or more" required></textarea>' +
+				  '</p>' + 
+				'</div>' );
 
-				'</div>' + '<br>');
-
-
-	$('#sessionQuestions').append(newQuestInput);
-};
-
-function displayContent(){
-		console.log('display Content Fired')
+	$('#topicQuestions').append(newQuestInput);
 };
 
 function displaySubmissionscount(count){
 	$('#currentTopicsCount').text(count);
 };
 
+function displayNavTabs(){
+	$('#logOut, #profileTab, #logIn, #signUp').toggleClass('is-hidden');
+};
 
 // ************ Event Calls & Listeners **************
 
-//testing();
-
 $(function(){
-	// //if token exists => go to submissions
-	// //	do an api Call to the Token endpoing
-	// checkToken();
-	checkForToken(displayContent);
+	checkForToken(displayNavTabs);
 	countSubmissions();
 });
 
@@ -153,16 +126,12 @@ $('#sessionSubmitForm').submit(function(e){
 
   let sessionDetails = {
 		theme: $('#themeInput').val().trim(),
-		sessionIntro: $('#sessionIntro').val().trim(),
+		introduction: $('#sessionIntro').val().trim(),
 		keywords: grabKeywords(),	
 		questions: grabQuestions()
 	};
 
-	console.log("form submitted");
-	console.log(sessionDetails);
-
 	addNewSession(sessionDetails);
-
 });
 
 $('#addQuestion').on('click', addQuestion);
@@ -172,5 +141,13 @@ $('#logOut').on('click', function(){
 	checkForToken(logOutUser);
 })
 
+$('#sessionQuestions').on('click', '.delete', function(){
+	$(this).parent().remove();
+});
+
+$('#navHam').on('click', function(){
+	$('#navHamDropdown').toggleClass('is-active');
+	$('#navHam').toggleClass('is-active');
+})
 
 
