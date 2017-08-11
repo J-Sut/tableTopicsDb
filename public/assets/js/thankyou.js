@@ -2,7 +2,6 @@
 
 let userData
 
-
 /***************** f(Modify-state) *****************/
 
 function checkForToken(callback){
