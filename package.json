@@ -24,7 +24,7 @@
     "express-session": "^1.15.3",
     "jquery": "^3.2.1",
     "md5": "^2.2.1",
-    "mongoose": "^4.10.2"
+    "mongoose": "^4.10.2",
     "nodemailer": "^4.0.1"
   },
   "devDependencies": {
