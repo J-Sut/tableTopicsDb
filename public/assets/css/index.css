@@ -51,7 +51,7 @@ section.modal-card-body {
 }
 
 #topicSearch {
-	padding: 10px 0px 0px 0px;
+	padding: 5px 0px 0px 0px;
 	text-align: center;
 }
 
@@ -81,12 +81,13 @@ section.modal-card-body {
 
 #searchInstructions {
 	font-size: 1em;
+	padding-top: 10px;
 }
 
 #searchTips {
 	font-size: .8em;
 	color: rgba(255,255,255, .6);
-	margin-bottom: 15px;
+	margin-bottom: 5px;
 }
 
 #searchHelpArea {
