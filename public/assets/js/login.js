@@ -1,8 +1,3 @@
-// ************ State **************
-
-const baseUrl = 'http://www.tabletopicsdb.com';
-// const baseUrl = 'http://localhost:8080';
-
 // ************ Declare Functions **************
 
 function login(em, pw, callback) {
