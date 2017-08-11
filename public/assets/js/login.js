@@ -1,8 +1,3 @@
-// ************ State **************
-
-const baseUrl = 'http://www.tabletopicsdb.com';
-// const baseUrl = 'http://localhost:8080';
-
 // ************ Declare Functions **************
 
 function login(em, pw, callback) {
@@ -59,6 +54,13 @@ $('#navHam').on('click', function(){
 	$('#navHam').toggleClass('is-active');
 })
 
+$('#showForgotPassword').on('click', function(){
+	$('.forgotPasswordModal').addClass('is-active');
+});
+
+$('#updateProfile, #cancel, .modal-background').on('click', function(){
+	$('.forgotPasswordModal').toggleClass('is-active');
+});
 
 
 

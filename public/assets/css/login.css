@@ -1,4 +1,4 @@
-form {
+#signInForm {
 	display: inline-block;
 }
 
@@ -26,13 +26,13 @@ p.control {
 
 #loginBody {
 	text-align: center;
-	padding: 40px;
+	padding: 10px 40px 20px 40px;
 	vertical-align: middle;
 }
 
 #signInForm {
 	/*background-color: brown;*/
-	padding: 25px;
+	padding: 5px 25px 5px 25px;
 	text-align: center;
 	vertical-align: top;
 
@@ -50,6 +50,14 @@ p.control {
     margin-bottom: 0rem;
 }
 
+#modalTitle {
+	margin: auto;
+}
+
+#loginBody h3 {
+	font-size: 1.8em;
+	padding-bottom: 15px;
+}
 
 
 

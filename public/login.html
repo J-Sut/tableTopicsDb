@@ -6,6 +6,8 @@
 	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.4.2/css/bulma.css">
 	<link rel="stylesheet" type="text/css" href="./assets/css/main.css">	
 	<link rel="stylesheet" type="text/css" href="./assets/css/login.css">	
+	<link rel="stylesheet" type="text/css" href="./assets/css/profile.css">	
+
 
 	<!-- Hotjar Tracking Code for http://www.tabletopicsdb.com -->
 	<script>
@@ -104,6 +106,8 @@
 	<main>
 
 		<section id="loginBody" class="">
+			<h3>Sign in / Sign up</h3>
+
 			<img id="bodyPhoto" src="./assets/images/teacher_with_mic2.png">
 
 
@@ -132,7 +136,7 @@
 				  </p>
 				</div>
 				<p>Not yet part of the community? <br>
-				<a href="./signup.html">Join for free here</a></p>
+				<a id="showForgotPassword" href="#">Forgot password?</a></p>
 
 			</form> <!-- signInForm -->
 		</section> <!-- loginBody -->
@@ -162,8 +166,38 @@
 	      </p>
 	    </div>
 	  </div> <!-- container -->
-	</footer>		
+	</footer>	
+
+	<div class="modal forgotPasswordModal">
+	  <div class="modal-background"></div>
+	  <div class="modal-card">
+
+	    <section class="modal-card-body">
+
+				<form id="profileUpdateForm">
+					<h3 id="modalTitle" class="title is-3">Enter your email to retrieve your password</h3>
+					
+					<div id="displayNameUpdate" class="field is-grouped inputSection">
+						<label  class="label">Email: </label>
+					  <p class="control">
+					    <input  id="passwordRecovery" class="input" type="text" placeholder="" required>
+					  </p>
+					</div>
+
+			
+				</form> <!-- sessionInfo -->
+	    </section>
+
+	    <footer class="modal-card-foot">
+	      <button id="submitButton" class="button is-success" type="button">Save changes</button>
+	      <a id="cancel" class="button">Cancel</a>
+	    </footer>
+	  </div>
+	</div>
+
+
 <script type="text/javascript" src="./assets/jquery.min.js"></script>
+<script type="text/javascript" src="./assets/js/config.js"></script>
 <script type="text/javascript" src="./assets/js/login.js"></script>
 </body>
 </html>

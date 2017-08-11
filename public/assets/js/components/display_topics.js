@@ -24,6 +24,6 @@ $('#displayTopics').on('click', '.tableTopicSession', function(){
 	TweenLite.to($('.tableTopicSession'), 0.4, {height: '105px', onComplete: function(){
 		$('.tableTopicSession').removeAttr('style');
 	}})
-	TweenLite.from($(this), 0.4, {delay: 0.2, height:"98px"});
+	TweenLite.from($(this), 0.4, {delay: 0.2, height:"105px"});
 	
 });
