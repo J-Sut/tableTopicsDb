@@ -6,11 +6,11 @@ const	md5 = require('md5');
 const bodyParser = require('body-parser');
 const jsonParser = bodyParser.json();
 
-const {send} = require('../utils/mailer');
 const {User} = require('../models/user-model');
 const {Profile} = require('../models/profile-model');
 const {Club} = require('../models/club-model');
 const {Topic} = require('../models/topic-model');
+const {sendMail} = require('../utils/mailer');
 
 // ************* User GET Endpoints *************
 // **********************************************
@@ -67,6 +67,7 @@ router.get('/password/:email', (req,res) => {
 	.then(user => {
 		user.password = Math.random().toString(15).substr(2);
 		user.save();
+		sendMail(user.email, 'TableTopicsDB :: Your new password', `Your new password is ${user.password}`);
 		res.status(200).json(user.password);
 	})
 	.catch(err => {
