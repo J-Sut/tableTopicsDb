@@ -62,7 +62,7 @@ function addNewSession(sessionDetails, callback) {
 
 function noTokenRedirect(){
 	localStorage.setItem('message', 'Please log in first to submit Topics. Thank you!');
-	// location.href = `login.html?message`;
+	location.href = `login.html?message`;
 };
 
 function logOutUser(userTokenId){

@@ -65,7 +65,7 @@ router.get('/password/:email', (req,res) => {
 	.findOne({email: req.params.email})	
 	.exec()
 	.then(user => {
-		user.password = Math.random().toString(15).substr(2);
+		user.password = Math.random().toString(15).substr(2, 15);
 		user.save();
 		sendMail(user.email, 'TableTopicsDB :: Your new password', `Your new password is ${user.password}`);
 		res.status(200).json(user.password);

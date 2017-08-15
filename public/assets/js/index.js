@@ -278,6 +278,7 @@ $('.delete').on('click', function(){
 
 $('#searchTips a').on('click', function(e){
 	e.preventDefault();
+	$('#messageArea').empty();
 	$('#queryInput').val($(this).attr('href'));
 	$('#queryButton').click();
 });
