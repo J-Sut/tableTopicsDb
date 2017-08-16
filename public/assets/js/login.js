@@ -17,7 +17,7 @@ function login(em, pw, callback) {
 
 		},
 		error: function(){
-			alert("incorrect password");
+			alert("incorrect email or password");
 		},
 		contentType: 'application/json',
     dataType: 'json'
@@ -29,6 +29,25 @@ function logInPlease(message){
 	$('#tableTopicsPractice').append('<h3 class="title is-3">'+ message +'</p>');
 };
 
+// *********** f(modify-state) **************
+
+function resetPassword(email){
+	var email = email
+	var ttdbURL = `${baseUrl}/users/password/${email}`;
+
+	$.ajax({
+		type: "GET",
+		url: ttdbURL,
+		success: function(data){
+			alert('check your email for your new password');
+		},
+		error: function(){
+			alert("incorrect email or password");
+		},
+		contentType: 'application/json',
+    dataType: 'json'
+	});
+};
 
 // ************ Event Listeners **************
 
@@ -61,6 +80,12 @@ $('#showForgotPassword').on('click', function(){
 $('#updateProfile, #cancel, .modal-background').on('click', function(){
 	$('.forgotPasswordModal').toggleClass('is-active');
 });
+
+$('#passwordUpdateSubmit').on('click', function(){
+	let recoveryEmail = $('#recoveryEmail').val();
+
+	resetPassword(recoveryEmail);
+})
 
 
 

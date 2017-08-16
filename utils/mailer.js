@@ -12,7 +12,7 @@ let transporter = nodemailer.createTransport({
   }
 });
 
-function send(to, subject, content){
+function sendMail(to, subject, content){
   // setup email data with unicode symbols
   let _subject = subject || 'Hello from Table Topics';
   let mailOptions = {
@@ -32,4 +32,4 @@ function send(to, subject, content){
   });
 }
 
-export default { send };
+module.exports = { sendMail };
