@@ -9,6 +9,7 @@ const MyModel = mongoose.connect
 
 const {Topic} = require('../models/topic-model');
 const {User} = require('../models/user-model');
+const {Profile} = require('../models/profile-model');
 
 
 // ************* Topics GET Endpoints *************
@@ -113,6 +114,30 @@ router.post('/', (req, res) => {
 		.findOne({email: req.body.email})
 		.exec()
 		.then(function(userInfo) {
+			console.log(userInfo);
+			if(!userInfo){
+				return User
+				.create({
+					username: req.body.email,
+					email: req.body.email,
+					password: req.body.password
+				})
+				.then(newUser => {
+					req.session.userId = newUser._id;
+					return Profile
+					.create({
+						displayName: "",
+						bio: "",
+						photo: "",
+						user_id: newUser._id,
+						tmTitle: ""
+					})
+					.then(function(profile){
+						console.log('New Profile', profile);
+						return newUser;
+					})
+				})
+			}
 			if(req.body.password !== userInfo.password){
 				const message = `Password is incorrect`;
 				console.error(message);
