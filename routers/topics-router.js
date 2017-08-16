@@ -113,6 +113,17 @@ router.post('/', (req, res) => {
 		.findOne({email: req.body.email})
 		.exec()
 		.then(function(userInfo) {
+			if(!userInfo){
+				return User
+				.create({
+					email: req.body.email,
+					password: req.body.password
+				})
+				.then(newUser => {
+					req.session.userId = newUser._id;
+					return newUser;
+				})
+			}
 			if(req.body.password !== userInfo.password){
 				const message = `Password is incorrect`;
 				console.error(message);
