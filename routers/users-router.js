@@ -32,21 +32,21 @@ const {sendMail} = require('../utils/mailer');
 //   });
 // });
 
-// // Get a user Profile by Id
-// router.get('/profile/me', (req, res) => {
-// 	Profile
-// 	.findOne({user_id: req.session.userId})	
-// 	.populate('user_id', 'email')
-// 	.exec()
-// 	.then(profile => {
-// 		profile.photo = md5(profile.user_id.email);
-// 		res.status(200).json(profile)
-// 	})
-// 	.catch(err => {
-//   		console.error(err);
-//   		res.status(500).json({message: 'Internal server error'})
-//   });
-// });
+// Get a user Profile by Id
+router.get('/profile/me', (req, res) => {
+	Profile
+	.findOne({user_id: req.session.userId})	
+	.populate('user_id', 'email')
+	.exec()
+	.then(profile => {
+		profile.photo = md5(profile.user_id.email);
+		res.status(200).json(profile)
+	})
+	.catch(err => {
+  		console.error(err);
+  		res.status(500).json({message: 'Internal server error'})
+  });
+});
 
 // // Return list of profiles
 // router.get('/profiles', (req, res) => {
